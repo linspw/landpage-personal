@@ -1,0 +1,8 @@
+@import 'vuetify/lib/styles/settings/variables';
+
+@each $key, $value in $spacers {
+  .gap-#{$key} {
+    gap: $value;
+  }
+}
+

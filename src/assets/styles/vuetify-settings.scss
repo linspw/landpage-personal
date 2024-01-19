@@ -1,0 +1,12 @@
+$font-family: 'Montserrat', sans-serif;
+
+@use 'vuetify' with (
+  $body-font-family: $font-family,
+  $heading-font-family: $font-family,
+);
+
+@media (min-width: 1920px) {
+  .v-container {
+    max-width: 1200px !important;
+  }
+}
