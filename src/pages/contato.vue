@@ -1,9 +1,10 @@
 <template>
-  <div class="d-flex flex-column py-16 gap-16">
+  <div class="d-flex flex-column py-16 gap-16 fill-height">
     <app-section
       id="section-contato"
       title="Contato"
       description="Mande uma mensagem"
+      class="fill-height"
     >
       <v-container>
         <contact-feature />

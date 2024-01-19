@@ -1,9 +1,10 @@
 <template>
-  <div class="d-flex flex-column py-16 gap-16">
+  <div class="d-flex flex-column py-16 gap-16 fill-height">
     <app-section
       id="section-portifolio"
       title="Portifólio"
       description="Conheça mais sobre meus trabalhos Públicos Pessoais"
+      class="fill-height"
     >
       <v-container>
         <v-row>

@@ -4,6 +4,7 @@
       id="section-livros"
       title="Livros"
       description="Fontes literárias"
+      class="fill-height"
     >
       <v-container>
         <div class="d-flex mb-6">
