@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-const description = 'Software House'
-const title = 'MainProject'
+const description = 'Software Engineer'
+const title = 'Jessé Correia'
 
 useHead({
   titleTemplate: (titleChunk) => {

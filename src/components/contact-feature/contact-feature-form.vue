@@ -2,8 +2,7 @@
   <v-form ref="form" @submit.prevent="handleSendEmail">
     <v-row>
       <v-col cols="12" class="font-weight-bold">
-        Faça seu orçamento online sem custo ou esclareça suas dúvidas
-        gratuitamente agora.
+        Entre em contato através dos dados ou enviando um e-mail por aqui.
       </v-col>
 
       <v-col cols="12" md="6">
@@ -33,19 +32,6 @@
       </v-col>
 
       <v-col cols="12">
-        <v-select
-          v-model="state.subject"
-          name="subject"
-          label="Assunto"
-          variant="solo-filled"
-          color="primary"
-          class="contact-feature-form__input"
-          rounded="lg"
-          :items="['Orçamento', 'Dúvidas']"
-        />
-      </v-col>
-
-      <v-col cols="12">
         <v-textarea
           v-model="state.text"
           name="description"
@@ -56,52 +42,6 @@
           rounded="lg"
           :rules="[requiredRule]"
         />
-      </v-col>
-
-      <v-col cols="12">
-        <p class="text-subtitle-2 mb-2">Arquivos para o orçamento</p>
-
-        <app-drop-zone
-          rounded="lg"
-          elevation="2"
-          @drop-files="handleSelectFiles"
-        />
-      </v-col>
-
-      <v-col cols="12">
-        <p class="text-subtitle-2 mb-2">Lista de arquivos:</p>
-
-        <v-list nav class="text-caption">
-          <v-list-item
-            v-for="(file, index) in state.files"
-            :key="file.name + file.size"
-          >
-            <template #prepend>
-              <v-icon icon="fas fa-file" />
-            </template>
-
-            {{ file.name }}
-
-            <template #append>
-              <v-btn
-                icon
-                size="x-small"
-                variant="flat"
-                @click="state.files.splice(index, 1)"
-              >
-                <v-icon icon="fas fa-trash" />
-              </v-btn>
-            </template>
-          </v-list-item>
-
-          <v-list-item v-if="!state.files.length" class="font-italic">
-            <template #prepend>
-              <v-icon icon="fas fa-circle-info" />
-            </template>
-
-            Nenhum arquivo.
-          </v-list-item>
-        </v-list>
       </v-col>
 
       <v-col cols="12">
@@ -144,7 +84,6 @@ const state = reactive({
   isLoading: false,
   name: '',
   email: '',
-  subject: 'Orçamento',
   text: '',
   files: [] as File[],
 })
@@ -178,10 +117,6 @@ const emailRule = (value: string | undefined | null) => {
   return 'O e-mail está incorreto.'
 }
 
-const handleSelectFiles = ($event: File[] = []) => {
-  state.files = $event
-}
-
 const handleSendEmail = async () => {
   if (state.isLoading) return
   const { valid } = await form.value!.validate()
@@ -190,32 +125,11 @@ const handleSendEmail = async () => {
 
   state.isLoading = true
 
-  const toBase64 = (file: File) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
-      reader.onload = () => resolve(reader.result)
-      reader.onerror = (error) => reject(error)
-    })
-
-  const attachments = await Promise.all(
-    state.files.map(async (file) => {
-      const fileBase64 = await toBase64(file)
-
-      return {
-        filename: file.name,
-        path: fileBase64,
-        contentType: file.type,
-      }
-    }),
-  )
-
   mail
     .send({
       from: state.email,
-      subject: `${state.subject} - ${state.name}`,
+      subject: `Contato através do Site Pessoal - ${state.name}`,
       text: state.text,
-      attachments,
     })
     .then(() => {
       handleOpenSnackbar(

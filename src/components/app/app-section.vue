@@ -9,7 +9,7 @@
     <v-container v-if="title || description" class="app-section__header">
       <h2
         v-if="title"
-        class="text-h3 font-weight-light text-uppercase text-primary"
+        class="text-h4 font-weight-bold text-uppercase text-primary"
       >
         {{ title }}
       </h2>

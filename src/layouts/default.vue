@@ -6,9 +6,9 @@
       <slot />
     </v-main>
 
-    <nuxt-lazy-hydrate when-idle>
-      <app-drawer v-model="drawerIsOpen" order="0" />
-    </nuxt-lazy-hydrate>
+    <ClientOnly>
+      <lazy-app-drawer v-model="drawerIsOpen" order="0" />
+    </ClientOnly>
 
     <app-footer />
   </v-app>

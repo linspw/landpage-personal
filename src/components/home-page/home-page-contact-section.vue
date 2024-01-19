@@ -2,7 +2,7 @@
   <app-section
     id="section-contact"
     title="Contato"
-    description="Faça o orçamento conosco ou tire dúvidas."
+    description="Mande uma mensagem"
   >
     <v-container>
       <contact-feature />

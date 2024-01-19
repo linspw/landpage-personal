@@ -1,0 +1,35 @@
+{
+  "pages": {
+    "portal": {
+      "aboutUs": {
+        "title": "About us"
+      },
+      "signUp": {
+        "title": "Sign up",
+        "subtitle": "Create your account."
+      },
+      "signIn": {
+        "title": "Sign in"
+      },
+      "pricing": {
+        "title": "Pricing",
+        "subtitle": "Plans and pricing for you and your business."
+      },
+      "home": {
+        "title": "Home"
+      },
+      "password": {
+        "title": "Reset Password"
+      },
+      "passwordReset": {
+        "title": "Reset Password"
+      },
+      "email": {
+        "title": "Verify email"
+      },
+      "emailVerify": {
+        "title": "Verify email"
+      }
+    }
+  }
+}

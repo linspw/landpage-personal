@@ -1,4 +1,5 @@
-import { createVuetify, ThemeDefinition } from 'vuetify'
+import { createVuetify } from 'vuetify'
+import type { ThemeDefinition } from 'vuetify'
 import { aliases, fa } from 'vuetify/iconsets/fa'
 import { mdi } from 'vuetify/iconsets/mdi'
 import { pt, en, es } from 'vuetify/locale'
@@ -15,7 +16,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       primary: '#0153FF',
       'on-primary': '#ffffff',
 
-      secondary: '#CFD8DC',
+      secondary: '#263238',
+      'on-secondary': '#FFFFFF',
 
       tertiary: '#686868',
       'on-tertiary': '#ffffff',
@@ -50,6 +52,14 @@ export default defineNuxtPlugin((nuxtApp) => {
         colors: ['primary', 'secondary'],
         lighten: 5,
         darken: 5,
+      },
+    },
+    defaults: {
+      VCard: {
+        rounded: 'xl',
+      },
+      VBtn: {
+        rounded: 'lg',
       },
     },
   })

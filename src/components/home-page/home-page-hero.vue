@@ -2,38 +2,69 @@
   <div class="home-page-hero d-flex align-md-center justify-center">
     <background-wave />
 
-    <v-container>
-      <div class="d-flex flex-column justify-center align-center pt-2 pb-16">
-        <app-image
-          :width="400"
-          :height="200"
-          alt="Lâmpada simbolizando Ideias e Inovações"
-          src="/logo/logo.svg"
+    <v-container
+      class="d-flex flex-column flex-md-row align-center justify-center"
+    >
+      <v-avatar
+        color="grey"
+        size="200"
+        rounded="xl"
+        class="elevation-24 mb-8 mb-md-0"
+      >
+        <v-img cover src="/images/avatars/my-photo.jpg"></v-img>
+      </v-avatar>
+
+      <div
+        class="d-flex flex-column justify-center align-center flex-md-1-1 px-14"
+      >
+        <AppTypingEffectAnimation
+          text="Jessé Correia"
+          tag="h1"
+          class="text-h3 text-md-h1 font-weight-bold text-secondary mb-6 text-center"
+          :duration="5"
+          :remove-cursor-on-end="false"
         />
-      </div>
-
-      <div class="d-flex flex-column align-center justify-center">
-        <h1 class="text-h5 font-weight-bold text-uppercase mb-4 text-center">
-          MainProject: Excelência em Tecnologia - Criando Tecnologias WEB de
-          Última Geração
-        </h1>
-
-        <p class="text-body-1 text-center mb-4">
-          A MainProject é uma Software House comprometida com a inovação e a
-          excelência no desenvolvimento de soluções web de última geração.
-          Combinamos expertise técnica, criatividade e qualidade para ajudar
-          nossos clientes a ter sucesso no mundo digital.
-        </p>
 
         <div
-          class="text-h6 text-primary text-uppercase d-flex align-center justify-center justify-md-start mb-6"
+          class="text-h5 text-md-h3 text-primary d-flex align-center justify-center justify-md-start mb-12 font-weight-thin text-center"
         >
-          Software House
+          Engenheiro da Computação e Desenvolvedor Full Stack
         </div>
 
-        <div class="d-flex justify-center justify-md-start">
-          <v-btn color="primary" to="/contato" rounded="xl" size="large">
-            Faça seu orçamento!
+        <div class="d-flex flex-column flex-md-row justify-center gap-2">
+          <v-btn-group
+            color="secondary"
+            rounded="xl"
+            size="large"
+            variant="text"
+          >
+            <v-btn rounded="0" href="https://github.com/linspw" target="_blank">
+              <template #prepend><v-icon icon="fab fa-github" /></template>
+
+              Github
+            </v-btn>
+
+            <v-btn
+              rounded="0"
+              href="https://www.linkedin.com/in/jessecorreialive/"
+              target="_blank"
+            >
+              <template #prepend><v-icon icon="fab fa-linkedin" /></template>
+
+              LinkedIn
+            </v-btn>
+          </v-btn-group>
+
+          <v-btn
+            color="secondary"
+            to="/#section-competencias"
+            rounded="xl"
+            size="large"
+            class="order-first order-md-last"
+            exact
+            :active="false"
+          >
+            Conheça mais!
           </v-btn>
         </div>
       </div>
@@ -42,9 +73,10 @@
 </template>
 
 <script setup>
-import { useLayout } from 'vuetify'
+import { useLayout, useDisplay } from 'vuetify'
 
 const { mainStyles } = useLayout()
+const $display = useDisplay()
 
 const topPosition = computed(() => {
   return mainStyles.value['--v-layout-top']

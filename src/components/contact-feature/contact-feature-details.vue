@@ -1,12 +1,12 @@
 <template>
   <v-list class="contact-feature-details">
     <div class="mb-6 px-16">
-      <app-image
-        src="/logo/logo.svg"
-        :height="60"
-        width="100%"
-        alt="Main Project logo"
-      />
+      <nuxt-link
+        to="/"
+        class="font-weight-bold text-secondary text-decoration-none text-h4 mr-4 text-center"
+      >
+        Jessé Correia
+      </nuxt-link>
     </div>
 
     <v-list-item class="font-weight-bold">Contatos diretos</v-list-item>
@@ -24,7 +24,7 @@
         <v-icon icon="fas fa-envelope" size="small" color="primary" />
       </template>
 
-      contato@mainproject.one
+      linspw@live.com
     </v-list-item>
 
     <v-list-item>

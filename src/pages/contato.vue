@@ -1,14 +1,14 @@
 <template>
   <div class="d-flex flex-column py-16 gap-16">
-    <v-container>
-      <app-section
-        id="section-contato"
-        title="Contato"
-        description="Faça o orçamento conosco ou tire dúvidas."
-      >
+    <app-section
+      id="section-contato"
+      title="Contato"
+      description="Mande uma mensagem"
+    >
+      <v-container>
         <contact-feature />
-      </app-section>
-    </v-container>
+      </v-container>
+    </app-section>
   </div>
 </template>
 

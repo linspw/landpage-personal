@@ -24,7 +24,7 @@ const topPosition = computed(() => {
 
 .background-wave::before {
   content: '';
-  background-image: url('@assets/images/grey-soft-wave-background.png');
+  background-image: url('/images/backgrounds/background-light.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
