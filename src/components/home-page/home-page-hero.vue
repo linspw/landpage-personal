@@ -41,7 +41,7 @@
             <v-btn rounded="0" href="https://github.com/linspw" target="_blank">
               <template #prepend><v-icon icon="fab fa-github" /></template>
 
-              Github
+              <template v-if="$display.mdAndUp.value"> Github </template>
             </v-btn>
 
             <v-btn
@@ -51,7 +51,19 @@
             >
               <template #prepend><v-icon icon="fab fa-linkedin" /></template>
 
-              LinkedIn
+              <template v-if="$display.mdAndUp.value"> LinkedIn </template>
+            </v-btn>
+
+            <v-btn
+              rounded="0"
+              href="/files/curriculo_2024_pt_br.pdf"
+              target="_blank"
+            >
+              <template #prepend>
+                <v-icon icon="fas fa-cloud-arrow-down" />
+              </template>
+
+              <template v-if="$display.mdAndUp.value"> Currículo </template>
             </v-btn>
           </v-btn-group>
 
