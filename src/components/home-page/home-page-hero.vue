@@ -57,7 +57,7 @@
 
           <v-btn
             color="secondary"
-            to="/#section-competencias"
+            to="/#section-skills"
             rounded="xl"
             size="large"
             class="order-first order-md-last"
