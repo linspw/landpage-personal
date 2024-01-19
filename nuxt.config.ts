@@ -23,6 +23,9 @@ export default defineNuxtConfig({
         ['swiper-container', 'swiper-slide'].includes(tag),
     },
   },
+  features: {
+    inlineStyles: false, // or a function to determine inlining
+  },
 
   vite: {
     plugins: [svgLoader({})],
