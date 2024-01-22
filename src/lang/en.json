@@ -1,35 +1,33 @@
 {
   "pages": {
-    "portal": {
-      "aboutUs": {
-        "title": "About us"
-      },
-      "signUp": {
-        "title": "Sign up",
-        "subtitle": "Create your account."
-      },
-      "signIn": {
-        "title": "Sign in"
-      },
-      "pricing": {
-        "title": "Pricing",
-        "subtitle": "Plans and pricing for you and your business."
-      },
-      "home": {
-        "title": "Home"
-      },
-      "password": {
-        "title": "Reset Password"
-      },
-      "passwordReset": {
-        "title": "Reset Password"
-      },
-      "email": {
-        "title": "Verify email"
-      },
-      "emailVerify": {
-        "title": "Verify email"
-      }
+    "aboutMe": {
+      "title": "About me"
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "subtitle": "Learn more about my Public Personal Works"
+    },
+    "books": {
+      "title": "Books",
+      "subtitle": "Literary sources"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Send a message"
+    }
+  },
+  "homeSections": {
+    "skills": {
+      "title": "Skills",
+      "description": "Main skills"
+    },
+    "experiences": {
+      "title": "Experiences",
+      "description": "Professional and Educational"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Send a message"
     }
   }
 }

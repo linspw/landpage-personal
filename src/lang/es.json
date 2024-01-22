@@ -1,35 +1,33 @@
 {
   "pages": {
-    "portal": {
-      "aboutUs": {
-        "title": "Acerca de nosotros"
-      },
-      "signUp": {
-        "title": "Regístrate",
-        "subtitle": "Crea tu cuenta."
-      },
-      "signIn": {
-        "title": "Iniciar sesión"
-      },
-      "pricing": {
-        "title": "Precios",
-        "subtitle": "Planes y precios para ti y tu empresa."
-      },
-      "home": {
-        "title": "Home"
-      },
-      "email": {
-        "title": "Verificar correo electrónico"
-      },
-      "emailVerify": {
-        "title": "Verificar correo electrónico"
-      },
-      "password": {
-        "title": "Restablecimiento de contraseña"
-      },
-      "passwordReset": {
-        "title": "Restablecimiento de contraseña"
-      }
+    "aboutMe": {
+      "title": "Sobre mí"
+    },
+    "portfolio": {
+      "title": "Portafolio",
+      "subtitle": "Conoce más sobre mis Trabajos Personales Públicos"
+    },
+    "books": {
+      "title": "Libros",
+      "subtitle": "Fuentes literarias"
+    },
+    "contact": {
+      "title": "Contacto",
+      "subtitle": "Envía un mensaje"
+    }
+  },
+  "homeSections": {
+    "skills": {
+      "title": "Habilidades",
+      "description": "Principales habilidades"
+    },
+    "experiences": {
+      "title": "Experiencias",
+      "description": "Profesionales y Educativas"
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Envía un mensaje"
     }
   }
 }

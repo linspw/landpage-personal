@@ -1,36 +1,33 @@
 <template>
-  <app-section
-    id="section-skills"
-    title="Competências"
-    description="Principais habilidades"
-    class="pb-16"
-  >
+  <app-section class="pb-16">
     <v-container>
-      <v-row ref="currentElement">
+      <v-row>
         <v-col v-for="skill in skills" :key="skill.title" cols="12" md="6">
-          <div class="font-weight-bold mb-4" :class="`text-${skill.color}`">
-            {{ skill.title }}
-          </div>
+          <AppShowAnimation>
+            <div class="font-weight-bold mb-4" :class="`text-${skill.color}`">
+              {{ skill.title }}
+            </div>
 
-          <div class="d-flex flex-column gap-2">
-            <div
-              v-for="subskill in skill.items"
-              :key="subskill.title"
-              class="d-flex flex-column skill-item"
-            >
-              <div class="font-weight-medium mb-1">{{ subskill.title }}</div>
+            <div class="d-flex flex-column gap-2">
+              <div
+                v-for="subskill in skill.items"
+                :key="subskill.title"
+                class="d-flex flex-column skill-item"
+              >
+                <div class="font-weight-medium mb-1">{{ subskill.title }}</div>
 
-              <div class="d-flex gap-1 flex-wrap">
-                <v-chip
-                  v-for="item in subskill.items"
-                  :key="item"
-                  variant="outlined"
-                >
-                  {{ item }}
-                </v-chip>
+                <div class="d-flex gap-1 flex-wrap">
+                  <v-chip
+                    v-for="item in subskill.items"
+                    :key="item"
+                    variant="outlined"
+                  >
+                    {{ item }}
+                  </v-chip>
+                </div>
               </div>
             </div>
-          </div>
+          </AppShowAnimation>
         </v-col>
       </v-row>
     </v-container>
@@ -38,13 +35,6 @@
 </template>
 
 <script setup lang="ts">
-import { gsap } from 'gsap'
-import { useElementVisibility } from '@vueuse/core'
-
-const currentElement = ref()
-const animatedElement = useRootElement(currentElement)
-const targetIsVisible = useElementVisibility(animatedElement as any)
-
 const skills = [
   {
     title: 'FRONTEND',
@@ -60,7 +50,13 @@ const skills = [
       },
       {
         title: 'Tools',
-        items: ['Node Js', 'SCSS (SASS)', 'Webpack', 'Vite'],
+        items: [
+          'Node Js',
+          'SCSS (SASS)',
+          'Webpack',
+          'Vite',
+          'I18N (Internationalization)',
+        ],
       },
       {
         title: 'Design',
@@ -87,7 +83,7 @@ const skills = [
     items: [
       {
         title: 'Languages',
-        items: ['PYTHON', 'ELIXIR', 'RUBY', 'JAVA', 'TYPESCRIPT'],
+        items: ['Python', 'Elixir', 'Ruby', 'Java', 'Typescript'],
       },
       {
         title: 'Frameworks',
@@ -160,26 +156,6 @@ const skills = [
     ],
   },
 ]
-
-let animation: gsap.core.Tween
-
-watchEffect(() => {
-  if (targetIsVisible.value) {
-    const skillsItems = animatedElement.value.querySelectorAll('.skill-item')
-
-    if (animation) animation.restart()
-    else {
-      animation = gsap.from(skillsItems, {
-        autoAlpha: 0,
-        y: 20,
-        stagger: 0.2, // Atraso entre cada item
-        duration: 0.8,
-        ease: 'power3.out',
-        opacity: 0,
-      })
-    }
-  }
-})
 </script>
 
 <style lang="scss">

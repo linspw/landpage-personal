@@ -1,35 +1,34 @@
 {
   "pages": {
-    "portal": {
-      "aboutUs": {
-        "title": "Sobre nós"
-      },
-      "signUp": {
-        "title": "Cadastre-se",
-        "subtitle": "Crie sua conta."
-      },
-      "signIn": {
-        "title": "Login"
-      },
-      "pricing": {
-        "title": "Preços",
-        "subtitle": "Planos e preços para você e sua empresa."
-      },
-      "home": {
-        "title": "Home"
-      },
-      "password": {
-        "title": "Redefinição de Senha"
-      },
-      "passwordReset": {
-        "title": "Redefinição de Senha"
-      },
-      "email": {
-        "title": "Verificar e-mail"
-      },
-      "emailVerify": {
-        "title": "Verificar e-mail"
-      }
+    "aboutMe": {
+      "title": "Sobre mim",
+      "subtitle": "Engenheiro da Computação"
+    },
+    "portfolio": {
+      "title": "Portfólio",
+      "subtitle": "Conheça mais sobre meus trabalhos Públicos Pessoais"
+    },
+    "books": {
+      "title": "Livros",
+      "subtitle": "Fontes literárias"
+    },
+    "contact": {
+      "title": "Contato",
+      "subtitle": "Mande uma mensagem"
+    }
+  },
+  "homeSections": {
+    "skills": {
+      "title": "Competências",
+      "description": "Principais habilidades"
+    },
+    "experiences": {
+      "title": "Experiências",
+      "description": "Profissionais e de Ensino."
+    },
+    "contact": {
+      "title": "Contato",
+      "description": "Mande uma mensagem"
     }
   }
 }

@@ -13,7 +13,7 @@
       <v-card
         class="app-header__card"
         color="rgb(255 255 255 / 40%)"
-        :class="{ 'flex-1-1': !$display.mdAndUp.value }"
+        :class="{ 'flex-1-1': $display.mdAndDown.value }"
       >
         <div class="d-flex align-center justify-space-between pa-4">
           <nuxt-link
@@ -31,7 +31,7 @@
           </nuxt-link>
 
           <v-fade-transition appear mode="out-in">
-            <div v-if="!$display.mdAndUp.value" class="d-flex flex-1-1">
+            <div v-if="$display.mdAndDown.value" class="d-flex flex-1-1">
               <div class="d-flex justify-center align-center flex-1-1">
                 <nuxt-link
                   to="/"
@@ -64,6 +64,21 @@
                 class="app-header__button"
               >
                 {{ pageInfo.title }}
+              </v-btn>
+
+              <v-btn color="secondary" class="app-header__button">
+                <v-icon icon="fas fa-language" />
+
+                <AppLanguageDropdownMenu eager />
+
+                <template #append>
+                  <v-icon
+                    class="d-flex"
+                    size="small"
+                    color="blue-darken-3"
+                    icon="fas fa-caret-down"
+                  />
+                </template>
               </v-btn>
             </div>
           </v-fade-transition>

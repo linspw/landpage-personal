@@ -1,9 +1,5 @@
 <template>
-  <app-section
-    id="section-contact"
-    title="Contato"
-    description="Mande uma mensagem"
-  >
+  <app-section>
     <v-container>
       <contact-feature />
     </v-container>

@@ -28,7 +28,7 @@
         <div
           class="text-h5 text-md-h3 text-primary d-flex align-center justify-center justify-md-start mb-12 font-weight-thin text-center"
         >
-          Engenheiro da Computação e Desenvolvedor Full Stack
+          {{ t('jobTitle') }}
         </div>
 
         <div class="d-flex flex-column flex-md-row justify-center gap-2">
@@ -41,7 +41,7 @@
             <v-btn rounded="0" href="https://github.com/linspw" target="_blank">
               <template #prepend><v-icon icon="fab fa-github" /></template>
 
-              <template v-if="$display.mdAndUp.value"> Github </template>
+              <template v-if="$display.mdAndUp.value">Github</template>
             </v-btn>
 
             <v-btn
@@ -51,7 +51,7 @@
             >
               <template #prepend><v-icon icon="fab fa-linkedin" /></template>
 
-              <template v-if="$display.mdAndUp.value"> LinkedIn </template>
+              <template v-if="$display.mdAndUp.value">LinkedIn</template>
             </v-btn>
 
             <v-btn
@@ -63,7 +63,13 @@
                 <v-icon icon="fas fa-cloud-arrow-down" />
               </template>
 
-              <template v-if="$display.mdAndUp.value"> Currículo </template>
+              <template v-if="$display.mdAndUp.value">
+                {{ t('resume') }}
+              </template>
+
+              <v-tooltip activator="parent" location="bottom">
+                {{ t('downloadResume') }}
+              </v-tooltip>
             </v-btn>
           </v-btn-group>
 
@@ -76,7 +82,7 @@
             exact
             :active="false"
           >
-            Conheça mais!
+            {{ t('knowMore') }}
           </v-btn>
         </div>
       </div>
@@ -93,7 +99,34 @@ const $display = useDisplay()
 const topPosition = computed(() => {
   return mainStyles.value['--v-layout-top']
 })
+
+const { t } = useI18n({
+  useScope: 'local',
+})
 </script>
+
+<i18n lang="json">
+{
+  "pt-BR": {
+    "jobTitle": "Engenheiro da Computação e Desenvolvedor Full Stack",
+    "resume": "Currículo",
+    "downloadResume": "Baixar Currículo",
+    "knowMore": "Conheça mais!"
+  },
+  "en": {
+    "jobTitle": "Computer Engineer and Full Stack Developer",
+    "resume": "Resume",
+    "downloadResume": "Download Resume",
+    "knowMore": "Know More!"
+  },
+  "es": {
+    "jobTitle": "Ingeniero en Computación y Desarrollador Full Stack",
+    "resume": "Currículum",
+    "downloadResume": "Descargar Currículum",
+    "knowMore": "¡Conoce más!"
+  }
+}
+</i18n>
 
 <style lang="scss">
 .home-page-hero {

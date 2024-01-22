@@ -2,13 +2,13 @@
   <v-form ref="form" @submit.prevent="handleSendEmail">
     <v-row>
       <v-col cols="12" class="font-weight-bold">
-        Entre em contato através dos dados ou enviando um e-mail por aqui.
+        {{ t('description') }}
       </v-col>
 
       <v-col cols="12" md="6">
         <v-text-field
           name="fullName"
-          label="Seu nome"
+          :label="t('formLabels.name')"
           variant="solo-filled"
           color="primary"
           class="contact-feature-form__input"
@@ -22,7 +22,7 @@
           v-model="state.email"
           name="email"
           type="email"
-          label="Seu email"
+          :label="t('formLabels.email')"
           variant="solo-filled"
           color="primary"
           class="contact-feature-form__input"
@@ -35,7 +35,7 @@
         <v-textarea
           v-model="state.text"
           name="description"
-          label="Texto"
+          :label="t('formLabels.text')"
           variant="solo-filled"
           color="primary"
           class="contact-feature-form__input"
@@ -54,7 +54,7 @@
               rounded="xl"
               :loading="state.isLoading"
             >
-              Enviar
+              {{ t('formButtons.submit') }}
             </v-btn>
           </div>
         </div>
@@ -70,7 +70,7 @@
           rounded="xl"
           @click="snackbarState.isOpen = false"
         >
-          Fechar
+          {{ t('formButtons.close') }}
         </v-btn>
       </template>
     </v-snackbar>
@@ -106,7 +106,7 @@ const handleOpenSnackbar = (text: string, color: string = 'success') => {
 const requiredRule = (value: string) => {
   if (value) return true
 
-  return 'Esse campo é obrigatório.'
+  return t('formLabels.requiredRule') as string
 }
 
 const emailRule = (value: string | undefined | null) => {
@@ -114,7 +114,7 @@ const emailRule = (value: string | undefined | null) => {
 
   if (!value || regex.test(value)) return true
 
-  return 'O e-mail está incorreto.'
+  return t('formLabels.emailRule') as string
 }
 
 const handleSendEmail = async () => {
@@ -128,28 +128,92 @@ const handleSendEmail = async () => {
   mail
     .send({
       from: state.email,
-      subject: `Contato através do Site Pessoal - ${state.name}`,
+      subject: t('contactForm.formLabels.emailSubject', {
+        name: state.name,
+      }) as string,
       text: state.text,
     })
     .then(() => {
-      handleOpenSnackbar(
-        'E-mail enviado com sucesso, embreve retornaremos o contato, obrigado!',
-        'success',
-      )
+      handleOpenSnackbar(t('formSnackbars.success') as string, 'success')
 
       form.value!.reset()
       state.files = []
     })
     .catch(() => {
-      handleOpenSnackbar(
-        'Erro ao enviar o email, por favor entre em contado pelo WhatsApp ou pelas redes sociais.',
-        'error',
-      )
+      handleOpenSnackbar(t('formSnackbars.error') as string, 'error')
     })
     .finally(() => {
       state.isLoading = false
     })
 }
+
+const { t } = useI18n({
+  useScope: 'local',
+})
 </script>
 
-<style lang="scss"></style>
+<i18n lang="json">
+{
+  "pt-BR": {
+    "title": "Entre em contato",
+    "description": "Entre em contato através dos dados ou enviando um e-mail por aqui.",
+    "formLabels": {
+      "name": "Seu nome",
+      "email": "Seu email",
+      "text": "Texto",
+      "requiredRule": "Esse campo é obrigatório.",
+      "emailRule": "O e-mail está incorreto.",
+      "emailSubject": "Contato através do Site Pessoal - {name}"
+    },
+    "formButtons": {
+      "submit": "Enviar",
+      "close": "Fechar"
+    },
+    "formSnackbars": {
+      "success": "E-mail enviado com sucesso, em breve retornaremos o contato. Obrigado!",
+      "error": "Erro ao enviar o email. Entre em contato pelo WhatsApp ou pelas redes sociais."
+    }
+  },
+  "en": {
+    "title": "Get in touch",
+    "description": "Get in touch via the details or send an email here.",
+    "formLabels": {
+      "name": "Your name",
+      "email": "Your email",
+      "text": "Text",
+
+      "requiredRule": "This field is required.",
+      "emailRule": "The email is incorrect.",
+      "emailSubject": "Contact through Personal Website - {name}"
+    },
+    "formButtons": {
+      "submit": "Send",
+      "close": "Close"
+    },
+    "formSnackbars": {
+      "success": "Email sent successfully, we'll get back to you shortly. Thank you!",
+      "error": "Error sending the email. Please contact us via WhatsApp or social media."
+    }
+  },
+  "es": {
+    "title": "Ponte en contacto",
+    "description": "Ponte en contacto a través de los datos o enviando un correo electrónico aquí.",
+    "formLabels": {
+      "name": "Tu nombre",
+      "email": "Tu correo electrónico",
+      "text": "Texto",
+      "requiredRule": "Este campo es obligatorio.",
+      "emailRule": "El correo electrónico no es correcto.",
+      "emailSubject": "Contacto a través del sitio web personal - {name}"
+    },
+    "formButtons": {
+      "submit": "Enviar",
+      "close": "Cerrar"
+    },
+    "formSnackbars": {
+      "success": "Correo electrónico enviado con éxito, pronto nos pondremos en contacto. ¡Gracias!",
+      "error": "Error al enviar el correo electrónico. Ponte en contacto por WhatsApp o por las redes sociales."
+    }
+  }
+}
+</i18n>

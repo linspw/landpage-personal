@@ -1,9 +1,8 @@
 <template>
   <div class="d-flex flex-column py-16 gap-16">
     <app-section
-      id="section-livros"
-      title="Livros"
-      description="Fontes literárias"
+      :title="$t('pages.books.title')"
+      :description="$t('pages.books.subtitle')"
       class="fill-height"
     >
       <v-container>
@@ -58,7 +57,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Livros',
+  title: 'pages.books.title',
 })
 
 const bookTopics = [
@@ -257,6 +256,12 @@ const bookTopics = [
         title: 'Derrote Mamom: Estratégias para sua vitória financeira',
         author: 'Fabiano Ribeiro',
         themes: ['Finanças'],
+      },
+      {
+        title:
+          'Feche a Matraca - Ouvindo a voz de Deus acima de todas as outras!',
+        author: 'Steven Furtick',
+        themes: ['Cristianismo'],
       },
     ],
   },

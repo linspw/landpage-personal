@@ -9,7 +9,9 @@
       </nuxt-link>
     </div>
 
-    <v-list-item class="font-weight-bold">Contatos diretos</v-list-item>
+    <v-list-item class="font-weight-bold">
+      {{ t('directContacts') }}
+    </v-list-item>
 
     <v-list-item target="_blank">
       <template #prepend>
@@ -37,7 +39,9 @@
   </v-list>
 
   <v-list class="contact-feature-details">
-    <v-list-item class="font-weight-bold">Social Media</v-list-item>
+    <v-list-item class="font-weight-bold">
+      {{ t('socialMedia') }}
+    </v-list-item>
 
     <v-list-item>
       <div class="d-flex gap-4">
@@ -57,6 +61,12 @@
   </v-list>
 </template>
 
+<script setup lang="ts">
+const { t } = useI18n({
+  useScope: 'local',
+})
+</script>
+
 <style lang="scss">
 .contact-feature-details {
   font-size: 14px;
@@ -69,3 +79,20 @@
   }
 }
 </style>
+
+<i18n lang="json">
+{
+  "pt-BR": {
+    "directContacts": "Contato direto",
+    "socialMedia": "Midia social"
+  },
+  "en": {
+    "directContacts": "Direct Contacts",
+    "socialMedia": "Social Media"
+  },
+  "es": {
+    "directContacts": "Contactos directos",
+    "socialMedia": "Redes sociales"
+  }
+}
+</i18n>

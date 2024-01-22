@@ -1,9 +1,8 @@
 <template>
   <div class="d-flex flex-column py-16 gap-16 fill-height">
     <app-section
-      id="section-portifolio"
-      title="Portifólio"
-      description="Conheça mais sobre meus trabalhos Públicos Pessoais"
+      :title="$t('pages.portfolio.title')"
+      :description="$t('pages.portfolio.subtitle')"
       class="fill-height"
     >
       <v-container>
@@ -46,18 +45,8 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Portifólio',
+  title: 'pages.portfolio.title',
 })
-
-const books = [
-  {
-    title: 'Desenvolvimento Pessoal',
-    items: [
-      { title: 'Os 7 Hábitos das Pessoas Altamente Eficazes' },
-      { title: 'Como fazer Amigos e Influenciar pessoas' },
-    ],
-  },
-]
 </script>
 
 <style lang="scss">

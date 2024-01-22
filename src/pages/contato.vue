@@ -1,9 +1,8 @@
 <template>
   <div class="d-flex flex-column py-16 gap-16 fill-height">
     <app-section
-      id="section-contato"
-      title="Contato"
-      description="Mande uma mensagem"
+      :title="$t('pages.contact.title')"
+      :description="$t('pages.contact.subtitle')"
       class="fill-height"
     >
       <v-container>
@@ -15,6 +14,6 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Contato',
+  title: 'pages.contact.title',
 })
 </script>

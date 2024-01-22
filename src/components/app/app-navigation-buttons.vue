@@ -11,8 +11,10 @@
           aria-label="Go to first section. Pitch."
           class="app-navigation-buttons__button"
           :class="{
-            'app-navigation-buttons__button--current': section.isCurrent,
+            'app-navigation-buttons__button--current':
+              $route.fullPath === section.url,
           }"
+          @click="handleClick(section.url)"
         />
       </li>
     </ul>
@@ -20,23 +22,25 @@
 </template>
 
 <script setup lang="ts">
+const $route = useRoute()
+
+interface Section {
+  url: string
+  id: string
+}
+
 defineProps({
   sections: {
-    type: Array,
+    type: Array as PropType<Section[]>,
     default() {
-      return [
-        {
-          url: 'link',
-          isCurrent: false,
-        },
-        {
-          url: 'link',
-          isCurrent: true,
-        },
-      ]
+      return []
     },
   },
 })
+
+const handleClick = (fullPath: string) => {
+  return navigateTo(fullPath)
+}
 </script>
 
 <style lang="scss">
