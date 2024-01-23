@@ -24,9 +24,7 @@
                 />
 
                 <h4 class="font-weight-semi-bold text-white">
-                  Plataforma Colaborativa que criei para empresas e pessoas.
-                  Possui ferramentas de gerênciamento de projetos e
-                  documentações
+                  {{ t('description') }}
                 </h4>
 
                 <template #append>
@@ -47,8 +45,11 @@
 useHead({
   title: 'pages.portfolio.title',
 })
-</script>
 
+const { t } = useI18n({
+  useScope: 'local',
+})
+</script>
 <style lang="scss">
 .home-page-solutions-section__card {
   & .v-card-item,
@@ -67,3 +68,17 @@ useHead({
   }
 }
 </style>
+
+<i18n lang="json">
+{
+  "en": {
+    "description": "Collaborative platform I created for companies and individuals. It features project management and documentation tools."
+  },
+  "pt-BR": {
+    "description": "Plataforma Colaborativa que criei para empresas e pessoas. Possui ferramentas de gerenciamento de projetos e documentações."
+  },
+  "es": {
+    "description": "Plataforma colaborativa que creé para empresas y personas. Cuenta con herramientas de gestión de proyectos y documentación."
+  }
+}
+</i18n>

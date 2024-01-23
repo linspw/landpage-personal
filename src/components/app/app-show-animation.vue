@@ -19,14 +19,22 @@ watchEffect(() => {
 
     if (animation) animation.restart()
     else if (skillsItems.length) {
-      animation = gsap.from(skillsItems, {
-        autoAlpha: 0,
-        y: 20,
-        stagger: 0.2, // Atraso entre cada item
-        duration: 0.8,
-        ease: 'power3.out',
-        opacity: 0,
-      })
+      animation = gsap.fromTo(
+        skillsItems,
+        {
+          autoAlpha: 0,
+          y: 60,
+          opacity: 0,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2, // Atraso entre cada item
+          ease: 'power3.out',
+        },
+      )
     }
   }
 })
