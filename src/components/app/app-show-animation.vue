@@ -1,21 +1,19 @@
 <template>
-  <div>
-    <slot />
-  </div>
+  <slot />
 </template>
 
 <script setup lang="ts">
 import { gsap } from 'gsap'
-import { useElementVisibility } from '@vueuse/core'
+import { useElementVisibility, useParentElement } from '@vueuse/core'
 
-const animatedElement = useRootElement()
-const targetIsVisible = useElementVisibility(animatedElement as any)
+const parentElement = useParentElement()
+const targetIsVisible = useElementVisibility(parentElement)
 
 let animation: gsap.core.Tween
 
 watchEffect(() => {
   if (targetIsVisible.value) {
-    const skillsItems = animatedElement.value.querySelectorAll('.skill-item')
+    const skillsItems = parentElement.value!.querySelectorAll('.animated-show')
 
     if (animation) animation.restart()
     else if (skillsItems.length) {
@@ -31,8 +29,8 @@ watchEffect(() => {
           y: 0,
           opacity: 1,
           duration: 0.8,
-          stagger: 0.2, // Atraso entre cada item
-          ease: 'power3.out',
+          stagger: 0.1, // Atraso entre cada item
+          ease: 'power4.out',
         },
       )
     }

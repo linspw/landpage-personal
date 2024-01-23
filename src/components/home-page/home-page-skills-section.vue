@@ -12,7 +12,7 @@
               <div
                 v-for="subskill in skill.items"
                 :key="subskill.title"
-                class="d-flex flex-column skill-item"
+                class="d-flex flex-column animated-show"
               >
                 <div class="font-weight-medium mb-1">{{ subskill.title }}</div>
 

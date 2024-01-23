@@ -12,7 +12,7 @@
           class="app-navigation-buttons__button"
           :class="{
             'app-navigation-buttons__button--current':
-              $route.fullPath === section.url,
+              currentSection === section.id,
           }"
           @click="handleClick(section.url)"
         />
@@ -22,14 +22,16 @@
 </template>
 
 <script setup lang="ts">
-const $route = useRoute()
+import { useIntersectionObserver } from '@vueuse/core'
 
 interface Section {
   url: string
   id: string
 }
 
-defineProps({
+const currentSection = ref('')
+
+const $props = defineProps({
   sections: {
     type: Array as PropType<Section[]>,
     default() {
@@ -41,6 +43,22 @@ defineProps({
 const handleClick = (fullPath: string) => {
   return navigateTo(fullPath)
 }
+
+onMounted(() => {
+  $props.sections.forEach((item) => {
+    const section = document.getElementById(item.id) as HTMLElement
+    useIntersectionObserver(
+      section,
+      ([{ isIntersecting }]) => {
+        if (isIntersecting) currentSection.value = item.id
+      },
+      {
+        rootMargin: '0px 0px 0px 0px',
+        threshold: 0.4,
+      },
+    )
+  })
+})
 </script>
 
 <style lang="scss">

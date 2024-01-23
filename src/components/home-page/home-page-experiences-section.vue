@@ -144,7 +144,7 @@ const items = computed(() => {
       "title": "Experiências",
       "description": "Profissionais e de Ensino.",
       "professionalTab": "Profissionais",
-      "educationTab": "Educação",
+      "educationTab": "Educacionais",
       "profissionalItems": {
         "item1": {
           "date": "Janeiro de 2022 - Março de 2023",
@@ -198,7 +198,7 @@ const items = computed(() => {
       "title": "Experiences",
       "description": "Professional and Educational.",
       "professionalTab": "Professional",
-      "educationTab": "Education",
+      "educationTab": "Educational",
       "profissionalItems": {
         "item1": {
           "date": "January 2022 - March 2023",
@@ -252,7 +252,7 @@ const items = computed(() => {
       "title": "Experiencias",
       "description": "Profesionales y Educativas.",
       "professionalTab": "Profesionales",
-      "educationTab": "Educación",
+      "educationTab": "Educativas",
       "profissionalItems": {
         "item1": {
           "date": "Enero de 2022 - Marzo de 2023",
