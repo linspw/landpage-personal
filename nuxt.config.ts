@@ -40,6 +40,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/robots',
     '@nuxtjs/i18n',
+    '@nuxt/test-utils/module',
     'nuxt-simple-sitemap',
     'nuxt-lazy-hydrate',
     [

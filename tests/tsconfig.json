@@ -1,0 +1,11 @@
+{
+  "extends": ".././.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "types": ["cypress", "node", "cypress-real-events"],
+    "lib": ["ES2021", "dom"],
+    "target": "ES2021"
+  },
+  "include": ["**/*.ts", "**/*.tsx", "../**/*.cy.tsx", "../cypress.config.ts"],
+  "exclude": ["node_modules"]
+}
