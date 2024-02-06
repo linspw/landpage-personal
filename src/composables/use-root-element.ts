@@ -1,16 +1,15 @@
 import { getCurrentInstance, onMounted, onUpdated } from 'vue'
-import type { ComponentPublicInstance, MaybeRefOrGetter } from 'vue'
-import { computedWithControl, toValue } from '@vueuse/core'
-import type { ComputedRefWithControl } from '@vueuse/core'
+import { computedWithControl, unrefElement } from '@vueuse/core'
+import type { MaybeElement, VueInstance, MaybeElementRef } from '@vueuse/core'
 
-export function useRootElement<T extends Element = Element>(
-  rootComponent?: MaybeRefOrGetter<ComponentPublicInstance>,
-): ComputedRefWithControl<T> {
+export function useRootElement<
+  T extends MaybeElement = MaybeElement,
+  R extends VueInstance = VueInstance,
+>(rootComponent?: MaybeElementRef<R>) {
   const vm = getCurrentInstance()!
   const currentElement = computedWithControl(
     () => null,
-    () =>
-      (rootComponent?.value ? toValue(rootComponent).$el : vm.proxy!.$el) as T,
+    () => (rootComponent ? unrefElement(rootComponent) : vm.proxy!.$el) as T,
   )
 
   onUpdated(currentElement.trigger)

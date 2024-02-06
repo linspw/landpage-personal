@@ -16,7 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import type { LocaleObject } from 'vue-i18n-routing'
+import { useI18n } from '#i18n'
+
 const { locale, locales, setLocale } = useI18n()
-const items = locales as ComputedRef<Array<LocaleObject>>
+const items = locales
 </script>

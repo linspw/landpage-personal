@@ -1,12 +1,11 @@
 {
   "extends": [
-    "@nuxtjs/eslint-config-typescript",
+    "@nuxt/eslint-config",
     "plugin:prettier/recommended"
   ],
   "rules": {
     "vue/no-multiple-template-root": "off",
     "import/first": "off",
-    "import/no-named-as-default-member": "off",
-    "import/namespace": "off"
+    "import/no-named-as-default-member": "off"
   }
 }

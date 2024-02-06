@@ -310,7 +310,7 @@ const bookTopics = [
   },
 ]
 
-function countTotalBooks(topics) {
+function countTotalBooks(topics: { title: string; items: any }[]) {
   return topics.reduce((total, section) => total + section.items.length, 0)
 }
 
