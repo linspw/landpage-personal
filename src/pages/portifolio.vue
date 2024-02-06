@@ -50,6 +50,7 @@ const { t } = useI18n({
   useScope: 'local',
 })
 </script>
+
 <style lang="scss">
 .home-page-solutions-section__card {
   & .v-card-item,
