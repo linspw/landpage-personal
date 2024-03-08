@@ -50,7 +50,6 @@
 
 <script setup lang="ts">
 import { Navigation, Pagination, Autoplay, FreeMode } from 'swiper/modules'
-import { useDisplay } from 'vuetify'
 import { register } from 'swiper/element/bundle'
 
 const { isVisibleOnce } = useVisibilityOnce()

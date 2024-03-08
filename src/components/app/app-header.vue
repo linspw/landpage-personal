@@ -7,12 +7,11 @@
     :height="80"
   >
     <v-container
-      class="d-flex align-center justify-center py-3"
+      class="d-flex align-center justify-center pa-0"
       style="position: relative"
     >
       <v-card
-        class="app-header__card"
-        color="rgb(255 255 255 / 40%)"
+        class="app-header__card animate__animated animate__fadeInDownBig animate__slow mx-2"
         :class="{ 'flex-1-1': $display.mdAndDown.value }"
       >
         <div class="d-flex align-center justify-space-between pa-4">
@@ -89,10 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import { useDisplay } from 'vuetify'
 import { useVModel } from '@vueuse/core'
-
-const pageInfos = usePortalPagesInfo()
 
 const props = defineProps<{
   modelValue: boolean
@@ -101,20 +97,14 @@ const emit = defineEmits(['update:modelValue'])
 
 const drawer = useVModel(props, 'modelValue', emit)
 const $display = useDisplay()
+const pageInfos = usePortalPagesInfo()
 </script>
 
 <style lang="scss">
-.app-header {
-}
-
 .app-header__avatar {
   &.v-avatar--variant-outlined {
     border: 2px solid currentColor;
   }
-}
-
-.app-header__card {
-  backdrop-filter: saturate(180%) blur(14px);
 }
 
 .app-header__button {

@@ -63,6 +63,10 @@ watchEffect(() => {
 .anim-typewriter {
   --anim-typewriter-opacity: 1;
 
+  &::before {
+    content: '.';
+    visibility: hidden;
+  }
   &::after {
     opacity: var(--anim-typewriter-opacity);
     content: '_';

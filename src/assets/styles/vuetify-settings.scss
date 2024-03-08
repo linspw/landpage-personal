@@ -3,7 +3,7 @@ $shadow-key-umbra-opacity-custom: var(--v-shadow-key-umbra-opacity, rgba(0 0 0 /
 $shadow-key-penumbra-opacity-custom: var(--v-shadow-key-penumbra-opacity, rgba(0 0 0 / 1%)) !default;
 $shadow-key-ambient-opacity-custom: var(--v-shadow-key-ambient-opacity, rgba(0 0 0 / 10%)) !default;
 
-@forward 'vuetify/settings' with (
+@use 'vuetify/settings'with (
   $body-font-family: $font-family,
   $heading-font-family: $font-family,
   $button-font-weight: 600,

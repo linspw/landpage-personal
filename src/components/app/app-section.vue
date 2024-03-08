@@ -6,7 +6,11 @@
     }"
     tag="section"
   >
-    <v-container v-if="title || description" class="app-section__header">
+    <v-container
+      v-if="title || description"
+      class="app-section__header"
+      data-aos="fade-up"
+    >
       <h2
         v-if="title"
         class="text-h4 font-weight-bold text-uppercase text-primary"

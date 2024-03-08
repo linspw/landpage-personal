@@ -2,23 +2,15 @@
   <div class="background-wave" />
 </template>
 
-<script setup lang="ts">
-import { useLayout } from 'vuetify'
-
-const { mainStyles } = useLayout()
-
-const topPosition = computed(() => {
-  return mainStyles.value['--v-layout-top']
-})
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss">
 .background-wave {
   position: absolute;
   overflow: hidden;
-  height: calc(100% + v-bind('topPosition'));
+  height: calc(100% + var(--v-layout-top));
   width: 100%;
-  top: calc(v-bind('topPosition') * -1);
+  top: calc(var(--v-layout-top) * -1);
   left: 0;
 }
 

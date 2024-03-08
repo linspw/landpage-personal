@@ -42,6 +42,14 @@
 
           <v-card
             class="pa-6"
+            :data-aos="
+              !$display.mdAndUp.value
+                ? 'fade-left'
+                : i % 2 === 0
+                  ? 'fade-left'
+                  : 'fade-right'
+            "
+            data-aos-duration="2000"
             :title="item.title"
             :subtitle="item.subtitle"
             :text="item.text"
@@ -57,8 +65,6 @@
 </template>
 
 <script setup lang="ts">
-import { useDisplay } from 'vuetify'
-
 const $display = useDisplay()
 const tab = ref('profissional')
 

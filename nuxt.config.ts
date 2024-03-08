@@ -1,7 +1,5 @@
 import { fileURLToPath } from 'url'
 import svgLoader from 'vite-svg-loader'
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-import vuetifySass from '@paro-paro/vite-plugin-vuetify-sass'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -10,6 +8,7 @@ export default defineNuxtConfig({
     'vuetify/styles',
     '@assets/styles/index.scss',
     '@fortawesome/fontawesome-free/css/all.css',
+    'animate.css/animate.min.css',
   ],
   alias: {
     '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
@@ -29,11 +28,6 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [svgLoader({})],
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
-    },
   },
   modules: [
     '@nuxtjs/google-fonts',
@@ -42,7 +36,8 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/test-utils/module',
     'nuxt-simple-sitemap',
-    'nuxt-lazy-hydrate',
+    'nuxt-aos',
+    'vuetify-nuxt-module',
     [
       'nuxt-mail',
       {
@@ -58,22 +53,6 @@ export default defineNuxtConfig({
         },
       },
     ],
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        const url = fileURLToPath(
-          new URL('./src/assets/styles/vuetify-settings.scss', import.meta.url),
-        )
-        // @ts-expect-error
-        config.plugins.push(
-          vuetify({
-            autoImport: true,
-          }),
-          vuetifySass({
-            configFile: url,
-          }),
-        )
-      })
-    },
   ],
   googleFonts: {
     families: {
@@ -112,6 +91,17 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root', // recommended
+    },
+  },
+  vuetify: {
+    moduleOptions: {
+      /* other module options */
+      styles: {
+        configFile: 'assets/styles/vuetify-settings.scss',
+      },
+      ssrClientHints: {
+        viewportSize: true,
+      },
     },
   },
   app: {

@@ -3,31 +3,31 @@
     <v-container>
       <v-row>
         <v-col v-for="skill in skills" :key="skill.title" cols="12" md="6">
-          <AppShowAnimation>
-            <div class="font-weight-bold mb-4" :class="`text-${skill.color}`">
-              {{ skill.title }}
-            </div>
+          <div
+            class="font-weight-bold mb-4"
+            :class="`text-${skill.color}`"
+            data-aos="fade-up"
+          >
+            {{ skill.title }}
+          </div>
 
-            <div class="d-flex flex-column gap-2">
-              <div
-                v-for="subskill in skill.items"
-                :key="subskill.title"
-                class="d-flex flex-column animated-show"
-              >
-                <div class="font-weight-medium mb-1">{{ subskill.title }}</div>
+          <div class="d-flex flex-column gap-2">
+            <div
+              v-for="subskill in skill.items"
+              :key="subskill.title"
+              class="d-flex flex-column"
+            >
+              <div class="font-weight-medium mb-1" data-aos="fade-up">
+                {{ subskill.title }}
+              </div>
 
-                <div class="d-flex gap-1 flex-wrap">
-                  <v-chip
-                    v-for="item in subskill.items"
-                    :key="item"
-                    variant="outlined"
-                  >
-                    {{ item }}
-                  </v-chip>
-                </div>
+              <div class="d-flex gap-1 flex-wrap" data-aos="fade-up">
+                <v-card v-for="item in subskill.items" :key="item" class="pa-4">
+                  {{ item }}
+                </v-card>
               </div>
             </div>
-          </AppShowAnimation>
+          </div>
         </v-col>
       </v-row>
     </v-container>

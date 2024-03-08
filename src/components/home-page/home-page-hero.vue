@@ -9,7 +9,7 @@
         color="grey"
         size="200"
         rounded="xl"
-        class="elevation-24 mb-8 mb-md-0"
+        class="elevation-24 mb-8 mb-md-0 animate__animated animate__fadeInTopLeft animate__slow"
       >
         <v-img cover src="/images/avatars/my-photo.jpg"></v-img>
       </v-avatar>
@@ -91,14 +91,7 @@
 </template>
 
 <script setup>
-import { useLayout, useDisplay } from 'vuetify'
-
-const { mainStyles } = useLayout()
 const $display = useDisplay()
-
-const topPosition = computed(() => {
-  return mainStyles.value['--v-layout-top']
-})
 
 const { t } = useI18n({
   useScope: 'local',
@@ -131,7 +124,7 @@ const { t } = useI18n({
 <style lang="scss">
 .home-page-hero {
   position: relative;
-  min-height: calc(100dvh - v-bind('topPosition'));
+  min-height: calc(100dvh - var(--v-layout-top));
 
   & .v-container {
     position: relative;

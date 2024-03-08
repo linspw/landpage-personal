@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="--v-layout-top: 80px">
     <app-header v-model="drawerIsOpen" order="1" />
 
     <v-main id="main-content">

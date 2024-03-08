@@ -6,10 +6,10 @@
       <component
         :is="componentsDict[section.component as keyof typeof componentsDict]"
         :id="section.id"
-        class="py-16"
-        style="min-height: 100dvh"
         :title="section.title"
         :description="section.description"
+        class="py-16"
+        style="min-height: 100dvh"
       />
     </template>
 
@@ -21,8 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { useDisplay } from 'vuetify'
-
 const $display = useDisplay()
 
 const sections = usePortalHomeSections()
