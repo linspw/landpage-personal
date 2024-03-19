@@ -8,9 +8,9 @@
 .background-wave {
   position: absolute;
   overflow: hidden;
-  height: calc(100% + var(--v-layout-top));
+  height: 100dvh;
   width: 100%;
-  top: calc(var(--v-layout-top) * -1);
+  top: calc(80px * -1);
   left: 0;
 }
 

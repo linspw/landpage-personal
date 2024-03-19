@@ -1,5 +1,5 @@
 <template>
-  <v-app style="--v-layout-top: 80px">
+  <v-app>
     <app-header v-model="drawerIsOpen" order="1" />
 
     <v-main id="main-content">
@@ -22,6 +22,6 @@ const drawerIsOpen = ref<boolean>(false)
 #main-content {
   --v-layout-top: 80px !important;
 
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 </style>
