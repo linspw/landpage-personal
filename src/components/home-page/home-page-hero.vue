@@ -6,7 +6,7 @@
       class="d-flex flex-column flex-md-row align-center justify-center"
     >
       <v-avatar
-        color="grey"
+        color="white"
         size="200"
         rounded="xl"
         class="elevation-24 mb-8 mb-md-0 animate__animated animate__fadeInTopLeft animate__slow"
@@ -124,7 +124,7 @@ const { t } = useI18n({
 <style lang="scss">
 .home-page-hero {
   position: relative;
-  min-height: calc(100dvh - var(--v-layout-top));
+  min-height: calc(100dvh - 80px);
 
   & .v-container {
     position: relative;

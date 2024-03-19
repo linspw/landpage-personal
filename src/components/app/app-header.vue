@@ -11,7 +11,7 @@
       style="position: relative"
     >
       <v-card
-        class="app-header__card animate__animated animate__fadeInDownBig animate__slow mx-2"
+        class="app-header__card animate__animated animate__fadeInDownBig animate__fast mx-2"
         :class="{ 'flex-1-1': $display.mdAndDown.value }"
       >
         <div class="d-flex align-center justify-space-between pa-4">
