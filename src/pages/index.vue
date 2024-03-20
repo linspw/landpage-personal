@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column" style="margin-top: -80px">
+  <div class="d-flex flex-column" style="min-height: 100dvh">
     <HomePageHero id="hero" style="min-height: 100dvh" />
 
     <template v-for="section in sections" :key="section.id">

@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar class="app-header" rounded="b-lg" color="transparent" flat>
+  <v-toolbar class="app-header" rounded="b-lg" color="transparent" flat app>
     <v-container
       class="d-flex align-center justify-center pa-0"
       style="position: relative"
@@ -78,7 +78,7 @@
         </div>
       </v-card>
     </v-container>
-  </v-app-bar>
+  </v-toolbar>
 </template>
 
 <script setup lang="ts">
@@ -95,6 +95,12 @@ const pageInfos = usePortalPagesInfo()
 </script>
 
 <style lang="scss">
+.app-header {
+  position: fixed;
+  z-index: 1000;
+  height: 80px;
+}
+
 .app-header__avatar {
   &.v-avatar--variant-outlined {
     border: 2px solid currentColor;

@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="grey-darken-4">
+  <v-footer class="app-footer" color="grey-darken-4">
     <v-container>
       <v-row>
         <v-col
@@ -40,6 +40,10 @@ const pageInfos = usePortalPagesInfo()
 </script>
 
 <style lang="scss">
+.app-footer {
+  position: relative;
+  flex: 1 0 !important;
+}
 .app-footer__author {
   font-size: 12px;
 }

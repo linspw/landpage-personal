@@ -34,7 +34,7 @@ export default defineVuetifyConfiguration({
   labComponents: true,
   directives: true,
   defaults: {
-    VAppBar: {
+    VToolbar: {
       height: 80,
     },
     VCard: {

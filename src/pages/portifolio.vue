@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column py-16 gap-16 fill-height">
+  <div class="d-flex flex-column" style="margin-top: 80px; min-height: 100dvh">
     <app-section
       :title="$t('pages.portfolio.title')"
       :description="$t('pages.portfolio.subtitle')"
