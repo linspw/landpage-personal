@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="app-footer" color="grey-darken-4">
+  <footer class="app-footer bg-grey-darken-4">
     <v-container>
       <v-row>
         <v-col
@@ -32,7 +32,7 @@
         Website criado por Jessé Correia Lins
       </p>
     </v-container>
-  </v-footer>
+  </footer>
 </template>
 
 <script setup lang="ts">

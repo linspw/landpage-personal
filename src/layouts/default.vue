@@ -1,15 +1,15 @@
 <template>
   <v-app>
-    <app-header v-model="drawerIsOpen" order="1" />
+    <app-header v-model="drawerIsOpen" />
 
-    <v-main id="main-content" order="2">
+    <main id="main-content">
       <slot />
+    </main>
 
-      <app-footer />
-    </v-main>
+    <app-footer />
 
     <ClientOnly>
-      <lazy-app-drawer v-model="drawerIsOpen" order="0" />
+      <lazy-app-drawer v-model="drawerIsOpen" />
     </ClientOnly>
   </v-app>
 </template>
@@ -20,8 +20,10 @@ const drawerIsOpen = ref<boolean>(false)
 
 <style lang="scss">
 #main-content {
-  position: absolute;
+  position: relative;
   min-height: 100dvh;
   width: 100%;
+  max-width: 100dvw;
+  overflow-x: hidden;
 }
 </style>

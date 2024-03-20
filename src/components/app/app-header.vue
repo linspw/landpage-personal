@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar class="app-header" rounded="b-lg" color="transparent" flat app>
+  <header class="app-header">
     <v-container
       class="d-flex align-center justify-center pa-0"
       style="position: relative"
@@ -52,14 +52,19 @@
               <v-btn
                 v-for="pageInfo in pageInfos"
                 :key="pageInfo.title"
-                color="secondary"
                 :to="pageInfo.url"
+                variant="text"
+                color="secondary"
                 class="app-header__button"
               >
                 {{ pageInfo.title }}
               </v-btn>
 
-              <v-btn color="secondary" class="app-header__button">
+              <v-btn
+                color="secondary"
+                variant="text"
+                class="app-header__button"
+              >
                 <v-icon icon="fas fa-language" />
 
                 <AppLanguageDropdownMenu eager />
@@ -78,7 +83,7 @@
         </div>
       </v-card>
     </v-container>
-  </v-toolbar>
+  </header>
 </template>
 
 <script setup lang="ts">
@@ -99,6 +104,7 @@ const pageInfos = usePortalPagesInfo()
   position: fixed;
   z-index: 1000;
   height: 80px;
+  width: 100%;
 }
 
 .app-header__avatar {

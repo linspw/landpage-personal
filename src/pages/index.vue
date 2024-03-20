@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column" style="min-height: 100dvh">
+  <app-page>
     <HomePageHero id="hero" style="min-height: 100dvh" />
 
     <template v-for="section in sections" :key="section.id">
@@ -17,7 +17,7 @@
       v-if="$display.mdAndUp.value"
       :sections="sectionsWithHero"
     />
-  </div>
+  </app-page>
 </template>
 
 <script setup lang="ts">

@@ -3,7 +3,10 @@
     <background-wave />
 
     <v-container
-      class="d-flex flex-column flex-md-row align-center justify-center"
+      class="home-page-hero__container d-flex flex-column flex-md-row align-center justify-center"
+      :class="{
+        'home-package-hero__container--with-top-margin': $display.mdAndUp.value,
+      }"
     >
       <v-avatar
         color="white"
@@ -124,9 +127,13 @@ const { t } = useI18n({
 <style lang="scss">
 .home-page-hero {
   position: relative;
+}
 
-  & .v-container {
-    position: relative;
+.home-page-hero__container {
+  position: relative;
+
+  &--with-top-margin {
+    margin-top: 80px;
   }
 }
 </style>

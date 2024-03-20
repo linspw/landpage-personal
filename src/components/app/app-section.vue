@@ -8,7 +8,7 @@
   >
     <v-container
       v-if="title || description"
-      class="app-section__header"
+      class="app-section__header mb-8 mb-md-16"
       data-aos="fade-up"
     >
       <h2
@@ -80,8 +80,6 @@ defineProps({
 }
 
 .app-section__header {
-  margin-bottom: 64px;
-
   & h2 {
     text-transform: uppercase !important;
   }

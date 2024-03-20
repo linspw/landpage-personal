@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column" style="margin-top: 80px; min-height: 100dvh">
+  <app-page with-top-margin>
     <app-section
       :title="$t('pages.books.title')"
       :description="$t('pages.books.subtitle')"
@@ -54,7 +54,7 @@
         </v-row>
       </v-container>
     </app-section>
-  </div>
+  </app-page>
 </template>
 
 <script setup lang="ts">
