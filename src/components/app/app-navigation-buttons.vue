@@ -63,9 +63,8 @@ onMounted(() => {
 
 <style lang="scss">
 .app-navigation-buttons {
-  z-index: 999;
-  display: flex;
   position: fixed;
+  z-index: 999;
   top: 50%;
   color: rgb(var(--v-theme-secondary));
   right: calc(3em + 1em);
@@ -73,9 +72,9 @@ onMounted(() => {
 }
 
 .app-navigation-buttons__list {
-  width: 0.5em;
   display: flex;
   flex-direction: column;
+  width: 0.5em;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -83,14 +82,16 @@ onMounted(() => {
 
 .app-navigation-buttons__list-item {
   width: 0.523em;
+  height: 0.523em;
+  margin-bottom: 24px;
 }
 
 .app-navigation-buttons__button {
-  width: 100%;
   display: flex;
   width: inherit;
   cursor: pointer;
-  min-height: 2em;
+  height: 100%;
+  width: 100%;
   position: relative;
   color: currentColor;
   transition-delay: 100ms;

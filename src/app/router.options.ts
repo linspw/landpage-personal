@@ -7,7 +7,7 @@ export default <RouterOptions>{
     }
 
     if (to.hash) {
-      return { el: to.hash, top: 64, behavior: 'smooth' }
+      return { el: to.hash, top: 80, behavior: 'smooth' }
     }
 
     return {
