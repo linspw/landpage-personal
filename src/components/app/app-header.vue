@@ -64,6 +64,7 @@
                 color="secondary"
                 variant="text"
                 class="app-header__button"
+                aria-label="Language"
               >
                 <v-icon icon="fas fa-language" />
 

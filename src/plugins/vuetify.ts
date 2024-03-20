@@ -1,6 +1,5 @@
 // @unocss-include DON'T FORGET TO ADD THIS COMMENT
 import { aliases, fa } from 'vuetify/iconsets/fa'
-import { mdi } from 'vuetify/iconsets/mdi'
 import { pt, en, es } from 'vuetify/locale'
 
 export const getNativeLocale = (defaultLocale = 'pt-BR') => {
@@ -24,7 +23,6 @@ export default defineNuxtPlugin((nuxtApp) => {
       aliases,
       sets: {
         fa,
-        mdi,
       },
     }
     vuetifyOptions.locale = {

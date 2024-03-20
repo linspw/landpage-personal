@@ -14,7 +14,7 @@
         rounded="xl"
         class="elevation-24 mb-8 mb-md-0 animate__animated animate__fadeInTopLeft animate__slow"
       >
-        <v-img cover src="/images/avatars/my-photo.jpg"></v-img>
+        <v-img cover src="/images/avatars/my-photo.jpg" alt="My photo"></v-img>
       </v-avatar>
 
       <div
