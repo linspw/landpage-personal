@@ -34,6 +34,9 @@ export default defineVuetifyConfiguration({
   labComponents: true,
   directives: true,
   defaults: {
+    VAppBar: {
+      height: 80,
+    },
     VCard: {
       rounded: 'xl',
 

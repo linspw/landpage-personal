@@ -124,7 +124,6 @@ const { t } = useI18n({
 <style lang="scss">
 .home-page-hero {
   position: relative;
-  min-height: calc(100dvh - 80px);
 
   & .v-container {
     position: relative;

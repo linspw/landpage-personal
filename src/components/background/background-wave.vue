@@ -10,7 +10,7 @@
   overflow: hidden;
   height: 100dvh;
   width: 100%;
-  top: calc(80px * -1);
+  top: 0;
   left: 0;
 }
 

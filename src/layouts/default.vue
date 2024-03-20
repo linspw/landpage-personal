@@ -22,6 +22,7 @@ const drawerIsOpen = ref<boolean>(false)
 #main-content {
   --v-layout-top: 80px !important;
 
+  padding-top: 80px;
   min-height: 100dvh;
 }
 </style>

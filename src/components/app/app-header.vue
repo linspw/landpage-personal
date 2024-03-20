@@ -1,11 +1,5 @@
 <template>
-  <v-app-bar
-    class="app-header"
-    rounded="b-lg"
-    elevation="0"
-    color="transparent"
-    :height="80"
-  >
+  <v-app-bar class="app-header" rounded="b-lg" color="transparent" flat>
     <v-container
       class="d-flex align-center justify-center pa-0"
       style="position: relative"
