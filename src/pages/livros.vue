@@ -5,7 +5,7 @@
       :description="$t('pages.books.subtitle')"
       class="fill-height"
     >
-      <v-container>
+      <v-container class="overflow-hidden">
         <div class="d-flex mb-6">
           <v-card
             variant="outlined"
@@ -316,11 +316,3 @@ function countTotalBooks(topics: { title: string; items: any }[]) {
 
 const totalBooks = computed(() => countTotalBooks(bookTopics))
 </script>
-
-<style lang="scss">
-.about-us-page__content {
-  & p.initial-paragraph {
-    text-indent: 50px;
-  }
-}
-</style>

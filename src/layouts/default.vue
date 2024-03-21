@@ -20,7 +20,9 @@ const drawerIsOpen = ref<boolean>(false)
 
 <style lang="scss">
 #main-content {
+  display: flex;
   position: relative;
+  flex-direction: column;
   min-height: 100dvh;
   width: 100%;
   max-width: 100dvw;

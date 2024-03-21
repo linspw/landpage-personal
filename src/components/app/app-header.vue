@@ -8,7 +8,7 @@
         class="app-header__card animate__animated animate__fadeInDownBig animate__fast mx-2"
         :class="{ 'flex-1-1': $display.mdAndDown.value }"
       >
-        <div class="d-flex align-center justify-space-between pa-4">
+        <div class="d-flex align-center justify-space-between pa-3">
           <nuxt-link
             to="/"
             class="font-weight-bold text-secondary text-decoration-none text-h6 mr-4"
@@ -106,6 +106,9 @@ const pageInfos = usePortalPagesInfo()
   z-index: 1000;
   height: 80px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .app-header__avatar {
