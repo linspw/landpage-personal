@@ -35,7 +35,7 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxtjs/i18n',
     '@nuxt/test-utils/module',
-    'nuxt-simple-sitemap',
+    '@nuxtjs/sitemap',
     'nuxt-aos',
     'vuetify-nuxt-module',
     [

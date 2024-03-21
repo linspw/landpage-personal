@@ -11,11 +11,11 @@
         :src="imageUrl"
         :height="90"
         :width="300"
-        class="mb-4"
+        :class="{'mb-4': description}"
         :zoomable="false"
       />
 
-      <p class="font-weight-semi-bold">
+      <p class="font-weight-semi-bold" v-if="description">
         {{ description }}
       </p>
 
@@ -54,7 +54,7 @@ defineProps({
   },
   description: {
     type: String,
-    required: true,
+    default: undefined,
   },
 })
 </script>
