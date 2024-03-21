@@ -1,4 +1,9 @@
 {
+  "seo": {
+    "title": "Jessé Correia",
+    "description": "Engenheiro da Computação e Desenvolvedor",
+    "siteName": "Jessé Correia"
+  },
   "pages": {
     "aboutMe": {
       "title": "Sobre mim",

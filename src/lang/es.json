@@ -1,4 +1,9 @@
 {
+  "seo": {
+    "title": "Jessé Correia",
+    "description": "Ingeniero de software",
+    "siteName": "Jessé Correia"
+  },
   "pages": {
     "aboutMe": {
       "title": "Sobre mí"

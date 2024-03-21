@@ -6,8 +6,17 @@
 
 <script setup lang="ts">
 const NuxtApp = useNuxtApp()
-const description = 'Software Engineer'
 const title = 'Jessé Correia'
+const description = 'Software Engineer'
+
+const { t } = useI18n()
+
+const i18nHead = useLocaleHead({
+  addSeoAttributes: true,
+})
+
+const url = useRequestURL()
+const origin = url.origin
 
 useHead({
   titleTemplate: (titleChunk) => {
@@ -19,9 +28,24 @@ useHead({
       ? `${title} - ${secondTitle}`
       : `${secondTitle} - ${description}`
   },
-  meta: [{ name: 'description', content: description }],
+  meta: () => [
+    ...(i18nHead.value?.meta || []),
+    { name: 'description', content: description },
+    { property: 'og:site_name', content: t('seo.siteName') },
+    { property: 'og:url', content: `${origin}/` },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:title', content: t('seo.title') },
+    { property: 'og:description', content: t('seo.description') },
+    { property: 'og:image', content: `${origin}/images/meta/cover.png` },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:domain', content: url.host },
+    { name: 'twitter:url', content: `${origin}/` },
+    { name: 'twitter:title', content: t('seo.title') },
+    { name: 'twitter:description', content: t('seo.description') },
+    { name: 'twitter:image', content: `${origin}/images/meta/cover.png` },
+  ],
   htmlAttrs: {
-    lang: 'pt-BR',
+    lang: i18nHead.value.htmlAttrs?.lang,
   },
 })
 
