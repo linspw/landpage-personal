@@ -5,7 +5,7 @@
     <v-container
       class="home-page-hero__container d-flex flex-column flex-md-row align-center justify-center"
       :class="{
-        'home-package-hero__container--with-top-margin': $display.mdAndUp.value,
+        'home-page-hero__container--with-top-margin': !$display.mdAndUp.value,
       }"
     >
       <v-avatar
