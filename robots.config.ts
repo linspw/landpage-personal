@@ -2,7 +2,7 @@ import { NodeIncomingMessage } from 'h3'
 
 export default [
   { UserAgent: '*' },
-  { Allow: '/' },
+  // { Allow: '/' },
   { BlankLine: true },
   { Comment: 'Comment here' },
 
