@@ -47,7 +47,12 @@
             size="large"
             variant="text"
           >
-            <v-btn rounded="0" href="https://github.com/linspw" target="_blank">
+            <v-btn
+              rounded="0"
+              href="https://github.com/linspw"
+              target="_blank"
+              aria-label="Github"
+            >
               <template #prepend><v-icon icon="fab fa-github" /></template>
 
               <template v-if="$display.mdAndUp.value">Github</template>
@@ -57,6 +62,7 @@
               rounded="0"
               href="https://www.linkedin.com/in/jessecorreialive/"
               target="_blank"
+              aria-label="LinkedIn"
             >
               <template #prepend><v-icon icon="fab fa-linkedin" /></template>
 
@@ -67,6 +73,7 @@
               rounded="0"
               href="/files/curriculo_2024_pt_br.pdf"
               target="_blank"
+              :aria-label="t('resume')"
             >
               <template #prepend>
                 <v-icon icon="fas fa-cloud-arrow-down" />
@@ -76,7 +83,11 @@
                 {{ t('resume') }}
               </template>
 
-              <v-tooltip activator="parent" location="bottom">
+              <v-tooltip
+                activator="parent"
+                location="bottom"
+                :title="t('downloadResume')"
+              >
                 {{ t('downloadResume') }}
               </v-tooltip>
             </v-btn>

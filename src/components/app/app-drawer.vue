@@ -13,7 +13,7 @@
         {{ pageInfo.title }}
       </v-list-item>
 
-      <v-list-item color="secondary">
+      <v-list-item color="secondary" rounded="xl" role="button" @click.prevent>
         <template #prepend>
           <v-icon icon="fas fa-language" />
         </template>
