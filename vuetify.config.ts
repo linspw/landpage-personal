@@ -81,4 +81,5 @@ export default defineVuetifyConfiguration({
       darken: 5,
     },
   },
+  icons: false,
 })
