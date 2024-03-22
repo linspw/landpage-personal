@@ -103,12 +103,14 @@ const pageInfos = usePortalPagesInfo()
 <style lang="scss">
 .app-header {
   position: fixed;
-  z-index: 1000;
-  height: 80px;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
+  height: 80px;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 
 .app-header__avatar {
