@@ -26,7 +26,7 @@
           <v-icon
             class="d-flex"
             size="small"
-            color="blue-darken-3"
+            color="secondary"
             icon="fas fa-caret-down"
           />
         </template>

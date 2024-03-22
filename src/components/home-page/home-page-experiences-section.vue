@@ -1,5 +1,5 @@
 <template>
-  <app-section color="black" class="home-page-experiences-section">
+  <app-section color="secondary-darken-2" class="home-page-experiences-section">
     <v-container>
       <div class="d-flex justify-center mb-10">
         <ClientOnly>
@@ -25,7 +25,7 @@
         <v-timeline-item
           v-for="(item, i) in items"
           :key="i"
-          dot-color="black"
+          dot-color="secondary-darken-2"
           fill-dot
           :hide-opposite="!$display.mdAndUp.value"
         >

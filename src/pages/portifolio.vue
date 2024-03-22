@@ -5,11 +5,16 @@
       :description="$t('pages.portfolio.subtitle')"
       class="fill-height pb-16"
     >
-    <v-container>
+      <v-container>
         <h3 class="mb-4">Personal Projects</h3>
 
         <v-row>
-          <v-col v-for="(project, index) in personalProjects" :key="index" cols="12" md="6">
+          <v-col
+            v-for="(project, index) in personalProjects"
+            :key="index"
+            cols="12"
+            md="6"
+          >
             <portifolio-feature-card
               :color="project.color"
               :link-url="project.linkUrl"
@@ -25,7 +30,12 @@
         <h3 class="mb-4">Open Source Contributions</h3>
 
         <v-row>
-          <v-col v-for="(project, index) in openSourceProjects" :key="index" cols="12" md="6">
+          <v-col
+            v-for="(project, index) in openSourceProjects"
+            :key="index"
+            cols="12"
+            md="6"
+          >
             <portifolio-feature-card
               :color="project.color"
               :link-url="project.linkUrl"
@@ -51,59 +61,62 @@ const { t } = useI18n({
 
 const personalProjects = computed(() => [
   {
-    color: 'black',
+    color: 'secondary-darken-2',
     linkUrl: 'https://snown.com.br/',
     imageUrl: '/images/portifolio/snown.svg',
     description: t('personalProjects.snown.description'),
-    tags: ['collaboration', 'workspace', 'business', 'private']
+    tags: ['collaboration', 'workspace', 'business', 'private'],
   },
   {
     color: 'white',
     linkUrl: 'https://linspw.github.io/experiment-ui/',
     imageUrl: '/images/portifolio/experiment-ui-light.svg',
     description: t('personalProjects.experiment-ui.description'),
-    tags: ['ui', 'public', 'open-source', 'experimental']
-  }
+    tags: ['ui', 'public', 'open-source', 'experimental'],
+  },
 ])
 
 const openSourceProjects = computed(() => {
   return [
-  {
-    color: 'white',
-    linkUrl: 'https://github.com/vueuse/vueuse/commits/main/?author=linspw',
-    imageUrl: '/images/portifolio/vueuse.svg',
-    description: '',
-    tags: []
-  },
-  {
-    color: 'white',
-    linkUrl: 'https://github.com/ueberdosis/hocuspocus/commits/main/?author=linspw',
-    imageUrl: '/images/portifolio/hocuspocus.svg',
-    description: '',
-    tags: []
-  },
-  {
-    color: 'white',
-    linkUrl: 'https://github.com/userquin/vuetify-nuxt-module/commits/main/?author=linspw',
-    imageUrl: '/images/portifolio/vuetify-nuxt-module.svg',
-    description: '',
-    tags: []
-  },
-  {
-    color: 'white',
-    linkUrl: 'https://github.com/alexzhang1030/vue-resizables/commits/main/?author=linspw',
-    imageUrl: '/images/portifolio/vue-resizable.svg',
-    description: '',
-    tags: []
-  },
-  {
-    color: 'white',
-    linkUrl: 'https://github.com/antfu/drauu/commits/main/?author=linspw',
-    imageUrl: '/images/portifolio/drauu.svg',
-    description: '',
-    tags: []
-  }
-]
+    {
+      color: 'white',
+      linkUrl: 'https://github.com/vueuse/vueuse/commits/main/?author=linspw',
+      imageUrl: '/images/portifolio/vueuse.svg',
+      description: '',
+      tags: [],
+    },
+    {
+      color: 'white',
+      linkUrl:
+        'https://github.com/ueberdosis/hocuspocus/commits/main/?author=linspw',
+      imageUrl: '/images/portifolio/hocuspocus.svg',
+      description: '',
+      tags: [],
+    },
+    {
+      color: 'white',
+      linkUrl:
+        'https://github.com/userquin/vuetify-nuxt-module/commits/main/?author=linspw',
+      imageUrl: '/images/portifolio/vuetify-nuxt-module.svg',
+      description: '',
+      tags: [],
+    },
+    {
+      color: 'white',
+      linkUrl:
+        'https://github.com/alexzhang1030/vue-resizables/commits/main/?author=linspw',
+      imageUrl: '/images/portifolio/vue-resizable.svg',
+      description: '',
+      tags: [],
+    },
+    {
+      color: 'white',
+      linkUrl: 'https://github.com/antfu/drauu/commits/main/?author=linspw',
+      imageUrl: '/images/portifolio/drauu.svg',
+      description: '',
+      tags: [],
+    },
+  ]
 })
 </script>
 

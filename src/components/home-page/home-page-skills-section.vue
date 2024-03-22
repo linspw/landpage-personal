@@ -38,7 +38,7 @@
 const skills = [
   {
     title: 'FRONTEND',
-    color: 'blue-accent-4',
+    color: 'primary',
     items: [
       {
         title: 'Languages',
@@ -79,7 +79,7 @@ const skills = [
   },
   {
     title: 'BACKEND',
-    color: 'red',
+    color: 'primary',
     items: [
       {
         title: 'Languages',
@@ -108,7 +108,7 @@ const skills = [
   },
   {
     title: 'MOBILE',
-    color: 'deep-orange',
+    color: 'primary',
     items: [
       {
         title: 'Development',
@@ -119,7 +119,7 @@ const skills = [
   },
   {
     title: 'PROCESSOS, ARQUITETURA E ENGENHARIA',
-    color: 'black',
+    color: 'primary',
     items: [
       {
         title: 'Processes',
@@ -136,7 +136,7 @@ const skills = [
   },
   {
     title: 'OUTROS CONHECIMENTOS',
-    color: 'blue-grey-lighten-1',
+    color: 'primary',
     items: [
       { title: 'AWS', items: ['Conhecimento em ECS, EC2, S3, ALB (AWS)'] },
       {

@@ -1,5 +1,5 @@
 <template>
-  <footer class="app-footer bg-grey-darken-4">
+  <footer class="app-footer bg-secondary-darken-2">
     <v-container>
       <v-row>
         <v-col
@@ -9,7 +9,7 @@
           sm="4"
           md="3"
         >
-          <v-list class="bg-grey-darken-4" nav role="navigation">
+          <v-list class="bg-secondary-darken-2" nav role="navigation">
             <v-list-item
               class="font-weight-bold"
               :to="pageInfo.url"

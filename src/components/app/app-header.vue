@@ -14,7 +14,7 @@
             class="font-weight-bold text-secondary text-decoration-none text-h6 mr-4"
           >
             <v-avatar
-              color="black"
+              color="secondary"
               rounded="lg"
               variant="outlined"
               class="app-header__avatar"
@@ -74,7 +74,7 @@
                   <v-icon
                     class="d-flex"
                     size="small"
-                    color="blue-darken-3"
+                    color="secondary"
                     icon="fas fa-caret-down"
                   />
                 </template>
