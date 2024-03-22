@@ -4,7 +4,15 @@
     ref="textRef"
     class="anime-typewriter"
     @click="restartOnClick && setup()"
-  />
+  >
+    <span
+      v-for="(letter, index) in text"
+      :key="`${letter}_${index}`"
+      style="opacity: 0"
+    >
+      {{ letter }}
+    </span>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -38,6 +46,10 @@ const $props = defineProps({
   },
 })
 
+const initialText = computed(() => {
+  return replaceLettersWithSpan($props.text)
+})
+
 function replaceLettersWithSpan(text: string): string {
   return text.replace(/[^\s]/g, (match) => {
     return `<span style="opacity: 0;">${match}</span>`
@@ -45,22 +57,25 @@ function replaceLettersWithSpan(text: string): string {
 }
 
 const setup = () => {
-  const cursor = gsap.to(textRef.value, {
-    '--anime-typewriter-opacity': 0,
-    ease: 'power2.inOut',
-    repeat: -1,
-  })
+  const cursor = gsap.fromTo(
+    textRef.value,
+    { '--anime-typewriter-opacity': 1 },
+    {
+      '--anime-typewriter-opacity': 0,
+      ease: 'power2.inOut',
+      repeat: -1,
+    },
+  )
 
   const tl = gsap.timeline({
     paused: true,
   })
-  const initialText = replaceLettersWithSpan($props.text)
 
   tl.fromTo(
     textRef.value,
     {
       text: {
-        value: initialText,
+        value: initialText.value,
       },
     },
     {

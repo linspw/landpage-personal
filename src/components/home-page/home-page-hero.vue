@@ -32,6 +32,7 @@
           class="text-h3 text-md-h1 font-weight-bold text-secondary mb-6 text-center"
           :duration="5"
           :remove-cursor-on-end="false"
+          restart-on-click
         />
 
         <div
