@@ -9,7 +9,7 @@
   position: absolute;
   overflow: hidden;
   height: 100dvh;
-  width: 100%;
+  width: 100dvw;
   top: 0;
   left: 0;
 }
