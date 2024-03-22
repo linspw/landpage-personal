@@ -1,5 +1,10 @@
 <template>
-  <component :is="tag" ref="textRef" class="anim-typewriter" />
+  <component
+    :is="tag"
+    ref="textRef"
+    class="anime-typewriter"
+    @click="restartOnClick && setup()"
+  />
 </template>
 
 <script setup lang="ts">
@@ -27,11 +32,21 @@ const $props = defineProps({
     type: Number,
     default: 8,
   },
+  restartOnClick: {
+    type: Boolean,
+    default: false,
+  },
 })
+
+function replaceLettersWithSpan(text: string): string {
+  return text.replace(/[^\s]/g, (match) => {
+    return `<span style="opacity: 0;">${match}</span>`
+  })
+}
 
 const setup = () => {
   const cursor = gsap.to(textRef.value, {
-    '--anim-typewriter-opacity': 0,
+    '--anime-typewriter-opacity': 0,
     ease: 'power2.inOut',
     repeat: -1,
   })
@@ -39,16 +54,29 @@ const setup = () => {
   const tl = gsap.timeline({
     paused: true,
   })
+  const initialText = replaceLettersWithSpan($props.text)
 
-  tl.to(textRef.value, {
-    text: $props.text,
-    duration: $props.duration, // slow then speeds up easing
-    onComplete: () => {
-      if ($props.removeCursorOnEnd) {
-        cursor.pause().resetTo('--anim-typewriter-opacity', 0).kill()
-      }
+  tl.fromTo(
+    textRef.value,
+    {
+      text: {
+        value: initialText,
+      },
     },
-  })
+    {
+      text: {
+        value: $props.text,
+        newClass: 'anime-typewriter__text',
+        delimiter: '',
+      },
+      duration: $props.duration, // slow then speeds up easing
+      onComplete: () => {
+        if ($props.removeCursorOnEnd) {
+          cursor.pause().resetTo('--anime-typewriter-opacity', 0).kill()
+        }
+      },
+    },
+  )
 
   tl.play()
 }
@@ -58,17 +86,17 @@ watchEffect(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 /* Animation */
-.anim-typewriter {
-  --anim-typewriter-opacity: 1;
+:root {
+  --anime-typewriter-opacity: 1;
+}
 
-  &::before {
-    content: '.';
-    visibility: hidden;
-  }
+.anime-typewriter__text {
+  --anime-typewriter-text-opacity: var(--anime-typewriter-opacity);
+
   &::after {
-    opacity: var(--anim-typewriter-opacity);
+    opacity: var(--anime-typewriter-text-opacity);
     content: '_';
   }
 }

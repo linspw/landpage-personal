@@ -28,7 +28,7 @@
               <div class="d-flex justify-center align-center flex-1-1">
                 <nuxt-link
                   to="/"
-                  class="font-weight-bold text-secondary text-decoration-none"
+                  class="app-header__name text-effect-1 font-italic font-weight-black text-secondary text-decoration-none"
                 >
                   Jessé Correia
                 </nuxt-link>
@@ -36,7 +36,7 @@
 
               <div class="align-end">
                 <v-btn
-                  color="secondary"
+                  color="primary"
                   variant="tonal"
                   icon
                   aria-label="Menu de navegação"
@@ -133,5 +133,9 @@ const pageInfos = usePortalPagesInfo()
   & .v-btn__content {
     text-transform: none;
   }
+}
+
+.app-header__name {
+  font-size: clamp(10px, 4vw, 20px);
 }
 </style>
