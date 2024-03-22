@@ -2,10 +2,19 @@
   <div class="background-wave" />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const img = useImage()
+
+const _src = computed(() => {
+  const config = { quality: 100 }
+
+  return `url(${img('/images/backgrounds/background-light.jpg', config)})`
+})
+</script>
 
 <style lang="scss">
 .background-wave {
+  --image-url: v-bind('_src');
   position: absolute;
   overflow: hidden;
   height: 100dvh;
@@ -16,7 +25,7 @@
 
 .background-wave::before {
   content: '';
-  background-image: url('/images/backgrounds/background-light.jpg');
+  background-image: var(--image-url);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
