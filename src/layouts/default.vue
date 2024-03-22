@@ -27,5 +27,7 @@ const drawerIsOpen = ref<boolean>(false)
   width: 100%;
   max-width: 100dvw;
   overflow-x: hidden;
+  top: 0;
+  left: 0;
 }
 </style>
