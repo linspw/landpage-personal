@@ -13,14 +13,6 @@
       {{ t('directContacts') }}
     </v-list-item>
 
-    <v-list-item target="_blank">
-      <template #prepend>
-        <v-icon icon="fas fa-phone-volume" size="small" color="primary" />
-      </template>
-
-      + 55 (12) 99627-7432
-    </v-list-item>
-
     <v-list-item>
       <template #prepend>
         <v-icon icon="fas fa-envelope" size="small" color="primary" />
@@ -35,28 +27,6 @@
       </template>
 
       São José dos Campos - SP - Brasil
-    </v-list-item>
-  </v-list>
-
-  <v-list class="contact-feature-details">
-    <v-list-item class="font-weight-bold">
-      {{ t('socialMedia') }}
-    </v-list-item>
-
-    <v-list-item>
-      <div class="d-flex gap-4">
-        <nuxt-link
-          to="https://www.instagram.com/linspw/"
-          external
-          target="_blank"
-        >
-          <v-icon icon="fab fa-instagram" size="small" color="primary" />
-        </nuxt-link>
-
-        <nuxt-link to="https://wa.link/8qsaou" external target="_blank">
-          <v-icon icon="fab fa-whatsapp" size="small" color="primary" />
-        </nuxt-link>
-      </div>
     </v-list-item>
   </v-list>
 </template>
