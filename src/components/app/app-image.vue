@@ -2,7 +2,10 @@
 import { useFullscreen, useCurrentElement } from '@vueuse/core'
 
 const $props = defineProps({
-  height: { type: [Number, String], default: 500 },
+  height: {
+    type: [Number, String],
+    default: 500,
+  },
   src: {
     type: String,
     required: true,

@@ -97,8 +97,6 @@
 const { t } = useI18n({
   useScope: 'local',
 })
-
-defineEmits(['select-skill'])
 </script>
 
-<i18n lang="json" src="./skills-translate.json"></i18n>
+<i18n lang="json" src="./translate-skills-extras.json"></i18n>

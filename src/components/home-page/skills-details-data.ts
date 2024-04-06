@@ -1,7 +1,7 @@
 interface SkillDetails {
   [key: string]: {
     icon?: string
-    personalGrade?: number
+    personalGrade: number
     experienceTime?: number
     expert?: boolean
     experimenting?: boolean
@@ -52,6 +52,10 @@ export const skillsDetailsData: SkillDetails = {
   next_ssr: {
     personalGrade: 8,
     experienceTime: 1,
+  },
+  vuetify: {
+    personalGrade: 10,
+    experienceTime: 3,
   },
   node_js: {
     icon: 'fab fa-node',
@@ -150,7 +154,7 @@ export const skillsDetailsData: SkillDetails = {
     personalGrade: 8,
     experienceTime: 3,
   },
-  express: { personalGrade: 9, experienceTime: 4 },
+  express: { personalGrade: 10, experienceTime: 4 },
   django: {
     personalGrade: 10,
     experienceTime: 2,

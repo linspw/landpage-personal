@@ -15,6 +15,9 @@
     "vue": {
       "title": "Vue"
     },
+    "vuetify": {
+      "title": "Vuetify"
+    },
     "react_jsx_tsx": {
       "title": "React (JSX/TSX)"
     },
@@ -40,7 +43,7 @@
       "title": "I18N (Internationalization)"
     },
     "design_system": {
-      "title": "Experiência com Design System"
+      "title": "Design System"
     },
     "make_layouts": {
       "title": "Criação de Telas"
@@ -197,6 +200,9 @@
     "vue": {
       "title": "Vue"
     },
+    "vuetify": {
+      "title": "Vuetify"
+    },
     "react_jsx_tsx": {
       "title": "React (JSX/TSX)"
     },
@@ -222,7 +228,7 @@
       "title": "I18N (Internationalization)"
     },
     "design_system": {
-      "title": "Experiência com Design System"
+      "title": "Design System"
     },
     "make_layouts": {
       "title": "Criação de Telas"
@@ -379,6 +385,9 @@
     "vue": {
       "title": "Vue"
     },
+    "vuetify": {
+      "title": "Vuetify"
+    },
     "react_jsx_tsx": {
       "title": "React (JSX/TSX)"
     },
@@ -404,7 +413,7 @@
       "title": "I18N (Internacionalización)"
     },
     "design_system": {
-      "title": "Experiencia con el sistema de diseño"
+      "title": "Sistema de diseño"
     },
     "make_layouts": {
       "title": "Creación de pantallas"

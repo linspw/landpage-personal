@@ -1,4 +1,4 @@
-export const skills = [
+export const categoriesData = [
   {
     title: 'frontend',
     color: 'primary',
@@ -15,6 +15,7 @@ export const skills = [
         title: 'tools',
         items: [
           'node_js',
+          'vuetify',
           'websockets',
           'socket_io',
           'collaborative_software_yjs',
@@ -46,7 +47,7 @@ export const skills = [
       },
       {
         title: 'frameworks',
-        items: ['phoenix', 'rails_ruby', 'nestjs', 'express', 'django'],
+        items: ['express', 'django', 'nestjs', 'phoenix', 'rails_ruby'],
       },
       {
         title: 'databases',
