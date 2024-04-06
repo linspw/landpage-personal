@@ -1,0 +1,38 @@
+{
+  "en": {
+    "titleLegend": "Legend",
+    "legend": {
+      "domain": "Domain (0 to 10)",
+      "expert": "Expert",
+      "highProficiency": "High Proficiency",
+      "passionate": "Passionate about this technology",
+      "experimenting": "Experimenting",
+      "experience": "Experience/Knowledge time"
+    },
+    "yearAbbreviation": "yr"
+  },
+  "es": {
+    "titleLegend": "Leyenda",
+    "legend": {
+      "domain": "Dominio (0 a 10)",
+      "expert": "Experto",
+      "highProficiency": "Alta Proficiencia",
+      "passionate": "Apasionado por esta tecnología",
+      "experimenting": "Experimentando",
+      "experience": "Tiempo de experiencia/conocimiento"
+    },
+    "yearAbbreviation": "a"
+  },
+  "pt-BR": {
+    "titleLegend": "Legenda",
+    "legend": {
+      "domain": "Domínio (0 a 10)",
+      "expert": "Expert",
+      "highProficiency": "Alta proficiência",
+      "passionate": "Apaixonado por essa tecnologia",
+      "experimenting": "Em experimentação",
+      "experience": "Tempo de experiência/conhecimento"
+    },
+    "yearAbbreviation": "a"
+  }
+}

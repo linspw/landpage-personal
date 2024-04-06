@@ -1,0 +1,65 @@
+{
+  "en": {
+    "titles": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "engineering": "Processes, Architecture and Engineering",
+      "dev_ops": "DevOps"
+    },
+    "subtitles": {
+      "languages": "Languages",
+      "frameworks": "Frameworks",
+      "tools": "Tools",
+      "design": "Design",
+      "testing": "Testing",
+      "databases": "Databases",
+      "messaging": "Messaging",
+      "development": "Development",
+      "processes": "Processes",
+      "design_patterns": "Design Patterns"
+    }
+  },
+  "es": {
+    "titles": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "engineering": "Procesos, Arquitectura e Ingeniería",
+      "dev_ops": "DevOps"
+    },
+    "subtitles": {
+      "languages": "Lenguajes",
+      "frameworks": "Frameworks",
+      "tools": "Herramientas",
+      "design": "Diseño",
+      "testing": "Pruebas",
+      "databases": "Bases de datos",
+      "messaging": "Mensajería",
+      "development": "Desarrollo",
+      "processes": "Procesos",
+      "design_patterns": "Patrones de diseño"
+    }
+  },
+  "pt-BR": {
+    "titles": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "engineering": "Processos, Arquitetura e Engenharia",
+      "dev_ops": "DevOps"
+    },
+    "subtitles": {
+      "languages": "Linguagens",
+      "frameworks": "Frameworks",
+      "tools": "Ferramentas",
+      "design": "Design",
+      "testing": "Testes",
+      "databases": "Bancos de dados",
+      "messaging": "Mensagens",
+      "development": "Desenvolvimento",
+      "processes": "Processos",
+      "design_patterns": "Padrões de Design"
+    }
+  }
+}

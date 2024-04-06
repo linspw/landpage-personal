@@ -1,110 +1,104 @@
 export const skills = [
   {
-    title: 'FRONTEND',
+    title: 'frontend',
     color: 'primary',
     items: [
       {
-        title: 'Languages',
-        items: ['html', 'css', 'javascript', 'typescript'],
+        title: 'languages',
+        items: ['typescript', 'javascript', 'html', 'css'],
       },
       {
-        title: 'Frameworks',
-        items: ['vue', 'react_jsx_tsx', 'nuxt_ssr', 'next_ssr'],
+        title: 'frameworks',
+        items: ['vue', 'nuxt_ssr', 'react_jsx_tsx', 'next_ssr'],
       },
       {
-        title: 'Tools',
+        title: 'tools',
         items: [
           'node_js',
+          'websockets',
+          'socket_io',
+          'collaborative_software_yjs',
           'scss_sass',
           'webpack',
           'vite',
           'i18n_internationalization',
-        ],
-      },
-      {
-        title: 'Design',
-        items: ['experiencia_com_design_system', 'criacao_de_telas', 'ux_e_ui'],
-      },
-      {
-        title: 'Testing',
-        items: ['jest_vitest', 'testing_library', 'cypress_e2e', 'tdd'],
-      },
-      {
-        title: 'Others',
-        items: [
-          'websockets',
-          'collaborative_software_yjs',
-          'web_components_conhecimento_basico',
           'seo',
+          'web_components',
         ],
+      },
+      {
+        title: 'design',
+        items: ['design_system', 'make_layouts', 'ux_ui', 'figma'],
+      },
+      {
+        title: 'testing',
+        items: ['jest_vitest', 'testing_library', 'cypress_e2e'],
       },
     ],
   },
   {
-    title: 'BACKEND',
+    title: 'backend',
     color: 'primary',
     items: [
       {
-        title: 'Languages',
-        items: ['python', 'elixir', 'ruby', 'java', 'typescript'],
+        title: 'languages',
+        items: ['python', 'elixir', 'ruby', 'java', 'php'],
       },
       {
-        title: 'Frameworks',
-        items: ['phoenix_elixir', 'rails_ruby', 'nestjs', 'express', 'django'],
+        title: 'frameworks',
+        items: ['phoenix', 'rails_ruby', 'nestjs', 'express', 'django'],
       },
       {
-        title: 'Databases',
+        title: 'databases',
+        items: ['sql', 'postgresql', 'prisma', 'mongodb'],
+      },
+      { title: 'messaging', items: ['celery_kafka'] },
+      {
+        title: 'testing',
+        items: ['pytest', 'rspec'],
+      },
+    ],
+  },
+  {
+    title: 'mobile',
+    color: 'primary',
+    items: [
+      {
+        title: 'development',
+        items: ['react_native', 'ionic_vue', 'capacitor', 'pwa', 'flutter'],
+      },
+    ],
+  },
+  {
+    title: 'engineering',
+    color: 'primary',
+    items: [
+      {
+        title: 'processes',
+        items: ['vsm', 'mapa_de_processos', 'engineer_flowcharts'],
+      },
+      {
+        title: 'design_patterns',
         items: [
-          'sql',
-          'postgresql',
-          'conhecimento_inicial_em_banco_nosql_mongodb',
-          'prisma',
+          'software_design_pattern',
+          'software_engineer',
+          'software_development_practices',
+          'tdd',
         ],
       },
-      { title: 'Messaging', items: ['conhecimento_basico_em_celery_e_kafka'] },
-    ],
-  },
-  {
-    title: 'MOBILE',
-    color: 'primary',
-    items: [
       {
-        title: 'Development',
-        items: ['react_native', 'ionic_vue', 'capacitor'],
-      },
-      { title: 'Knowledge', items: ['conhecimentos_em_pwa_basico'] },
-    ],
-  },
-  {
-    title: 'PROCESSOS, ARQUITETURA E ENGENHARIA',
-    color: 'primary',
-    items: [
-      {
-        title: 'Processes',
-        items: ['vsm', 'mapa_de_processos', 'fluxogramas_engenharia'],
-      },
-      {
-        title: 'DesignPatterns',
-        items: ['software_design_pattern', 'engenharia_de_software'],
+        title: 'tools',
+        items: ['git', 'c_language'],
       },
     ],
   },
   {
-    title: 'OUTROS CONHECIMENTOS',
+    title: 'dev_ops',
     color: 'primary',
     items: [
       {
-        title: 'DevOps',
-        items: ['devops_aws', 'docker', 'kubernetes', 'ci_cd'],
-      },
-      { title: 'VersionControl', items: ['git'] },
-      {
-        title: 'DesignTools',
-        items: ['figma'],
-      },
-      {
-        title: 'DevelopmentPractices',
-        items: ['software_development_practices'],
+        title: 'tools',
+        items: ['aws', 'docker', 'ci_cd', 'kubernetes'],
       },
     ],
   },

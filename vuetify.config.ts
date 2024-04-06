@@ -22,7 +22,7 @@ const light: ThemeDefinition = {
     error: '#B00020',
     info: '#2196F3',
     success: '#4CAF50',
-    warning: '#FB8C00',
+    warning: '#fda12e',
   },
 }
 

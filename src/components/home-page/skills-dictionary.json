@@ -39,13 +39,13 @@
     "i18n_internationalization": {
       "title": "I18N (Internationalization)"
     },
-    "experiencia_com_design_system": {
+    "design_system": {
       "title": "Experiência com Design System"
     },
-    "criacao_de_telas": {
+    "make_layouts": {
       "title": "Criação de Telas"
     },
-    "ux_e_ui": {
+    "ux_ui": {
       "title": "UX e UI"
     },
     "jest_vitest": {
@@ -66,8 +66,8 @@
     "collaborative_software_yjs": {
       "title": "Collaborative Software (YJS)"
     },
-    "web_components_conhecimento_basico": {
-      "title": "Web Components (conhecimento básico)"
+    "web_components": {
+      "title": "Web Components"
     },
     "seo": {
       "title": "SEO"
@@ -84,7 +84,7 @@
     "java": {
       "title": "Java"
     },
-    "phoenix_elixir": {
+    "phoenix": {
       "title": "Phoenix (Elixir)"
     },
     "rails_ruby": {
@@ -105,14 +105,14 @@
     "postgresql": {
       "title": "PostgreSQL"
     },
-    "conhecimento_inicial_em_banco_nosql_mongodb": {
-      "title": "Conhecimento inicial em banco NOSQL (mongodb)"
+    "mongodb": {
+      "title": "Mongodb (NOSQL)"
     },
     "prisma": {
       "title": "PRISMA"
     },
-    "conhecimento_basico_em_celery_e_kafka": {
-      "title": "Conhecimento básico em Celery e Kafka"
+    "celery_kafka": {
+      "title": "Celery e Kafka"
     },
     "react_native": {
       "title": "React Native"
@@ -123,8 +123,8 @@
     "capacitor": {
       "title": "Capacitor"
     },
-    "conhecimentos_em_pwa_basico": {
-      "title": "Conhecimentos em PWA (Básico)"
+    "pwa": {
+      "title": "PWA"
     },
     "vsm": {
       "title": "VSM"
@@ -132,20 +132,20 @@
     "mapa_de_processos": {
       "title": "Mapa de Processos"
     },
-    "fluxogramas_engenharia": {
+    "engineer_flowcharts": {
       "title": "Fluxogramas (BPMN) da Engenharia"
     },
     "software_design_pattern": {
       "title": "Padrões de Design: MVC, Solids, Domain Driven Design, Atomic Design"
     },
-    "engenharia_de_software": {
+    "software_engineer": {
       "title": "Engenharia de Software"
     },
-    "devops_aws": {
+    "aws": {
       "title": "Conhecimento em ECS, EC2, S3, ALB"
     },
     "docker": {
-      "title": "Docker (uso e dockerização de aplicações)"
+      "title": "Docker"
     },
     "kubernetes": {
       "title": "Kubernetes"
@@ -154,13 +154,31 @@
       "title": "Controle de Versão: Git, Semver"
     },
     "figma": {
-      "title": "Ferramentas de Design: Conhecimento Básico em Figma"
+      "title": "Figma"
     },
     "software_development_practices": {
       "title": "Práticas de Desenvolvimento: TDD, Clean Code"
     },
     "ci_cd": {
       "title": "CI/CD com GitHub Actions"
+    },
+    "pytest": {
+      "title": "Pytest"
+    },
+    "rspec": {
+      "title": "RSpec"
+    },
+    "socket_io":{
+      "title": "Socket IO"
+    },
+    "php": {
+      "title": "PHP"
+    },
+    "c_language": {
+      "title": "Linguagem C"
+    },
+    "flutter": {
+      "title": "Flutter"
     }
   },
   "en": {
@@ -203,13 +221,13 @@
     "i18n_internationalization": {
       "title": "I18N (Internationalization)"
     },
-    "experiencia_com_design_system": {
+    "design_system": {
       "title": "Experiência com Design System"
     },
-    "criacao_de_telas": {
+    "make_layouts": {
       "title": "Criação de Telas"
     },
-    "ux_e_ui": {
+    "ux_ui": {
       "title": "UX e UI"
     },
     "jest_vitest": {
@@ -230,8 +248,8 @@
     "collaborative_software_yjs": {
       "title": "Collaborative Software (YJS)"
     },
-    "web_components_conhecimento_basico": {
-      "title": "Web Components (basic knowledge)"
+    "web_components": {
+      "title": "Web Components"
     },
     "seo": {
       "title": "SEO"
@@ -248,7 +266,7 @@
     "java": {
       "title": "Java"
     },
-    "phoenix_elixir": {
+    "phoenix": {
       "title": "Phoenix (Elixir)"
     },
     "rails_ruby": {
@@ -269,14 +287,14 @@
     "postgresql": {
       "title": "PostgreSQL"
     },
-    "conhecimento_inicial_em_banco_nosql_mongodb": {
-      "title": "Initial Knowledge in NOSQL Database (mongodb)"
+    "mongodb": {
+      "title": "Mongodb (NOSQL)"
     },
     "prisma": {
       "title": "PRISMA"
     },
-    "conhecimento_basico_em_celery_e_kafka": {
-      "title": "Basic Knowledge in Celery and Kafka"
+    "celery_kafka": {
+      "title": "Celery and Kafka"
     },
     "react_native": {
       "title": "React Native"
@@ -287,8 +305,8 @@
     "capacitor": {
       "title": "Capacitor"
     },
-    "conhecimentos_em_pwa_basico": {
-      "title": "Knowledge in PWA (Basic)"
+    "pwa": {
+      "title": "PWA"
     },
     "vsm": {
       "title": "VSM"
@@ -296,20 +314,20 @@
     "mapa_de_processos": {
       "title": "Process Map"
     },
-    "fluxogramas_engenharia": {
+    "engineer_flowcharts": {
       "title": "Engineering Flowcharts (BPMN)"
     },
     "software_design_pattern": {
       "title": "Design Patterns: MVC, Solids, Domain Driven Design, Atomic Design"
     },
-    "engenharia_de_software": {
+    "software_engineer": {
       "title": "Software Engineering"
     },
-    "devops_aws": {
+    "aws": {
       "title": "Knowledge in ECS, EC2, S3, ALB"
     },
     "docker": {
-      "title": "Docker (usage and application dockerization)"
+      "title": "Docker"
     },
     "kubernetes": {
       "title": "Kubernetes"
@@ -318,13 +336,31 @@
       "title": "Version Control: Git, Semver"
     },
     "figma": {
-      "title": "Design Tools: Basic Knowledge in Figma"
+      "title": "Figma"
     },
     "software_development_practices": {
       "title": "Development Practices: TDD, Clean Code"
     },
     "ci_cd": {
       "title": "CI/CD with GitHub Actions"
+    },
+    "pytest": {
+      "title": "Pytest"
+    },
+    "rspec": {
+      "title": "RSpec"
+    },
+    "socket_io":{
+      "title": "Socket IO"
+    },
+    "php": {
+      "title": "PHP"
+    },
+    "c_language": {
+      "title": "C Language"
+    },
+    "flutter": {
+      "title": "Flutter"
     }
   },
   "es": {
@@ -367,13 +403,13 @@
     "i18n_internationalization": {
       "title": "I18N (Internacionalización)"
     },
-    "experiencia_com_design_system": {
+    "design_system": {
       "title": "Experiencia con el sistema de diseño"
     },
-    "criacao_de_telas": {
+    "make_layouts": {
       "title": "Creación de pantallas"
     },
-    "ux_e_ui": {
+    "ux_ui": {
       "title": "UX e UI"
     },
     "jest_vitest": {
@@ -394,8 +430,8 @@
     "collaborative_software_yjs": {
       "title": "Software colaborativo (YJS)"
     },
-    "web_components_conhecimento_basico": {
-      "title": "Componentes web (conocimientos básicos)"
+    "web_components": {
+      "title": "Web Components"
     },
     "seo": {
       "title": "SEO"
@@ -412,7 +448,7 @@
     "java": {
       "title": "Java"
     },
-    "phoenix_elixir": {
+    "phoenix": {
       "title": "Phoenix (Elixir)"
     },
     "rails_ruby": {
@@ -433,14 +469,14 @@
     "postgresql": {
       "title": "PostgreSQL"
     },
-    "conhecimento_inicial_em_banco_nosql_mongodb": {
-      "title": "Conocimiento inicial en base de datos NOSQL (mongodb)"
+    "mongodb": {
+      "title": "Mongodb (NOSQL)"
     },
     "prisma": {
       "title": "PRISMA"
     },
-    "conhecimento_basico_em_celery_e_kafka": {
-      "title": "Conocimiento básico en Celery y Kafka"
+    "celery_kafka": {
+      "title": "Celery y Kafka"
     },
     "react_native": {
       "title": "React Native"
@@ -451,8 +487,8 @@
     "capacitor": {
       "title": "Capacitor"
     },
-    "conhecimentos_em_pwa_basico": {
-      "title": "Conocimientos en PWA (Básico)"
+    "pwa": {
+      "title": "PWA"
     },
     "vsm": {
       "title": "VSM"
@@ -460,20 +496,20 @@
     "mapa_de_processos": {
       "title": "Mapa de Procesos"
     },
-    "fluxogramas_engenharia": {
+    "engineer_flowcharts": {
       "title": "Flujogramas de Ingeniería (BPMN)"
     },
     "software_design_pattern": {
       "title": "Patrones de diseño: MVC, Solids, Domain Driven Design, Atomic Design"
     },
-    "engenharia_de_software": {
+    "software_engineer": {
       "title": "Ingeniería de software"
     },
-    "devops_aws": {
+    "aws": {
       "title": "Conocimientos en ECS, EC2, S3, ALB"
     },
     "docker": {
-      "title": "Docker (uso y dockerización de aplicaciones)"
+      "title": "Docker"
     },
     "kubernetes": {
       "title": "Kubernetes"
@@ -482,13 +518,31 @@
       "title": "Control de versiones: Git, Semver"
     },
     "figma": {
-      "title": "Herramientas de diseño: Conocimientos básicos en Figma"
+      "title": "Figma"
     },
     "software_development_practices": {
-      "title": "Prácticas de desarrollo: TDD, Clean Code"
+      "title": "Prácticas de desarrollo: TDD y Clean Code"
     },
     "ci_cd": {
       "title": "CI/CD con GitHub Actions"
+    },
+    "pytest": {
+      "title": "Pytest"
+    },
+    "rspec": {
+      "title": "RSpec"
+    },
+    "socket_io":{
+      "title": "Socket IO"
+    },
+    "php": {
+      "title": "PHP"
+    },
+    "c_language": {
+      "title": "Linguagem C"
+    },
+    "flutter": {
+      "title": "Flutter"
     }
   }
 }
