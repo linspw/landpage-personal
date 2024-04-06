@@ -56,6 +56,7 @@
                         color="secondary"
                         height="12"
                         rounded
+                        aria-label="Personal grade"
                       >
                         <template #default>
                           <strong style="font-size: 10px; color: white">
