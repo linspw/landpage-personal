@@ -1,0 +1,494 @@
+{
+  "pt-BR":{
+    "html": {
+      "title": "HTML"
+    },
+    "css": {
+      "title": "CSS"
+    },
+    "javascript": {
+      "title": "Javascript"
+    },
+    "typescript": {
+      "title": "Typescript"
+    },
+    "vue": {
+      "title": "Vue"
+    },
+    "react_jsx_tsx": {
+      "title": "React (JSX/TSX)"
+    },
+    "nuxt_ssr": {
+      "title": "NUXT (SSR)"
+    },
+    "next_ssr": {
+      "title": "NEXT (SSR)"
+    },
+    "node_js": {
+      "title": "Node Js"
+    },
+    "scss_sass": {
+      "title": "SCSS (SASS)"
+    },
+    "webpack": {
+      "title": "Webpack"
+    },
+    "vite": {
+      "title": "Vite"
+    },
+    "i18n_internationalization": {
+      "title": "I18N (Internationalization)"
+    },
+    "experiencia_com_design_system": {
+      "title": "Experiência com Design System"
+    },
+    "criacao_de_telas": {
+      "title": "Criação de Telas"
+    },
+    "ux_e_ui": {
+      "title": "UX e UI"
+    },
+    "jest_vitest": {
+      "title": "Jest/Vitest"
+    },
+    "testing_library": {
+      "title": "Testing Library"
+    },
+    "cypress_e2e": {
+      "title": "Cypress (e2e)"
+    },
+    "tdd": {
+      "title": "TDD"
+    },
+    "websockets": {
+      "title": "Websockets"
+    },
+    "collaborative_software_yjs": {
+      "title": "Collaborative Software (YJS)"
+    },
+    "web_components_conhecimento_basico": {
+      "title": "Web Components (conhecimento básico)"
+    },
+    "seo": {
+      "title": "SEO"
+    },
+    "python": {
+      "title": "Python"
+    },
+    "elixir": {
+      "title": "Elixir"
+    },
+    "ruby": {
+      "title": "Ruby"
+    },
+    "java": {
+      "title": "Java"
+    },
+    "phoenix_elixir": {
+      "title": "Phoenix (Elixir)"
+    },
+    "rails_ruby": {
+      "title": "Rails (Ruby)"
+    },
+    "express": {
+      "title": "Express (NodeJs)"
+    },
+    "nestjs": {
+      "title": "NestJs (NodeJs)"
+    },
+    "django": {
+      "title": "Django (Python)"
+    },
+    "sql": {
+      "title": "SQL"
+    },
+    "postgresql": {
+      "title": "PostgreSQL"
+    },
+    "conhecimento_inicial_em_banco_nosql_mongodb": {
+      "title": "Conhecimento inicial em banco NOSQL (mongodb)"
+    },
+    "prisma": {
+      "title": "PRISMA"
+    },
+    "conhecimento_basico_em_celery_e_kafka": {
+      "title": "Conhecimento básico em Celery e Kafka"
+    },
+    "react_native": {
+      "title": "React Native"
+    },
+    "ionic_vue": {
+      "title": "IONIC Vue"
+    },
+    "capacitor": {
+      "title": "Capacitor"
+    },
+    "conhecimentos_em_pwa_basico": {
+      "title": "Conhecimentos em PWA (Básico)"
+    },
+    "vsm": {
+      "title": "VSM"
+    },
+    "mapa_de_processos": {
+      "title": "Mapa de Processos"
+    },
+    "fluxogramas_engenharia": {
+      "title": "Fluxogramas (BPMN) da Engenharia"
+    },
+    "software_design_pattern": {
+      "title": "Padrões de Design: MVC, Solids, Domain Driven Design, Atomic Design"
+    },
+    "engenharia_de_software": {
+      "title": "Engenharia de Software"
+    },
+    "devops_aws": {
+      "title": "Conhecimento em ECS, EC2, S3, ALB"
+    },
+    "docker": {
+      "title": "Docker (uso e dockerização de aplicações)"
+    },
+    "kubernetes": {
+      "title": "Kubernetes"
+    },
+    "git": {
+      "title": "Controle de Versão: Git, Semver"
+    },
+    "figma": {
+      "title": "Ferramentas de Design: Conhecimento Básico em Figma"
+    },
+    "software_development_practices": {
+      "title": "Práticas de Desenvolvimento: TDD, Clean Code"
+    },
+    "ci_cd": {
+      "title": "CI/CD com GitHub Actions"
+    }
+  },
+  "en": {
+    "html": {
+      "title": "HTML"
+    },
+    "css": {
+      "title": "CSS"
+    },
+    "javascript": {
+      "title": "Javascript"
+    },
+    "typescript": {
+      "title": "Typescript"
+    },
+    "vue": {
+      "title": "Vue"
+    },
+    "react_jsx_tsx": {
+      "title": "React (JSX/TSX)"
+    },
+    "nuxt_ssr": {
+      "title": "NUXT (SSR)"
+    },
+    "next_ssr": {
+      "title": "NEXT (SSR)"
+    },
+    "node_js": {
+      "title": "Node Js"
+    },
+    "scss_sass": {
+      "title": "SCSS (SASS)"
+    },
+    "webpack": {
+      "title": "Webpack"
+    },
+    "vite": {
+      "title": "Vite"
+    },
+    "i18n_internationalization": {
+      "title": "I18N (Internationalization)"
+    },
+    "experiencia_com_design_system": {
+      "title": "Experiência com Design System"
+    },
+    "criacao_de_telas": {
+      "title": "Criação de Telas"
+    },
+    "ux_e_ui": {
+      "title": "UX e UI"
+    },
+    "jest_vitest": {
+      "title": "Jest/Vitest"
+    },
+    "testing_library": {
+      "title": "Testing Library"
+    },
+    "cypress_e2e": {
+      "title": "Cypress (e2e)"
+    },
+    "tdd": {
+      "title": "TDD"
+    },
+    "websockets": {
+      "title": "Websockets"
+    },
+    "collaborative_software_yjs": {
+      "title": "Collaborative Software (YJS)"
+    },
+    "web_components_conhecimento_basico": {
+      "title": "Web Components (basic knowledge)"
+    },
+    "seo": {
+      "title": "SEO"
+    },
+    "python": {
+      "title": "Python"
+    },
+    "elixir": {
+      "title": "Elixir"
+    },
+    "ruby": {
+      "title": "Ruby"
+    },
+    "java": {
+      "title": "Java"
+    },
+    "phoenix_elixir": {
+      "title": "Phoenix (Elixir)"
+    },
+    "rails_ruby": {
+      "title": "Rails (Ruby)"
+    },
+    "express": {
+      "title": "Express (NodeJs)"
+    },
+    "nestjs": {
+      "title": "NestJs (NodeJs)"
+    },
+    "django": {
+      "title": "Django (Python)"
+    },
+    "sql": {
+      "title": "SQL"
+    },
+    "postgresql": {
+      "title": "PostgreSQL"
+    },
+    "conhecimento_inicial_em_banco_nosql_mongodb": {
+      "title": "Initial Knowledge in NOSQL Database (mongodb)"
+    },
+    "prisma": {
+      "title": "PRISMA"
+    },
+    "conhecimento_basico_em_celery_e_kafka": {
+      "title": "Basic Knowledge in Celery and Kafka"
+    },
+    "react_native": {
+      "title": "React Native"
+    },
+    "ionic_vue": {
+      "title": "IONIC Vue"
+    },
+    "capacitor": {
+      "title": "Capacitor"
+    },
+    "conhecimentos_em_pwa_basico": {
+      "title": "Knowledge in PWA (Basic)"
+    },
+    "vsm": {
+      "title": "VSM"
+    },
+    "mapa_de_processos": {
+      "title": "Process Map"
+    },
+    "fluxogramas_engenharia": {
+      "title": "Engineering Flowcharts (BPMN)"
+    },
+    "software_design_pattern": {
+      "title": "Design Patterns: MVC, Solids, Domain Driven Design, Atomic Design"
+    },
+    "engenharia_de_software": {
+      "title": "Software Engineering"
+    },
+    "devops_aws": {
+      "title": "Knowledge in ECS, EC2, S3, ALB"
+    },
+    "docker": {
+      "title": "Docker (usage and application dockerization)"
+    },
+    "kubernetes": {
+      "title": "Kubernetes"
+    },
+    "git": {
+      "title": "Version Control: Git, Semver"
+    },
+    "figma": {
+      "title": "Design Tools: Basic Knowledge in Figma"
+    },
+    "software_development_practices": {
+      "title": "Development Practices: TDD, Clean Code"
+    },
+    "ci_cd": {
+      "title": "CI/CD with GitHub Actions"
+    }
+  },
+  "es": {
+    "html": {
+      "title": "HTML"
+    },
+    "css": {
+      "title": "CSS"
+    },
+    "javascript": {
+      "title": "Javascript"
+    },
+    "typescript": {
+      "title": "Typescript"
+    },
+    "vue": {
+      "title": "Vue"
+    },
+    "react_jsx_tsx": {
+      "title": "React (JSX/TSX)"
+    },
+    "nuxt_ssr": {
+      "title": "NUXT (SSR)"
+    },
+    "next_ssr": {
+      "title": "NEXT (SSR)"
+    },
+    "node_js": {
+      "title": "Node Js"
+    },
+    "scss_sass": {
+      "title": "SCSS (SASS)"
+    },
+    "webpack": {
+      "title": "Webpack"
+    },
+    "vite": {
+      "title": "Vite"
+    },
+    "i18n_internationalization": {
+      "title": "I18N (Internacionalización)"
+    },
+    "experiencia_com_design_system": {
+      "title": "Experiencia con el sistema de diseño"
+    },
+    "criacao_de_telas": {
+      "title": "Creación de pantallas"
+    },
+    "ux_e_ui": {
+      "title": "UX e UI"
+    },
+    "jest_vitest": {
+      "title": "Jest/Vitest"
+    },
+    "testing_library": {
+      "title": "Biblioteca de pruebas"
+    },
+    "cypress_e2e": {
+      "title": "Cypress (e2e)"
+    },
+    "tdd": {
+      "title": "TDD"
+    },
+    "websockets": {
+      "title": "Websockets"
+    },
+    "collaborative_software_yjs": {
+      "title": "Software colaborativo (YJS)"
+    },
+    "web_components_conhecimento_basico": {
+      "title": "Componentes web (conocimientos básicos)"
+    },
+    "seo": {
+      "title": "SEO"
+    },
+    "python": {
+      "title": "Python"
+    },
+    "elixir": {
+      "title": "Elixir"
+    },
+    "ruby": {
+      "title": "Ruby"
+    },
+    "java": {
+      "title": "Java"
+    },
+    "phoenix_elixir": {
+      "title": "Phoenix (Elixir)"
+    },
+    "rails_ruby": {
+      "title": "Rails (Ruby)"
+    },
+    "express": {
+      "title": "Express (NodeJs)"
+    },
+    "nestjs": {
+      "title": "NestJs (NodeJs)"
+    },
+    "django": {
+      "title": "Django (Python)"
+    },
+    "sql": {
+      "title": "SQL"
+    },
+    "postgresql": {
+      "title": "PostgreSQL"
+    },
+    "conhecimento_inicial_em_banco_nosql_mongodb": {
+      "title": "Conocimiento inicial en base de datos NOSQL (mongodb)"
+    },
+    "prisma": {
+      "title": "PRISMA"
+    },
+    "conhecimento_basico_em_celery_e_kafka": {
+      "title": "Conocimiento básico en Celery y Kafka"
+    },
+    "react_native": {
+      "title": "React Native"
+    },
+    "ionic_vue": {
+      "title": "IONIC Vue"
+    },
+    "capacitor": {
+      "title": "Capacitor"
+    },
+    "conhecimentos_em_pwa_basico": {
+      "title": "Conocimientos en PWA (Básico)"
+    },
+    "vsm": {
+      "title": "VSM"
+    },
+    "mapa_de_processos": {
+      "title": "Mapa de Procesos"
+    },
+    "fluxogramas_engenharia": {
+      "title": "Flujogramas de Ingeniería (BPMN)"
+    },
+    "software_design_pattern": {
+      "title": "Patrones de diseño: MVC, Solids, Domain Driven Design, Atomic Design"
+    },
+    "engenharia_de_software": {
+      "title": "Ingeniería de software"
+    },
+    "devops_aws": {
+      "title": "Conocimientos en ECS, EC2, S3, ALB"
+    },
+    "docker": {
+      "title": "Docker (uso y dockerización de aplicaciones)"
+    },
+    "kubernetes": {
+      "title": "Kubernetes"
+    },
+    "git": {
+      "title": "Control de versiones: Git, Semver"
+    },
+    "figma": {
+      "title": "Herramientas de diseño: Conocimientos básicos en Figma"
+    },
+    "software_development_practices": {
+      "title": "Prácticas de desarrollo: TDD, Clean Code"
+    },
+    "ci_cd": {
+      "title": "CI/CD con GitHub Actions"
+    }
+  }
+}
