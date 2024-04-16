@@ -1,7 +1,7 @@
 <template>
   <app-section color="secondary-darken-2" class="home-page-experiences-section">
     <v-container>
-      <div class="d-flex justify-center mb-10">
+      <div class="flex justify-center mb-10">
         <ClientOnly>
           <v-tabs
             v-model="tab"
@@ -30,10 +30,7 @@
           :hide-opposite="!$display.mdAndUp.value"
         >
           <template #opposite>
-            <div
-              class="pt-1 font-weight-medium text-white"
-              v-text="item.date"
-            ></div>
+            <div class="pt-1 font-medium text-white" v-text="item.date"></div>
           </template>
 
           <template #icon>
@@ -41,7 +38,7 @@
           </template>
 
           <v-card
-            class="pa-6"
+            class="p-6"
             :data-aos="
               !$display.mdAndUp.value
                 ? 'fade-left'

@@ -3,7 +3,7 @@
     :is="tag"
     ref="textRef"
     class="anime-typewriter"
-    @click="restartOnClick && setup()"
+    @click="restartOnClick && setup(true)"
   >
     <span
       v-for="(letter, index) in text"
@@ -18,8 +18,10 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
+import { useElementVisibility } from '@vueuse/core'
 
 const textRef = ref()
+const isVisible = useElementVisibility(textRef)
 
 gsap.registerPlugin(TextPlugin)
 
@@ -56,8 +58,20 @@ function replaceLettersWithSpan(text: string): string {
   })
 }
 
-const setup = () => {
-  const cursor = gsap.fromTo(
+let cursor: gsap.core.Tween | undefined
+let tl: gsap.core.Timeline | undefined
+
+const setup = (restart?: boolean) => {
+  if (restart && (cursor || tl)) {
+    cursor?.kill()
+    tl?.kill()
+    cursor = undefined
+    tl = undefined
+  }
+
+  if (cursor) return
+
+  cursor = gsap.fromTo(
     textRef.value,
     { '--anime-typewriter-opacity': 1 },
     {
@@ -67,7 +81,7 @@ const setup = () => {
     },
   )
 
-  const tl = gsap.timeline({
+  tl = gsap.timeline({
     paused: true,
   })
 
@@ -87,7 +101,7 @@ const setup = () => {
       duration: $props.duration, // slow then speeds up easing
       onComplete: () => {
         if ($props.removeCursorOnEnd) {
-          cursor.pause().resetTo('--anime-typewriter-opacity', 0).kill()
+          cursor?.pause().resetTo('--anime-typewriter-opacity', 0).kill()
         }
       },
     },
@@ -98,6 +112,13 @@ const setup = () => {
 
 watchEffect(() => {
   if ($props.text !== undefined && textRef.value) setup()
+})
+
+watchEffect(() => {
+  if (!isVisible.value) cursor?.pause()
+  else {
+    cursor?.play()
+  }
 })
 </script>
 

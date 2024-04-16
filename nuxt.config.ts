@@ -5,16 +5,12 @@ import svgLoader from 'vite-svg-loader'
 export default defineNuxtConfig({
   srcDir: './src',
   css: [
-    'vuetify/styles',
     '@assets/styles/index.scss',
     '@fortawesome/fontawesome-free/css/all.css',
     'animate.css/animate.min.css',
   ],
   alias: {
     '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
-  },
-  build: {
-    transpile: ['vuetify'],
   },
   vue: {
     compilerOptions: {
@@ -23,9 +19,14 @@ export default defineNuxtConfig({
     },
   },
   features: {
-    inlineStyles: false, // or a function to determine inlining
+    inlineStyles: false,
   },
-
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   vite: {
     plugins: [svgLoader({})],
   },

@@ -1,6 +1,6 @@
 <template>
   <v-dialog v-model="model" max-width="400px" :target="btnRef">
-    <v-card class="pa-6 mx-2">
+    <v-card class="p-6 mx-2">
       <v-card-title class="text-wrap">
         <v-icon
           v-if="skillsDetailsData[selectedSkill]?.icon"

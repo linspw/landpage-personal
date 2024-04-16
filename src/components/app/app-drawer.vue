@@ -8,12 +8,12 @@
         :key="pageInfo.title"
         :to="pageInfo.url"
         :active="false"
-        rounded="xl"
+        rounded="3xl"
       >
         {{ pageInfo.title }}
       </v-list-item>
 
-      <v-list-item color="secondary" rounded="xl" role="button" @click.prevent>
+      <v-list-item color="secondary" rounded="3xl" role="button" @click.prevent>
         <template #prepend>
           <v-icon icon="fas fa-language" />
         </template>
@@ -24,7 +24,7 @@
 
         <template #append>
           <v-icon
-            class="d-flex"
+            class="flex"
             size="small"
             color="secondary"
             icon="fas fa-caret-down"

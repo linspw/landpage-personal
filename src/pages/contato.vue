@@ -3,7 +3,7 @@
     <app-section
       :title="$t('pages.contact.title')"
       :description="$t('pages.contact.subtitle')"
-      class="fill-height"
+      class="h-full"
     >
       <v-container>
         <contact-feature />
