@@ -72,7 +72,7 @@
 
             <v-btn
               rounded="0"
-              href="/files/curriculo_2024_pt_br.pdf"
+              :href="curriculumLink"
               target="_blank"
               :aria-label="t('resume')"
             >
@@ -114,8 +114,14 @@
 <script setup>
 const $display = useDisplay()
 
-const { t } = useI18n({
+const { t, locale } = useI18n({
   useScope: 'local',
+})
+
+const curriculumLink = computed(() => {
+  return locale.value === 'pt-BR'
+    ? '/files/curriculo_2024_pt_br.pdf'
+    : '/files/curriculo_2024_en.pdf'
 })
 </script>
 
