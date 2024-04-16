@@ -10,7 +10,7 @@
       <v-sheet
         class="benefits-feature__card flex flex-col md:flex-row items-center p-4"
         color="secondary"
-        rounded="xl"
+        rounded="3xl"
         elevation="2"
       >
         <div class="benefits-feature__card-container-image">
@@ -25,9 +25,7 @@
         </div>
 
         <div class="flex flex-col justify-center p-2 md:ml-4 w-100">
-          <p
-            class="font-family-red-hat-display text-center font-weight-black mb-2"
-          >
+          <p class="font-family-red-hat-display text-center font-black mb-2">
             {{ product.name }}
           </p>
 

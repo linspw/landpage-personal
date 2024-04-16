@@ -11,7 +11,7 @@
         <div class="flex items-center justify-between p-3">
           <nuxt-link
             to="/"
-            class="font-weight-bold text-secondary text-decoration-none text-h6 mr-4"
+            class="font-bold text-secondary normal-case text-lg mr-4"
           >
             <v-avatar
               color="secondary"
@@ -28,7 +28,7 @@
               <div class="flex justify-center items-center flex-1">
                 <nuxt-link
                   to="/"
-                  class="app-header__name text-effect-1 font-italic font-weight-black text-secondary text-decoration-none"
+                  class="app-header__name text-effect-1 italic font-black text-secondary normal-case"
                 >
                   Jessé Correia
                 </nuxt-link>

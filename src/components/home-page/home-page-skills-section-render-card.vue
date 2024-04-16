@@ -5,7 +5,7 @@
       'border-wave': expert,
     }"
   >
-    <div style="background-color: white; margin: 2px" class="p-4 rounded-xl">
+    <div style="background-color: white; margin: 2px" class="p-4 rounded-3xl">
       <div class="flex gap-2">
         <v-icon v-if="icon" :icon="icon" />
 
@@ -64,7 +64,7 @@
             color="primary"
             variant="outlined"
             size="x-small"
-            class="text-uppercase"
+            class="uppercase"
           >
             {{ experienceTime }}
 

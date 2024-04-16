@@ -11,7 +11,7 @@
       <v-avatar
         color="white"
         size="200"
-        rounded="xl"
+        rounded="3xl"
         class="elevation-24 mb-8 md:mb-0 animate__animated animate__fadeInTopLeft animate__slow"
       >
         <app-image
@@ -27,22 +27,22 @@
         <AppTypingEffectAnimation
           text="Jessé Correia"
           tag="h1"
-          class="text-h3 text-md-h1 font-weight-bold text-secondary mb-6 text-center"
+          class="text-5xl md:text-8xl font-bold text-secondary mb-6 text-center"
           :duration="5"
           :remove-cursor-on-end="false"
           restart-on-click
         />
 
         <div
-          class="text-h5 text-md-h3 text-primary flex items-center justify-center md:justify-start mb-12 font-weight-thin text-center"
+          class="text-2xl md:text-5xl text-primary flex items-center justify-center md:justify-start mb-12 font-thin text-center"
         >
           {{ t('jobTitle') }}
         </div>
 
-        <div class="flex flex-col flex-md-row justify-center gap-2">
+        <div class="flex flex-col md:flex-row justify-center gap-2">
           <v-btn-group
             color="secondary"
-            rounded="xl"
+            rounded="3xl"
             size="large"
             variant="text"
           >
@@ -95,9 +95,9 @@
           <v-btn
             color="secondary"
             to="/#section-skills"
-            rounded="xl"
+            rounded="3xl"
             size="large"
-            class="order-first order-md-last"
+            class="order-first md:order-last"
             exact
             :active="false"
           >

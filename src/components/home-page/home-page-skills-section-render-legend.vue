@@ -1,6 +1,6 @@
 <template>
   <div data-aos="fade-up">
-    <div class="font-weight-semi-bold mb-2 text-tertiary">
+    <div class="font-semibold mb-2 text-tertiary">
       {{ t('titleLegend') }}
     </div>
 
@@ -22,7 +22,7 @@
           </v-progress-linear>
         </div>
 
-        <div class="text-caption text-center font-italic">
+        <div class="text-xs text-center italic">
           {{ t('legend.domain') }}
         </div>
       </div>
@@ -30,10 +30,10 @@
       <div class="flex flex-col items-center gap-1">
         <div
           style="position: relative; width: 40px; height: 10px"
-          class="border-wave rounded-xl"
+          class="border-wave rounded-3xl"
         ></div>
 
-        <div class="text-caption text-center font-italic">
+        <div class="text-xs text-center italic">
           {{ t('legend.expert') }}
         </div>
       </div>
@@ -45,7 +45,7 @@
           <v-icon icon="far fa-star" size="x-small" class="ml-1" />
         </v-chip>
 
-        <div class="text-caption text-center font-italic">
+        <div class="text-xs text-center italic">
           {{ t('legend.highProficiency') }}
         </div>
       </div>
@@ -57,7 +57,7 @@
           <v-icon icon="fas fa-heart" size="x-small" class="ml-1" />
         </v-chip>
 
-        <div class="text-caption text-center font-italic">
+        <div class="text-xs text-center italic">
           {{ t('legend.passionate') }}
         </div>
       </div>
@@ -69,7 +69,7 @@
           <v-icon icon="fas fa-flask" size="x-small" class="ml-1" />
         </v-chip>
 
-        <div class="text-caption text-center font-italic">
+        <div class="text-xs text-center italic">
           {{ t('legend.experimenting') }}
         </div>
       </div>
@@ -79,13 +79,13 @@
           color="primary"
           variant="outlined"
           size="x-small"
-          class="text-uppercase"
+          class="uppercase"
         >
           4 {{ t('yearAbbreviation') }}
 
           <v-icon icon="fas fa-plus" size="x-small" class="ml-1" />
         </v-chip>
-        <div class="text-caption text-center font-italic">
+        <div class="text-xs text-center italic">
           {{ t('legend.experience') }}
         </div>
       </div>

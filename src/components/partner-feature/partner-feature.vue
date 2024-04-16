@@ -26,7 +26,7 @@
         <v-card
           class="partner-feature__card flex flex-col items-center p-4"
           color="white"
-          rounded="xl"
+          rounded="3xl"
           elevation="2"
           :href="partner.href"
           target="_blank"
@@ -39,7 +39,7 @@
             class="home-page-products-section__card-image"
           />
 
-          <span class="font-weight-semi-bold text-center">
+          <span class="font-semibold text-center">
             {{ partner.name }}
           </span>
         </v-card>

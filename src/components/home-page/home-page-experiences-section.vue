@@ -30,10 +30,7 @@
           :hide-opposite="!$display.mdAndUp.value"
         >
           <template #opposite>
-            <div
-              class="pt-1 font-weight-medium text-white"
-              v-text="item.date"
-            ></div>
+            <div class="pt-1 font-medium text-white" v-text="item.date"></div>
           </template>
 
           <template #icon>

@@ -10,7 +10,7 @@
         md="6"
       >
         <div
-          class="font-weight-bold mb-4"
+          class="font-bold mb-4"
           :class="`text-${category.color}`"
           data-aos="fade-up"
         >
@@ -23,7 +23,7 @@
             :key="subCategory.title"
             class="flex flex-col"
           >
-            <div class="font-weight-medium mb-1" data-aos="fade-up">
+            <div class="font-medium mb-1" data-aos="fade-up">
               {{ t(`subtitles.${subCategory.title}`) }}
             </div>
 

@@ -1,12 +1,12 @@
 <template>
   <v-card
     :color="color"
-    rounded="xl"
-    class="portifolio-feature-card p-10 h-100"
+    rounded="3xl"
+    class="portifolio-feature-card p-10 h-full"
     :href="linkUrl"
     target="_blank"
   >
-    <v-card-item class="h-100">
+    <v-card-item class="h-full">
       <app-image
         :src="imageUrl"
         :height="90"
@@ -15,7 +15,7 @@
         :zoomable="false"
       />
 
-      <p v-if="description" class="font-weight-semi-bold">
+      <p v-if="description" class="font-semibold">
         {{ description }}
       </p>
 

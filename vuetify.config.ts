@@ -38,13 +38,16 @@ export default defineVuetifyConfiguration({
       height: 80,
     },
     VCard: {
-      rounded: 'xl',
+      rounded: '3xl',
 
       VListItem: {
-        rounded: 'xl',
+        rounded: '3xl',
       },
     },
     VBtn: {
+      rounded: 'lg',
+    },
+    VTextArea: {
       rounded: 'lg',
     },
     VTextField: {
@@ -58,18 +61,18 @@ export default defineVuetifyConfiguration({
       color: 'primary',
     },
     VList: {
-      rounded: 'xl',
+      rounded: '3xl',
     },
     VMenu: {
       VList: {
-        rounded: 'xl',
+        rounded: '3xl',
       },
     },
     VPagination: {
       rounded: 'lg',
     },
     VColorPicker: {
-      rounded: 'xl',
+      rounded: '3xl',
     },
   },
   theme: {

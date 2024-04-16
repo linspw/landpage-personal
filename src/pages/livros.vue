@@ -3,23 +3,19 @@
     <app-section
       :title="$t('pages.books.title')"
       :description="$t('pages.books.subtitle')"
-      class="fill-height"
+      class="h-full"
     >
       <v-container class="overflow-hidden">
         <div class="flex mb-6">
           <v-card variant="outlined" class="p-4 flex flex-col items-center">
-            <div class="text-h2 mb-2">{{ totalBooks }}</div>
+            <div class="text-6xl mb-2">{{ totalBooks }}</div>
 
-            <div class="font-weight-semi-bold text-uppercase text-caption">
-              Livros lidos
-            </div>
+            <div class="font-semibold uppercase text-xs">Livros lidos</div>
           </v-card>
         </div>
 
         <v-row v-for="bookTopic in bookTopics" :key="bookTopic.title">
-          <v-col cols="12" class="font-weight-bold">{{
-            bookTopic.title
-          }}</v-col>
+          <v-col cols="12" class="font-bold">{{ bookTopic.title }}</v-col>
 
           <app-show-animation>
             <v-col
@@ -29,11 +25,11 @@
               md="3"
             >
               <v-card class="animated-show p-6">
-                <div class="font-weight-medium mb-2">
+                <div class="font-medium mb-2">
                   {{ book.title }}
                 </div>
 
-                <div class="mb-2 font-italic">{{ book.author }}</div>
+                <div class="mb-2 italic">{{ book.author }}</div>
 
                 <div class="flex flex-wrap gap-1">
                   <v-chip
