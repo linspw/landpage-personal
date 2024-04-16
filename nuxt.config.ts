@@ -12,9 +12,6 @@ export default defineNuxtConfig({
   alias: {
     '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
   },
-  build: {
-    transpile: ['vuetify'],
-  },
   vue: {
     compilerOptions: {
       isCustomElement: (tag) =>
@@ -22,9 +19,7 @@ export default defineNuxtConfig({
     },
   },
   features: {
-    inlineStyles(path) {
-      return !path?.includes('vuetify')
-    }, // or a function to determine inlining
+    inlineStyles: false,
   },
   postcss: {
     plugins: {
