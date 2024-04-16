@@ -12,6 +12,7 @@
             :max="10"
             color="secondary"
             height="12"
+            aria-label="Personal grade Legend"
             rounded
           >
             <template #default>
