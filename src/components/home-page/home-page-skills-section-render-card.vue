@@ -6,14 +6,14 @@
     }"
   >
     <div style="background-color: white; margin: 2px" class="p-4 rounded-xl">
-      <div class="d-flex gap-2">
+      <div class="flex gap-2">
         <v-icon v-if="icon" :icon="icon" />
 
         {{ skillName }}
       </div>
 
-      <div class="d-flex align-center gap-2 mt-2">
-        <div class="d-flex flex-column" style="width: 100px">
+      <div class="flex items-center gap-2 mt-2">
+        <div class="flex flex-col" style="width: 100px">
           <v-progress-linear
             :model-value="personalGrade"
             :max="10"
@@ -30,7 +30,7 @@
           </v-progress-linear>
         </div>
 
-        <div class="d-flex gap-1">
+        <div class="flex gap-1">
           <v-chip
             v-if="personalGrade && personalGrade > 8"
             color="info"

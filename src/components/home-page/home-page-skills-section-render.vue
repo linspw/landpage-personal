@@ -17,17 +17,17 @@
           {{ t(`titles.${category.title}`) }}
         </div>
 
-        <div class="d-flex flex-column gap-2">
+        <div class="flex flex-col gap-2">
           <div
             v-for="subCategory in category.items"
             :key="subCategory.title"
-            class="d-flex flex-column"
+            class="flex flex-col"
           >
             <div class="font-weight-medium mb-1" data-aos="fade-up">
               {{ t(`subtitles.${subCategory.title}`) }}
             </div>
 
-            <div class="d-flex gap-1 flex-wrap">
+            <div class="flex gap-1 flex-wrap">
               <HomePageSkillsSectionRenderCard
                 v-for="(item, index) in subCategory.items"
                 :key="item"

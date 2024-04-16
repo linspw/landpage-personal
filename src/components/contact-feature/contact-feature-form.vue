@@ -45,7 +45,7 @@
       </v-col>
 
       <v-col cols="12">
-        <div class="d-flex align-center justify-center">
+        <div class="flex items-center justify-center">
           <div class="w-50">
             <v-btn
               color="primary"

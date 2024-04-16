@@ -1,6 +1,6 @@
 <template>
   <div
-    class="app-page d-flex flex-column flex-1-0"
+    class="app-page flex flex-col flex-1-0"
     :class="{ 'app-page--with-top-margin': withTopMargin }"
   >
     <slot />

@@ -4,8 +4,8 @@
       {{ t('titleLegend') }}
     </div>
 
-    <div class="d-flex flex-wrap gap-10">
-      <div class="d-flex flex-column align-center gap-1">
+    <div class="flex flex-wrap gap-10">
+      <div class="flex flex-col items-center gap-1">
         <div style="width: 100px">
           <v-progress-linear
             :model-value="8"
@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <div class="d-flex flex-column align-center gap-1">
+      <div class="flex flex-col items-center gap-1">
         <div
           style="position: relative; width: 40px; height: 10px"
           class="border-wave rounded-xl"
@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <div class="d-flex flex-column align-center gap-1">
+      <div class="flex flex-col items-center gap-1">
         <v-chip color="info" variant="outlined" size="x-small">
           PRO
 
@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <div class="d-flex flex-column align-center gap-1">
+      <div class="flex flex-col items-center gap-1">
         <v-chip color="error" variant="outlined" size="x-small">
           In Love
 
@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div class="d-flex flex-column align-center gap-1">
+      <div class="flex flex-col items-center gap-1">
         <v-chip color="success" variant="outlined" size="x-small">
           EXPERIMENTING
 
@@ -74,7 +74,7 @@
         </div>
       </div>
 
-      <div class="d-flex flex-column align-center gap-1">
+      <div class="flex flex-col items-center gap-1">
         <v-chip
           color="primary"
           variant="outlined"

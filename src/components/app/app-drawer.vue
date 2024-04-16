@@ -24,7 +24,7 @@
 
         <template #append>
           <v-icon
-            class="d-flex"
+            class="flex"
             size="small"
             color="secondary"
             icon="fas fa-caret-down"

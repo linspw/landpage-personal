@@ -24,7 +24,7 @@
         class="p-2"
       >
         <v-card
-          class="partner-feature__card d-flex flex-column align-center p-4"
+          class="partner-feature__card flex flex-col items-center p-4"
           color="white"
           rounded="xl"
           elevation="2"

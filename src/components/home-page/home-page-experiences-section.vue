@@ -1,7 +1,7 @@
 <template>
   <app-section color="secondary-darken-2" class="home-page-experiences-section">
     <v-container>
-      <div class="d-flex justify-center mb-10">
+      <div class="flex justify-center mb-10">
         <ClientOnly>
           <v-tabs
             v-model="tab"

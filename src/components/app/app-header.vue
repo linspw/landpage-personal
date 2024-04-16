@@ -1,14 +1,14 @@
 <template>
   <header class="app-header">
     <v-container
-      class="d-flex align-center justify-center p-0"
+      class="flex items-center justify-center p-0"
       style="position: relative"
     >
       <v-card
         class="app-header__card animate__animated animate__fadeInDownBig animate__fast mx-2"
-        :class="{ 'flex-1-1': $display.mdAndDown.value }"
+        :class="{ 'flex-1': $display.mdAndDown.value }"
       >
-        <div class="d-flex align-center justify-space-between p-3">
+        <div class="flex items-center justify-between p-3">
           <nuxt-link
             to="/"
             class="font-weight-bold text-secondary text-decoration-none text-h6 mr-4"
@@ -24,8 +24,8 @@
           </nuxt-link>
 
           <v-fade-transition appear mode="out-in">
-            <div v-if="$display.mdAndDown.value" class="d-flex flex-1-1">
-              <div class="d-flex justify-center align-center flex-1-1">
+            <div v-if="$display.mdAndDown.value" class="flex flex-1">
+              <div class="flex justify-center items-center flex-1">
                 <nuxt-link
                   to="/"
                   class="app-header__name text-effect-1 font-italic font-weight-black text-secondary text-decoration-none"
@@ -34,7 +34,7 @@
                 </nuxt-link>
               </div>
 
-              <div class="align-end">
+              <div class="items-end">
                 <v-btn
                   color="primary"
                   variant="tonal"
@@ -48,7 +48,7 @@
               </div>
             </div>
 
-            <div v-else class="d-flex gap-1 align-end">
+            <div v-else class="flex gap-1 items-end">
               <v-btn
                 v-for="pageInfo in pageInfos"
                 :key="pageInfo.title"
@@ -72,7 +72,7 @@
 
                 <template #append>
                   <v-icon
-                    class="d-flex"
+                    class="flex"
                     size="small"
                     color="secondary"
                     icon="fas fa-caret-down"

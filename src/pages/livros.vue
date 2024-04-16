@@ -6,11 +6,8 @@
       class="fill-height"
     >
       <v-container class="overflow-hidden">
-        <div class="d-flex mb-6">
-          <v-card
-            variant="outlined"
-            class="p-4 d-flex flex-column align-center"
-          >
+        <div class="flex mb-6">
+          <v-card variant="outlined" class="p-4 flex flex-col items-center">
             <div class="text-h2 mb-2">{{ totalBooks }}</div>
 
             <div class="font-weight-semi-bold text-uppercase text-caption">
@@ -38,7 +35,7 @@
 
                 <div class="mb-2 font-italic">{{ book.author }}</div>
 
-                <div class="d-flex flex-wrap gap-1">
+                <div class="flex flex-wrap gap-1">
                   <v-chip
                     v-for="theme in book.themes"
                     :key="theme"
