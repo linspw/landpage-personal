@@ -5,7 +5,6 @@ import svgLoader from 'vite-svg-loader'
 export default defineNuxtConfig({
   srcDir: './src',
   css: [
-    'vuetify/styles',
     '@assets/styles/index.scss',
     '@fortawesome/fontawesome-free/css/all.css',
     'animate.css/animate.min.css',
@@ -23,7 +22,9 @@ export default defineNuxtConfig({
     },
   },
   features: {
-    inlineStyles: false, // or a function to determine inlining
+    inlineStyles(path) {
+      return !path?.includes('vuetify')
+    }, // or a function to determine inlining
   },
   postcss: {
     plugins: {

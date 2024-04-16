@@ -25,9 +25,3 @@ $shadow-key-ambient-opacity-custom: var(
   $shadow-key-penumbra-opacity: $shadow-key-penumbra-opacity-custom,
   $shadow-key-ambient-opacity: $shadow-key-ambient-opacity-custom,
 );
-
-@media (min-width: 1920px) {
-  .v-container {
-    max-width: 1200px !important;
-  }
-}
