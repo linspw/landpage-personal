@@ -5,7 +5,7 @@
       'border-wave': expert,
     }"
   >
-    <div style="background-color: white; margin: 2px" class="pa-4 rounded-xl">
+    <div style="background-color: white; margin: 2px" class="p-4 rounded-xl">
       <div class="d-flex gap-2">
         <v-icon v-if="icon" :icon="icon" />
 

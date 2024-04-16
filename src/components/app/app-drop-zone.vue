@@ -1,6 +1,6 @@
 <template>
   <v-sheet
-    class="app-drop-zone pa-2 d-flex justify-center align-center text-center"
+    class="app-drop-zone p-2 d-flex justify-center align-center text-center"
     :class="{
       'app-drop-zone--is-drag-active': isDragActive,
     }"

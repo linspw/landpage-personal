@@ -8,7 +8,7 @@
   >
     <v-container
       v-if="title || description"
-      class="app-section__header mb-8 mb-md-16"
+      class="app-section__header mb-8 md:mb-16"
       data-aos="fade-up"
     >
       <h2

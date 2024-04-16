@@ -8,7 +8,7 @@
       class="benefits-feature__column d-flex"
     >
       <v-sheet
-        class="benefits-feature__card d-flex flex-column flex-md-row align-center pa-4"
+        class="benefits-feature__card d-flex flex-column flex-md-row align-center p-4"
         color="secondary"
         rounded="xl"
         elevation="2"
@@ -24,7 +24,7 @@
           />
         </div>
 
-        <div class="d-flex flex-column justify-center pa-2 ml-md-4 w-100">
+        <div class="d-flex flex-column justify-center p-2 ml-md-4 w-100">
           <p
             class="font-family-red-hat-display text-center font-weight-black mb-2"
           >

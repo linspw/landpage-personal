@@ -41,7 +41,7 @@
           </template>
 
           <v-card
-            class="pa-6"
+            class="p-6"
             :data-aos="
               !$display.mdAndUp.value
                 ? 'fade-left'

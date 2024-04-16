@@ -25,7 +25,12 @@ export default defineNuxtConfig({
   features: {
     inlineStyles: false, // or a function to determine inlining
   },
-
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   vite: {
     plugins: [svgLoader({})],
   },

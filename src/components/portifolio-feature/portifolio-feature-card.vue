@@ -2,7 +2,7 @@
   <v-card
     :color="color"
     rounded="xl"
-    class="portifolio-feature-card pa-10 h-100"
+    class="portifolio-feature-card p-10 h-100"
     :href="linkUrl"
     target="_blank"
   >

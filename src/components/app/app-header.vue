@@ -1,14 +1,14 @@
 <template>
   <header class="app-header">
     <v-container
-      class="d-flex align-center justify-center pa-0"
+      class="d-flex align-center justify-center p-0"
       style="position: relative"
     >
       <v-card
         class="app-header__card animate__animated animate__fadeInDownBig animate__fast mx-2"
         :class="{ 'flex-1-1': $display.mdAndDown.value }"
       >
-        <div class="d-flex align-center justify-space-between pa-3">
+        <div class="d-flex align-center justify-space-between p-3">
           <nuxt-link
             to="/"
             class="font-weight-bold text-secondary text-decoration-none text-h6 mr-4"

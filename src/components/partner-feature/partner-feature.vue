@@ -21,10 +21,10 @@
       <swiper-slide
         v-for="partner in listOfPartners"
         :key="partner.name"
-        class="pa-2"
+        class="p-2"
       >
         <v-card
-          class="partner-feature__card d-flex flex-column align-center pa-4"
+          class="partner-feature__card d-flex flex-column align-center p-4"
           color="white"
           rounded="xl"
           elevation="2"

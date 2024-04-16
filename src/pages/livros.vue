@@ -9,7 +9,7 @@
         <div class="d-flex mb-6">
           <v-card
             variant="outlined"
-            class="pa-4 d-flex flex-column align-center"
+            class="p-4 d-flex flex-column align-center"
           >
             <div class="text-h2 mb-2">{{ totalBooks }}</div>
 
@@ -31,7 +31,7 @@
               cols="12"
               md="3"
             >
-              <v-card class="animated-show pa-6">
+              <v-card class="animated-show p-6">
                 <div class="font-weight-medium mb-2">
                   {{ book.title }}
                 </div>
