@@ -1,6 +1,10 @@
 <template>
   <v-container>
-    <HomePageSkillsSectionRenderLegend class="mb-10" />
+    <HomePageSkillsSectionRenderLegend
+      class="mb-10"
+      data-aos="fade-up"
+      data-aos-once="true"
+    />
 
     <v-row>
       <v-col
@@ -9,42 +13,43 @@
         cols="12"
         md="6"
       >
-        <div
-          class="font-bold mb-4"
-          :class="`text-${category.color}`"
-          data-aos="fade-up"
-        >
+        <div class="font-bold mb-4" :class="`text-${category.color}`">
           {{ t(`titles.${category.title}`) }}
         </div>
 
         <div class="flex flex-col gap-2">
-          <div
+          <v-list
             v-for="subCategory in category.items"
             :key="subCategory.title"
-            class="flex flex-col"
+            class="overflow-visible"
+            rounded="xl"
+            nav
           >
-            <div class="font-medium mb-1" data-aos="fade-up">
+            <v-list-subheader
+              class="font-bold mb-1"
+              data-aos="fade-up"
+              data-aos-once="true"
+            >
               {{ t(`subtitles.${subCategory.title}`) }}
-            </div>
+            </v-list-subheader>
 
-            <div class="flex gap-1 flex-wrap">
-              <HomePageSkillsSectionRenderCard
-                v-for="(item, index) in subCategory.items"
-                :key="item"
-                :skill-name="t(`${item}.title`)"
-                :expert="skillsDetailsData[item].expert"
-                :experimenting="skillsDetailsData[item].experimenting"
-                :in-love="skillsDetailsData[item].inLove"
-                :icon="skillsDetailsData[item].icon"
-                :personal-grade="skillsDetailsData[item].personalGrade"
-                :experience-time="skillsDetailsData[item].experienceTime"
-                :data-aos-delay="50 + index * 50"
-                data-aos="fade-up"
-                tabindex="0"
-                @click="handleSelect($event, item)"
-              />
-            </div>
-          </div>
+            <HomePageSkillsSectionRenderCard
+              v-for="(item, index) in subCategory.items"
+              :key="item"
+              data-aos="fade-up"
+              data-aos-once="true"
+              :skill-name="t(`${item}.title`)"
+              :expert="skillsDetailsData[item].expert"
+              :experimenting="skillsDetailsData[item].experimenting"
+              :in-love="skillsDetailsData[item].inLove"
+              :icon="skillsDetailsData[item].icon"
+              :personal-grade="skillsDetailsData[item].personalGrade"
+              :experience-time="skillsDetailsData[item].experienceTime"
+              :data-aos-delay="50 + index * 50"
+              tabindex="0"
+              @click="handleSelect($event, item)"
+            />
+          </v-list>
         </div>
       </v-col>
     </v-row>

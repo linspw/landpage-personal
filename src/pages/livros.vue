@@ -7,7 +7,7 @@
     >
       <v-container class="overflow-hidden">
         <div class="flex mb-6">
-          <v-card variant="outlined" class="p-4 flex flex-col items-center">
+          <v-card class="p-4 flex flex-col items-center">
             <div class="text-6xl mb-2">{{ totalBooks }}</div>
 
             <div class="font-semibold uppercase text-xs">Livros lidos</div>
@@ -129,6 +129,11 @@ const bookTopics = [
         title: 'O líder que brilha',
         author: 'Rick Warren',
         themes: ['Liderança', 'Desenvolvimento Pessoal'],
+      },
+      {
+        title: 'O homem mais rico da Babilônia',
+        author: 'George S Clason',
+        themes: ['Dinheiro', 'Finanças'],
       },
     ],
   },
