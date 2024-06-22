@@ -28,7 +28,7 @@
               <div class="flex justify-center items-center flex-1">
                 <nuxt-link
                   to="/"
-                  class="app-header__name text-effect-1 italic font-black text-secondary normal-case"
+                  class="app-header__name italic font-black text-secondary normal-case"
                 >
                   Jessé Correia
                 </nuxt-link>
@@ -137,5 +137,6 @@ const pageInfos = usePortalPagesInfo()
 
 .app-header__name {
   font-size: clamp(10px, 4vw, 20px);
+  text-decoration: none;
 }
 </style>

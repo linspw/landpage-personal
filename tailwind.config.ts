@@ -36,6 +36,7 @@ export default {
     'fontSize',
     'textTransform',
     'textDecoration',
+    'opacity',
   ],
   theme: {
     extend: {},

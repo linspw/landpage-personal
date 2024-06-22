@@ -1,5 +1,5 @@
 <template>
-  <div data-aos="fade-up">
+  <div>
     <div class="font-semibold mb-2 text-tertiary">
       {{ t('titleLegend') }}
     </div>
