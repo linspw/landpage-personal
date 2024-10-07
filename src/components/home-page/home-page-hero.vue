@@ -1,17 +1,17 @@
 <template>
-  <div class="home-page-hero flex md:items-center justify-center">
+  <div class="home-page-hero d-flex align-md-center justify-center">
     <background-wave />
 
     <v-container
-      class="home-page-hero__container flex flex-col md:flex-row items-center justify-center"
+      class="home-page-hero__container d-flex flex-column flex-md-row align-center justify-center"
       :class="{
         'home-page-hero__container--with-top-margin': !$display.mdAndUp.value,
       }"
     >
       <v-avatar
         size="200"
-        rounded="3xl"
-        class="elevation-24 mb-8 md:mb-0 animate__animated animate__fadeInTopLeft animate__slow"
+        rounded="xl"
+        class="elevation-24 mb-8 mb-md-0 animate__animated animate__fadeInTopLeft animate__slow"
       >
         <app-image
           cover
@@ -22,26 +22,28 @@
         />
       </v-avatar>
 
-      <div class="flex flex-col justify-center items-center md:flex-1 px-14">
+      <div
+        class="d-flex flex-column justify-center align-center flex-md-1-1 px-14"
+      >
         <AppTypingEffectAnimation
           text="Jessé Correia"
           tag="h1"
-          class="text-3xl md:text-5xl font-black text-secondary mb-6"
+          class="text-h3 text-md-h1 font-weight-bold text-secondary mb-6 text-center"
           :duration="5"
           :remove-cursor-on-end="false"
           restart-on-click
         />
 
         <div
-          class="text-2xl md:text-3xl text-primary flex items-center justify-center md:justify-start mb-12 font-thin text-center"
+          class="text-h5 text-md-h3 text-primary d-flex align-center justify-center justify-md-start mb-12 font-weight-thin text-center"
         >
           {{ t('jobTitle') }}
         </div>
 
-        <div class="flex flex-col md:flex-row justify-center gap-2">
+        <div class="d-flex flex-column flex-md-row justify-center gap-2">
           <v-btn-group
             color="secondary"
-            rounded="3xl"
+            rounded="xl"
             size="large"
             variant="text"
           >
@@ -94,9 +96,9 @@
           <v-btn
             color="secondary"
             to="/#section-skills"
-            rounded="3xl"
+            rounded="xl"
             size="large"
-            class="order-first md:order-last"
+            class="order-first order-md-last"
             exact
             :active="false"
           >

@@ -1,9 +1,4 @@
+@import "./utils-gap";
+@import "./utils-font";
 @import './visual-effects.scss';
 @import './animations.scss';
-@import './tailwind.scss';
-
-@media (min-width: 1920px) {
-  .v-container {
-    max-width: 1200px !important;
-  }
-}

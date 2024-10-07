@@ -1,6 +1,6 @@
 <template>
   <v-sheet
-    class="app-drop-zone p-2 flex justify-center items-center text-center"
+    class="app-drop-zone pa-2 d-flex justify-center align-center text-center"
     :class="{
       'app-drop-zone--is-drag-active': isDragActive,
     }"
@@ -9,7 +9,7 @@
   >
     <input v-bind="getInputProps()" />
 
-    <div class="flex flex-col items-center">
+    <div class="d-flex flex-column align-center">
       <v-icon icon="fas fa-cloud-arrow-up" class="mb-1" />
 
       <p>Solte os arquivos aqui ou clique para selecionar.</p>

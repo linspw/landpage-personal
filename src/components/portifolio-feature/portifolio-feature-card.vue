@@ -1,30 +1,30 @@
 <template>
   <v-card
     :color="color"
-    rounded="3xl"
-    class="portifolio-feature-card p-10 h-full"
+    rounded="xl"
+    class="portifolio-feature-card pa-10 h-100"
     :href="linkUrl"
     target="_blank"
   >
-    <v-card-item class="h-full">
+    <v-card-item class="h-100">
       <app-image
         :src="imageUrl"
         :height="90"
         :width="300"
-        :class="{ 'mb-4': description }"
+        :class="{'mb-4': description}"
         :zoomable="false"
       />
 
-      <p v-if="description" class="font-semibold">
+      <p class="font-weight-semi-bold" v-if="description">
         {{ description }}
       </p>
 
-      <div v-if="tags.length" class="flex flex-wrap gap-1 mt-4">
+      <div class="d-flex flex-wrap gap-1 mt-4" v-if="tags.length">
         <v-chip v-for="tag in tags" :key="tag">{{ tag }}</v-chip>
       </div>
 
       <template #append>
-        <div class="flex items-center">
+        <div class="d-flex align-center">
           <v-icon icon="fas fa-chevron-right" />
         </div>
       </template>

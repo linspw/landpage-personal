@@ -1,7 +1,7 @@
 <template>
   <v-form ref="form" @submit.prevent="handleSendEmail">
     <v-row>
-      <v-col cols="12" class="font-bold">
+      <v-col cols="12" class="font-weight-bold">
         {{ t('description') }}
       </v-col>
 
@@ -12,6 +12,7 @@
           variant="solo-filled"
           color="primary"
           class="contact-feature-form__input"
+          rounded="lg"
           :rules="[requiredRule]"
         />
       </v-col>
@@ -25,6 +26,7 @@
           variant="solo-filled"
           color="primary"
           class="contact-feature-form__input"
+          rounded="lg"
           :rules="[requiredRule, emailRule]"
         />
       </v-col>
@@ -37,18 +39,19 @@
           variant="solo-filled"
           color="primary"
           class="contact-feature-form__input"
+          rounded="lg"
           :rules="[requiredRule]"
         />
       </v-col>
 
       <v-col cols="12">
-        <div class="flex items-center justify-center">
+        <div class="d-flex align-center justify-center">
           <div class="w-50">
             <v-btn
               color="primary"
               block
               type="submit"
-              rounded="3xl"
+              rounded="xl"
               :loading="state.isLoading"
             >
               {{ t('formButtons.submit') }}
@@ -64,7 +67,7 @@
       <template #actions>
         <v-btn
           variant="text"
-          rounded="3xl"
+          rounded="xl"
           @click="snackbarState.isOpen = false"
         >
           {{ t('formButtons.close') }}

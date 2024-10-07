@@ -3,7 +3,7 @@
     <app-section
       :title="$t('pages.portfolio.title')"
       :description="$t('pages.portfolio.subtitle')"
-      class="h-full pb-16"
+      class="fill-height pb-16"
     >
       <v-container>
         <h3 class="mb-4">Personal Projects</h3>

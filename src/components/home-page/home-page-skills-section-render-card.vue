@@ -1,6 +1,6 @@
 <template>
-  <v-list-item rounded="3xl" class="p-3" variant="elevated">
-    <div class="flex gap-2">
+  <v-list-item rounded="xl" class="pa-3" variant="elevated">
+    <div class="d-flex gap-2">
       <v-icon v-if="icon" :icon="icon" />
 
       {{ skillName }}
@@ -24,7 +24,7 @@
         </v-progress-linear>
       </div>
 
-      <div class="flex gap-1">
+      <div class="d-flex gap-1">
         <v-chip
           v-if="personalGrade && personalGrade > 8"
           color="info"

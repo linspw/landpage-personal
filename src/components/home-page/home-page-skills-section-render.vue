@@ -17,7 +17,7 @@
           {{ t(`titles.${category.title}`) }}
         </div>
 
-        <div class="flex flex-col gap-2">
+        <div class="dflex flex-column gap-2">
           <v-list
             v-for="subCategory in category.items"
             :key="subCategory.title"

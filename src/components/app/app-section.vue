@@ -8,18 +8,18 @@
   >
     <v-container
       v-if="title || description"
-      class="app-section__header mb-8 md:mb-16"
+      class="app-section__header mb-8 mb-md-16"
       data-aos="fade-up"
       data-aos-once="true"
     >
       <h2
         v-if="title"
-        class="text-2xl md:text-3xl font-black uppercase text-primary"
+        class="text-h4 font-weight-bold text-uppercase text-primary"
       >
         {{ title }}
       </h2>
 
-      <p v-if="description" class="text-xl md:text-2xl font-thin">
+      <p v-if="description" class="text-h6 text-md-h5 font-weight-medium">
         {{ description }}
       </p>
     </v-container>

@@ -11,7 +11,7 @@
         >
           <v-list class="bg-secondary-darken-2" nav role="navigation">
             <v-list-item
-              class="font-bold"
+              class="font-weight-bold"
               :to="pageInfo.url"
               :active="false"
               rounded="lg"
@@ -24,11 +24,11 @@
 
       <v-divider class="my-4" />
 
-      <p class="app-footer__author text-center italic">
+      <p class="app-footer__author text-center font-italic">
         © 2023 Jessé Correia Lins. Todos os direitos reservados.
       </p>
 
-      <p class="app-footer__author text-center italic">
+      <p class="app-footer__author text-center font-italic">
         Website criado por Jessé Correia Lins
       </p>
     </v-container>

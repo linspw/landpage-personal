@@ -5,12 +5,12 @@
       :key="product.name"
       cols="12"
       sm="6"
-      class="benefits-feature__column flex"
+      class="benefits-feature__column d-flex"
     >
       <v-sheet
-        class="benefits-feature__card flex flex-col md:flex-row items-center p-4"
+        class="benefits-feature__card d-flex flex-column flex-md-row align-center pa-4"
         color="secondary"
-        rounded="3xl"
+        rounded="xl"
         elevation="2"
       >
         <div class="benefits-feature__card-container-image">
@@ -24,8 +24,10 @@
           />
         </div>
 
-        <div class="flex flex-col justify-center p-2 md:ml-4 w-100">
-          <p class="font-family-red-hat-display text-center font-black mb-2">
+        <div class="d-flex flex-column justify-center pa-2 ml-md-4 w-100">
+          <p
+            class="font-family-red-hat-display text-center font-weight-black mb-2"
+          >
             {{ product.name }}
           </p>
 

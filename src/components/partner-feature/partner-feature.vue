@@ -21,12 +21,12 @@
       <swiper-slide
         v-for="partner in listOfPartners"
         :key="partner.name"
-        class="p-2"
+        class="pa-2"
       >
         <v-card
-          class="partner-feature__card flex flex-col items-center p-4"
+          class="partner-feature__card d-flex flex-column align-center pa-4"
           color="white"
-          rounded="3xl"
+          rounded="xl"
           elevation="2"
           :href="partner.href"
           target="_blank"
@@ -39,7 +39,7 @@
             class="home-page-products-section__card-image"
           />
 
-          <span class="font-semibold text-center">
+          <span class="font-weight-semi-bold text-center">
             {{ partner.name }}
           </span>
         </v-card>

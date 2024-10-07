@@ -3,13 +3,13 @@
     <div class="mb-6 px-16">
       <nuxt-link
         to="/"
-        class="font-bold text-secondary normal-case no-underline text-3xl mr-4 text-center"
+        class="font-weight-bold text-secondary text-decoration-none text-h4 mr-4 text-center"
       >
         Jessé Correia
       </nuxt-link>
     </div>
 
-    <v-list-item class="font-bold">
+    <v-list-item class="font-weight-bold">
       {{ t('directContacts') }}
     </v-list-item>
 
