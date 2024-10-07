@@ -6,7 +6,6 @@ export default defineNuxtConfig({
   srcDir: './src',
 
   css: [
-    'vuetify/styles',
     '@assets/styles/index.scss',
     '@fortawesome/fontawesome-free/css/all.css',
     'animate.css/animate.min.css',
@@ -16,9 +15,6 @@ export default defineNuxtConfig({
     '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
   },
 
-  build: {
-    transpile: ['vuetify'],
-  },
 
   vue: {
     compilerOptions: {
