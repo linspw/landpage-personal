@@ -4,24 +4,29 @@ import svgLoader from 'vite-svg-loader'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir: './src',
+
   css: [
     'vuetify/styles',
     '@assets/styles/index.scss',
     '@fortawesome/fontawesome-free/css/all.css',
     'animate.css/animate.min.css',
   ],
+
   alias: {
     '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
   },
+
   build: {
     transpile: ['vuetify'],
   },
+
   vue: {
     compilerOptions: {
       isCustomElement: (tag) =>
         ['swiper-container', 'swiper-slide'].includes(tag),
     },
   },
+
   features: {
     inlineStyles: false, // or a function to determine inlining
   },
@@ -29,6 +34,7 @@ export default defineNuxtConfig({
   vite: {
     plugins: [svgLoader({})],
   },
+
   modules: [
     '@nuxtjs/google-fonts',
     '@nuxt/image',
@@ -53,7 +59,9 @@ export default defineNuxtConfig({
         },
       },
     ],
+    '@nuxt/eslint',
   ],
+
   googleFonts: {
     families: {
       'Open+Sans': {
@@ -62,6 +70,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   i18n: {
     baseUrl: 'https://snown.com.br',
     vueI18n: './i18n.config.ts',
@@ -93,6 +102,7 @@ export default defineNuxtConfig({
       redirectOn: 'root', // recommended
     },
   },
+
   vuetify: {
     moduleOptions: {
       /* other module options */
@@ -104,8 +114,11 @@ export default defineNuxtConfig({
       },
     },
   },
+
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
   },
+
   devtools: { enabled: true },
+  compatibilityDate: '2024-10-07',
 })

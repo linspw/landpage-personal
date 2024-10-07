@@ -134,11 +134,6 @@ const bookTopics = [
         author: 'Rick Warren',
         themes: ['Liderança', 'Desenvolvimento Pessoal'],
       },
-      {
-        title: 'O homem mais rico da Babilônia',
-        author: 'George S Clason',
-        themes: ['Dinheiro', 'Finanças'],
-      },
     ],
   },
 

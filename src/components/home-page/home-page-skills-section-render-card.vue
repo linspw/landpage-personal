@@ -1,13 +1,13 @@
 <template>
-  <v-list-item rounded="xl" class="pa-3" variant="elevated">
+  <v-card rounded="xl" class="pa-3" variant="elevated">
     <div class="d-flex gap-2">
       <v-icon v-if="icon" :icon="icon" />
 
       {{ skillName }}
     </div>
 
-    <div class="flex items-center gap-2 mt-2">
-      <div class="flex flex-col" style="width: 100px">
+    <div class="d-flex align-center gap-2 mt-2">
+      <div class="d-flex flex-column" style="width: 100px">
         <v-progress-linear
           :model-value="personalGrade"
           :max="10"
@@ -68,7 +68,7 @@
         </v-chip>
       </div>
     </div>
-  </v-list-item>
+  </v-card>
 </template>
 
 <script setup lang="ts">

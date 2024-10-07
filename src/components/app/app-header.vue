@@ -137,6 +137,5 @@ const pageInfos = usePortalPagesInfo()
 
 .app-header__name {
   font-size: clamp(10px, 4vw, 20px);
-  text-decoration: none;
 }
 </style>

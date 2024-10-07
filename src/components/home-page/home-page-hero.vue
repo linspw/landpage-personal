@@ -9,6 +9,7 @@
       }"
     >
       <v-avatar
+        color="white"
         size="200"
         rounded="xl"
         class="elevation-24 mb-8 mb-md-0 animate__animated animate__fadeInTopLeft animate__slow"
@@ -28,14 +29,14 @@
         <AppTypingEffectAnimation
           text="Jessé Correia"
           tag="h1"
-          class="text-h3 text-md-h1 font-weight-bold text-secondary mb-6 text-center"
+          class="text-h5 text-md-h3 font-weight-bold text-secondary mb-6 text-center"
           :duration="5"
           :remove-cursor-on-end="false"
           restart-on-click
         />
 
         <div
-          class="text-h5 text-md-h3 text-primary d-flex align-center justify-center justify-md-start mb-12 font-weight-thin text-center"
+          class="text-h6 text-md-h4 text-primary d-flex align-center justify-center justify-md-start mb-12 font-weight-thin text-center"
         >
           {{ t('jobTitle') }}
         </div>
