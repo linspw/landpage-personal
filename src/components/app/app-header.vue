@@ -28,7 +28,7 @@
               <div class="d-flex justify-center align-center flex-1-1">
                 <nuxt-link
                   to="/"
-                  class="app-header__name text-effect-1 font-italic font-weight-black text-secondary text-decoration-none"
+                  class="app-header__name font-italic font-weight-black text-secondary text-decoration-none"
                 >
                   Jessé Correia
                 </nuxt-link>
