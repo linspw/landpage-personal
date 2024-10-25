@@ -1,18 +1,14 @@
 <template>
   <v-container>
-    <HomePageSkillsSectionRenderLegend class="mb-10" />
-
     <v-row>
       <v-col
         v-for="category in categoriesData"
         :key="category.title"
         cols="12"
-        md="6"
       >
         <div
-          class="font-bold mb-4"
+          class="font-weight-bold mb-4"
           :class="`text-${category.color}`"
-          data-aos="fade-up"
         >
           {{ t(`titles.${category.title}`) }}
         </div>
@@ -23,11 +19,11 @@
             :key="subCategory.title"
             class="d-flex flex-column"
           >
-            <div class="font-medium mb-1" data-aos="fade-up">
+            <div class="font-weight-medium mb-1">
               {{ t(`subtitles.${subCategory.title}`) }}
             </div>
 
-            <div class="d-flex gap-1 flex-wrap">
+            <div class="d-flex gap-4 flex-wrap">
               <HomePageSkillsSectionRenderCard
                 v-for="(item, index) in subCategory.items"
                 :key="item"
@@ -39,7 +35,6 @@
                 :personal-grade="skillsDetailsData[item].personalGrade"
                 :experience-time="skillsDetailsData[item].experienceTime"
                 :data-aos-delay="50 + index * 50"
-                data-aos="fade-up"
                 tabindex="0"
                 @click="handleSelect($event, item)"
               />

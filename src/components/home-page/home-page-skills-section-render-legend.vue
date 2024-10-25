@@ -32,7 +32,7 @@
         <div
           style="position: relative; width: 40px; height: 10px"
           class="border-wave rounded-xl"
-        ></div>
+        />
 
         <div class="text-caption text-center font-italic">
           {{ t('legend.expert') }}

@@ -33,7 +33,7 @@
             <div
               class="pt-1 font-weight-medium text-white"
               v-text="item.date"
-            ></div>
+            />
           </template>
 
           <template #icon>
@@ -55,7 +55,7 @@
             :text="item.text"
           >
             <template #prepend>
-              <v-img :src="item.image" width="100px" />
+              <v-img :src="item.image" width="100px" class="mr-4" />
             </template>
           </v-card>
         </v-timeline-item>
@@ -73,6 +73,14 @@ const { t } = useI18n({
 })
 
 const profissionalItems = computed(() => [
+{
+    icon: 'fas fa-briefcase',
+    date: t('experiences.profissionalItems.item5.date'),
+    title: t('experiences.profissionalItems.item5.title'),
+    image: '/images/companies/shipeezi.png',
+    subtitle: t('experiences.profissionalItems.item5.subtitle'),
+    text: t('experiences.profissionalItems.item5.text'),
+  },
   {
     icon: 'fas fa-briefcase',
     date: t('experiences.profissionalItems.item1.date'),
@@ -152,6 +160,12 @@ const items = computed(() => {
       "professionalTab": "Profissionais",
       "educationTab": "Educacionais",
       "profissionalItems": {
+        "item5": {
+          "date": "Julho de 2024 - Atualmente",
+          "title": "Desenvolvedor Fullstack",
+          "subtitle": "Shipeezi\nHOME OFFICE",
+          "text": "Atuação como Desenvolvedor Fullstack, utilizando tecnologias como React, React Native, Typescript, Nestjs, microserviços, Sequelize e Banco de Dados MySQL."
+        },
         "item1": {
           "date": "Janeiro de 2022 - Março de 2023",
           "title": "Desenvolvedor Front-end",
@@ -206,6 +220,12 @@ const items = computed(() => {
       "professionalTab": "Professional",
       "educationTab": "Educational",
       "profissionalItems": {
+        "item5": {
+          "date": "July 2024 - Present",
+          "title": "Fullstack Developer",
+          "subtitle": "Shipeezi\nREMOTE",
+          "text": "Working as a Fullstack Developer, using technologies such as React, React Native, TypeScript, NestJS, microservices, Sequelize, and MySQL Database."
+        },
         "item1": {
           "date": "January 2022 - March 2023",
           "title": "Front-end Developer",
@@ -260,6 +280,12 @@ const items = computed(() => {
       "professionalTab": "Profesionales",
       "educationTab": "Educativas",
       "profissionalItems": {
+        "item5": {
+          "date": "Julio de 2024 - Actualmente",
+          "title": "Desarrollador Fullstack",
+          "subtitle": "Shipeezi\nTRABAJO REMOTO",
+          "text": "Trabajo como Desarrollador Fullstack, utilizando tecnologías como React, React Native, TypeScript, NestJS, microservicios, Sequelize y base de datos MySQL."
+        },
         "item1": {
           "date": "Enero de 2022 - Marzo de 2023",
           "title": "Desarrollador Front-end",
