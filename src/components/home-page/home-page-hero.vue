@@ -120,27 +120,27 @@ const { t, locale } = useI18n({
 
 const curriculumLink = computed(() => {
   return locale.value === 'pt-BR'
-    ? '/files/curriculo_2024_pt_br.pdf'
-    : '/files/curriculo_2024_en.pdf'
+    ? '/files/curriculum_2024_pt_br.pdf'
+    : '/files/curriculum_2024_en.pdf'
 })
 </script>
 
 <i18n lang="json">
 {
   "pt-BR": {
-    "jobTitle": "Engenheiro da Computação e Desenvolvedor Full Stack",
+    "jobTitle": "Engenheiro de Software",
     "resume": "Currículo",
     "downloadResume": "Baixar Currículo",
     "knowMore": "Conheça mais!"
   },
   "en": {
-    "jobTitle": "Computer Engineer and Full Stack Developer",
+    "jobTitle": "Software Engineer",
     "resume": "Resume",
     "downloadResume": "Download Resume",
     "knowMore": "Know More!"
   },
   "es": {
-    "jobTitle": "Ingeniero en Computación y Desarrollador Full Stack",
+    "jobTitle": "Ingeniero de Software",
     "resume": "Currículum",
     "downloadResume": "Descargar Currículum",
     "knowMore": "¡Conoce más!"

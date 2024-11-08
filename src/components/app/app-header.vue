@@ -15,7 +15,6 @@
           >
             <v-avatar
               color="secondary"
-              rounded="lg"
               variant="outlined"
               class="app-header__avatar"
             >
@@ -114,6 +113,8 @@ const pageInfos = usePortalPagesInfo()
 }
 
 .app-header__avatar {
+  border-radius: 12px !important;
+  
   &.v-avatar--variant-outlined {
     border: 2px solid currentColor;
   }
