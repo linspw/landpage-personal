@@ -25,7 +25,7 @@
 
             <div class="d-flex gap-4 flex-wrap">
               <HomePageSkillsSectionRenderCard
-                v-for="(item, index) in subCategory.items"
+                v-for="item in subCategory.items"
                 :key="item"
                 :skill-name="t(`${item}.title`)"
                 :expert="skillsDetailsData[item].expert"
@@ -34,7 +34,6 @@
                 :icon="skillsDetailsData[item].icon"
                 :personal-grade="skillsDetailsData[item].personalGrade"
                 :experience-time="skillsDetailsData[item].experienceTime"
-                :data-aos-delay="50 + index * 50"
                 tabindex="0"
                 @click="handleSelect($event, item)"
               />

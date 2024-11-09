@@ -9,7 +9,8 @@
     <v-container
       v-if="title || description"
       class="app-section__header mb-8 mb-md-16"
-      data-aos="fade-up"
+      data-aos="fade"
+      data-aos-once="true"
     >
       <h2
         v-if="title"

@@ -3,18 +3,16 @@
     <v-container>
       <div class="d-flex justify-center mb-10">
         <ClientOnly>
-          <v-tabs
+          <v-btn-toggle
             v-model="tab"
-            bg-color="primary"
-            class="rounded-lg"
-            fixed-tabs
+            divided
+            mandatory
+            color="primary"
+            base-color="secondary"
           >
-            <v-tab value="profissional">{{
-              t('experiences.professionalTab')
-            }}</v-tab>
-
-            <v-tab value="education">{{ t('experiences.educationTab') }}</v-tab>
-          </v-tabs>
+            <v-btn value="profissional">{{ t('experiences.professionalTab') }}</v-btn>
+            <v-btn value="education">{{ t('experiences.educationTab') }}</v-btn>
+          </v-btn-toggle>
         </ClientOnly>
       </div>
 
@@ -50,6 +48,7 @@
                   : 'fade-right'
             "
             data-aos-duration="2000"
+            data-aos-once="true"
             :title="item.title"
             :subtitle="item.subtitle"
             :text="item.text"
@@ -66,7 +65,7 @@
 
 <script setup lang="ts">
 const $display = useDisplay()
-const tab = ref('profissional')
+const tab = ref<'profissional' | 'education'>('profissional')
 
 const { t } = useI18n({
   useScope: 'local',
