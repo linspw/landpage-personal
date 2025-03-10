@@ -2,7 +2,7 @@
   <v-card
     :color="color"
     rounded="xl"
-    class="portifolio-feature-card pa-10 h-100"
+    class="portfolio-feature-card pa-10 h-100"
     :href="linkUrl"
     target="_blank"
   >
@@ -15,11 +15,11 @@
         :zoomable="false"
       />
 
-      <p class="font-weight-semi-bold" v-if="description">
+      <p v-if="description" class="font-weight-semi-bold">
         {{ description }}
       </p>
 
-      <div class="d-flex flex-wrap gap-1 mt-4" v-if="tags.length">
+      <div v-if="tags.length" class="d-flex flex-wrap gap-1 mt-4">
         <v-chip v-for="tag in tags" :key="tag">{{ tag }}</v-chip>
       </div>
 
@@ -60,7 +60,7 @@ defineProps({
 </script>
 
 <style>
-.portifolio-feature-card {
+.portfolio-feature-card {
   & .v-card-item,
   & .v-card-item__content {
     height: 100%;

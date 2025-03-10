@@ -10,7 +10,8 @@
             color="primary"
             base-color="secondary"
           >
-            <v-btn value="profissional">{{ t('experiences.professionalTab') }}</v-btn>
+            <v-btn value="professionalItems">{{ t('experiences.professionalTab') }}</v-btn>
+
             <v-btn value="education">{{ t('experiences.educationTab') }}</v-btn>
           </v-btn-toggle>
         </ClientOnly>
@@ -65,52 +66,52 @@
 
 <script setup lang="ts">
 const $display = useDisplay()
-const tab = ref<'profissional' | 'education'>('profissional')
+const tab = ref<'professionalItems' | 'education'>('professionalItems')
 
 const { t } = useI18n({
   useScope: 'local',
 })
 
-const profissionalItems = computed(() => [
+const professionalItems = computed(() => [
 {
     icon: 'fas fa-briefcase',
-    date: t('experiences.profissionalItems.item5.date'),
-    title: t('experiences.profissionalItems.item5.title'),
+    date: t('experiences.professionalItems.item5.date'),
+    title: t('experiences.professionalItems.item5.title'),
     image: '/images/companies/shipeezi.png',
-    subtitle: t('experiences.profissionalItems.item5.subtitle'),
-    text: t('experiences.profissionalItems.item5.text'),
+    subtitle: t('experiences.professionalItems.item5.subtitle'),
+    text: t('experiences.professionalItems.item5.text'),
   },
   {
     icon: 'fas fa-briefcase',
-    date: t('experiences.profissionalItems.item1.date'),
-    title: t('experiences.profissionalItems.item1.title'),
+    date: t('experiences.professionalItems.item1.date'),
+    title: t('experiences.professionalItems.item1.title'),
     image: '/images/companies/buser.svg',
-    subtitle: t('experiences.profissionalItems.item1.subtitle'),
-    text: t('experiences.profissionalItems.item1.text'),
+    subtitle: t('experiences.professionalItems.item1.subtitle'),
+    text: t('experiences.professionalItems.item1.text'),
   },
   {
     icon: 'fas fa-briefcase',
-    date: t('experiences.profissionalItems.item2.date'),
-    title: t('experiences.profissionalItems.item2.title'),
+    date: t('experiences.professionalItems.item2.date'),
+    title: t('experiences.professionalItems.item2.title'),
     image: '/images/companies/quero_educacao.svg',
-    subtitle: t('experiences.profissionalItems.item2.subtitle'),
-    text: t('experiences.profissionalItems.item2.text'),
+    subtitle: t('experiences.professionalItems.item2.subtitle'),
+    text: t('experiences.professionalItems.item2.text'),
   },
   {
     icon: 'fas fa-briefcase',
-    date: t('experiences.profissionalItems.item3.date'),
-    title: t('experiences.profissionalItems.item3.title'),
+    date: t('experiences.professionalItems.item3.date'),
+    title: t('experiences.professionalItems.item3.title'),
     image: '/images/companies/quero_educacao.svg',
-    subtitle: t('experiences.profissionalItems.item3.subtitle'),
-    text: t('experiences.profissionalItems.item3.text'),
+    subtitle: t('experiences.professionalItems.item3.subtitle'),
+    text: t('experiences.professionalItems.item3.text'),
   },
   {
     icon: 'fas fa-briefcase',
-    date: t('experiences.profissionalItems.item4.date'),
-    title: t('experiences.profissionalItems.item4.title'),
+    date: t('experiences.professionalItems.item4.date'),
+    title: t('experiences.professionalItems.item4.title'),
     image: '/images/companies/quero_educacao.svg',
-    subtitle: t('experiences.profissionalItems.item4.subtitle'),
-    text: t('experiences.profissionalItems.item4.text'),
+    subtitle: t('experiences.professionalItems.item4.subtitle'),
+    text: t('experiences.professionalItems.item4.text'),
   },
 ])
 
@@ -142,7 +143,7 @@ const educationItems = computed(() => [
 ])
 
 const items = computed(() => {
-  if (tab.value === 'profissional') return profissionalItems.value
+  if (tab.value === 'professionalItems') return professionalItems.value
 
   if (tab.value === 'education') return educationItems.value
 
@@ -158,7 +159,7 @@ const items = computed(() => {
       "description": "Profissionais e de Ensino.",
       "professionalTab": "Profissionais",
       "educationTab": "Educacionais",
-      "profissionalItems": {
+      "professionalItems": {
         "item5": {
           "date": "Julho de 2024 - Atualmente",
           "title": "Desenvolvedor Fullstack",
@@ -218,7 +219,7 @@ const items = computed(() => {
       "description": "Professional and Educational.",
       "professionalTab": "Professional",
       "educationTab": "Educational",
-      "profissionalItems": {
+      "professionalItems": {
         "item5": {
           "date": "July 2024 - Present",
           "title": "Fullstack Developer",
@@ -278,7 +279,7 @@ const items = computed(() => {
       "description": "Profesionales y Educativas.",
       "professionalTab": "Profesionales",
       "educationTab": "Educativas",
-      "profissionalItems": {
+      "professionalItems": {
         "item5": {
           "date": "Julio de 2024 - Actualmente",
           "title": "Desarrollador Fullstack",

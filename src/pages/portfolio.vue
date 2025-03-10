@@ -15,7 +15,7 @@
             cols="12"
             md="6"
           >
-            <portifolio-feature-card
+            <portfolio-feature-card
               :color="project.color"
               :link-url="project.linkUrl"
               :image-url="project.imageUrl"
@@ -36,7 +36,7 @@
             cols="12"
             md="6"
           >
-            <portifolio-feature-card
+            <portfolio-feature-card
               :color="project.color"
               :link-url="project.linkUrl"
               :image-url="project.imageUrl"
@@ -63,14 +63,14 @@ const personalProjects = computed(() => [
   {
     color: 'secondary-darken-2',
     linkUrl: 'https://snown.com.br/',
-    imageUrl: '/images/portifolio/snown.svg',
+    imageUrl: '/images/portfolio/snown.svg',
     description: t('personalProjects.snown.description'),
     tags: ['collaboration', 'workspace', 'business', 'private'],
   },
   {
     color: 'white',
     linkUrl: 'https://linspw.github.io/experiment-ui/',
-    imageUrl: '/images/portifolio/experiment-ui-light.svg',
+    imageUrl: '/images/portfolio/experiment-ui-light.svg',
     description: t('personalProjects.experiment-ui.description'),
     tags: ['ui', 'public', 'open-source', 'experimental'],
   },
@@ -81,7 +81,7 @@ const openSourceProjects = computed(() => {
     {
       color: 'white',
       linkUrl: 'https://github.com/vueuse/vueuse/commits/main/?author=linspw',
-      imageUrl: '/images/portifolio/vueuse.svg',
+      imageUrl: '/images/portfolio/vueuse.svg',
       description: '',
       tags: [],
     },
@@ -89,7 +89,7 @@ const openSourceProjects = computed(() => {
       color: 'white',
       linkUrl:
         'https://github.com/ueberdosis/hocuspocus/commits/main/?author=linspw',
-      imageUrl: '/images/portifolio/hocuspocus.svg',
+      imageUrl: '/images/portfolio/hocuspocus.svg',
       description: '',
       tags: [],
     },
@@ -97,7 +97,7 @@ const openSourceProjects = computed(() => {
       color: 'white',
       linkUrl:
         'https://github.com/userquin/vuetify-nuxt-module/commits/main/?author=linspw',
-      imageUrl: '/images/portifolio/vuetify-nuxt-module.svg',
+      imageUrl: '/images/portfolio/vuetify-nuxt-module.svg',
       description: '',
       tags: [],
     },
@@ -105,14 +105,14 @@ const openSourceProjects = computed(() => {
       color: 'white',
       linkUrl:
         'https://github.com/alexzhang1030/vue-resizables/commits/main/?author=linspw',
-      imageUrl: '/images/portifolio/vue-resizable.svg',
+      imageUrl: '/images/portfolio/vue-resizable.svg',
       description: '',
       tags: [],
     },
     {
       color: 'white',
       linkUrl: 'https://github.com/antfu/drauu/commits/main/?author=linspw',
-      imageUrl: '/images/portifolio/drauu.svg',
+      imageUrl: '/images/portfolio/drauu.svg',
       description: '',
       tags: [],
     },

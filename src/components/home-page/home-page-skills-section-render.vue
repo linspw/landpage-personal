@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { categoriesData } from './categories-data'
+import { categoriesData } from '../../assets/data/categories-data'
 import { skillsDetailsData } from './skills-details-data'
 
 const isPopupOpen = ref(false)
