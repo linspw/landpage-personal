@@ -11,7 +11,7 @@
             <div class="text-h2 mb-2">{{ totalBooks }}</div>
 
             <div class="font-weight-semi-bold text-uppercase text-caption">
-              Livros lidos
+              {{ t('readBooks') }}
             </div>
           </v-card>
         </div>
@@ -63,4 +63,24 @@ useHead({
 })
 
 const totalBooks = computed(() => countTotalBooks(bookTopics))
+
+
+const { t } = useI18n({
+  useScope: 'local'
+});
+
 </script>
+
+<i18n lang="json">
+  {
+    "en": {
+      "readBooks": "Books Read"
+    },
+    "pt-BR": {
+      "readBooks": "Livros lidos"
+    },
+    "es": {
+      "readBooks": "Libros leídos"
+    }
+  }
+</i18n>

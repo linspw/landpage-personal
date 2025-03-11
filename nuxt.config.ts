@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/test-utils/module',
     '@nuxtjs/sitemap',
+    '@nuxt/content',
     'nuxt-aos',
     'vuetify-nuxt-module',
     [

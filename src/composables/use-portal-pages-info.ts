@@ -4,6 +4,7 @@ export const usePortalPagesInfo = () => {
   const info = computed(() => {
     return [
       { url: '/', title: NuxtApp.$i18n.t('pages.aboutMe.title') },
+      { url: '/blog', title: NuxtApp.$i18n.t('pages.blog.title') },
       { url: '/portfolio', title: NuxtApp.$i18n.t('pages.portfolio.title') },
       { url: '/books', title: NuxtApp.$i18n.t('pages.books.title') },
       { url: '/contact', title: NuxtApp.$i18n.t('pages.contact.title') },

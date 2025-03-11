@@ -19,6 +19,10 @@
     "contact": {
       "title": "Contacto",
       "subtitle": "Envía un mensaje"
+    },
+    "blog": {
+      "title": "Blog",
+      "subtitle": "Tech Postings"
     }
   },
   "homeSections": {
