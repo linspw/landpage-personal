@@ -8,13 +8,13 @@
   >
     <v-container
       v-if="title || description"
-      class="app-section__header mb-8 mb-md-16"
+      class="app-section__header mb-8"
       data-aos="fade"
       data-aos-once="true"
     >
       <h2
         v-if="title"
-        class="text-h4 font-weight-bold text-uppercase text-primary"
+        class="text-h4 font-weight-bold text-uppercase"
       >
         {{ title }}
       </h2>
