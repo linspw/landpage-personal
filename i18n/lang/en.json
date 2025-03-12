@@ -5,11 +5,14 @@
     "siteName": "Jessé Correia"
   },
   "pages": {
+    "home": {
+      "title": "Home"
+    },
     "aboutMe": {
       "title": "About me"
     },
-    "portfolio": {
-      "title": "Portfolio",
+    "projects": {
+      "title": "Projects",
       "subtitle": "Learn more about my Public Personal Works"
     },
     "books": {

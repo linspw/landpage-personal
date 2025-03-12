@@ -1,8 +1,8 @@
 <template>
   <app-page with-top-margin>
     <app-section
-      :title="$t('pages.portfolio.title')"
-      :description="$t('pages.portfolio.subtitle')"
+      :title="$t('pages.projects.title')"
+      :description="$t('pages.projects.subtitle')"
       class="fill-height pb-16"
     >
       <v-container>
@@ -15,7 +15,7 @@
             cols="12"
             md="6"
           >
-            <portfolio-feature-card
+            <project-card
               :color="project.color"
               :link-url="project.linkUrl"
               :image-url="project.imageUrl"
@@ -36,7 +36,7 @@
             cols="12"
             md="6"
           >
-            <portfolio-feature-card
+            <project-card
               :color="project.color"
               :link-url="project.linkUrl"
               :image-url="project.imageUrl"
@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'pages.portfolio.title',
+  title: 'pages.projects.title',
 })
 
 const { t } = useI18n({
@@ -63,14 +63,14 @@ const personalProjects = computed(() => [
   {
     color: 'secondary-darken-2',
     linkUrl: 'https://snown.com.br/',
-    imageUrl: '/images/portfolio/snown.svg',
+    imageUrl: '/images/projects/snown.svg',
     description: t('personalProjects.snown.description'),
     tags: ['collaboration', 'workspace', 'business', 'private'],
   },
   {
     color: 'white',
     linkUrl: 'https://linspw.github.io/experiment-ui/',
-    imageUrl: '/images/portfolio/experiment-ui-light.svg',
+    imageUrl: '/images/projects/experiment-ui-light.svg',
     description: t('personalProjects.experiment-ui.description'),
     tags: ['ui', 'public', 'open-source', 'experimental'],
   },
@@ -81,7 +81,7 @@ const openSourceProjects = computed(() => {
     {
       color: 'white',
       linkUrl: 'https://github.com/vueuse/vueuse/commits/main/?author=linspw',
-      imageUrl: '/images/portfolio/vueuse.svg',
+      imageUrl: '/images/projects/vueuse.svg',
       description: '',
       tags: [],
     },
@@ -89,7 +89,7 @@ const openSourceProjects = computed(() => {
       color: 'white',
       linkUrl:
         'https://github.com/ueberdosis/hocuspocus/commits/main/?author=linspw',
-      imageUrl: '/images/portfolio/hocuspocus.svg',
+      imageUrl: '/images/projects/hocuspocus.svg',
       description: '',
       tags: [],
     },
@@ -97,7 +97,7 @@ const openSourceProjects = computed(() => {
       color: 'white',
       linkUrl:
         'https://github.com/userquin/vuetify-nuxt-module/commits/main/?author=linspw',
-      imageUrl: '/images/portfolio/vuetify-nuxt-module.svg',
+      imageUrl: '/images/projects/vuetify-nuxt-module.svg',
       description: '',
       tags: [],
     },
@@ -105,14 +105,14 @@ const openSourceProjects = computed(() => {
       color: 'white',
       linkUrl:
         'https://github.com/alexzhang1030/vue-resizables/commits/main/?author=linspw',
-      imageUrl: '/images/portfolio/vue-resizable.svg',
+      imageUrl: '/images/projects/vue-resizable.svg',
       description: '',
       tags: [],
     },
     {
       color: 'white',
       linkUrl: 'https://github.com/antfu/drauu/commits/main/?author=linspw',
-      imageUrl: '/images/portfolio/drauu.svg',
+      imageUrl: '/images/projects/drauu.svg',
       description: '',
       tags: [],
     },

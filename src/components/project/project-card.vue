@@ -2,7 +2,7 @@
   <v-card
     :color="color"
     rounded="xl"
-    class="portfolio-feature-card pa-10 h-100"
+    class="projects-feature-card pa-10 h-100"
     :href="linkUrl"
     target="_blank"
   >
@@ -60,7 +60,7 @@ defineProps({
 </script>
 
 <style>
-.portfolio-feature-card {
+.projects-feature-card {
   & .v-card-item,
   & .v-card-item__content {
     height: 100%;

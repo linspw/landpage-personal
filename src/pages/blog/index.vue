@@ -14,7 +14,7 @@
             md="6"
             lg="4"
           >
-            <v-card class="blog-card">
+            <v-card class="blog-card" :to="post.path">
               <v-img v-if="post.thumbImageUrl" :src="post.thumbImageUrl" height="200px" cover/>
 
               <v-card-title>{{ post.title }}</v-card-title>
@@ -24,7 +24,7 @@
               <v-card-text>{{ post.description }}</v-card-text>
               
               <v-card-actions class="d-flex justify-end">
-                <v-btn :to="post.path" color="primary">
+                <v-btn color="primary">
                   Leia mais
                 </v-btn>
               </v-card-actions>

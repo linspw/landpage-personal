@@ -5,12 +5,15 @@
     "siteName": "Jessé Correia"
   },
   "pages": {
+    "home": {
+      "title": "Home"
+    },
     "aboutMe": {
       "title": "Sobre mim",
       "subtitle": "Engenheiro da Computação"
     },
-    "portfolio": {
-      "title": "Portfólio",
+    "projects": {
+      "title": "Projetos",
       "subtitle": "Conheça mais sobre meus trabalhos Públicos Pessoais"
     },
     "books": {

@@ -3,110 +3,55 @@
     <background-wave />
 
     <v-container
-      class="home-page-hero__container d-flex flex-column flex-md-row align-center justify-center"
+      class="home-page-hero__container d-flex flex-column align-center justify-center"
       :class="{
         'home-page-hero__container--with-top-margin': !$display.mdAndUp.value,
       }"
     >
-      <v-avatar
-        color="white"
-        size="200"
+      <h1 class="text-h3 font-weight-bold text-center mb-4">
+        Welcome to My personal Website!
+      </h1>
+
+      <p class="text-subtitle-1 text-center mb-6">
+        My name is <strong>Jessé Correia</strong>. I'm a software engineer crafting innovative solutions.
+      </p>
+
+      <v-btn
+        color="primary"
+        to="/projects"
         rounded="xl"
-        class="elevation-24 mb-8 mb-md-0 animate__animated animate__fadeInTopLeft animate__slow"
+        size="large"
+        aria-label="View Jessé Correia's projects"
       >
-        <app-image
-          cover
-          src="/images/avatars/my-photo.jpg"
-          alt="My photo"
-          :height="200"
-          :width="200"
-        />
-      </v-avatar>
+        View My Projects
+      </v-btn>
 
-      <div
-        class="d-flex flex-column justify-center align-center flex-md-1-1 px-14"
-      >
-        <AppTypingEffectAnimation
-          text="Jessé Correia"
-          tag="h1"
-          class="text-h5 text-md-h3 font-weight-bold text-secondary mb-6 text-center"
-          :duration="5"
-          :remove-cursor-on-end="false"
-          restart-on-click
-        />
-
-        <div
-          class="text-h6 text-md-h4 text-primary d-flex align-center justify-center justify-md-start mb-12 font-weight-thin text-center"
-        >
-          {{ t('jobTitle') }}
-        </div>
-
-        <div class="d-flex flex-column flex-md-row justify-center gap-2">
-          <v-btn-group
-            color="secondary"
-            rounded="xl"
-            size="large"
-            variant="text"
-          >
-            <v-btn
-              rounded="0"
-              href="https://github.com/linspw"
-              target="_blank"
-              aria-label="Github"
-            >
-              <template #prepend><v-icon icon="fab fa-github" /></template>
-
-              <template v-if="$display.mdAndUp.value">Github</template>
-            </v-btn>
-
-            <v-btn
-              rounded="0"
-              href="https://www.linkedin.com/in/jessecorreialive/"
-              target="_blank"
-              aria-label="LinkedIn"
-            >
-              <template #prepend><v-icon icon="fab fa-linkedin" /></template>
-
-              <template v-if="$display.mdAndUp.value">LinkedIn</template>
-            </v-btn>
-
-            <v-btn
-              rounded="0"
-              :href="curriculumLink"
-              target="_blank"
-              :aria-label="t('resume')"
-            >
-              <template #prepend>
-                <v-icon icon="fas fa-cloud-arrow-down" />
-              </template>
-
-              <template v-if="$display.mdAndUp.value">
-                {{ t('resume') }}
-              </template>
-
-              <v-tooltip
-                activator="parent"
-                location="bottom"
-                :title="t('downloadResume')"
-              >
-                {{ t('downloadResume') }}
-              </v-tooltip>
-            </v-btn>
-          </v-btn-group>
-
-          <v-btn
-            color="secondary"
-            to="/#section-skills"
-            rounded="xl"
-            size="large"
-            class="order-first order-md-last"
-            exact
-            :active="false"
-          >
-            {{ t('knowMore') }}
-          </v-btn>
-        </div>
-      </div>
+      <v-row class="mt-8">
+        <v-col cols="12" md="4">
+          <v-card class="home-page__options-card pa-2" to="/blog">
+            <v-card-title>Blog</v-card-title>
+            <v-card-text>
+              Explore my thoughts and insights on technology and software development.
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-card class="home-page__options-card pa-2" to="/about-me">
+            <v-card-title>About Me</v-card-title>
+            <v-card-text>
+              Learn more about my journey, skills, and experience as a software engineer.
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-card class="home-page__options-card pa-2" to="/projects">
+            <v-card-title>Projects</v-card-title>
+            <v-card-text>
+              Discover the innovative projects I've worked on and the technologies I've used.
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -114,36 +59,19 @@
 <script setup>
 const $display = useDisplay()
 
-const { t, locale } = useI18n({
-  useScope: 'local',
-})
 
-const curriculumLink = computed(() => {
-  return locale.value === 'pt-BR'
-    ? '/files/curriculum_2024_pt_br.pdf'
-    : '/files/curriculum_2024_en.pdf'
-})
 </script>
 
 <i18n lang="json">
 {
   "pt-BR": {
-    "jobTitle": "Engenheiro de Software",
-    "resume": "Currículo",
-    "downloadResume": "Baixar Currículo",
-    "knowMore": "Conheça mais!"
+
   },
   "en": {
-    "jobTitle": "Software Engineer",
-    "resume": "Resume",
-    "downloadResume": "Download Resume",
-    "knowMore": "Know More!"
+
   },
   "es": {
-    "jobTitle": "Ingeniero de Software",
-    "resume": "Currículum",
-    "downloadResume": "Descargar Currículum",
-    "knowMore": "¡Conoce más!"
+
   }
 }
 </i18n>
@@ -159,5 +87,12 @@ const curriculumLink = computed(() => {
   &--with-top-margin {
     margin-top: 80px;
   }
+}
+
+.home-page__options-card {
+  transition: 0.3s;
+}
+.home-page__options-card:hover {
+  transform: scale(1.03);
 }
 </style>
