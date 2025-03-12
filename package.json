@@ -51,5 +51,6 @@
     "swiper": "^11.2.5",
     "vue3-dropzone": "^2.2.1",
     "vuetify": "^3.7.16"
-  }
+  },
+  "engines": {"node": "20.x" }
 }
