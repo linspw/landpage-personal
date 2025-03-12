@@ -50,6 +50,6 @@
     "split-type": "^0.3.4",
     "swiper": "^11.2.5",
     "vue3-dropzone": "^2.2.1",
-    "vuetify": "^3.7.15"
+    "vuetify": "^3.7.16"
   }
 }
