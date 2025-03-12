@@ -1,8 +1,7 @@
 <template>
-  <div class="pa-3">
-    <div class="d-flex gap-2">
+  <div class="skill-item pa-3">
+    <div class="d-flex gap-2 align-center mb-2">
       <v-icon v-if="icon" :icon="icon" />
-
       {{ skillName }}
     </div>
   </div>
@@ -18,26 +17,11 @@ defineProps({
     type: String,
     default: undefined,
   },
-  experienceTime: {
-    type: Number,
-    default: undefined,
-  },
-  personalGrade: {
-    type: Number,
-    required: true,
-  },
-  expert: {
-    type: Boolean,
-    default: undefined,
-  },
-  experimenting: {
-    type: Boolean,
-    default: undefined,
-  },
-  inLove: {
-    type: Boolean,
-    default: undefined,
-  },
 })
 </script>
 
+<style scoped>
+.skill-item {
+  /* Add styling as needed */
+}
+</style>
