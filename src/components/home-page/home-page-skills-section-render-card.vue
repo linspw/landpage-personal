@@ -1,11 +1,11 @@
 <template>
-  <v-card rounded="xl" class="pa-3" variant="tonal" color="tertiary-darken-4">
+  <div class="pa-3">
     <div class="d-flex gap-2">
       <v-icon v-if="icon" :icon="icon" />
 
       {{ skillName }}
     </div>
-  </v-card>
+  </div>
 </template>
 
 <script setup lang="ts">

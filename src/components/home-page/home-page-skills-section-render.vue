@@ -35,7 +35,6 @@
                 :personal-grade="skillsDetailsData[item].personalGrade"
                 :experience-time="skillsDetailsData[item].experienceTime"
                 tabindex="0"
-                @click="handleSelect($event, item)"
               />
             </div>
           </div>
@@ -60,11 +59,11 @@ const selectedSkill = ref('')
 const btnRef = ref()
 
  
-const handleSelect = ($event: MouseEvent, skill: string) => {
-  btnRef.value = $event.target
-  isPopupOpen.value = true
-  selectedSkill.value = skill
-}
+// const handleSelect = ($event: MouseEvent, skill: string) => {
+//   btnRef.value = $event.target
+//   isPopupOpen.value = true
+//   selectedSkill.value = skill
+// }
 
 const { t } = useI18n({
   useScope: 'local',

@@ -36,9 +36,18 @@
         />
 
         <div
-          class="text-h6 text-md-h4 text-primary d-flex align-center justify-center justify-md-start mb-12 font-weight-thin text-center"
+          class="text-h6 text-md-h4 text-primary d-flex flex-column align-center justify-center justify-md-start mb-4 font-weight-thin text-center"
         >
           {{ t('jobTitle') }}
+        </div>
+
+        <div class="mb-6 d-flex align-center justify-center flex-column text-center">
+          <div class="text-body-1 mt-2">
+            🇧🇷 Brazilian and Portuguese 🇵🇹
+          </div>
+          <div class="text-caption">
+            <a class="text-decoration-none" href="mailto:linspw@live.com">linspw@live.com</a>
+          </div>
         </div>
 
         <div class="d-flex flex-column flex-md-row justify-center gap-2">
