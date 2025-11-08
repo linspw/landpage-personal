@@ -1,18 +1,18 @@
 import { fileURLToPath } from 'url'
 import svgLoader from 'vite-svg-loader'
+import tailwindcss from "@tailwindcss/vite";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  srcDir: './src',
-
   css: [
+    '@assets/css/tailwind.css',
     '@assets/styles/index.scss',
     '@fortawesome/fontawesome-free/css/all.css',
     'animate.css/animate.min.css',
   ],
 
   alias: {
-    '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
+    '@assets': fileURLToPath(new URL('./app/assets', import.meta.url)),
   },
 
 
@@ -28,10 +28,14 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    plugins: [svgLoader({})],
+    plugins: [
+      svgLoader({}),
+      tailwindcss(),
+    ],
   },
 
   modules: [
+    '@nuxt/ui',
     '@nuxtjs/google-fonts',
     '@nuxt/image',
     '@nuxtjs/robots',
@@ -40,22 +44,21 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxt/content',
     'nuxt-aos',
-    'vuetify-nuxt-module',
-    [
-      'nuxt-mail',
-      {
-        message: {
-          to: process.env.EMAIL_APP_DESTINATION,
-        },
-        smtp: {
-          service: 'gmail',
-          auth: {
-            user: process.env.EMAIL_APP_USER,
-            pass: process.env.EMAIL_APP_PASSWORD,
-          },
-        },
-      },
-    ],
+    // [
+    //   'nuxt-mail',
+    //   {
+    //     message: {
+    //       to: process.env.EMAIL_APP_DESTINATION,
+    //     },
+    //     smtp: {
+    //       service: 'gmail',
+    //       auth: {
+    //         user: process.env.EMAIL_APP_USER,
+    //         pass: process.env.EMAIL_APP_PASSWORD,
+    //       },
+    //     },
+    //   },
+    // ],
     '@nuxt/eslint',
   ],
 
@@ -89,7 +92,6 @@ export default defineNuxtConfig({
         iso: 'es-ES',
       },
     ],
-    lazy: true,
     langDir: 'lang',
     defaultLocale: 'pt-BR',
     strategy: 'no_prefix',
@@ -100,17 +102,9 @@ export default defineNuxtConfig({
     },
   },
 
-  vuetify: {
-    moduleOptions: {
-      /* other module options */
-      styles: {
-        configFile: 'assets/styles/vuetify-settings.scss',
-      },
-      ssrClientHints: {
-        viewportSize: true,
-      },
-    },
+  ui: {
   },
+
 
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -118,4 +112,9 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
   compatibilityDate: '2024-10-07',
+  tailwindcss: {
+    exposeConfig: true,
+    viewer: true,
+    // and more...
+  }
 })

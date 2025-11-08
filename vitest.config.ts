@@ -5,11 +5,6 @@ export default defineVitestConfig({
     globals: true,
     environment: 'nuxt',
     setupFiles: ['./tests/unit/setup.ts'],
-    server: {
-      deps: {
-        inline: ['vuetify'],
-      },
-    },
     env: {
       NODE_ENV: 'test',
       EMAIL_APP_PASSWORD: 'wonu zcgq bxcl dwja',
