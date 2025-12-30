@@ -60,6 +60,6 @@
     "vue3-dropzone": "^2.2.1"
   },
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   }
 }
