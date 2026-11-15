@@ -20,7 +20,7 @@
         <span class="contact-feature-details__icon text-primary">
           <i class="fas fa-envelope" aria-hidden="true" />
         </span>
-        <span class="font-medium">linspw@live.com</span>
+        <a class="font-medium hover:underline" href="mailto:linspw@live.com">linspw@live.com</a>
       </li>
 
       <li class="flex items-center gap-3">

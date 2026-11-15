@@ -92,7 +92,9 @@ const errors = reactive<Record<FormField, string | undefined>>({
   text: undefined,
 })
 
-const mail = useMail()
+const mail = useNuxtApp().$mail as
+  | { send: (message: { replyTo: string; subject: string; text: string }) => Promise<void> }
+  | undefined
 const toast = useToast()
 
 const validateField = (field: FormField) => {
@@ -129,14 +131,14 @@ const resetForm = () => {
 }
 
 const handleSendEmail = async () => {
-  if (state.isLoading) return
+  if (state.isLoading || !mail) return
   if (!validateForm()) return
 
   state.isLoading = true
 
   try {
     await mail.send({
-      from: state.email,
+      replyTo: state.email,
       subject: t('formLabels.emailSubject', {
         name: state.name,
       }) as string,

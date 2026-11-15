@@ -87,7 +87,7 @@ const handleClick = () => {
       v-if="isFullscreen"
       icon="i-heroicons-x-mark-20-solid"
       variant="soft"
-      color="white"
+      color="neutral"
       class="absolute right-3 top-3"
       @click.stop="exit"
     />

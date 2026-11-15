@@ -1,11 +1,11 @@
 <template>
-  <USlideover v-model:open="drawer" side="right" :ui="{ width: 'max-w-sm' }">
+  <USlideover v-model:open="drawer" side="right" :title="t('menu')" :ui="{ content: 'sm:max-w-sm', title: 'sr-only' }">
     <template #content>
       <div class="flex h-full flex-col gap-6 p-6">
         <div class="flex items-center justify-between">
           <p class="text-lg font-semibold text-secondary">{{ t('menu') }}</p>
           <UButton
-            color="gray"
+            color="neutral"
             variant="ghost"
             icon="i-heroicons-x-mark"
             aria-label="Fechar menu"
@@ -31,14 +31,14 @@
           </p>
           <AppLanguageDropdownMenu placement="top-end">
             <UButton
-              color="gray"
+              color="neutral"
               variant="soft"
               trailing-icon="i-heroicons-chevron-down-16-solid"
             >
               <template #leading>
                 <i class="fas fa-language text-secondary" aria-hidden="true" />
               </template>
-              <span class="ml-2">{{ $locale.toUpperCase() }}</span>
+              <span class="ml-2">{{ locale.toUpperCase() }}</span>
             </UButton>
           </AppLanguageDropdownMenu>
         </div>
@@ -58,7 +58,7 @@ const emit = defineEmits(['update:modelValue'])
 const drawer = useVModel(props, 'modelValue', emit)
 const pageInfos = usePortalPagesInfo()
 
-const { t } = useI18n({
+const { t, locale } = useI18n({
   useScope: 'local',
 })
 </script>

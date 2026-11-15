@@ -3,7 +3,7 @@ import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 const breakpoints = useBreakpoints(breakpointsTailwind)
 
 export const useDisplay = () => {
-  const xsAndDown = breakpoints.smallerOrEqual('xs')
+  const xsAndDown = breakpoints.smaller('sm')
   const smAndDown = breakpoints.smallerOrEqual('sm')
   const mdAndDown = breakpoints.smallerOrEqual('md')
   const lgAndUp = breakpoints.greaterOrEqual('lg')

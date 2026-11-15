@@ -126,8 +126,10 @@
 </template>
 
 <script setup lang="ts">
-const $display = useDisplay()
-const tab = ref<'professionalItems' | 'education'>('professionalItems')
+import type { ExperienceItem } from '~/composables/use-professional-experience'
+
+type ExperienceTab = 'professionalItems' | 'education'
+const tab = ref<ExperienceTab>('professionalItems')
 const tabRefs = ref<(HTMLButtonElement | null)[]>([])
 
 const { t } = useI18n({
@@ -150,7 +152,7 @@ const tabIndicatorStyle = computed(() => {
   }
 })
 
-const tabOptions = computed(() => [
+const tabOptions = computed<{ value: ExperienceTab; label: string; icon: string }[]>(() => [
   {
     value: 'professionalItems',
     label: t('experiences.professionalTab'),
@@ -165,7 +167,7 @@ const tabOptions = computed(() => [
 
 const professionalItems = useProfessionalExperience()
 
-const educationItems = computed(() => [
+const educationItems = computed<ExperienceItem[]>(() => [
   {
     icon: 'fas fa-university',
     date: t('experiences.educationItems.item1.date'),

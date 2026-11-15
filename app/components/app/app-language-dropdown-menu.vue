@@ -1,7 +1,7 @@
 <template>
-  <UDropdownMenu :items="dropdownItems" :popper="{ placement }" mode="click">
+  <UDropdownMenu :items="dropdownItems" :content="content">
     <UButton
-      color="gray"
+      color="neutral"
       variant="ghost"
       icon="i-heroicons-language-16-solid"
       trailing-icon="i-heroicons-chevron-down-16-solid"
@@ -24,5 +24,8 @@ const dropdownItems = computed(() =>
   })),
 )
 
-const placement = computed(() => props.placement ?? 'bottom-end')
+const content = computed(() => ({
+  side: props.placement?.startsWith('top') ? 'top' as const : 'bottom' as const,
+  align: props.placement?.endsWith('start') ? 'start' as const : 'end' as const,
+}))
 </script>

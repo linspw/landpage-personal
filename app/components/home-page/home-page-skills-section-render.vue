@@ -26,7 +26,7 @@
               v-for="item in subCategory.items"
               :key="item"
               :skill-name="t(`${item}.title`)"
-              :icon="skillsDetailsData[item].icon"
+              :icon="skillsDetailsData[item]?.icon"
               tabindex="0"
             />
           </div>

@@ -16,7 +16,7 @@
 
         <UAlert
           v-else
-          color="red"
+          color="error"
           variant="subtle"
           title="Post não encontrado"
           description="Volte para o blog para explorar outros conteúdos."

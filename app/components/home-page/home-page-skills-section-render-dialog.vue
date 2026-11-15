@@ -4,7 +4,7 @@
       <v-card-title class="text-wrap">
         <v-icon
           v-if="skillsDetailsData[selectedSkill]?.icon"
-          :icon="skillsDetailsData[selectedSkill].icon"
+          :icon="skillsDetailsData[selectedSkill]?.icon"
           class="mr-2"
         />
 

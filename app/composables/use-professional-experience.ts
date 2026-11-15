@@ -1,7 +1,20 @@
+export interface ExperienceItem {
+  icon: string
+  date: string
+  title: string
+  company: string
+  image: string
+  location: string
+  text: string
+  skills: string[]
+  isCurrentJob?: boolean
+  workMode?: 'remote' | 'onsite' | 'hybrid'
+}
+
 export const useProfessionalExperience = () => {
   const { t } = useI18n({ useScope: 'global' })
 
-  return computed(() => [
+  return computed<ExperienceItem[]>(() => [
     {
       icon: 'fas fa-rocket',
       date: t('professionalExperience.item6.date'),

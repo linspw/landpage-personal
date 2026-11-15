@@ -1,6 +1,13 @@
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'node:url'
 import svgLoader from 'vite-svg-loader'
-import tailwindcss from "@tailwindcss/vite";
+
+const siteUrl = 'https://jesse-correia.vercel.app'
+const mailDestination = process.env.EMAIL_APP_DESTINATION
+const mailUser = process.env.EMAIL_APP_USER
+const mailPassword = process.env.EMAIL_APP_PASSWORD
+const mailConfigured =
+  process.env.EMAIL_APP_ENABLED === 'true' &&
+  Boolean(mailDestination && mailUser && mailPassword)
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -28,15 +35,12 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    plugins: [
-      svgLoader({}),
-      tailwindcss(),
-    ],
+    plugins: [svgLoader()],
   },
 
   modules: [
+    '@nuxt/fonts',
     '@nuxt/ui',
-    '@nuxtjs/google-fonts',
     '@nuxt/image',
     '@nuxtjs/robots',
     '@nuxtjs/i18n',
@@ -44,52 +48,54 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxt/content',
     'nuxt-aos',
-    // [
-    //   'nuxt-mail',
-    //   {
-    //     message: {
-    //       to: process.env.EMAIL_APP_DESTINATION,
-    //     },
-    //     smtp: {
-    //       service: 'gmail',
-    //       auth: {
-    //         user: process.env.EMAIL_APP_USER,
-    //         pass: process.env.EMAIL_APP_PASSWORD,
-    //       },
-    //     },
-    //   },
-    // ],
+    mailConfigured && [
+      'nuxt-mail',
+      {
+        message: { to: mailDestination, from: mailUser },
+        smtp: { service: 'gmail', auth: { user: mailUser, pass: mailPassword } },
+      },
+    ],
     '@nuxt/eslint',
   ],
 
-  googleFonts: {
-    families: {
-      'Open+Sans': {
-        wght: [300, 400, 500, 600, 700, 800],
-        ital: [300, 400, 500, 600, 700, 800],
+  fonts: {
+    families: [
+      {
+        name: 'Open Sans',
+        provider: 'google',
+        global: true,
+        weights: ['300 800'],
+        styles: ['normal', 'italic'],
+        subsets: ['latin', 'latin-ext'],
       },
-    },
+    ],
+  },
+
+  site: { url: siteUrl },
+
+  runtimeConfig: {
+    public: { mailConfigured },
   },
 
   i18n: {
-    baseUrl: 'https://snown.com.br',
+    baseUrl: siteUrl,
     vueI18n: './i18n.config.ts',
     locales: [
       {
         code: 'pt-BR',
         file: 'pt-BR.json',
-        iso: 'pt-BR',
+        language: 'pt-BR',
         isCatchallLocale: true,
       },
       {
         code: 'en',
         file: 'en.json',
-        iso: 'en-US',
+        language: 'en-US',
       },
       {
         code: 'es',
         file: 'es.json',
-        iso: 'es-ES',
+        language: 'es-ES',
       },
     ],
     langDir: 'lang',
@@ -102,19 +108,10 @@ export default defineNuxtConfig({
     },
   },
 
-  ui: {
-  },
-
-
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
   },
 
   devtools: { enabled: true },
   compatibilityDate: '2024-10-07',
-  tailwindcss: {
-    exposeConfig: true,
-    viewer: true,
-    // and more...
-  }
 })

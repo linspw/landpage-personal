@@ -49,8 +49,8 @@ onMounted(() => {
     const section = document.getElementById(item.id) as HTMLElement
     useIntersectionObserver(
       section,
-      ([{ isIntersecting }]) => {
-        if (isIntersecting) currentSection.value = item.id
+      ([entry]) => {
+        if (entry?.isIntersecting) currentSection.value = item.id
       },
       {
         rootMargin: '-20% 0px -60% 0px',

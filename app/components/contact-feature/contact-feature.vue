@@ -2,15 +2,17 @@
   <Transition name="contact-feature-fade">
     <div
       v-if="isVisibleOnce"
-      class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]"
+      class="grid gap-8"
+      :class="{ 'lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]': mailConfigured }"
     >
       <contact-feature-details />
-      <contact-feature-form />
+      <contact-feature-form v-if="mailConfigured" />
     </div>
   </Transition>
 </template>
 
 <script setup lang="ts">
+const { mailConfigured } = useRuntimeConfig().public
 const { isVisibleOnce } = useVisibilityOnce()
 </script>
 

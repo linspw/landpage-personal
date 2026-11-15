@@ -255,7 +255,28 @@ const tableHeaders = computed(() => ({
   view: t('table.cta'),
 }))
 
-const projectSections = computed(() => {
+interface ProjectSection {
+  id: string
+  label: string
+  title: string
+  description: string
+  stats: { label: string; value: string }[]
+  projects: {
+    name: string
+    badge: string
+    meta: string
+    description: string
+    linkUrl: string
+    imageUrl: string
+    logoVariant?: 'dark'
+    theme: 'light' | 'dark'
+    highlights?: { label: string; value: string }[]
+    tags: string[]
+    ctaLabel?: string
+  }[]
+}
+
+const projectSections = computed<ProjectSection[]>(() => {
   const highlightLabels = {
     role: t('highlights.role'),
     stack: t('highlights.stack'),

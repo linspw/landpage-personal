@@ -23,7 +23,7 @@
           <div v-if="isMobile" class="flex lg:w-full items-center justify-end gap-3">
             <AppLanguageDropdownMenu>
               <UButton
-                color="gray"
+                color="neutral"
                 variant="soft"
                 icon="i-heroicons-language-16-solid"
                 trailing-icon="i-heroicons-chevron-down-16-solid"
@@ -51,7 +51,7 @@
 
             <AppLanguageDropdownMenu>
               <UButton
-                color="gray"
+                color="neutral"
                 variant="ghost"
                 trailing-icon="i-heroicons-chevron-down-16-solid"
               >

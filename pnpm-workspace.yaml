@@ -3,3 +3,9 @@ onlyBuiltDependencies:
   - better-sqlite3
   - esbuild
   - sharp
+
+# Keep the editor runtime and its extensions on the same release.
+overrides:
+  '@tiptap/core': 3.34.0
+  '@tiptap/pm': 3.34.0
+  '@tiptap/starter-kit': 3.34.0
