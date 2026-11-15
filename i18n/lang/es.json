@@ -41,5 +41,64 @@
       "title": "Contacto",
       "description": "Envía un mensaje"
     }
+  },
+  "professionalExperience": {
+    "item6": {
+      "date": "Agosto de 2025 - Actualmente",
+      "title": "Senior Frontend Developer",
+      "location": "São José dos Campos, SP",
+      "text": "Parte del equipo de Plataforma Frontend, desarrollando soluciones escalables y manteniendo el Design System de la empresa."
+    },
+    "item5b": {
+      "date": "Abril de 2025 - Agosto de 2025",
+      "title": "Ingeniero de Software Líder",
+      "location": "Remoto",
+      "text": "Liderazgo técnico de proyectos, gestión de equipos y arquitectura de soluciones fullstack para la plataforma de logística."
+    },
+    "item5": {
+      "date": "Julio de 2024 - Abril de 2025",
+      "title": "Desarrollador Fullstack",
+      "location": "Remoto",
+      "text": "Trabajo como Desarrollador Fullstack, utilizando tecnologías como React, React Native, TypeScript, NestJS, microservicios, Sequelize y base de datos MySQL."
+    },
+    "item1": {
+      "date": "Enero de 2022 - Abril de 2023",
+      "title": "Desarrollador Front-end",
+      "location": "São José dos Campos, SP",
+      "text": "Actuación como Desarrollador Frontend/Fullstack, utilizando tecnologías como Vue.js, Nuxt, Django (Python) en la creación de interfaces para soluciones B2B. Participación en un equipo ágil con enfoque en resultados medibles."
+    },
+    "item2": {
+      "date": "Marzo de 2021 - Diciembre de 2021",
+      "title": "Desarrollador Front-end",
+      "location": "São José dos Campos, SP",
+      "text": "Desarrollo con Vue.js, React, Phoenix (Elixir), Rails (Ruby). Creación de interfaces para los segmentos B2B y B2C."
+    },
+    "item3": {
+      "date": "Marzo de 2020 - Marzo de 2021",
+      "title": "Pasante en Desarrollo Front-end",
+      "location": "São José dos Campos, SP",
+      "text": "Desarrollando pantallas e interfaces para el B2B."
+    },
+    "item4": {
+      "date": "Agosto de 2019 - Marzo de 2020",
+      "title": "Pasante en SiteOps",
+      "location": "São José dos Campos, SP",
+      "text": "Cuidando de las principales operaciones de la plataforma web de Quero Bolsa."
+    }
+  },
+  "booksShelf": {
+    "intro": "Desplázate por la estantería o selecciona un lomo para ver la portada.",
+    "search": "Buscar por título o autor",
+    "theme": "Filtrar por tema",
+    "allThemes": "Todos los temas",
+    "filter": "Filtrar por estado de lectura",
+    "filters": {
+      "all": "Todos",
+      "read": "Leídos",
+      "reading": "Leyendo",
+      "queued": "En cola",
+      "wishlist": "Deseos",
+      "favorite": "Favoritos"
+    }
   }
 }

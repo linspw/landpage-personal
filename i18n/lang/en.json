@@ -41,5 +41,64 @@
       "title": "Contact",
       "description": "Send a message"
     }
+  },
+  "professionalExperience": {
+    "item6": {
+      "date": "August 2025 - Present",
+      "title": "Senior Frontend Developer",
+      "location": "São José dos Campos, SP",
+      "text": "Part of the Frontend Platform team, developing scalable solutions and maintaining the company's Design System."
+    },
+    "item5b": {
+      "date": "April 2025 - August 2025",
+      "title": "Lead Software Engineer",
+      "location": "Remote",
+      "text": "Technical leadership of projects, team management, and fullstack architecture for the logistics platform."
+    },
+    "item5": {
+      "date": "July 2024 - April 2025",
+      "title": "Fullstack Developer",
+      "location": "Remote",
+      "text": "Working as a Fullstack Developer, using technologies such as React, React Native, TypeScript, NestJS, microservices, Sequelize, and MySQL Database."
+    },
+    "item1": {
+      "date": "January 2022 - April 2023",
+      "title": "Front-end Developer",
+      "location": "São José dos Campos, SP",
+      "text": "Worked as a Frontend/Fullstack Developer, using technologies like Vue.js, Nuxt, Django (Python) in creating interfaces for B2B solutions. Participation in an agile team with a focus on measurable results."
+    },
+    "item2": {
+      "date": "March 2021 - December 2021",
+      "title": "Front-end Developer",
+      "location": "São José dos Campos, SP",
+      "text": "Development with Vue.js, React, Phoenix (Elixir), Rails (Ruby). Creating interfaces for B2B and B2C segments."
+    },
+    "item3": {
+      "date": "March 2020 - March 2021",
+      "title": "Front-end Development Intern",
+      "location": "São José dos Campos, SP",
+      "text": "Developing screens and interfaces for B2B."
+    },
+    "item4": {
+      "date": "August 2019 - March 2020",
+      "title": "SiteOps Intern",
+      "location": "São José dos Campos, SP",
+      "text": "Handling the main operations of the Quero Bolsa web platform."
+    }
+  },
+  "booksShelf": {
+    "intro": "Scroll through the shelf or select a spine to reveal the cover.",
+    "search": "Search by title or author",
+    "theme": "Filter by topic",
+    "allThemes": "All topics",
+    "filter": "Filter by reading status",
+    "filters": {
+      "all": "All",
+      "read": "Read",
+      "reading": "Reading",
+      "queued": "Queued",
+      "wishlist": "Wishlist",
+      "favorite": "Favorites"
+    }
   }
 }

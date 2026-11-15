@@ -163,86 +163,7 @@ const tabOptions = computed(() => [
   },
 ])
 
-const professionalItems = computed(() => [
-  {
-    icon: 'fas fa-rocket',
-    date: t('experiences.professionalItems.item6.date'),
-    title: t('experiences.professionalItems.item6.title'),
-    company: 'Qeevo Group',
-    image: '/images/companies/qeevo.png',
-    location: t('experiences.professionalItems.item6.location'),
-    text: t('experiences.professionalItems.item6.text'),
-    isCurrentJob: true,
-    workMode: 'onsite' as const,
-    skills: ['Vue.js', 'Nuxt', 'TypeScript', 'Design System'],
-  },
-  {
-    icon: 'fas fa-crown',
-    date: t('experiences.professionalItems.item5b.date'),
-    title: t('experiences.professionalItems.item5b.title'),
-    company: 'Shipeezi',
-    image: '/images/companies/shipeezi.png',
-    location: t('experiences.professionalItems.item5b.location'),
-    text: t('experiences.professionalItems.item5b.text'),
-    workMode: 'remote' as const,
-    skills: ['React', 'React Native', 'TypeScript', 'NestJS', 'Leadership', 'Project Management'],
-  },
-  {
-    icon: 'fas fa-code',
-    date: t('experiences.professionalItems.item5.date'),
-    title: t('experiences.professionalItems.item5.title'),
-    company: 'Shipeezi',
-    image: '/images/companies/shipeezi.png',
-    location: t('experiences.professionalItems.item5.location'),
-    text: t('experiences.professionalItems.item5.text'),
-    workMode: 'remote' as const,
-    skills: ['React', 'React Native', 'TypeScript', 'NestJS', 'MySQL', 'AWS S3', 'Node.js'],
-  },
-  {
-    icon: 'fas fa-bus',
-    date: t('experiences.professionalItems.item1.date'),
-    title: t('experiences.professionalItems.item1.title'),
-    company: 'Buser Brasil',
-    image: '/images/companies/buser.svg',
-    location: t('experiences.professionalItems.item1.location'),
-    text: t('experiences.professionalItems.item1.text'),
-    workMode: 'remote' as const,
-    skills: ['Vue.js', 'Nuxt', 'Django', 'Python', 'AWS S3', 'Node.js'],
-  },
-  {
-    icon: 'fas fa-laptop-code',
-    date: t('experiences.professionalItems.item2.date'),
-    title: t('experiences.professionalItems.item2.title'),
-    company: 'Quero Educação',
-    image: '/images/companies/quero_educacao.svg',
-    location: t('experiences.professionalItems.item2.location'),
-    text: t('experiences.professionalItems.item2.text'),
-    workMode: 'remote' as const,
-    skills: ['Vue.js', 'React', 'Phoenix', 'Elixir', 'Rails', 'Ruby'],
-  },
-  {
-    icon: 'fas fa-seedling',
-    date: t('experiences.professionalItems.item3.date'),
-    title: t('experiences.professionalItems.item3.title'),
-    company: 'Quero Educação',
-    image: '/images/companies/quero_educacao.svg',
-    location: t('experiences.professionalItems.item3.location'),
-    text: t('experiences.professionalItems.item3.text'),
-    workMode: 'remote' as const,
-    skills: ['Vue.js', 'HTML', 'CSS', 'JavaScript'],
-  },
-  {
-    icon: 'fas fa-cogs',
-    date: t('experiences.professionalItems.item4.date'),
-    title: t('experiences.professionalItems.item4.title'),
-    company: 'Quero Educação',
-    image: '/images/companies/quero_educacao.svg',
-    location: t('experiences.professionalItems.item4.location'),
-    text: t('experiences.professionalItems.item4.text'),
-    workMode: 'onsite' as const,
-    skills: ['Site Operations', 'Web Platform'],
-  },
-])
+const professionalItems = useProfessionalExperience()
 
 const educationItems = computed(() => [
   {
@@ -299,50 +220,6 @@ const items = computed(() => {
       "description": "Profissionais e de Ensino.",
       "professionalTab": "Profissionais",
       "educationTab": "Educacionais",
-      "professionalItems": {
-        "item6": {
-          "date": "Agosto de 2025 - Atualmente",
-          "title": "Senior Frontend Developer",
-          "location": "São José dos Campos, SP",
-          "text": "Participando do time de Plataforma Frontend, desenvolvendo soluções escaláveis e mantendo o Design System da empresa."
-        },
-        "item5b": {
-          "date": "Abril de 2025 - Agosto de 2025",
-          "title": "Engenheiro de Software Líder",
-          "location": "Remoto",
-          "text": "Liderança técnica de projetos, gestão de equipe e arquitetura de soluções fullstack para a plataforma de logística."
-        },
-        "item5": {
-          "date": "Julho de 2024 - Abril de 2025",
-          "title": "Desenvolvedor Fullstack",
-          "location": "Remoto",
-          "text": "Atuação como Desenvolvedor Fullstack, utilizando tecnologias como React, React Native, TypeScript, NestJS, microserviços, Sequelize e Banco de Dados MySQL."
-        },
-        "item1": {
-          "date": "Janeiro de 2022 - Abril de 2023",
-          "title": "Desenvolvedor Front-end",
-          "location": "São José dos Campos, SP",
-          "text": "Atuação como Desenvolvedor Frontend/Fullstack, utilizando tecnologias como Vue.js, Nuxt, Django (Python) na criação de interfaces para soluções B2B. Participação em uma equipe ágil com foco em resultados mensuráveis."
-        },
-        "item2": {
-          "date": "Março de 2021 - Dezembro de 2021",
-          "title": "Desenvolvedor Front-end",
-          "location": "São José dos Campos, SP",
-          "text": "Desenvolvimento com Vue.js, React, Phoenix (Elixir), Rails (Ruby). Criação de interfaces para os segmentos B2B e B2C."
-        },
-        "item3": {
-          "date": "Março de 2020 - Março de 2021",
-          "title": "Estagiário em Desenvolvimento Front-end",
-          "location": "São José dos Campos, SP",
-          "text": "Desenvolvendo telas e interfaces para o B2B."
-        },
-        "item4": {
-          "date": "Agosto de 2019 - Março de 2020",
-          "title": "Estagiário em SiteOps",
-          "location": "São José dos Campos, SP",
-          "text": "Cuidando das principais operações da plataforma web Quero Bolsa."
-        }
-      },
       "educationItems": {
         "item1": {
           "date": "Janeiro de 2017 - Dezembro de 2022",
@@ -377,50 +254,6 @@ const items = computed(() => {
       "description": "Professional and Educational.",
       "professionalTab": "Professional",
       "educationTab": "Educational",
-      "professionalItems": {
-        "item6": {
-          "date": "August 2025 - Present",
-          "title": "Senior Frontend Developer",
-          "location": "São José dos Campos, SP",
-          "text": "Part of the Frontend Platform team, developing scalable solutions and maintaining the company's Design System."
-        },
-        "item5b": {
-          "date": "April 2025 - August 2025",
-          "title": "Lead Software Engineer",
-          "location": "Remote",
-          "text": "Technical leadership of projects, team management, and fullstack architecture for the logistics platform."
-        },
-        "item5": {
-          "date": "July 2024 - April 2025",
-          "title": "Fullstack Developer",
-          "location": "Remote",
-          "text": "Working as a Fullstack Developer, using technologies such as React, React Native, TypeScript, NestJS, microservices, Sequelize, and MySQL Database."
-        },
-        "item1": {
-          "date": "January 2022 - April 2023",
-          "title": "Front-end Developer",
-          "location": "São José dos Campos, SP",
-          "text": "Worked as a Frontend/Fullstack Developer, using technologies like Vue.js, Nuxt, Django (Python) in creating interfaces for B2B solutions. Participation in an agile team with a focus on measurable results."
-        },
-        "item2": {
-          "date": "March 2021 - December 2021",
-          "title": "Front-end Developer",
-          "location": "São José dos Campos, SP",
-          "text": "Development with Vue.js, React, Phoenix (Elixir), Rails (Ruby). Creating interfaces for B2B and B2C segments."
-        },
-        "item3": {
-          "date": "March 2020 - March 2021",
-          "title": "Front-end Development Intern",
-          "location": "São José dos Campos, SP",
-          "text": "Developing screens and interfaces for B2B."
-        },
-        "item4": {
-          "date": "August 2019 - March 2020",
-          "title": "SiteOps Intern",
-          "location": "São José dos Campos, SP",
-          "text": "Handling the main operations of the Quero Bolsa web platform."
-        }
-      },
       "educationItems": {
         "item1": {
           "date": "January 2017 - December 2022",
@@ -455,50 +288,6 @@ const items = computed(() => {
       "description": "Profesionales y Educativas.",
       "professionalTab": "Profesionales",
       "educationTab": "Educativas",
-      "professionalItems": {
-        "item6": {
-          "date": "Agosto de 2025 - Actualmente",
-          "title": "Senior Frontend Developer",
-          "location": "São José dos Campos, SP",
-          "text": "Parte del equipo de Plataforma Frontend, desarrollando soluciones escalables y manteniendo el Design System de la empresa."
-        },
-        "item5b": {
-          "date": "Abril de 2025 - Agosto de 2025",
-          "title": "Ingeniero de Software Líder",
-          "location": "Remoto",
-          "text": "Liderazgo técnico de proyectos, gestión de equipos y arquitectura de soluciones fullstack para la plataforma de logística."
-        },
-        "item5": {
-          "date": "Julio de 2024 - Abril de 2025",
-          "title": "Desarrollador Fullstack",
-          "location": "Remoto",
-          "text": "Trabajo como Desarrollador Fullstack, utilizando tecnologías como React, React Native, TypeScript, NestJS, microservicios, Sequelize y base de datos MySQL."
-        },
-        "item1": {
-          "date": "Enero de 2022 - Abril de 2023",
-          "title": "Desarrollador Front-end",
-          "location": "São José dos Campos, SP",
-          "text": "Actuación como Desarrollador Frontend/Fullstack, utilizando tecnologías como Vue.js, Nuxt, Django (Python) en la creación de interfaces para soluciones B2B. Participación en un equipo ágil con enfoque en resultados medibles."
-        },
-        "item2": {
-          "date": "Marzo de 2021 - Diciembre de 2021",
-          "title": "Desarrollador Front-end",
-          "location": "São José dos Campos, SP",
-          "text": "Desarrollo con Vue.js, React, Phoenix (Elixir), Rails (Ruby). Creación de interfaces para los segmentos B2B y B2C."
-        },
-        "item3": {
-          "date": "Marzo de 2020 - Marzo de 2021",
-          "title": "Pasante en Desarrollo Front-end",
-          "location": "São José dos Campos, SP",
-          "text": "Desarrollando pantallas e interfaces para el B2B."
-        },
-        "item4": {
-          "date": "Agosto de 2019 - Marzo de 2020",
-          "title": "Pasante en SiteOps",
-          "location": "São José dos Campos, SP",
-          "text": "Cuidando de las principales operaciones de la plataforma web de Quero Bolsa."
-        }
-      },
       "educationItems": {
         "item1": {
           "date": "Enero de 2017 - Diciembre de 2022",

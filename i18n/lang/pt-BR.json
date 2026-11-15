@@ -42,5 +42,64 @@
       "title": "Contato",
       "description": "Mande uma mensagem"
     }
+  },
+  "professionalExperience": {
+    "item6": {
+      "date": "Agosto de 2025 - Atualmente",
+      "title": "Senior Frontend Developer",
+      "location": "São José dos Campos, SP",
+      "text": "Participando do time de Plataforma Frontend, desenvolvendo soluções escaláveis e mantendo o Design System da empresa."
+    },
+    "item5b": {
+      "date": "Abril de 2025 - Agosto de 2025",
+      "title": "Engenheiro de Software Líder",
+      "location": "Remoto",
+      "text": "Liderança técnica de projetos, gestão de equipe e arquitetura de soluções fullstack para a plataforma de logística."
+    },
+    "item5": {
+      "date": "Julho de 2024 - Abril de 2025",
+      "title": "Desenvolvedor Fullstack",
+      "location": "Remoto",
+      "text": "Atuação como Desenvolvedor Fullstack, utilizando tecnologias como React, React Native, TypeScript, NestJS, microserviços, Sequelize e Banco de Dados MySQL."
+    },
+    "item1": {
+      "date": "Janeiro de 2022 - Abril de 2023",
+      "title": "Desenvolvedor Front-end",
+      "location": "São José dos Campos, SP",
+      "text": "Atuação como Desenvolvedor Frontend/Fullstack, utilizando tecnologias como Vue.js, Nuxt, Django (Python) na criação de interfaces para soluções B2B. Participação em uma equipe ágil com foco em resultados mensuráveis."
+    },
+    "item2": {
+      "date": "Março de 2021 - Dezembro de 2021",
+      "title": "Desenvolvedor Front-end",
+      "location": "São José dos Campos, SP",
+      "text": "Desenvolvimento com Vue.js, React, Phoenix (Elixir), Rails (Ruby). Criação de interfaces para os segmentos B2B e B2C."
+    },
+    "item3": {
+      "date": "Março de 2020 - Março de 2021",
+      "title": "Estagiário em Desenvolvimento Front-end",
+      "location": "São José dos Campos, SP",
+      "text": "Desenvolvendo telas e interfaces para o B2B."
+    },
+    "item4": {
+      "date": "Agosto de 2019 - Março de 2020",
+      "title": "Estagiário em SiteOps",
+      "location": "São José dos Campos, SP",
+      "text": "Cuidando das principais operações da plataforma web Quero Bolsa."
+    }
+  },
+  "booksShelf": {
+    "intro": "Role pela estante ou escolha uma lombada para abrir a capa.",
+    "search": "Buscar por título ou autor",
+    "theme": "Filtrar por tema",
+    "allThemes": "Todos os temas",
+    "filter": "Filtrar por situação de leitura",
+    "filters": {
+      "all": "Todos",
+      "read": "Lidos",
+      "reading": "Lendo",
+      "queued": "Na fila",
+      "wishlist": "Desejos",
+      "favorite": "Favoritos"
+    }
   }
 }
