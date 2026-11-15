@@ -4,6 +4,7 @@ export interface ExperienceItem {
   title: string
   company: string
   image: string
+  companyMark?: string
   location: string
   text: string
   skills: string[]
@@ -21,6 +22,7 @@ export const useProfessionalExperience = () => {
       title: t('professionalExperience.item6.title'),
       company: 'Qeevo Group',
       image: '/images/companies/qeevo.png',
+      companyMark: '/images/companies/qeevo-mark.svg',
       location: t('professionalExperience.item6.location'),
       text: t('professionalExperience.item6.text'),
       isCurrentJob: true,

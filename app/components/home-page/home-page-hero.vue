@@ -34,13 +34,13 @@
       <HomePageGallery />
     </section>
 
-    <section
+    <AppSection
       id="experiencia-profissional"
       class="career-history"
-      aria-labelledby="career-heading"
+      :title="t('experience')"
+      :aria-label="t('experience')"
     >
-      <div class="career-container">
-        <h2 id="career-heading">{{ t('experience') }}</h2>
+      <UContainer>
         <article
           v-if="currentRole"
           class="career-feature"
@@ -48,7 +48,13 @@
         >
           <div>
             <p class="career-company">
-              <span aria-hidden="true" />
+              <img
+                v-if="currentRole.companyMark"
+                :src="currentRole.companyMark"
+                alt=""
+                width="28"
+                height="28"
+              >
               {{ currentRole.company }} · {{ t('currentRole') }}
             </p>
             <h3 id="current-role">{{ currentRole.title }}</h3>
@@ -89,8 +95,8 @@
           {{ t('viewFullCareer') }}
           <UIcon name="i-heroicons-arrow-right-20-solid" aria-hidden="true" />
         </NuxtLink>
-      </div>
-    </section>
+      </UContainer>
+    </AppSection>
   </div>
 </template>
 
@@ -263,7 +269,6 @@ const previousRoles = computed(() => {
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
   align-items: center;
   gap: 1.25rem clamp(1.25rem, 5vw, 4rem);
-  margin-block-start: 1.35rem;
   border-radius: 0.875rem;
   background: var(--site-navy);
   padding: clamp(1.4rem, 3.4vw, 2.4rem);
@@ -279,12 +284,8 @@ const previousRoles = computed(() => {
   font-weight: 650;
 }
 
-.career-company span {
-  width: 0.46rem;
-  height: 0.46rem;
+.career-company img {
   flex: none;
-  border-radius: 50%;
-  background: #8eb6ff;
 }
 
 .career-feature h3 {
@@ -320,15 +321,9 @@ const previousRoles = computed(() => {
   font-size: 0.79rem;
 }
 
-.career-history {
-  padding-block: clamp(2.75rem, 5vw, 4.5rem);
+.career-history.app-section {
   background: var(--site-soft);
-}
-
-.career-history h2 {
-  font-size: clamp(1.7rem, 3.5vw, 2.75rem);
-  font-weight: 750;
-  letter-spacing: -0.03em;
+  scroll-margin-block-start: var(--site-header-height);
 }
 
 .career-previous-heading {
