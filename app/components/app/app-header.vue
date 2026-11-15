@@ -84,24 +84,16 @@ const { y: scrollY } = useWindowScroll()
 }
 
 .site-header--scrolled {
-  background: var(--site-surface);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  backdrop-filter: blur(18px) saturate(145%);
   box-shadow:
     0 4px 16px -10px rgb(20 43 80 / 14%),
     0 1px 4px rgb(20 43 80 / 3%);
 }
 
-@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
-  .site-header--scrolled {
-    -webkit-backdrop-filter: blur(18px) saturate(145%);
-    backdrop-filter: blur(18px) saturate(145%);
-    background: color-mix(in srgb, var(--site-surface) 84%, transparent);
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .site-header {
     transition:
-      background-color 180ms ease,
       backdrop-filter 180ms ease,
       box-shadow 180ms ease;
   }
