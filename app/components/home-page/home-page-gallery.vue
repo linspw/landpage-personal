@@ -1,30 +1,66 @@
 <template>
-  <section
-    id="galeria"
-    class="home-gallery"
-    aria-labelledby="home-gallery-title"
-  >
-    <div class="site-container home-gallery-heading">
-      <h2 id="home-gallery-title">{{ t('title') }}</h2>
-      <p>{{ t('hint') }}</p>
-    </div>
+  <div id="galeria" class="home-gallery">
+    <UModal
+      v-model:open="expanded"
+      :title="t('title')"
+      :description="motion === 'reduce' ? undefined : t('hint')"
+      :transition="motion !== 'reduce'"
+      :ui="{
+        overlay: 'bg-slate-950/55',
+        content:
+          'max-w-[76rem] divide-none rounded-2xl bg-[var(--site-surface)]',
+      }"
+    >
+      <UButton
+        color="neutral"
+        variant="solid"
+        class="gallery-expand gallery-action"
+        icon="i-heroicons-arrows-pointing-out-20-solid"
+        :aria-label="t('expandLabel')"
+      />
+
+      <template #content="{ close }">
+        <InfiniteDrift
+          v-if="expanded"
+          class="gallery-expanded"
+          :bands="bands"
+          :label="t('expandedPreview')"
+          height="clamp(19rem, calc(100dvh - 3.5rem), 42rem)"
+          :image-height="110"
+          :gap="20"
+        />
+        <UButton
+          color="neutral"
+          variant="solid"
+          class="gallery-close gallery-action"
+          icon="i-heroicons-x-mark-20-solid"
+          :aria-label="t('close')"
+          @click="close"
+        />
+      </template>
+    </UModal>
 
     <InfiniteDrift
-      class="home-gallery-stage"
-      :bands="bands"
-      :label="t('title')"
-      height="clamp(32rem, 56vw, 47.5rem)"
-      :image-height="118"
-      :gap="20"
+      class="gallery-preview"
+      :bands="compactBands"
+      :enabled="!expanded"
+      :label="t('preview')"
+      height="clamp(14.5rem, 23vw, 20.5rem)"
+      :image-height="109"
+      :image-radius="12"
+      :gap="16"
     />
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { usePreferredReducedMotion } from '@vueuse/core'
 import InfiniteDrift from '~/components/effects/infinite-drift.vue'
 import type { InfiniteDriftBand } from '~/utils/infinite-drift'
 
 const { t } = useI18n({ useScope: 'local' })
+const expanded = ref(false)
+const motion = usePreferredReducedMotion()
 
 // These are the original SonoJS demo photos. Its last three files repeat 01–03.
 const rows = [
@@ -42,58 +78,104 @@ const bands: InfiniteDriftBand[] = rows.map(({ files, ...band }) => ({
     (file) => `/images/infinite-drift/${String(file).padStart(2, '0')}.jpg`,
   ),
 }))
+
+const compactBands = [4, 2, 3].map((index) => ({
+  ...bands[index]!,
+  offsetY: undefined,
+}))
 </script>
 
 <i18n lang="json">
 {
   "pt-BR": {
     "title": "Galeria",
-    "hint": "Role a página ou arraste as faixas para explorar as imagens."
+    "preview": "Prévia da galeria",
+    "expandedPreview": "Faixas da galeria",
+    "expandLabel": "Expandir galeria",
+    "close": "Fechar galeria",
+    "hint": "Arraste as faixas ou use as setas do teclado para explorar as imagens."
   },
   "en": {
     "title": "Gallery",
-    "hint": "Scroll the page or drag the bands to explore the images."
+    "preview": "Gallery preview",
+    "expandedPreview": "Gallery bands",
+    "expandLabel": "Expand gallery",
+    "close": "Close gallery",
+    "hint": "Drag the bands or use the arrow keys to explore the images."
   },
   "es": {
     "title": "Galería",
-    "hint": "Desplázate por la página o arrastra las franjas para explorar las imágenes."
+    "preview": "Vista previa de la galería",
+    "expandedPreview": "Franjas de la galería",
+    "expandLabel": "Ampliar galería",
+    "close": "Cerrar galería",
+    "hint": "Arrastra las franjas o usa las flechas del teclado para explorar las imágenes."
   }
 }
 </i18n>
 
 <style scoped>
 .home-gallery {
-  padding-block: clamp(2.75rem, 5vw, 4.5rem);
-  scroll-margin-block-start: var(--site-header-height);
+  position: relative;
+  min-width: 0;
+  scroll-margin-block-start: calc(var(--site-header-height) + 1rem);
 }
 
-.home-gallery-heading {
-  margin-block-end: 1.4rem;
+.gallery-preview,
+.gallery-expanded {
+  --drift-background: transparent;
 }
 
-.home-gallery-heading h2 {
-  color: var(--site-ink);
-  font-size: clamp(1.7rem, 3.5vw, 2.75rem);
-  font-weight: 750;
-  letter-spacing: -0.03em;
+.gallery-preview {
+  mask-image: linear-gradient(to right, transparent, black 7% 93%, transparent);
 }
 
-.home-gallery-heading p {
-  margin-block-start: 0.38rem;
-  color: var(--site-muted);
-  line-height: 1.55;
+.gallery-preview:focus-visible {
+  mask-image: none;
+  border-radius: 0.7rem;
 }
 
-.home-gallery-stage {
-  width: min(100% - 2 * clamp(0.5rem, 2vw, 2rem), 96rem);
-  margin-inline: auto;
+.gallery-action {
+  position: absolute;
+  z-index: 1;
+  inset: 0.65rem 0.65rem auto auto;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
   border: 1px solid var(--site-line);
-  border-radius: 0.875rem;
+  border-radius: 0.65rem;
+  background: var(--site-surface);
+  color: var(--site-navy);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .home-gallery-heading p {
-    display: none;
+.gallery-action:hover {
+  background: var(--site-soft);
+  color: var(--site-link);
+}
+
+.gallery-action:focus-visible {
+  outline: 2px solid var(--site-link);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery-expand {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .home-gallery:hover .gallery-expand,
+  .home-gallery:focus-within .gallery-expand {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gallery-expand {
+    transition: opacity 140ms ease-out;
   }
 }
 </style>

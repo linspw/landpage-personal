@@ -26,22 +26,7 @@
         </div>
       </div>
 
-      <article
-        v-if="currentRole"
-        class="career-feature"
-        aria-labelledby="current-role"
-      >
-        <p class="career-company">
-          <span aria-hidden="true" />
-          {{ currentRole.company }} · {{ t('currentRole') }}
-        </p>
-        <h2 id="current-role">{{ currentRole.title }}</h2>
-        <p class="career-feature-date">{{ currentRole.date }}</p>
-        <p class="career-feature-description">{{ currentRole.text }}</p>
-        <ul class="career-skills" role="list">
-          <li v-for="skill in currentRole.skills" :key="skill">{{ skill }}</li>
-        </ul>
-      </article>
+      <HomePageGallery />
     </section>
 
     <section
@@ -50,7 +35,31 @@
       aria-labelledby="career-heading"
     >
       <div class="career-container">
-        <h2 id="career-heading">{{ t('previousRoles') }}</h2>
+        <h2 id="career-heading">{{ t('experience') }}</h2>
+        <article
+          v-if="currentRole"
+          class="career-feature"
+          aria-labelledby="current-role"
+        >
+          <div>
+            <p class="career-company">
+              <span aria-hidden="true" />
+              {{ currentRole.company }} · {{ t('currentRole') }}
+            </p>
+            <h3 id="current-role">{{ currentRole.title }}</h3>
+            <p class="career-feature-date">{{ currentRole.date }}</p>
+          </div>
+          <div>
+            <p class="career-feature-description">{{ currentRole.text }}</p>
+            <ul class="career-skills" role="list">
+              <li v-for="skill in currentRole.skills" :key="skill">
+                {{ skill }}
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <h3 class="career-previous-heading">{{ t('previousRoles') }}</h3>
         <ol class="career-roles" role="list">
           <li
             v-for="role in previousRoles"
@@ -65,7 +74,7 @@
               loading="lazy"
             >
             <div>
-              <h3>{{ role.company }}</h3>
+              <h4>{{ role.company }}</h4>
               <p>{{ role.title }}</p>
             </div>
             <p class="career-role-date">{{ role.date }}</p>
@@ -106,6 +115,7 @@ const previousRoles = computed(() => {
     "viewExperience": "Ver experiência",
     "viewProjects": "Ver projetos",
     "currentRole": "Cargo atual",
+    "experience": "Experiência profissional",
     "previousRoles": "Experiências anteriores",
     "viewFullCareer": "Ver trajetória completa"
   },
@@ -115,6 +125,7 @@ const previousRoles = computed(() => {
     "viewExperience": "View experience",
     "viewProjects": "View projects",
     "currentRole": "Current role",
+    "experience": "Professional experience",
     "previousRoles": "Previous experience",
     "viewFullCareer": "View full career history"
   },
@@ -124,6 +135,7 @@ const previousRoles = computed(() => {
     "viewExperience": "Ver experiencia",
     "viewProjects": "Ver proyectos",
     "currentRole": "Puesto actual",
+    "experience": "Experiencia profesional",
     "previousRoles": "Experiencias anteriores",
     "viewFullCareer": "Ver trayectoria completa"
   }
@@ -226,9 +238,14 @@ const previousRoles = computed(() => {
 }
 
 .career-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1.25rem clamp(1.25rem, 5vw, 4rem);
+  margin-block-start: 1.35rem;
   border-radius: 0.875rem;
   background: var(--site-navy);
-  padding: clamp(1.4rem, 4vw, 2.65rem);
+  padding: clamp(1.4rem, 3.4vw, 2.4rem);
   color: #f5f8ff;
 }
 
@@ -249,9 +266,9 @@ const previousRoles = computed(() => {
   background: #8eb6ff;
 }
 
-.career-feature h2 {
-  margin-top: 1.35rem;
-  font-size: clamp(1.9rem, 3.4vw, 3.35rem);
+.career-feature h3 {
+  margin-top: 0.85rem;
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
   line-height: 1.09;
   letter-spacing: -0.03em;
   font-weight: 750;
@@ -265,7 +282,6 @@ const previousRoles = computed(() => {
 }
 
 .career-feature-description {
-  margin-top: 1.2rem;
   color: #e0eaff;
   line-height: 1.64;
   font-size: 0.94rem;
@@ -276,8 +292,8 @@ const previousRoles = computed(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
-  margin-top: 1.5rem;
-  padding-top: 1rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
   border-top: 1px solid #577097;
   color: #d0e0ff;
   font-size: 0.79rem;
@@ -294,8 +310,14 @@ const previousRoles = computed(() => {
   letter-spacing: -0.03em;
 }
 
+.career-previous-heading {
+  margin-block-start: clamp(1.6rem, 4vw, 2.7rem);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 750;
+}
+
 .career-roles {
-  margin-block: 1.35rem 0.8rem;
+  margin-block: 0.8rem;
   border-block-start: 1px solid #c9d6e6;
 }
 
@@ -317,7 +339,7 @@ const previousRoles = computed(() => {
   object-fit: contain;
 }
 
-.career-role h3 {
+.career-role h4 {
   font-size: 1.07rem;
   font-weight: 750;
 }
@@ -335,6 +357,10 @@ const previousRoles = computed(() => {
   .career-hero {
     grid-template-columns: 1fr;
     padding-top: 7.5rem;
+  }
+
+  .career-feature {
+    grid-template-columns: 1fr;
   }
 }
 

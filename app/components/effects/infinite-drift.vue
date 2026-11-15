@@ -18,6 +18,7 @@
     @pointercancel="stopDrag"
     @lostpointercapture.self="stopDrag"
     @pointerleave="leaveStage"
+    @wheel="handleWheel"
     @keydown="handleKey"
   >
     <div v-if="!ready" class="drift-still" aria-hidden="true">
@@ -78,6 +79,7 @@ const props = withDefaults(
     imageRadius?: number
     inertia?: number
     scrollStrength?: number
+    enabled?: boolean
   }>(),
   {
     label: 'Infinite Drift',
@@ -87,6 +89,7 @@ const props = withDefaults(
     imageRadius: 14,
     inertia: 0.92,
     scrollStrength: 2.5,
+    enabled: true,
   },
 )
 
@@ -146,16 +149,34 @@ watch(
     reducedMotion,
     contextLost,
     activeBands,
+    () => props.enabled,
     () => props.gap,
     () => props.imageHeight,
     () => props.imageRadius,
   ],
   (
-    [element, entered, motion, lost, bands, gap, imageHeight, imageRadius],
+    [
+      element,
+      entered,
+      motion,
+      lost,
+      bands,
+      enabled,
+      gap,
+      imageHeight,
+      imageRadius,
+    ],
     _,
     onCleanup,
   ) => {
-    if (!element || !entered || motion === 'reduce' || lost || !bands.length)
+    if (
+      !element ||
+      !entered ||
+      motion === 'reduce' ||
+      lost ||
+      !enabled ||
+      !bands.length
+    )
       return
 
     const abort = new AbortController()
@@ -252,6 +273,24 @@ function startDrag(event: PointerEvent) {
   pointer = { id: event.pointerId, x: event.clientX, y: event.clientY }
 }
 
+function handleWheel(event: WheelEvent) {
+  if (!canMove.value || event.ctrlKey || !event.cancelable) return
+
+  const unit =
+    event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? stageHeight : 1
+  const delta =
+    Math.abs(event.deltaX) > Math.abs(event.deltaY)
+      ? event.deltaX
+      : event.deltaY
+  if (!delta) return
+
+  event.preventDefault()
+  const movement = Math.min(180, Math.max(-180, delta * unit))
+  target += movement * 1.7
+  velocity = Math.min(15, Math.max(-15, movement * 0.15))
+  queueFrame()
+}
+
 function drag(event: PointerEvent) {
   if (!pointer || event.pointerId !== pointer.id) return
   const dx = event.clientX - pointer.x
@@ -259,7 +298,6 @@ function drag(event: PointerEvent) {
 
   if (!pointer.axis) {
     if (Math.max(Math.abs(dx), Math.abs(dy)) < 7) return
-    if (event.pointerType === 'touch' && Math.abs(dy) > Math.abs(dx)) return
     pointer.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y'
     stage.value?.setPointerCapture(event.pointerId)
     dragging.value = true
@@ -301,11 +339,11 @@ function handleKey(event: KeyboardEvent) {
   overflow: clip;
   width: 100%;
   container-type: size;
-  background: var(--site-soft, #eff4fb);
+  background: var(--drift-background, var(--site-soft, #eff4fb));
 }
 
 .drift-ready {
-  touch-action: pan-y pinch-zoom;
+  touch-action: pinch-zoom;
   cursor: grab;
   user-select: none;
 }
