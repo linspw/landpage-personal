@@ -455,11 +455,7 @@ onBeforeUnmount(() => {
   --book-height: clamp(14.5rem, 28vw, 25rem);
   --cover-width: calc(var(--book-height) * 0.63);
   --spine-width: calc(var(--book-height) * 0.175);
-  background: var(--site-surface);
   color: var(--site-ink);
-  overflow: clip;
-  border: 1px solid var(--site-line);
-  border-radius: 0.875rem;
 }
 
 .shelf-viewport {
@@ -468,7 +464,7 @@ onBeforeUnmount(() => {
   padding-block: 2.1rem 1.5rem;
   touch-action: pan-y pinch-zoom;
   user-select: none;
-  background: linear-gradient(180deg, #edf3fc, #e8f0fa 76%, #d3e0f0);
+  mask-image: linear-gradient(to right, transparent, black 7% 93%, transparent);
 }
 
 .shelf-viewport--dragging,
@@ -743,7 +739,6 @@ onBeforeUnmount(() => {
   align-items: center;
   gap: 1rem;
   padding: 1.35rem var(--shelf-gutter) 1.5rem;
-  border-top: 1px solid var(--site-line);
 }
 
 .shelf-details {
