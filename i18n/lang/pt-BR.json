@@ -48,11 +48,11 @@
       "date": "Agosto de 2025 - Atualmente",
       "title": "Engenheiro de Software Sênior",
       "location": "São José dos Campos, SP",
-      "text": "No time de Plataforma da Qeevo, atuo na evolução do marketplace, na migração da renderização para a Cloudflare e na criação de SDKs. Ajudei a implementar autenticação para mais de 30 sistemas.",
+      "text": "No time de Plataforma da Qeevo, cuido da arquitetura, da manutenção e da observabilidade do marketplace e desenvolvo funcionalidades. Trabalhei na migração para a Cloudflare e na autenticação para mais de 30 sistemas.",
       "achievements": {
         "edge": "Arquitetura da migração da renderização do marketplace de AWS EKS para a Cloudflare.",
         "auth": "Criação de uma solução de autenticação com Keycloak para mais de 30 sistemas.",
-        "marketplace": "Evolução da busca, das ofertas, do checkout e das integrações do marketplace no time de Plataforma.",
+        "marketplace": "Arquitetura, manutenção e observabilidade de todo o marketplace, com desenvolvimento de funcionalidades na plataforma.",
         "content": "Arquitetura de uma plataforma de conteúdo, publicidade e eventos com SDKs para Nuxt, Next.js e distribuição via CDN.",
         "customerData": "Arquitetura e implementação da plataforma de dados de clientes em produção.",
         "media": "Criação do núcleo de um serviço próprio de transformação e entrega de imagens em colaboração com a equipe.",

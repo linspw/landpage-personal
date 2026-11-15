@@ -47,11 +47,11 @@
       "date": "August 2025 - Present",
       "title": "Senior Software Engineer",
       "location": "São José dos Campos, SP",
-      "text": "On Qeevo’s Platform team, I work on the marketplace, its migration to edge rendering on Cloudflare, and shared SDKs. I helped implement authentication for more than 30 systems.",
+      "text": "On Qeevo’s Platform team, I work on marketplace architecture, maintenance, and observability, and I build features. I worked on the Cloudflare migration and authentication for more than 30 systems.",
       "achievements": {
         "edge": "Led the architecture for migrating marketplace rendering from AWS EKS to Cloudflare.",
         "auth": "Built a Keycloak-based authentication solution for more than 30 systems.",
-        "marketplace": "Evolved marketplace search, offers, checkout, and integrations on the Platform team.",
+        "marketplace": "Worked on architecture, maintenance, and observability across the marketplace and built features for the platform.",
         "content": "Designed a platform for content, advertising, and events with SDKs for Nuxt, Next.js, and CDN delivery.",
         "customerData": "Designed and implemented a customer data platform running in production.",
         "media": "Co-developed the core of an in-house image transformation and delivery service.",
