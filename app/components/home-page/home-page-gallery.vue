@@ -58,6 +58,12 @@ import { usePreferredReducedMotion } from '@vueuse/core'
 import InfiniteDrift from '~/components/effects/infinite-drift.vue'
 import type { InfiniteDriftBand } from '~/utils/infinite-drift'
 
+const props = withDefaults(defineProps<{
+  tiltDirection?: 'left' | 'right'
+}>(), {
+  tiltDirection: 'left',
+})
+
 const { t } = useI18n({ useScope: 'local' })
 const expanded = ref(false)
 const motion = usePreferredReducedMotion()
@@ -95,16 +101,21 @@ const rows = [
   },
 ]
 
-const bands: InfiniteDriftBand[] = rows.map(({ files, ...band }) => ({
-  ...band,
-  rotation: 7,
-  images: files.map((file) => `/images/infinite-drift/snowl/${file}.webp`),
-}))
+const bands = computed<InfiniteDriftBand[]>(() => {
+  const rotation = props.tiltDirection === 'right' ? -7 : 7
+  return rows.map(({ files, ...band }) => ({
+    ...band,
+    rotation,
+    images: files.map((file) => `/images/infinite-drift/snowl/${file}.webp`),
+  }))
+})
 
-const compactBands = [4, 2, 3].map((index) => ({
-  ...bands[index]!,
-  offsetY: undefined,
-}))
+const compactBands = computed(() =>
+  [4, 2, 3].map((index) => ({
+    ...bands.value[index]!,
+    offsetY: undefined,
+  })),
+)
 </script>
 
 <i18n lang="json">

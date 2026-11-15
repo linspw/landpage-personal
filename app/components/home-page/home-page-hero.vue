@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <HomePageGallery />
+      <HomePageGallery tilt-direction="right" />
     </section>
 
     <AppSection
