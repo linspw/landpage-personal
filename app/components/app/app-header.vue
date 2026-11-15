@@ -1,160 +1,228 @@
 <template>
-  <header class="app-header">
-    <UContainer class="px-4 py-3">
-      <div
-        class="animate__animated animate__fadeInDownBig animate__fast header-container mx-auto gap-3 flex w-full items-center justify-between rounded-2xl border border-white/60 bg-white/85 px-5 py-3 backdrop-blur-xl"
-      >
-        <NuxtLink
-          to="/"
-          class="flex items-center gap-3 text-secondary no-underline flex-1"
-        >
-          <div
-            class="logo-container flex h-12 w-12 items-center justify-center rounded-xl border-2 border-secondary font-semibold text-secondary"
-          >
-            JC
-          </div>
+  <header class="site-header">
+    <div class="site-header-inner site-container">
+      <NuxtLink to="/" class="site-brand">
+        <span class="site-monogram" aria-hidden="true">JC</span>
+        <span>Jessé Correia</span>
+      </NuxtLink>
 
-          <span class="text-base font-black text-secondary md:text-lg">
-            Jessé Correia
-          </span>
+      <nav class="site-nav" :aria-label="t('navigation')">
+        <NuxtLink
+          v-for="page in pages"
+          :key="page.url"
+          :to="page.url"
+          class="site-nav-link"
+        >
+          {{ page.title }}
+        </NuxtLink>
+      </nav>
+
+      <div class="site-header-actions">
+        <AppLanguageDropdownMenu :label="t('language')" />
+
+        <NuxtLink to="/contact" class="site-contact">
+          {{ $t('pages.contact.title') }}
+          <UIcon
+            name="i-heroicons-arrow-up-right-20-solid"
+            aria-hidden="true"
+          />
         </NuxtLink>
 
-        <ClientOnly>
-          <div v-if="isMobile" class="flex lg:w-full items-center justify-end gap-3">
-            <AppLanguageDropdownMenu>
-              <UButton
-                color="neutral"
-                variant="soft"
-                icon="i-heroicons-language-16-solid"
-                trailing-icon="i-heroicons-chevron-down-16-solid"
-              />
-            </AppLanguageDropdownMenu>
-
-            <UButton
-              color="primary"
-              variant="solid"
-              icon="i-heroicons-bars-3"
-              aria-label="Abrir menu"
-              @click="drawer = !drawer"
-            />
-          </div>
-
-          <nav v-else class="flex flex-1 items-center justify-end gap-1">
-            <NuxtLink
-              v-for="pageInfo in pageInfos"
-              :key="pageInfo.title"
-              :to="pageInfo.url"
-              class="nav-link rounded-full px-4 py-2 text-sm font-medium text-secondary transition"
-            >
-              {{ pageInfo.title }}
-            </NuxtLink>
-
-            <AppLanguageDropdownMenu>
-              <UButton
-                color="neutral"
-                variant="ghost"
-                trailing-icon="i-heroicons-chevron-down-16-solid"
-              >
-                <template #leading>
-                  <i class="fas fa-language text-secondary" aria-hidden="true" />
-                </template>
-                <span class="ml-2 text-secondary">{{ t('language') }}</span>
-              </UButton>
-            </AppLanguageDropdownMenu>
-          </nav>
-        </ClientOnly>
+        <button
+          class="site-menu-toggle"
+          type="button"
+          :aria-label="t('openMenu')"
+          :aria-expanded="drawer"
+          @click="drawer = !drawer"
+        >
+          <UIcon name="i-heroicons-bars-3-20-solid" aria-hidden="true" />
+        </button>
       </div>
-    </UContainer>
+    </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core'
-
-const props = defineProps<{
-  modelValue: boolean
-}>()
-const emit = defineEmits(['update:modelValue'])
-
-const drawer = useVModel(props, 'modelValue', emit)
-const pageInfos = usePortalPagesInfo()
-const $display = useDisplay()
-const { t } = useI18n({
-  useScope: 'local',
-})
-
-const isMobile = computed(() => $display.mdAndDown.value)
+const drawer = defineModel<boolean>({ required: true })
+const pages = usePortalPagesInfo()
+const { t } = useI18n({ useScope: 'local' })
 </script>
-
-<style scoped>
-.app-header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-}
-
-.header-container {
-  box-shadow: 
-    0 4px 20px -4px rgba(0, 0, 0, 0.06),
-    0 2px 6px -1px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.header-container:hover {
-  box-shadow: 
-    0 8px 28px -6px rgba(0, 0, 0, 0.08),
-    0 4px 10px -2px rgba(0, 0, 0, 0.04);
-}
-
-.logo-container {
-  transition: all 0.3s ease;
-}
-
-.logo-container:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.nav-link {
-  position: relative;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 6px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-primary);
-  border-radius: 1px;
-  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-  transform: translateX(-50%);
-}
-
-.nav-link:hover {
-  color: var(--color-primary);
-}
-
-.nav-link:hover::after {
-  width: calc(100% - 32px);
-}
-</style>
 
 <i18n lang="json">
 {
   "pt-BR": {
-    "language": "Idioma"
+    "navigation": "Navegação principal",
+    "language": "Idioma",
+    "openMenu": "Abrir menu"
   },
   "en": {
-    "language": "Language"
+    "navigation": "Main navigation",
+    "language": "Language",
+    "openMenu": "Open menu"
   },
   "es": {
-    "language": "Idioma"
+    "navigation": "Navegación principal",
+    "language": "Idioma",
+    "openMenu": "Abrir menú"
   }
 }
 </i18n>
+
+<style scoped>
+.site-header {
+  position: fixed;
+  z-index: 1000;
+  inset: 0 0 auto;
+  background: var(--site-surface);
+  border-block-end: 1px solid var(--site-line);
+  color: var(--site-ink);
+}
+
+.site-header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.75rem);
+  height: calc(var(--site-header-height) - 1px);
+}
+
+.site-brand,
+.site-header-actions,
+.site-nav,
+.site-contact {
+  display: flex;
+  align-items: center;
+}
+
+.site-brand {
+  gap: 0.68rem;
+  width: fit-content;
+  min-height: 44px;
+  white-space: nowrap;
+  font-size: 0.94rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+.site-monogram {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 0.58rem;
+  background: var(--site-navy);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.site-nav {
+  justify-content: center;
+  align-self: stretch;
+  gap: clamp(0.6rem, 1.6vw, 1.45rem);
+}
+
+.site-nav-link {
+  position: relative;
+  display: grid;
+  align-items: center;
+  align-self: stretch;
+  color: var(--site-muted);
+  white-space: nowrap;
+  font-size: 0.84rem;
+  font-weight: 620;
+}
+
+.site-nav-link:hover,
+.site-nav-link.router-link-active {
+  color: var(--site-link);
+}
+
+.site-nav-link.router-link-active::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: var(--site-link);
+}
+
+.site-header-actions {
+  justify-self: end;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.site-contact,
+.site-menu-toggle {
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid var(--site-line);
+  border-radius: 0.68rem;
+  color: var(--site-navy);
+}
+
+.site-contact {
+  gap: 0.4rem;
+  padding-inline: 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.site-contact:hover,
+.site-menu-toggle:hover {
+  background: var(--site-soft);
+  border-color: var(--site-control-border);
+}
+
+.site-menu-toggle {
+  display: none;
+  width: 44px;
+  cursor: pointer;
+}
+
+.site-menu-toggle :deep(span) {
+  font-size: 1.15rem;
+}
+
+.site-brand:focus-visible,
+.site-contact:focus-visible,
+.site-menu-toggle:focus-visible {
+  outline: 2px solid var(--site-link);
+  outline-offset: 3px;
+}
+
+.site-nav-link:focus-visible {
+  outline: 2px solid var(--site-link);
+  outline-offset: -2px;
+}
+
+@media (max-width: 860px) {
+  .site-header-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .site-nav,
+  .site-contact {
+    display: none;
+  }
+
+  .site-menu-toggle {
+    display: grid;
+    place-items: center;
+  }
+}
+
+@media (max-width: 359px) {
+  .site-brand {
+    font-size: 0.85rem;
+    gap: 0.48rem;
+  }
+
+  .site-header-actions {
+    gap: 0.3rem;
+  }
+}
+</style>

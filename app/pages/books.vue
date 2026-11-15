@@ -1,27 +1,41 @@
 <template>
   <app-page with-top-margin>
     <div class="books-page">
-      <UContainer class="books-heading">
-        <h1 class="text-2xl font-bold uppercase md:text-3xl">
+      <div class="books-heading site-container">
+        <h1 class="books-title">
           {{ t('pages.books.title') }}
         </h1>
         <p>{{ t('booksShelf.intro') }}</p>
 
         <div class="books-search">
           <UInput
+            ref="searchInput"
             v-model="searchQuery"
             :aria-label="t('booksShelf.search')"
             :placeholder="t('booksShelf.search')"
             icon="i-heroicons-magnifying-glass"
-            size="lg"
+            size="xl"
             class="min-w-0 flex-1"
-          />
+            :trailing="Boolean(searchQuery)"
+          >
+            <template v-if="searchQuery" #trailing>
+              <UButton
+                color="neutral"
+                variant="ghost"
+                size="sm"
+                icon="i-heroicons-x-mark-16-solid"
+                :aria-label="t('booksShelf.clearSearch')"
+                @click="clearSearch"
+              />
+            </template>
+          </UInput>
           <USelectMenu
             v-model="selectedTheme"
             :items="themeOptions"
             value-key="value"
             :aria-label="t('booksShelf.theme')"
-            size="lg"
+            icon="i-heroicons-adjustments-horizontal-20-solid"
+            size="xl"
             class="w-full sm:w-64"
           />
         </div>
@@ -41,7 +55,7 @@
             {{ t(`booksShelf.filters.${filter}`) }}
           </button>
         </div>
-      </UContainer>
+      </div>
 
       <BookShelf :books="shelfBooks" />
     </div>
@@ -57,6 +71,12 @@ useHead({ title: 'pages.books.title' })
 
 const { t } = useI18n()
 const searchQuery = ref('')
+const searchInput = useTemplateRef('searchInput')
+
+function clearSearch() {
+  searchQuery.value = ''
+  searchInput.value?.inputRef?.focus()
+}
 const allThemes = '__all__'
 const selectedTheme = ref(allThemes)
 const filters = [
@@ -118,37 +138,40 @@ const shelfBooks = computed(() => {
 
 <style scoped>
 .books-page {
-  min-height: calc(100dvh - 80px);
-  padding-bottom: clamp(2.5rem, 6vw, 5rem);
-  background: #faf8f3;
+  min-height: calc(100dvh - var(--site-header-height));
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+  background: var(--site-canvas);
 }
 
 .books-heading {
-  --ui-text-dimmed: #625542;
-  padding-block: clamp(1.45rem, 3.5vw, 2.6rem) 0.8rem;
+  padding-block: clamp(1.75rem, 4vw, 3.5rem) 0.5rem;
 }
 
-.books-heading h1 {
-  color: #2d281e;
+.books-title {
+  color: var(--site-navy);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
 }
 
 .books-heading p {
-  margin-block: 0.6rem 1.1rem;
-  color: #534737;
+  margin-block: 0.6rem 1.55rem;
+  color: var(--site-muted);
   line-height: 1.55;
 }
 
 .books-search {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
+  gap: 0.75rem;
 }
 
 .books-filters {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 1.1rem;
-  margin-top: 0.6rem;
+  column-gap: 1.3rem;
+  margin-top: 0.65rem;
   align-items: center;
 }
 
@@ -156,20 +179,23 @@ const shelfBooks = computed(() => {
   min-height: 44px;
   padding-inline: 0.15rem;
   border-bottom: 2px solid transparent;
-  color: #625542;
+  color: var(--site-muted);
   cursor: pointer;
-  font-size: 0.87rem;
+  font-size: 0.85rem;
   font-weight: 650;
 }
 
-.books-filters button:hover,
+.books-filters button:hover {
+  color: var(--site-link);
+}
+
 .books-filters button[aria-pressed='true'] {
-  color: #763c2d;
+  color: var(--site-link);
   border-bottom-color: currentColor;
 }
 
 .books-filters button:focus-visible {
-  outline: 2px solid #763c2d;
+  outline: 2px solid var(--site-link);
   outline-offset: 2px;
 }
 
@@ -178,8 +204,16 @@ const shelfBooks = computed(() => {
     flex-direction: column;
   }
 
+  .books-heading p {
+    margin-bottom: 1.15rem;
+  }
+
   .books-filters {
-    column-gap: 0.9rem;
+    column-gap: 0.65rem;
+  }
+
+  .books-filters button {
+    padding-inline: 0.1rem;
   }
 }
 </style>

@@ -89,6 +89,7 @@
   "booksShelf": {
     "intro": "Desplázate por la estantería o selecciona un lomo para ver la portada.",
     "search": "Buscar por título o autor",
+    "clearSearch": "Borrar búsqueda",
     "theme": "Filtrar por tema",
     "allThemes": "Todos los temas",
     "filter": "Filtrar por estado de lectura",

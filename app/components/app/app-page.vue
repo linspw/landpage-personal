@@ -22,6 +22,6 @@ defineProps({
 }
 
 .app-page--with-top-margin {
-  margin-top: 80px;
+  margin-top: var(--site-header-height);
 }
 </style>

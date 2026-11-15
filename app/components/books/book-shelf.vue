@@ -141,13 +141,13 @@ let focusAfterAnimation = false
 const bookKey = (book: Book) => JSON.stringify([book.title, book.author])
 const palettes = [
   'navy',
-  'wine',
-  'teal',
-  'sand',
-  'olive',
+  'cobalt',
+  'harbor',
+  'silver',
+  'steel',
   'ink',
-  'clay',
-  'paper',
+  'ocean',
+  'mist',
 ]
 const bookPalette = (book: Book) => {
   const code = Array.from(book.title).reduce(
@@ -451,13 +451,16 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .book-shelf {
-  --shelf-gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --shelf-gutter: max(
+    var(--site-gutter),
+    calc((100% - var(--site-content-width)) / 2)
+  );
   --book-height: clamp(14.5rem, 28vw, 24rem);
   --cover-width: calc(var(--book-height) * 0.63);
   --spine-width: calc(var(--book-height) * 0.175);
-  background: #eae4d7;
-  color: #2d281e;
-  border-block: 1px solid #d4c9b7;
+  background: var(--site-surface);
+  color: var(--site-ink);
+  border-block: 1px solid var(--site-line);
 }
 
 .shelf-viewport {
@@ -466,7 +469,7 @@ onBeforeUnmount(() => {
   padding-block: 2.1rem 1.5rem;
   touch-action: pan-y pinch-zoom;
   user-select: none;
-  background: linear-gradient(180deg, #eee9de, #eae4d7 78%, #d8cbb8);
+  background: linear-gradient(180deg, #edf3fc, #e8f0fa 76%, #d3e0f0);
 }
 
 .shelf-viewport--dragging,
@@ -493,9 +496,9 @@ onBeforeUnmount(() => {
 }
 
 .book {
-  --binding: #27496c;
-  --print: #fff4dc;
-  --foil: #b9d8f3;
+  --binding: #183660;
+  --print: #f1f6ff;
+  --foil: #bbd2f8;
   position: relative;
   display: block;
   width: 100%;
@@ -523,40 +526,46 @@ onBeforeUnmount(() => {
   background:
     radial-gradient(ellipse at top, #fff1 0%, transparent 66%),
     linear-gradient(90deg, #0005, #0000 14%, #0000 88%, #0003), var(--binding);
-  border: 1px solid #0005;
+  border: 1px solid color-mix(in srgb, var(--site-navy) 32%, transparent);
   border-radius: 0.3rem 0.45rem 0.45rem 0.3rem;
-  box-shadow: 0.32rem 0.5rem 0.65rem #3b2b2450;
+  box-shadow: 0.32rem 0.5rem 0.65rem #132a4f45;
 }
 
-.book--wine {
-  --binding: #803e3e;
-  --foil: #efb58f;
+.book--cobalt {
+  --binding: #1549b3;
+  --foil: #c3d8ff;
 }
-.book--teal {
-  --binding: #285852;
-  --foil: #a7d1ae;
+
+.book--harbor {
+  --binding: #314f6e;
+  --foil: #c6d9ef;
 }
-.book--sand {
-  --binding: #d7bb8b;
-  --print: #33261c;
-  --foil: #793d38;
+
+.book--silver {
+  --binding: #d4e4f9;
+  --print: #142e5a;
+  --foil: #325d9b;
 }
-.book--olive {
-  --binding: #4d5738;
-  --foil: #d8c593;
+
+.book--steel {
+  --binding: #475d78;
+  --foil: #dbe6f4;
 }
+
 .book--ink {
-  --binding: #303233;
-  --foil: #deb88a;
+  --binding: #223047;
+  --foil: #bed3ef;
 }
-.book--clay {
-  --binding: #963e27;
-  --foil: #f3bb8e;
+
+.book--ocean {
+  --binding: #2d527f;
+  --foil: #c3daf9;
 }
-.book--paper {
-  --binding: #dbd2ba;
-  --print: #202f45;
-  --foil: #3d5680;
+
+.book--mist {
+  --binding: #e3eaf4;
+  --print: #263958;
+  --foil: #45638b;
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -572,7 +581,7 @@ onBeforeUnmount(() => {
 
 .book:focus-visible,
 .shelf-controls button:focus-visible {
-  outline: 2px solid #253f6a;
+  outline: 2px solid var(--site-link);
   outline-offset: 3px;
 }
 
@@ -615,12 +624,12 @@ onBeforeUnmount(() => {
   transform: rotate(45deg);
 }
 
-.book--wine .spine-decoration,
-.book--clay .spine-decoration {
+.book--cobalt .spine-decoration,
+.book--ocean .spine-decoration {
   border-radius: 50% 50% 0 0;
 }
 
-.book--teal .spine-decoration,
+.book--harbor .spine-decoration,
 .book--ink .spine-decoration {
   width: 44%;
   border-radius: 0;
@@ -718,14 +727,14 @@ onBeforeUnmount(() => {
   transform: none;
 }
 
-.book--sand .cover-art span,
-.book--teal .cover-art span,
-.book--paper .cover-art span {
+.book--silver .cover-art span,
+.book--harbor .cover-art span,
+.book--mist .cover-art span {
   border-radius: 50% 50% 0;
 }
 
-.book--clay .cover-art span,
-.book--olive .cover-art span {
+.book--ocean .cover-art span,
+.book--steel .cover-art span {
   transform: rotate(18deg);
 }
 
@@ -734,8 +743,8 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  padding: 1.05rem var(--shelf-gutter) 1.25rem;
-  border-top: 1px solid #cebfac;
+  padding: 1.35rem var(--shelf-gutter) 1.5rem;
+  border-top: 1px solid var(--site-line);
 }
 
 .shelf-details {
@@ -766,7 +775,7 @@ onBeforeUnmount(() => {
 }
 
 .shelf-details p {
-  color: #534737;
+  color: var(--site-muted);
   margin-top: 0.2rem;
   font-size: 0.87rem;
 }
@@ -774,7 +783,7 @@ onBeforeUnmount(() => {
 .shelf-details .book-themes {
   margin-top: 0.4rem;
   font-size: 0.76rem;
-  color: #625542;
+  color: var(--site-muted);
 }
 
 .book-meta,
@@ -787,7 +796,7 @@ onBeforeUnmount(() => {
 .book-meta {
   margin-top: 0.4rem;
   flex-wrap: wrap;
-  color: #534737;
+  color: var(--site-muted);
   font-size: 0.76rem;
 }
 
@@ -805,14 +814,14 @@ onBeforeUnmount(() => {
   width: 44px;
   height: 44px;
   place-items: center;
-  border: 1px solid #8a7960;
+  border: 1px solid var(--site-control-border);
   border-radius: 50%;
-  color: #2d281e;
+  color: var(--site-navy);
   cursor: pointer;
 }
 
 .shelf-controls button:not(:disabled):hover {
-  background: #d9ccba;
+  background: var(--site-soft);
 }
 
 .shelf-controls button:disabled {

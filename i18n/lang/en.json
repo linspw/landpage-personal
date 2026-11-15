@@ -89,6 +89,7 @@
   "booksShelf": {
     "intro": "Scroll through the shelf or select a spine to reveal the cover.",
     "search": "Search by title or author",
+    "clearSearch": "Clear search",
     "theme": "Filter by topic",
     "allThemes": "All topics",
     "filter": "Filter by reading status",

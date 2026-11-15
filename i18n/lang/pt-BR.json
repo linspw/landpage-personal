@@ -90,6 +90,7 @@
   "booksShelf": {
     "intro": "Role pela estante ou escolha uma lombada para abrir a capa.",
     "search": "Buscar por título ou autor",
+    "clearSearch": "Limpar busca",
     "theme": "Filtrar por tema",
     "allThemes": "Todos os temas",
     "filter": "Filtrar por situação de leitura",

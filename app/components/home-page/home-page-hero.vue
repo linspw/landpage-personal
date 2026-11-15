@@ -44,7 +44,11 @@
       </article>
     </section>
 
-    <section id="experiencia-profissional" class="career-history" aria-labelledby="career-heading">
+    <section
+      id="experiencia-profissional"
+      class="career-history"
+      aria-labelledby="career-heading"
+    >
       <div class="career-container">
         <h2 id="career-heading">{{ t('previousRoles') }}</h2>
         <ol class="career-roles" role="list">
@@ -128,12 +132,12 @@ const previousRoles = computed(() => {
 
 <style scoped>
 .career-home {
-  background: #fcfdff;
+  background: var(--site-canvas);
   color: var(--color-secondary);
 }
 
 .career-container {
-  width: min(100% - clamp(2.5rem, 8vw, 8rem), 72rem);
+  width: min(100% - 2 * var(--site-gutter), var(--site-content-width));
   margin-inline: auto;
 }
 
@@ -223,7 +227,7 @@ const previousRoles = computed(() => {
 
 .career-feature {
   border-radius: 0.875rem;
-  background: #142b50;
+  background: var(--site-navy);
   padding: clamp(1.4rem, 4vw, 2.65rem);
   color: #f5f8ff;
 }
@@ -281,7 +285,7 @@ const previousRoles = computed(() => {
 
 .career-history {
   padding-block: clamp(2.75rem, 5vw, 4.5rem);
-  background: #eff4fb;
+  background: var(--site-soft);
 }
 
 .career-history h2 {

@@ -1,81 +1,102 @@
 <template>
-  <USlideover v-model:open="drawer" side="right" :title="t('menu')" :ui="{ content: 'sm:max-w-sm', title: 'sr-only' }">
-    <template #content>
-      <div class="flex h-full flex-col gap-6 p-6">
-        <div class="flex items-center justify-between">
-          <p class="text-lg font-semibold text-secondary">{{ t('menu') }}</p>
-          <UButton
-            color="neutral"
-            variant="ghost"
-            icon="i-heroicons-x-mark"
-            aria-label="Fechar menu"
-            @click="drawer = false"
-          />
-        </div>
+  <USlideover
+    v-model:open="drawer"
+    side="right"
+    :title="t('menu')"
+    :description="t('navigation')"
+    :ui="{
+      content: 'sm:max-w-sm bg-[var(--site-surface)]',
+      header: 'border-[var(--site-line)]',
+      title: 'text-[var(--site-navy)]',
+      description: 'sr-only',
+      body: 'p-5',
+      footer: 'border-[var(--site-line)]',
+    }"
+  >
+    <template #body>
+      <nav class="drawer-nav" :aria-label="t('navigation')">
+        <NuxtLink
+          v-for="page in pages"
+          :key="page.url"
+          :to="page.url"
+          @click="drawer = false"
+        >
+          {{ page.title }}
+        </NuxtLink>
+        <NuxtLink to="/contact" @click="drawer = false">
+          {{ $t('pages.contact.title') }}
+        </NuxtLink>
+      </nav>
+    </template>
 
-        <nav class="flex flex-col gap-2" role="navigation">
-          <NuxtLink
-            v-for="pageInfo in pageInfos"
-            :key="pageInfo.title"
-            :to="pageInfo.url"
-            class="rounded-2xl px-4 py-3 text-base font-medium text-secondary transition hover:bg-primary/10"
-            @click="drawer = false"
-          >
-            {{ pageInfo.title }}
-          </NuxtLink>
-        </nav>
-
-        <div class="mt-auto">
-          <p class="mb-2 text-sm font-semibold uppercase text-secondary/70">
-            {{ t('language') }}
-          </p>
-          <AppLanguageDropdownMenu placement="top-end">
-            <UButton
-              color="neutral"
-              variant="soft"
-              trailing-icon="i-heroicons-chevron-down-16-solid"
-            >
-              <template #leading>
-                <i class="fas fa-language text-secondary" aria-hidden="true" />
-              </template>
-              <span class="ml-2">{{ locale.toUpperCase() }}</span>
-            </UButton>
-          </AppLanguageDropdownMenu>
-        </div>
+    <template #footer>
+      <div class="drawer-language">
+        <span>{{ t('language') }}</span>
+        <AppLanguageDropdownMenu :label="t('language')" side="top" />
       </div>
     </template>
   </USlideover>
 </template>
 
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core'
-
-const props = defineProps<{
-  modelValue: boolean
-}>()
-const emit = defineEmits(['update:modelValue'])
-
-const drawer = useVModel(props, 'modelValue', emit)
-const pageInfos = usePortalPagesInfo()
-
-const { t, locale } = useI18n({
-  useScope: 'local',
-})
+const drawer = defineModel<boolean>({ required: true })
+const pages = usePortalPagesInfo()
+const { t } = useI18n({ useScope: 'local' })
 </script>
 
 <i18n lang="json">
 {
   "pt-BR": {
     "menu": "Menu",
-    "language": "Idioma"
+    "language": "Idioma",
+    "navigation": "Navegação principal"
   },
   "en": {
     "menu": "Menu",
-    "language": "Language"
+    "language": "Language",
+    "navigation": "Main navigation"
   },
   "es": {
     "menu": "Menú",
-    "language": "Idioma"
+    "language": "Idioma",
+    "navigation": "Navegación principal"
   }
 }
 </i18n>
+
+<style scoped>
+.drawer-nav {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.drawer-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding-inline: 0.75rem;
+  border-radius: 0.55rem;
+  color: var(--site-ink);
+  font-weight: 650;
+}
+
+.drawer-nav a:hover,
+.drawer-nav a.router-link-active {
+  color: var(--site-link);
+  background: var(--site-soft);
+}
+
+.drawer-nav a:focus-visible {
+  outline: 2px solid var(--site-link);
+  outline-offset: 2px;
+}
+
+.drawer-language {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: var(--site-muted);
+  font-size: 0.875rem;
+}
+</style>

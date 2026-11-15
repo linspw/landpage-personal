@@ -12,3 +12,30 @@
 
   --font-sans: "Open Sans", sans-serif;
 }
+
+:root {
+  --site-canvas: #fcfdff;
+  --site-surface: #ffffff;
+  --site-soft: #eff4fb;
+  --site-ink: #23334a;
+  --site-muted: #4d6078;
+  --site-line: #dbe5f1;
+  --site-control-border: #a1b3cb;
+  --site-navy: #142b50;
+  --site-link: #064dcd;
+  --site-content-width: 72rem;
+  --site-gutter: clamp(1.25rem, 4vw, 4rem);
+  --site-header-height: 4.75rem;
+  --ui-container: 76rem;
+  --ui-primary: var(--color-primary);
+}
+
+.site-container {
+  width: min(100% - 2 * var(--site-gutter), var(--site-content-width));
+  margin-inline: auto;
+}
+
+::selection {
+  background: #cce0ff;
+  color: var(--site-navy);
+}

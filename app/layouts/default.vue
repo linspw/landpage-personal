@@ -1,33 +1,64 @@
 <template>
-  <div class="flex min-h-screen flex-col bg-slate-50">
-    <app-header v-model="drawerIsOpen" />
+  <div class="site-layout">
+    <a class="site-skip" href="#main-content">{{ t('skip') }}</a>
+    <AppHeader v-model="drawerIsOpen" />
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
 
-    <app-footer />
+    <AppFooter />
 
     <ClientOnly>
-      <lazy-app-drawer v-model="drawerIsOpen" />
+      <LazyAppDrawer v-model="drawerIsOpen" />
     </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
-const drawerIsOpen = ref<boolean>(false)
+const drawerIsOpen = ref(false)
+const { t } = useI18n({ useScope: 'local' })
 </script>
 
-<style lang="scss">
+<i18n lang="json">
+{
+  "pt-BR": { "skip": "Ir para o conteúdo" },
+  "en": { "skip": "Skip to content" },
+  "es": { "skip": "Ir al contenido" }
+}
+</i18n>
+
+<style scoped>
+.site-layout {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  background: var(--site-canvas);
+}
+
 #main-content {
   display: flex;
-  position: relative;
+  flex: 1;
   flex-direction: column;
-  min-height: 100dvh;
   width: 100%;
-  max-width: 100dvw;
-  overflow-x: hidden;
-  top: 0;
-  left: 0;
+  overflow-x: clip;
+  scroll-margin-top: var(--site-header-height);
+}
+
+.site-skip {
+  position: fixed;
+  z-index: 1200;
+  inset: 0.75rem auto auto var(--site-gutter);
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--site-navy);
+  color: white;
+  transform: translateY(calc(-100% - 1rem));
+}
+
+.site-skip:focus-visible {
+  transform: none;
+  outline: 2px solid var(--site-link);
+  outline-offset: 3px;
 }
 </style>
