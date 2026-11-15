@@ -57,7 +57,7 @@
         </ul>
       </div>
 
-      <div class="shelf-footer">
+      <UContainer class="shelf-footer">
         <div class="shelf-details" aria-live="polite" aria-atomic="true">
           <div :key="bookKey(selectedBook)" class="shelf-caption">
             <h2>{{ selectedBook.title }}</h2>
@@ -97,10 +97,12 @@
             <UIcon name="i-heroicons-arrow-right-20-solid" aria-hidden="true" />
           </button>
         </div>
-      </div>
+      </UContainer>
     </div>
 
-    <p v-else class="shelf-empty" role="status">{{ t('empty') }}</p>
+    <UContainer v-else>
+      <p class="shelf-empty" role="status">{{ t('empty') }}</p>
+    </UContainer>
     <p id="shelf-help" class="sr-only">{{ t('help') }}</p>
   </section>
 </template>
@@ -451,7 +453,6 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .book-shelf {
-  --shelf-gutter: max(0.85rem, calc((100% - var(--site-content-width)) / 2));
   --book-height: clamp(14.5rem, 28vw, 25rem);
   --cover-width: calc(var(--book-height) * 0.63);
   --spine-width: calc(var(--book-height) * 0.175);
@@ -459,12 +460,18 @@ onBeforeUnmount(() => {
 }
 
 .shelf-viewport {
+  --shelf-fade-width: clamp(0.625rem, 3vw, 2.5rem);
   position: relative;
   overflow: clip;
   padding-block: 2.1rem 1.5rem;
   touch-action: pan-y pinch-zoom;
   user-select: none;
-  mask-image: linear-gradient(to right, transparent, black 7% 93%, transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black var(--shelf-fade-width) calc(100% - var(--shelf-fade-width)),
+    transparent
+  );
 }
 
 .shelf-viewport--dragging,
@@ -738,7 +745,7 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  padding: 1.35rem var(--shelf-gutter) 1.5rem;
+  padding-block: 1.35rem 1.5rem;
 }
 
 .shelf-details {
@@ -829,7 +836,7 @@ onBeforeUnmount(() => {
 }
 
 .shelf-empty {
-  padding: 3rem var(--shelf-gutter);
+  padding-block: 3rem;
 }
 
 @media (max-width: 600px) {

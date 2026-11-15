@@ -62,7 +62,7 @@
           </p>
         </div>
       </UContainer>
-      <BookShelf :books="shelfBooks" class="books-shelf-frame" />
+      <BookShelf :books="shelfBooks" class="mt-3" />
     </AppSection>
   </app-page>
 </template>
@@ -181,11 +181,6 @@ const shelfBooks = computed(() => {
   font-size: 1.45rem;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
-}
-
-.books-shelf-frame {
-  width: min(100% - 2 * clamp(0.5rem, 2vw, 2rem), 96rem);
-  margin: 0.75rem auto 0;
 }
 
 .books-filters button {
