@@ -95,10 +95,10 @@
             <p class="career-role-date">{{ role.date }}</p>
           </li>
         </ol>
-        <NuxtLink class="career-link" to="/about-me#section-experiences">
+        <a class="career-link" href="/about-me#section-experiences">
           {{ t('viewFullCareer') }}
           <UIcon name="i-heroicons-arrow-right-20-solid" aria-hidden="true" />
-        </NuxtLink>
+        </a>
       </UContainer>
     </AppSection>
   </div>

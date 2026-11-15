@@ -1,7 +1,11 @@
 <template>
-  <app-section class="pb-16">
-    <LazyHomePageSkillsSectionRender />
-  </app-section>
+  <AppSection :title="$t('homeSections.skills.title')" class="about-skills-section">
+    <HomePageSkillsSectionRender />
+  </AppSection>
 </template>
 
-<script setup lang="ts"></script>
+<style scoped>
+.about-skills-section {
+  scroll-margin-block-start: var(--site-header-height);
+}
+</style>

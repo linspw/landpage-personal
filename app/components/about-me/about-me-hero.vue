@@ -87,16 +87,14 @@
             </UTooltip>
           </div>
 
-          <UButton
-            to="/#section-skills"
-            size="lg"
-            color="primary"
-            variant="solid"
-            class="cta-btn w-full md:w-auto"
-            aria-label="Know more about Jessé Correia's skills"
-          >
-            {{ t('knowMore') }}
-          </UButton>
+          <div class="flex flex-wrap justify-center gap-2 md:justify-start">
+            <UButton href="#section-skills" external size="lg" color="primary" variant="solid">
+              {{ $t('homeSections.skills.title') }}
+            </UButton>
+            <UButton href="#section-experiences" external size="lg" color="primary" variant="ghost">
+              {{ $t('homeSections.experiences.title') }}
+            </UButton>
+          </div>
         </div>
       </div>
     </UContainer>
@@ -123,20 +121,17 @@ const curriculumLink = computed(() => {
   "pt-BR": {
     "jobTitle": "Engenheiro de Software Sênior",
     "resume": "Currículo",
-    "downloadResume": "Baixar Currículo",
-    "knowMore": "Conheça mais!"
+    "downloadResume": "Baixar Currículo"
   },
   "en": {
     "jobTitle": "Senior Software Engineer",
     "resume": "Resume",
-    "downloadResume": "Download Resume",
-    "knowMore": "Know More!"
+    "downloadResume": "Download Resume"
   },
   "es": {
     "jobTitle": "Ingeniero de Software Sénior",
     "resume": "Currículum",
-    "downloadResume": "Descargar Currículum",
-    "knowMore": "¡Conoce más!"
+    "downloadResume": "Descargar Currículum"
   }
 }
 </i18n>
@@ -203,14 +198,5 @@ const curriculumLink = computed(() => {
   transform: translateY(-2px);
 }
 
-.cta-btn {
-  box-shadow: 0 4px 14px -3px rgba(1, 83, 255, 0.35);
-  transition: all 0.3s ease;
-}
-
-.cta-btn:hover {
-  box-shadow: 0 6px 20px -4px rgba(1, 83, 255, 0.45);
-  transform: translateY(-2px);
-}
 </style>
 
