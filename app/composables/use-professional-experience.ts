@@ -7,6 +7,7 @@ export interface ExperienceItem {
   companyMark?: string
   location: string
   text: string
+  recognition?: string
   skills: string[]
   isCurrentJob?: boolean
   workMode?: 'remote' | 'onsite' | 'hybrid'
@@ -25,9 +26,10 @@ export const useProfessionalExperience = () => {
       companyMark: '/images/companies/qeevo-mark.svg',
       location: t('professionalExperience.item6.location'),
       text: t('professionalExperience.item6.text'),
+      recognition: t('professionalExperience.item6.recognition'),
       isCurrentJob: true,
       workMode: 'onsite' as const,
-      skills: ['Vue.js', 'Nuxt', 'TypeScript', 'Design System'],
+      skills: ['TypeScript', 'Vue.js', 'Nuxt', 'Cloudflare', 'OpenTelemetry'],
     },
     {
       icon: 'fas fa-crown',

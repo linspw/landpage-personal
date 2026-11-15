@@ -45,33 +45,34 @@
   "professionalExperience": {
     "item6": {
       "date": "Agosto de 2025 - Actualmente",
-      "title": "Senior Frontend Developer",
+      "title": "Ingeniero de Software Sénior",
       "location": "São José dos Campos, SP",
-      "text": "Parte del equipo de Plataforma Frontend, desarrollando soluciones escalables y manteniendo el Design System de la empresa."
+      "text": "En el equipo de Plataforma de Qeevo, trabajo en la evolución del marketplace, su migración a renderizado en el edge con Cloudflare y SDK compartidos. Colaboré en la implementación de autenticación para más de 30 sistemas.",
+      "recognition": "Mejor Desarrollador Sénior en los Tech Awards Qeevo 2026.1, premio compartido con Rodolfo Santos."
     },
     "item5b": {
       "date": "Abril de 2025 - Agosto de 2025",
-      "title": "Ingeniero de Software Líder",
+      "title": "Ingeniero de Software Sénior y Líder Técnico",
       "location": "Remoto",
-      "text": "Liderazgo técnico de proyectos, gestión de equipos y arquitectura de soluciones fullstack para la plataforma de logística."
+      "text": "Liderazgo técnico del equipo de logística, con participación en decisiones de arquitectura, mantenimiento e infraestructura para aplicaciones basadas en microservicios."
     },
     "item5": {
       "date": "Julio de 2024 - Abril de 2025",
-      "title": "Desarrollador Fullstack",
+      "title": "Desarrollador Full Stack Sénior",
       "location": "Remoto",
-      "text": "Trabajo como Desarrollador Fullstack, utilizando tecnologías como React, React Native, TypeScript, NestJS, microservicios, Sequelize y base de datos MySQL."
+      "text": "Desarrollo de soluciones de cadena de suministro y gestión de cambios, con interfaces para arrastrar y soltar tareas y equipos, y aplicaciones en React Native."
     },
     "item1": {
       "date": "Enero de 2022 - Abril de 2023",
       "title": "Desarrollador Front-end",
       "location": "São José dos Campos, SP",
-      "text": "Actuación como Desarrollador Frontend/Fullstack, utilizando tecnologías como Vue.js, Nuxt, Django (Python) en la creación de interfaces para soluciones B2B. Participación en un equipo ágil con enfoque en resultados medibles."
+      "text": "Desarrollo de la plataforma B2B de gestión de flotas con Vue.js, Nuxt y Django. Mejoras en flujos de pago, autenticación e integraciones REST."
     },
     "item2": {
       "date": "Marzo de 2021 - Diciembre de 2021",
       "title": "Desarrollador Front-end",
       "location": "São José dos Campos, SP",
-      "text": "Desarrollo con Vue.js, React, Phoenix (Elixir), Rails (Ruby). Creación de interfaces para los segmentos B2B y B2C."
+      "text": "Desarrollo de herramientas para que los socios gestionaran ofertas de becas. Mejoras de SEO y Core Web Vitals, contribuciones al sistema de diseño y actualización de la autenticación."
     },
     "item3": {
       "date": "Marzo de 2020 - Marzo de 2021",
@@ -83,7 +84,7 @@
       "date": "Agosto de 2019 - Marzo de 2020",
       "title": "Pasante en SiteOps",
       "location": "São José dos Campos, SP",
-      "text": "Cuidando de las principales operaciones de la plataforma web de Quero Bolsa."
+      "text": "Procesamiento de las tablas de datos que alimentaban las ofertas de Quero Bolsa."
     }
   },
   "booksShelf": {

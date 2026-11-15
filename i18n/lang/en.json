@@ -45,33 +45,34 @@
   "professionalExperience": {
     "item6": {
       "date": "August 2025 - Present",
-      "title": "Senior Frontend Developer",
+      "title": "Senior Software Engineer",
       "location": "São José dos Campos, SP",
-      "text": "Part of the Frontend Platform team, developing scalable solutions and maintaining the company's Design System."
+      "text": "On Qeevo’s Platform team, I work on the marketplace, its migration to edge rendering on Cloudflare, and shared SDKs. I helped implement authentication for more than 30 systems.",
+      "recognition": "Best Senior Developer at the Qeevo Tech Awards 2026.1, a shared award with Rodolfo Santos."
     },
     "item5b": {
       "date": "April 2025 - August 2025",
-      "title": "Lead Software Engineer",
+      "title": "Senior Software Engineer and Technical Lead",
       "location": "Remote",
-      "text": "Technical leadership of projects, team management, and fullstack architecture for the logistics platform."
+      "text": "Led the logistics engineering team’s technical work, contributing to architecture, maintenance, and infrastructure for microservice-based applications."
     },
     "item5": {
       "date": "July 2024 - April 2025",
-      "title": "Fullstack Developer",
+      "title": "Senior Full-Stack Developer",
       "location": "Remote",
-      "text": "Working as a Fullstack Developer, using technologies such as React, React Native, TypeScript, NestJS, microservices, Sequelize, and MySQL Database."
+      "text": "Built supply chain and change management tools, including drag-and-drop interfaces for tasks and teams and mobile apps in React Native."
     },
     "item1": {
       "date": "January 2022 - April 2023",
       "title": "Front-end Developer",
       "location": "São José dos Campos, SP",
-      "text": "Worked as a Frontend/Fullstack Developer, using technologies like Vue.js, Nuxt, Django (Python) in creating interfaces for B2B solutions. Participation in an agile team with a focus on measurable results."
+      "text": "Built the B2B fleet management platform with Vue.js, Nuxt, and Django. Worked on payment flows and revamped authentication and REST integrations."
     },
     "item2": {
       "date": "March 2021 - December 2021",
       "title": "Front-end Developer",
       "location": "São José dos Campos, SP",
-      "text": "Development with Vue.js, React, Phoenix (Elixir), Rails (Ruby). Creating interfaces for B2B and B2C segments."
+      "text": "Built tools for partners to manage scholarship offers. Improved SEO and Core Web Vitals, contributed to the design system, and updated platform authentication."
     },
     "item3": {
       "date": "March 2020 - March 2021",
@@ -83,7 +84,7 @@
       "date": "August 2019 - March 2020",
       "title": "SiteOps Intern",
       "location": "São José dos Campos, SP",
-      "text": "Handling the main operations of the Quero Bolsa web platform."
+      "text": "Processed the data tables that powered scholarship listings on Quero Bolsa."
     }
   },
   "booksShelf": {

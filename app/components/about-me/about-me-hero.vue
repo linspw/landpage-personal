@@ -113,27 +113,27 @@ const resumeLabel = computed(() => t('resume', {}))
 
 const curriculumLink = computed(() => {
   return locale.value === 'pt-BR'
-    ? '/files/curriculum_2024_pt_br.pdf'
-    : '/files/curriculum_2024_en.pdf'
+    ? '/files/curriculum_pt_br.pdf'
+    : '/files/curriculum_en.pdf'
 })
 </script>
 
 <i18n lang="json">
 {
   "pt-BR": {
-    "jobTitle": "Engenheiro de Software",
+    "jobTitle": "Engenheiro de Software Sênior",
     "resume": "Currículo",
     "downloadResume": "Baixar Currículo",
     "knowMore": "Conheça mais!"
   },
   "en": {
-    "jobTitle": "Software Engineer",
+    "jobTitle": "Senior Software Engineer",
     "resume": "Resume",
     "downloadResume": "Download Resume",
     "knowMore": "Know More!"
   },
   "es": {
-    "jobTitle": "Ingeniero de Software",
+    "jobTitle": "Ingeniero de Software Sénior",
     "resume": "Currículum",
     "downloadResume": "Descargar Currículum",
     "knowMore": "¡Conoce más!"

@@ -62,6 +62,10 @@
           </div>
           <div>
             <p class="career-feature-description">{{ currentRole.text }}</p>
+            <p v-if="currentRole.recognition" class="career-recognition">
+              <UIcon name="i-heroicons-trophy" aria-hidden="true" />
+              <span>{{ currentRole.recognition }}</span>
+            </p>
             <ul class="career-skills" role="list">
               <li v-for="skill in currentRole.skills" :key="skill">
                 {{ skill }}
@@ -121,8 +125,8 @@ const previousRoles = computed(() => {
 <i18n lang="json">
 {
   "pt-BR": {
-    "profession": "Engenheiro de software",
-    "description": "Trabalho com plataformas frontend e design systems. Minha trajetória inclui desenvolvimento fullstack e liderança técnica de equipes.",
+    "profession": "Engenheiro de software sênior",
+    "description": "Trabalho com plataformas web, marketplaces e ferramentas para desenvolvedores. Minha trajetória inclui desenvolvimento full stack e liderança técnica.",
     "viewExperience": "Ver experiência",
     "viewProjects": "Ver projetos",
     "currentRole": "Cargo atual",
@@ -131,8 +135,8 @@ const previousRoles = computed(() => {
     "viewFullCareer": "Ver trajetória completa"
   },
   "en": {
-    "profession": "Software engineer",
-    "description": "I work on frontend platforms and design systems. My background includes full-stack development and technical team leadership.",
+    "profession": "Senior software engineer",
+    "description": "I work on web platforms, marketplaces, and developer tools. My background includes full-stack development and technical leadership.",
     "viewExperience": "View experience",
     "viewProjects": "View projects",
     "currentRole": "Current role",
@@ -141,8 +145,8 @@ const previousRoles = computed(() => {
     "viewFullCareer": "View full career history"
   },
   "es": {
-    "profession": "Ingeniero de software",
-    "description": "Trabajo con plataformas frontend y sistemas de diseño. Mi trayectoria incluye desarrollo fullstack y liderazgo técnico de equipos.",
+    "profession": "Ingeniero de software sénior",
+    "description": "Trabajo con plataformas web, marketplaces y herramientas para desarrolladores. Mi trayectoria incluye desarrollo full stack y liderazgo técnico.",
     "viewExperience": "Ver experiencia",
     "viewProjects": "Ver proyectos",
     "currentRole": "Puesto actual",
@@ -308,6 +312,21 @@ const previousRoles = computed(() => {
   line-height: 1.64;
   font-size: 0.94rem;
   max-width: 48ch;
+}
+
+.career-recognition {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  color: #d7e5ff;
+  font-size: 0.85rem;
+}
+
+.career-recognition > :first-child {
+  flex: none;
+  align-self: start;
+  margin-top: 0.2em;
 }
 
 .career-skills {

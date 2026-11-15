@@ -73,6 +73,11 @@ export default defineNuxtConfig({
 
   site: { url: siteUrl },
 
+  routeRules: {
+    '/files/curriculum_2024_pt_br.pdf': { redirect: '/files/curriculum_pt_br.pdf' },
+    '/files/curriculum_2024_en.pdf': { redirect: '/files/curriculum_en.pdf' },
+  },
+
   runtimeConfig: {
     public: { mailConfigured },
   },
