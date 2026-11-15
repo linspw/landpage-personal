@@ -37,12 +37,9 @@
             </div>
             <div class="professional-charts">
               <figure class="cost-chart">
-                <figcaption class="cost-chart-caption">
-                  <div>
-                    <h3>{{ t('achievements.renderingCost') }}</h3>
-                    <p class="cost-chart-unit">{{ t('achievements.costUnit') }}</p>
-                  </div>
-                  <p class="cost-chart-reduction">
+                <figcaption>
+                  <h3>{{ t('achievements.renderingCost') }}</h3>
+                  <p class="professional-metric">
                     <strong>{{ n(estimatedCostReduction, percentFormat) }}</strong>
                     <span>{{ t('achievements.costReduction') }}</span>
                   </p>
@@ -64,28 +61,28 @@
                 </dl>
               </figure>
 
-              <div class="professional-side-metrics">
-                <figure class="systems-chart">
-                  <figcaption>
-                    <h3>{{ t('achievements.authentication') }}</h3>
-                    <p class="systems-chart-value">
-                      <strong>{{ n(authenticationSystemCount) }}+</strong>
-                      <span>{{ t('achievements.authenticatedSystems') }}</span>
-                    </p>
-                  </figcaption>
-                  <div class="systems-chart-points" aria-hidden="true">
-                    <span v-for="system in authenticationSystemCount" :key="system" />
-                  </div>
-                </figure>
-
-                <div v-if="currentRole.mediaMonthlySavings" class="media-savings">
-                  <div>
-                    <h3>{{ t('achievements.deliveryNames.media') }}</h3>
-                    <p>{{ t('achievements.monthlySavings') }}</p>
-                  </div>
-                  <strong>{{ currentRole.mediaMonthlySavings }}</strong>
+              <figure class="systems-chart">
+                <figcaption>
+                  <h3>{{ t('achievements.authentication') }}</h3>
+                  <p class="professional-metric">
+                    <strong>{{ n(authenticationSystemCount) }}+</strong>
+                    <span>{{ t('achievements.authenticatedSystems') }}</span>
+                  </p>
+                </figcaption>
+                <div class="systems-chart-points" aria-hidden="true">
+                  <span v-for="system in authenticationSystemCount" :key="system" />
                 </div>
-              </div>
+              </figure>
+
+              <figure v-if="currentRole.mediaMonthlySavings" class="media-savings">
+                <figcaption>
+                  <h3>{{ t('achievements.deliveryNames.media') }}</h3>
+                  <p class="professional-metric">
+                    <strong>{{ currentRole.mediaMonthlySavings }}</strong>
+                    <span>{{ t('achievements.monthlySavings') }}</span>
+                  </p>
+                </figcaption>
+              </figure>
             </div>
 
             <div class="professional-deliveries">
@@ -102,18 +99,25 @@
               </dl>
             </div>
 
-            <div v-if="currentRole.recognitions?.length" class="professional-recognitions">
-              <h3>
-                <UIcon name="i-heroicons-trophy" aria-hidden="true" />
-                {{ t('achievements.recognitions') }}
-              </h3>
-              <ul role="list">
-                <li v-for="recognition in currentRole.recognitions" :key="recognition">
-                  {{ recognition }}
-                </li>
-              </ul>
-            </div>
           </div>
+
+          <section
+            v-if="currentRole.recognitions?.length"
+            id="reconhecimentos"
+            class="professional-recognitions"
+            aria-labelledby="professional-recognitions-heading"
+          >
+            <h3 id="professional-recognitions-heading">
+              <UIcon name="i-heroicons-trophy" aria-hidden="true" />
+              {{ t('achievements.recognitions') }}
+            </h3>
+            <ul role="list">
+              <li v-for="recognition in currentRole.recognitions" :key="recognition.title">
+                <h4>{{ recognition.title }}</h4>
+                <p>{{ recognition.description }}</p>
+              </li>
+            </ul>
+          </section>
         </section>
 
         <section id="projetos-autorais" class="personal-projects-section" aria-labelledby="personal-projects-heading">
@@ -584,8 +588,7 @@ const openSourceProjects = computed(() =>
 }
 
 .professional-charts,
-.professional-delivery-grid,
-.professional-recognitions ul {
+.professional-delivery-grid {
   --professional-column-gap: clamp(1.25rem, 4vw, 3.25rem);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -593,42 +596,31 @@ const openSourceProjects = computed(() =>
 }
 
 .professional-charts,
-.professional-deliveries,
-.professional-recognitions {
+.professional-deliveries {
   margin-top: 1.25rem;
   padding-top: 1.25rem;
   border-block-start: 1px solid var(--site-line);
 }
 
 .professional-charts {
-  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  --professional-column-gap: clamp(1.2rem, 2.65vw, 2.25rem);
+  grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 1fr));
+}
+
+.professional-charts > figure + figure {
+  padding-inline-start: var(--professional-column-gap);
+  border-inline-start: 1px solid var(--site-line);
 }
 
 .professional-charts h3,
-.professional-deliveries h3,
-.professional-recognitions h3 {
+.professional-deliveries h3 {
   color: var(--site-navy);
   font-size: 1.035rem;
   font-weight: 750;
   line-height: 1.3;
 }
 
-.professional-side-metrics {
-  display: grid;
-  align-content: center;
-  gap: 1rem;
-  padding-inline-start: var(--professional-column-gap);
-  border-inline-start: 1px solid var(--site-line);
-}
-
-.systems-chart {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 1rem;
-}
-
-.systems-chart-value {
+.professional-metric {
   display: grid;
   gap: 0.25rem;
   margin-top: 0.5rem;
@@ -636,9 +628,9 @@ const openSourceProjects = computed(() =>
   font-size: 0.85rem;
 }
 
-.systems-chart-value strong {
+.professional-metric strong {
   color: var(--site-link);
-  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  font-size: clamp(2.3rem, 4.15vw, 3.75rem);
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -647,80 +639,17 @@ const openSourceProjects = computed(() =>
 
 .systems-chart-points {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: clamp(0.25rem, 0.75vw, 0.57rem);
+  width: fit-content;
+  grid-template-columns: repeat(10, 1fr);
+  gap: clamp(0.25rem, 0.62vw, 0.52rem);
+  margin-top: 1.1rem;
 }
 
 .systems-chart-points span {
-  width: clamp(0.42rem, 1vw, 0.77rem);
+  width: clamp(0.42rem, 0.85vw, 0.67rem);
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--site-link);
-}
-
-.media-savings {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.4rem 1rem;
-  padding-block-start: 1rem;
-  border-block-start: 1px solid var(--site-line);
-}
-
-.media-savings p {
-  margin-top: 0.25rem;
-  color: var(--site-muted);
-  font-size: 0.85rem;
-}
-
-.media-savings strong {
-  color: var(--site-link);
-  font-size: clamp(1.65rem, 2.9vw, 2.45rem);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-.cost-chart-caption {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 0.75rem;
-}
-
-.cost-chart-caption h3 {
-  font-size: clamp(1.035rem, 1.8vw, 1.3rem);
-}
-
-.cost-chart-unit {
-  margin-top: 0.35rem;
-  color: var(--site-muted);
-  font-size: 0.8rem;
-  line-height: 1.45;
-}
-
-.cost-chart-reduction {
-  display: grid;
-  gap: 0.23rem;
-  color: var(--site-link);
-  text-align: end;
-}
-
-.cost-chart-reduction strong {
-  font-size: clamp(1.85rem, 3.3vw, 3.1rem);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
-}
-
-.cost-chart-reduction span {
-  max-width: 18ch;
-  font-size: 0.75rem;
-  font-weight: 650;
 }
 
 .cost-chart-bars {
@@ -769,8 +698,7 @@ const openSourceProjects = computed(() =>
   --cost-bar-color: var(--site-link);
 }
 
-.professional-delivery-grid,
-.professional-recognitions ul {
+.professional-delivery-grid {
   margin-top: 0.75rem;
   color: var(--site-ink);
   font-size: 0.875rem;
@@ -795,10 +723,48 @@ const openSourceProjects = computed(() =>
   margin-top: 0.2rem;
 }
 
+.professional-recognitions {
+  margin-top: 1rem;
+  padding: clamp(1.25rem, 3.5vw, 2.5rem);
+  border-radius: 1rem;
+  background: var(--site-navy);
+  color: #f5f8ff;
+  scroll-margin-block-start: calc(var(--site-header-height) + 1.25rem);
+}
+
 .professional-recognitions h3 {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.6rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+
+.professional-recognitions h3 .iconify {
+  flex: none;
+  color: #adc9fc;
+}
+
+.professional-recognitions ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem clamp(1.5rem, 4vw, 3rem);
+  margin-top: 1rem;
+}
+
+.professional-recognitions h4 {
+  font-size: 1.05rem;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.professional-recognitions p {
+  max-width: 55ch;
+  margin-top: 0.35rem;
+  color: #d5e3fb;
+  font-size: 0.875rem;
+  line-height: 1.55;
 }
 
 .open-source-list {
@@ -832,9 +798,29 @@ const openSourceProjects = computed(() =>
   margin-top: 0.25rem;
 }
 
+@media (width < 960px) {
+  .professional-charts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 1.2rem;
+  }
+
+  .professional-charts .cost-chart {
+    grid-column: 1 / -1;
+  }
+
+  .professional-charts > .systems-chart {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
+
+  .professional-charts > figure + figure {
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--site-line);
+  }
+}
+
 @media (max-width: 760px) {
   .personal-projects,
-  .professional-charts,
   .professional-recognitions ul {
     grid-template-columns: 1fr;
   }
@@ -845,13 +831,6 @@ const openSourceProjects = computed(() =>
 
   .professional-delivery--tracking {
     grid-column: auto;
-  }
-
-  .professional-side-metrics {
-    padding-block-start: 1rem;
-    padding-inline-start: 0;
-    border-block-start: 1px solid var(--site-line);
-    border-inline-start: 0;
   }
 
   .systems-chart-points {
@@ -876,6 +855,15 @@ const openSourceProjects = computed(() =>
 }
 
 @media (max-width: 560px) {
+  .professional-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .professional-charts > figure + figure {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
+
   .projects-section-heading {
     margin-bottom: 0.8rem;
   }
@@ -914,8 +902,7 @@ const openSourceProjects = computed(() =>
       "authenticatedSystems": "systems using authentication",
       "monthlySavings": "Saved per month",
       "renderingCost": "Rendering costs",
-      "costUnit": "Marketplace · estimated monthly cost in USD",
-      "costReduction": "estimated reduction",
+      "costReduction": "estimated reduction in monthly cost",
       "costPhase": { "before": "before", "after": "after" },
       "deliveries": "Platform work",
       "deliveryNames": {
@@ -992,8 +979,7 @@ const openSourceProjects = computed(() =>
       "authenticatedSystems": "sistemas com autenticação",
       "monthlySavings": "Economia por mês",
       "renderingCost": "Custo de renderização",
-      "costUnit": "Marketplace · custo mensal estimado em USD",
-      "costReduction": "de redução estimada",
+      "costReduction": "de redução estimada no custo mensal",
       "costPhase": { "before": "antes", "after": "depois" },
       "deliveries": "Entregas de plataforma",
       "deliveryNames": {
@@ -1070,8 +1056,7 @@ const openSourceProjects = computed(() =>
       "authenticatedSystems": "sistemas con autenticación",
       "monthlySavings": "Ahorro mensual",
       "renderingCost": "Coste de renderizado",
-      "costUnit": "Marketplace · coste mensual estimado en USD",
-      "costReduction": "de reducción estimada",
+      "costReduction": "de reducción estimada del coste mensual",
       "costPhase": { "before": "antes", "after": "después" },
       "deliveries": "Entregas de plataforma",
       "deliveryNames": {

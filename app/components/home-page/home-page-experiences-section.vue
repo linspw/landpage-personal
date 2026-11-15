@@ -126,8 +126,8 @@
                   {{ t('experiences.recognitions') }}
                 </h4>
                 <ul>
-                  <li v-for="recognition in item.recognitions" :key="recognition">
-                    {{ recognition }}
+                  <li v-for="recognition in item.recognitions" :key="recognition.title">
+                    <strong>{{ recognition.title }}.</strong> {{ recognition.description }}
                   </li>
                 </ul>
               </div>

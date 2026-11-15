@@ -51,14 +51,20 @@
       "achievements": {
         "edge": "Led the architecture for migrating marketplace rendering from AWS EKS to Cloudflare.",
         "auth": "Built a Keycloak-based authentication solution for more than 30 systems.",
-        "marketplace": "Worked on architecture, maintenance, and observability across the marketplace and built features for the platform.",
-        "tracking": "Improved the tracking platform and CMS. Built a customer data platform (CDP) that is now running in production.",
+        "marketplace": "Worked on architecture, maintenance, and observability across the marketplace, including feature development for the platform.",
+        "tracking": "I’m evolving the tracking platform and CMS. I also built a customer data platform (CDP) that is now in production.",
         "media": "Built an image transformation and delivery service with the team. It scaled to support the entire operation and saved {savings} per month.",
         "gateway": "Built an enterprise MCP gateway with single sign-on, group permissions, temporary access, and auditing.",
         "observability": "Developed an OpenTelemetry SDK for distributed tracing and correlated logs."
       },
-      "recognition": "Best Senior Developer at the Qeevo Tech Awards 2026.1, a shared award with Rodolfo Santos.",
-      "executiveRecognition": "Recognized by executive leadership for results alongside two colleagues on October 2, 2026."
+      "recognition": {
+        "title": "Best Senior Developer",
+        "description": "Qeevo Tech Awards 2026.1. Shared the award with Rodolfo Santos."
+      },
+      "executiveRecognition": {
+        "title": "Executive leadership recognition",
+        "description": "Recognized for results alongside two colleagues on October 2, 2026."
+      }
     },
     "item5b": {
       "date": "April 2025 - August 2025",

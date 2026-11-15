@@ -52,14 +52,20 @@
       "achievements": {
         "edge": "Arquitetura da migração da renderização do marketplace de AWS EKS para a Cloudflare.",
         "auth": "Criação de uma solução de autenticação com Keycloak para mais de 30 sistemas.",
-        "marketplace": "Arquitetura, manutenção e observabilidade de todo o marketplace, com desenvolvimento de funcionalidades na plataforma.",
-        "tracking": "Evoluí a plataforma de tracking e o CMS. Criei a plataforma de dados de clientes (CDP), hoje em produção.",
+        "marketplace": "Arquitetura, manutenção e observabilidade de todo o marketplace, incluindo desenvolvimento de funcionalidades na plataforma.",
+        "tracking": "Evoluindo a plataforma de tracking e o CMS, com a criação da plataforma de dados de clientes (CDP), hoje em produção.",
         "media": "Desenvolvi com o time uma solução de transformação e entrega de imagens que passou a atender toda a operação em escala e gerou uma economia de {savings} por mês.",
         "gateway": "Criação de um gateway corporativo MCP com login único, permissões por grupo, acesso temporário e auditoria.",
         "observability": "Desenvolvimento de um SDK de observabilidade com OpenTelemetry para rastreamento distribuído e correlação de logs."
       },
-      "recognition": "Melhor Dev Sênior no Tech Awards Qeevo 2026.1, prêmio compartilhado com Rodolfo Santos.",
-      "executiveRecognition": "Reconhecimento da liderança executiva pelos resultados, recebido junto a outros dois colaboradores em 2 de outubro de 2026."
+      "recognition": {
+        "title": "Melhor Dev Sênior",
+        "description": "Tech Awards Qeevo 2026.1. Prêmio compartilhado com Rodolfo Santos."
+      },
+      "executiveRecognition": {
+        "title": "Reconhecimento da liderança executiva",
+        "description": "Recebido pelos resultados, junto a outros dois colaboradores, em 2 de outubro de 2026."
+      }
     },
     "item5b": {
       "date": "Abril de 2025 - Agosto de 2025",

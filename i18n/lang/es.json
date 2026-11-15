@@ -51,14 +51,20 @@
       "achievements": {
         "edge": "Diseño de la arquitectura para migrar el renderizado del marketplace de AWS EKS a Cloudflare.",
         "auth": "Creación de una solución de autenticación con Keycloak para más de 30 sistemas.",
-        "marketplace": "Arquitectura, mantenimiento y observabilidad de todo el marketplace, con desarrollo de funcionalidades para la plataforma.",
-        "tracking": "Mejoré la plataforma de tracking y el CMS. Creé la plataforma de datos de clientes (CDP), ahora en producción.",
+        "marketplace": "Arquitectura, mantenimiento y observabilidad de todo el marketplace, incluido el desarrollo de funcionalidades para la plataforma.",
+        "tracking": "Evolución de la plataforma de tracking y del CMS, con la creación de la plataforma de datos de clientes (CDP), ahora en producción.",
         "media": "Desarrollé con el equipo un servicio de transformación y entrega de imágenes que permitió atender a toda la operación a escala y ahorrar {savings} al mes.",
         "gateway": "Creación de un gateway corporativo MCP con inicio de sesión único, permisos por grupo, acceso temporal y auditoría.",
         "observability": "Desarrollo de un SDK de observabilidad con OpenTelemetry para trazado distribuido y correlación de registros."
       },
-      "recognition": "Mejor Desarrollador Sénior en los Tech Awards Qeevo 2026.1, premio compartido con Rodolfo Santos.",
-      "executiveRecognition": "Reconocimiento de la dirección ejecutiva por los resultados, recibido junto con otros dos colaboradores el 2 de octubre de 2026."
+      "recognition": {
+        "title": "Mejor Desarrollador Sénior",
+        "description": "Tech Awards Qeevo 2026.1. Premio compartido con Rodolfo Santos."
+      },
+      "executiveRecognition": {
+        "title": "Reconocimiento de la dirección ejecutiva",
+        "description": "Recibido por los resultados, junto con otros dos colaboradores, el 2 de octubre de 2026."
+      }
     },
     "item5b": {
       "date": "Abril de 2025 - Agosto de 2025",

@@ -17,7 +17,7 @@ export interface ExperienceItem {
     gateway: string
     observability: string
   }
-  recognitions?: string[]
+  recognitions?: { title: string; description: string }[]
   skills: string[]
   isCurrentJob?: boolean
   workMode?: 'remote' | 'onsite' | 'hybrid'
@@ -52,8 +52,14 @@ export const useProfessionalExperience = () => {
         observability: t('professionalExperience.item6.achievements.observability'),
       },
       recognitions: [
-        t('professionalExperience.item6.recognition'),
-        t('professionalExperience.item6.executiveRecognition'),
+        {
+          title: t('professionalExperience.item6.recognition.title'),
+          description: t('professionalExperience.item6.recognition.description'),
+        },
+        {
+          title: t('professionalExperience.item6.executiveRecognition.title'),
+          description: t('professionalExperience.item6.executiveRecognition.description'),
+        },
       ],
       isCurrentJob: true,
       workMode: 'onsite' as const,
