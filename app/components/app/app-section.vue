@@ -79,10 +79,13 @@ defineProps({
 .app-section {
   position: relative;
   isolation: isolate;
-  backdrop-filter: saturate(180%) blur(12px);
   padding: 48px 0;
-  background-color: rgba(255, 255, 255, 0.88);
   color: #263238;
+}
+
+.app-section--custom-color-gradient-primary,
+.app-section--custom-color-white {
+  backdrop-filter: saturate(180%) blur(12px);
 }
 
 .app-section--custom-color-gradient-primary {

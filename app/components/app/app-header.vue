@@ -84,8 +84,8 @@ const { y: scrollY } = useWindowScroll()
 }
 
 .site-header--scrolled {
-  -webkit-backdrop-filter: blur(18px) saturate(145%);
-  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
   box-shadow:
     0 4px 16px -10px rgb(20 43 80 / 14%),
     0 1px 4px rgb(20 43 80 / 3%);
