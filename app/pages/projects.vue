@@ -64,18 +64,28 @@
                 </dl>
               </figure>
 
-              <figure class="systems-chart">
-                <figcaption>
-                  <h3>{{ t('achievements.authentication') }}</h3>
-                  <p class="systems-chart-value">
-                    <strong>{{ n(authenticationSystemCount) }}+</strong>
-                    <span>{{ t('achievements.authenticatedSystems') }}</span>
-                  </p>
-                </figcaption>
-                <div class="systems-chart-points" aria-hidden="true">
-                  <span v-for="system in authenticationSystemCount" :key="system" />
+              <div class="professional-side-metrics">
+                <figure class="systems-chart">
+                  <figcaption>
+                    <h3>{{ t('achievements.authentication') }}</h3>
+                    <p class="systems-chart-value">
+                      <strong>{{ n(authenticationSystemCount) }}+</strong>
+                      <span>{{ t('achievements.authenticatedSystems') }}</span>
+                    </p>
+                  </figcaption>
+                  <div class="systems-chart-points" aria-hidden="true">
+                    <span v-for="system in authenticationSystemCount" :key="system" />
+                  </div>
+                </figure>
+
+                <div v-if="currentRole.mediaMonthlySavings" class="media-savings">
+                  <div>
+                    <h3>{{ t('achievements.deliveryNames.media') }}</h3>
+                    <p>{{ t('achievements.monthlySavings') }}</p>
+                  </div>
+                  <strong>{{ currentRole.mediaMonthlySavings }}</strong>
                 </div>
-              </figure>
+              </div>
             </div>
 
             <div class="professional-deliveries">
@@ -603,13 +613,19 @@ const openSourceProjects = computed(() =>
   line-height: 1.3;
 }
 
+.professional-side-metrics {
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+  padding-inline-start: var(--professional-column-gap);
+  border-inline-start: 1px solid var(--site-line);
+}
+
 .systems-chart {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 1rem;
-  padding-inline-start: var(--professional-column-gap);
-  border-inline-start: 1px solid var(--site-line);
 }
 
 .systems-chart-value {
@@ -640,6 +656,32 @@ const openSourceProjects = computed(() =>
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--site-link);
+}
+
+.media-savings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--site-line);
+}
+
+.media-savings p {
+  margin-top: 0.25rem;
+  color: var(--site-muted);
+  font-size: 0.85rem;
+}
+
+.media-savings strong {
+  color: var(--site-link);
+  font-size: clamp(1.65rem, 2.9vw, 2.45rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .cost-chart-caption {
@@ -805,7 +847,7 @@ const openSourceProjects = computed(() =>
     grid-column: auto;
   }
 
-  .systems-chart {
+  .professional-side-metrics {
     padding-block-start: 1rem;
     padding-inline-start: 0;
     border-block-start: 1px solid var(--site-line);
@@ -870,6 +912,7 @@ const openSourceProjects = computed(() =>
     "achievements": {
       "authentication": "Keycloak authentication",
       "authenticatedSystems": "systems using authentication",
+      "monthlySavings": "Saved per month",
       "renderingCost": "Rendering costs",
       "costUnit": "Marketplace · estimated monthly cost in USD",
       "costReduction": "estimated reduction",
@@ -947,6 +990,7 @@ const openSourceProjects = computed(() =>
     "achievements": {
       "authentication": "Autenticação com Keycloak",
       "authenticatedSystems": "sistemas com autenticação",
+      "monthlySavings": "Economia por mês",
       "renderingCost": "Custo de renderização",
       "costUnit": "Marketplace · custo mensal estimado em USD",
       "costReduction": "de redução estimada",
@@ -1024,6 +1068,7 @@ const openSourceProjects = computed(() =>
     "achievements": {
       "authentication": "Autenticación con Keycloak",
       "authenticatedSystems": "sistemas con autenticación",
+      "monthlySavings": "Ahorro mensual",
       "renderingCost": "Coste de renderizado",
       "costUnit": "Marketplace · coste mensual estimado en USD",
       "costReduction": "de reducción estimada",

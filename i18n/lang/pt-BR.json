@@ -54,7 +54,7 @@
         "auth": "Criação de uma solução de autenticação com Keycloak para mais de 30 sistemas.",
         "marketplace": "Arquitetura, manutenção e observabilidade de todo o marketplace, com desenvolvimento de funcionalidades na plataforma.",
         "tracking": "Evoluí a plataforma de tracking e o CMS. Criei a plataforma de dados de clientes (CDP), hoje em produção.",
-        "media": "Desenvolvi com o time uma solução de transformação e entrega de imagens que passou a atender toda a operação em escala e gerou uma economia de US$ 125 por mês.",
+        "media": "Desenvolvi com o time uma solução de transformação e entrega de imagens que passou a atender toda a operação em escala e gerou uma economia de {savings} por mês.",
         "gateway": "Criação de um gateway corporativo MCP com login único, permissões por grupo, acesso temporário e auditoria.",
         "observability": "Desenvolvimento de um SDK de observabilidade com OpenTelemetry para rastreamento distribuído e correlação de logs."
       },

@@ -7,6 +7,7 @@ export interface ExperienceItem {
   companyMark?: string
   location: string
   text: string
+  mediaMonthlySavings?: string
   achievements?: {
     edge: string
     auth: string
@@ -23,7 +24,10 @@ export interface ExperienceItem {
 }
 
 export const useProfessionalExperience = () => {
-  const { t } = useI18n({ useScope: 'global' })
+  const { t, n } = useI18n({ useScope: 'global' })
+  const mediaMonthlySavings = computed(() =>
+    n(125, { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }),
+  )
 
   return computed<ExperienceItem[]>(() => [
     {
@@ -35,12 +39,15 @@ export const useProfessionalExperience = () => {
       companyMark: '/images/companies/qeevo-mark.svg',
       location: t('professionalExperience.item6.location'),
       text: t('professionalExperience.item6.text'),
+      mediaMonthlySavings: mediaMonthlySavings.value,
       achievements: {
         edge: t('professionalExperience.item6.achievements.edge'),
         auth: t('professionalExperience.item6.achievements.auth'),
         marketplace: t('professionalExperience.item6.achievements.marketplace'),
         tracking: t('professionalExperience.item6.achievements.tracking'),
-        media: t('professionalExperience.item6.achievements.media'),
+        media: t('professionalExperience.item6.achievements.media', {
+          savings: mediaMonthlySavings.value,
+        }),
         gateway: t('professionalExperience.item6.achievements.gateway'),
         observability: t('professionalExperience.item6.achievements.observability'),
       },
