@@ -84,15 +84,8 @@ function clearSearch() {
 }
 const allThemes = '__all__'
 const selectedTheme = ref(allThemes)
-const filters = [
-  'all',
-  'read',
-  'reading',
-  'queued',
-  'wishlist',
-  'favorite',
-] as const
-const selectedFilter = ref<(typeof filters)[number]>('all')
+const filters = ['read', 'reading', 'queued', 'wishlist', 'favorite'] as const
+const selectedFilter = ref<(typeof filters)[number]>('read')
 
 const allBooks = bookTopics.flatMap((topic) => topic.items)
 const readCount = allBooks.filter(
@@ -130,9 +123,7 @@ const shelfBooks = computed(() => {
   return indexedBooks
     .filter(({ book, searchableText }) => {
       const status: BookStatus = book.status ?? 'read'
-      const matchesFilter =
-        filter === 'all' ||
-        (filter === 'favorite' ? book.favorite : status === filter)
+      const matchesFilter = filter === 'favorite' ? book.favorite : status === filter
       return (
         matchesFilter &&
         (selectedTheme.value === allThemes ||

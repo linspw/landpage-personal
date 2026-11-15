@@ -95,7 +95,6 @@
     "filter": "Filtrar por estado de lectura",
     "readCountLabel": "libro leído | libros leídos",
     "filters": {
-      "all": "Todos",
       "read": "Leídos",
       "reading": "Leyendo",
       "queued": "En cola",

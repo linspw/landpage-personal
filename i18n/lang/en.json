@@ -95,7 +95,6 @@
     "filter": "Filter by reading status",
     "readCountLabel": "book read | books read",
     "filters": {
-      "all": "All",
       "read": "Read",
       "reading": "Reading",
       "queued": "Queued",
