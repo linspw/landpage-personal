@@ -1,6 +1,6 @@
 <template>
   <AppPage>
-    <AboutMeHero id="hero" style="min-height: 100dvh" />
+    <AboutMeHero id="hero" />
     <HomePageSkillsSection id="section-skills" />
     <HomePageExperiencesSection id="section-experiences" />
   </AppPage>

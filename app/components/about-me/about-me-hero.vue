@@ -1,202 +1,290 @@
 <template>
-  <section class="about-me-page-hero relative flex items-center justify-center overflow-hidden">
-    <BackgroundWave />
+  <section class="about-hero" aria-labelledby="about-hero-title">
+    <UContainer class="about-hero-layout">
+      <div class="about-hero-overview">
+        <header class="about-hero-heading">
+          <h1 id="about-hero-title">Jessé Correia</h1>
+          <p>{{ t('jobTitle') }}</p>
+        </header>
 
-    <UContainer
-      class="about-me-page-hero__container relative z-10 mt-24 flex flex-col items-center gap-10 py-24 md:mt-0 md:flex-row md:items-center"
-    >
-      <div class="avatar-wrapper">
-        <div
-          class="about-me-page-hero__avatar flex h-48 w-48 items-center justify-center rounded-[2rem] border-4 border-white bg-white md:h-56 md:w-56"
-        >
-          <AppImage
-            cover
-            src="/images/avatars/my-photo.jpg"
-            alt="Jessé Correia profile picture"
-            :height="224"
-            :width="224"
-            class="rounded-[1.5rem]"
-          />
+        <div class="about-hero-details">
+          <p class="about-hero-description">{{ t('description') }}</p>
+          <ul class="about-hero-profile" role="list">
+            <li>
+              <UIcon name="i-heroicons-map-pin" aria-hidden="true" />
+              São José dos Campos, SP
+            </li>
+            <li>
+              <UIcon name="i-heroicons-globe-alt" aria-hidden="true" />
+              {{ t('citizenship') }}
+            </li>
+          </ul>
+
+          <div class="about-hero-contact">
+            <UButton
+              :href="curriculumLink"
+              :label="t('resume')"
+              target="_blank"
+              rel="noopener"
+              external
+              size="lg"
+              color="primary"
+              icon="i-heroicons-document-arrow-down-20-solid"
+              class="about-hero-resume"
+            />
+            <a href="https://www.linkedin.com/in/jessecorreialive/" target="_blank" rel="noopener">
+              <UIcon name="i-fa-brands-linkedin" aria-hidden="true" />
+              LinkedIn
+            </a>
+            <a href="https://github.com/linspw" target="_blank" rel="noopener">
+              <UIcon name="i-fa-brands-github" aria-hidden="true" />
+              GitHub
+            </a>
+            <a href="mailto:linspw@live.com">
+              <UIcon name="i-heroicons-envelope" aria-hidden="true" />
+              linspw@live.com
+            </a>
+          </div>
+
+          <nav class="about-hero-shortcuts" :aria-label="t('navigation')">
+            <a href="#section-skills">
+              {{ $t('homeSections.skills.title') }}
+              <UIcon name="i-heroicons-arrow-down-20-solid" aria-hidden="true" />
+            </a>
+            <a href="#section-experiences">
+              {{ $t('homeSections.experiences.title') }}
+              <UIcon name="i-heroicons-arrow-down-20-solid" aria-hidden="true" />
+            </a>
+          </nav>
         </div>
       </div>
 
-      <div class="flex w-full max-w-2xl flex-col items-center gap-6 px-4 text-center md:items-start md:px-10 md:text-left">
-        <AppTypingEffectAnimation
-          text="Jessé Correia"
-          tag="h1"
-          class="text-3xl font-black text-secondary md:text-5xl"
-          :duration="5"
-          :remove-cursor-on-end="false"
-          restart-on-click
+      <div class="about-hero-portrait">
+        <NuxtImg
+          src="/images/avatars/my-photo.jpg"
+          :alt="t('portrait')"
+          width="480"
+          height="480"
+          densities="x1 x2"
+          format="webp"
+          fetchpriority="high"
         />
-
-        <p class="text-xl font-semibold text-primary md:text-2xl">
-          {{ t('jobTitle') }}
-        </p>
-
-        <div class="text-secondary/75">
-          <p class="text-base font-medium">
-            🇧🇷 Brazilian and Portuguese 🇵🇹
-          </p>
-          <p class="text-sm">
-            <a class="text-primary underline-offset-4 transition-opacity hover:opacity-70" href="mailto:linspw@live.com">linspw@live.com</a>
-          </p>
-        </div>
-
-        <div class="flex w-full flex-col gap-3 md:flex-row">
-          <div class="flex flex-1 flex-wrap items-center justify-center gap-3 md:justify-start">
-            <UButton
-              href="https://github.com/linspw"
-              target="_blank"
-              icon="i-fa-brands-github"
-              variant="soft"
-              color="neutral"
-              aria-label="View Jessé Correia's Github profile"
-              class="social-btn"
-            >
-              <span class="ml-2 hidden md:inline">Github</span>
-            </UButton>
-
-            <UButton
-              href="https://www.linkedin.com/in/jessecorreialive/"
-              target="_blank"
-              icon="i-fa-brands-linkedin"
-              variant="soft"
-              color="primary"
-              aria-label="View Jessé Correia's LinkedIn profile"
-              class="social-btn"
-            >
-              <span class="ml-2 hidden md:inline">LinkedIn</span>
-            </UButton>
-
-            <UTooltip :text="downloadResumeText">
-              <UButton
-                :href="curriculumLink"
-                target="_blank"
-                external
-                icon="i-heroicons-arrow-down-tray-20-solid"
-                variant="soft"
-                color="secondary"
-                :aria-label="resumeLabel"
-                class="social-btn"
-              >
-                <span class="ml-2 hidden md:inline">
-                  {{ t('resume') }}
-                </span>
-              </UButton>
-            </UTooltip>
-          </div>
-
-          <div class="flex flex-wrap justify-center gap-2 md:justify-start">
-            <UButton href="#section-skills" external size="lg" color="primary" variant="solid">
-              {{ $t('homeSections.skills.title') }}
-            </UButton>
-            <UButton href="#section-experiences" external size="lg" color="primary" variant="ghost">
-              {{ $t('homeSections.experiences.title') }}
-            </UButton>
-          </div>
-        </div>
       </div>
     </UContainer>
   </section>
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n({
-  useScope: 'local',
-})
+const { t, locale } = useI18n({ useScope: 'local' })
 
-const downloadResumeText = computed(() => t('downloadResume', {}))
-const resumeLabel = computed(() => t('resume', {}))
-
-const curriculumLink = computed(() => {
-  return locale.value === 'pt-BR'
+const curriculumLink = computed(() =>
+  locale.value === 'pt-BR'
     ? '/files/curriculum_pt_br.pdf'
-    : '/files/curriculum_en.pdf'
-})
+    : '/files/curriculum_en.pdf',
+)
 </script>
 
 <i18n lang="json">
 {
   "pt-BR": {
     "jobTitle": "Engenheiro de Software Sênior",
-    "resume": "Currículo",
-    "downloadResume": "Baixar Currículo"
+    "description": "Na Qeevo, atuo na arquitetura e na operação de plataformas web. Minha trajetória inclui desenvolvimento full stack e liderança técnica de equipes.",
+    "citizenship": "Brasileiro e português",
+    "resume": "Currículo em PDF",
+    "navigation": "Seções de Sobre mim",
+    "portrait": "Retrato de Jessé Correia"
   },
   "en": {
     "jobTitle": "Senior Software Engineer",
-    "resume": "Resume",
-    "downloadResume": "Download Resume"
+    "description": "At Qeevo, I work on web platform architecture and operations. My background includes full-stack development and technical leadership.",
+    "citizenship": "Brazilian and Portuguese",
+    "resume": "Resume PDF",
+    "navigation": "About page sections",
+    "portrait": "Portrait of Jessé Correia"
   },
   "es": {
     "jobTitle": "Ingeniero de Software Sénior",
-    "resume": "Currículum",
-    "downloadResume": "Descargar Currículum"
+    "description": "En Qeevo trabajo en la arquitectura y operación de plataformas web. Mi trayectoria incluye desarrollo full stack y liderazgo técnico de equipos.",
+    "citizenship": "Brasileño y portugués",
+    "resume": "Currículum en PDF",
+    "navigation": "Secciones de Sobre mí",
+    "portrait": "Retrato de Jessé Correia"
   }
 }
 </i18n>
 
-<style lang="scss">
-.about-me-page-hero {
-  position: relative;
+<style scoped>
+.about-hero {
+  padding-block: calc(var(--site-header-height) + clamp(2.1rem, 5.2vw, 4.75rem)) clamp(2.45rem, 5.1vw, 4.75rem);
+  border-bottom: 1px solid var(--site-line);
+  background: var(--site-canvas);
 }
 
-.about-me-page-hero__container {
-  position: relative;
+.about-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr);
+  align-items: center;
+  gap: clamp(1.75rem, 6vw, 6rem);
 }
 
-.avatar-wrapper {
-  position: relative;
-  animation: avatarFadeIn 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+.about-hero-heading h1 {
+  color: var(--site-navy);
+  font-size: clamp(2.35rem, 5.5vw, 5.1rem);
+  font-weight: 780;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
 }
 
-.avatar-wrapper::before {
-  content: '';
+.about-hero-heading p {
+  margin-top: 0.6rem;
+  color: var(--site-link);
+  font-size: clamp(1.05rem, 1.85vw, 1.43rem);
+  font-weight: 700;
+}
+
+.about-hero-details {
+  margin-top: 1.2rem;
+}
+
+.about-hero-description {
+  max-width: 49ch;
+  color: var(--site-ink);
+  font-size: clamp(0.98rem, 1.45vw, 1.1rem);
+  line-height: 1.65;
+}
+
+.about-hero-profile,
+.about-hero-contact,
+.about-hero-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.about-hero-profile {
+  gap: 0.3rem 1.05rem;
+  margin-top: 1rem;
+  color: var(--site-muted);
+  font-size: 0.86rem;
+}
+
+.about-hero-profile li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.about-hero-profile .iconify {
+  color: var(--site-link);
+}
+
+.about-hero-contact {
+  gap: 0.3rem 1.05rem;
+  margin-top: 1.35rem;
+}
+
+.about-hero-resume {
+  min-height: 44px;
+  border-radius: 0.55rem;
+}
+
+.about-hero-contact > a:not(.about-hero-resume),
+.about-hero-shortcuts a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--site-navy);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-underline-offset: 0.28em;
+}
+
+.about-hero-contact a:hover:not(.about-hero-resume),
+.about-hero-shortcuts a:hover {
+  text-decoration: underline;
+}
+
+.about-hero-contact a:focus-visible,
+.about-hero-shortcuts a:focus-visible {
+  outline: 2px solid var(--site-link);
+  outline-offset: 3px;
+}
+
+.about-hero-contact .iconify,
+.about-hero-shortcuts .iconify {
+  flex: none;
+}
+
+.about-hero-shortcuts {
+  gap: 0 1.25rem;
+  max-width: 34rem;
+  margin-top: 0.85rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid var(--site-line);
+}
+
+.about-hero-shortcuts a {
+  color: var(--site-link);
+}
+
+.about-hero-portrait {
+  --portrait-offset: clamp(0.55rem, 1.35vw, 1.15rem);
+  position: relative;
+  isolation: isolate;
+  width: calc(100% - var(--portrait-offset));
+  max-width: 29rem;
+  aspect-ratio: 1 / 1.03;
+  margin-bottom: var(--portrait-offset);
+  border-radius: 1rem;
+  background: var(--site-soft);
+}
+
+.about-hero-portrait::before {
   position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border-radius: 2.25rem;
-  border: 2px solid rgba(1, 83, 255, 0.15);
-  animation: ringPulse 3s ease-in-out infinite;
+  z-index: -1;
+  inset: var(--portrait-offset) calc(-1 * var(--portrait-offset)) calc(-1 * var(--portrait-offset)) var(--portrait-offset);
+  border-radius: inherit;
+  background: #dce8f8;
+  content: '';
 }
 
-.about-me-page-hero__avatar {
-  box-shadow: 
-    0 8px 32px -8px rgba(0, 0, 0, 0.12),
-    0 4px 12px -2px rgba(0, 0, 0, 0.06);
+.about-hero-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  object-position: 50% 12%;
 }
 
-@keyframes avatarFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.96);
+@media (max-width: 720px) {
+  .about-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+
+  .about-hero-overview {
+    display: contents;
+  }
+
+  .about-hero-heading {
+    grid-row: 1;
+  }
+
+  .about-hero-portrait {
+    grid-row: 2;
+    max-width: 27rem;
+    aspect-ratio: 1.3;
+  }
+
+  .about-hero-portrait img {
+    object-position: 50% 0%;
+  }
+
+  .about-hero-details {
+    margin-top: 0;
   }
 }
-
-@keyframes ringPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.02);
-    opacity: 0.6;
-  }
-}
-
-.social-btn {
-  transition: all 0.25s ease;
-}
-
-.social-btn:hover {
-  transform: translateY(-2px);
-}
-
 </style>
-
