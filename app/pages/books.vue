@@ -1,12 +1,12 @@
 <template>
   <app-page with-top-margin>
-    <div class="books-page">
-      <div class="books-heading site-container">
-        <h1 class="books-title">
-          {{ t('pages.books.title') }}
-        </h1>
-        <p>{{ t('booksShelf.intro') }}</p>
-
+    <AppSection
+      :title="t('pages.books.title')"
+      :description="t('booksShelf.intro')"
+      heading-tag="h1"
+      class="flex-1"
+    >
+      <UContainer>
         <div class="books-search">
           <UInput
             ref="searchInput"
@@ -40,25 +40,30 @@
           />
         </div>
 
-        <div
-          class="books-filters"
-          role="group"
-          :aria-label="t('booksShelf.filter')"
-        >
-          <button
-            v-for="filter in filters"
-            :key="filter"
-            type="button"
-            :aria-pressed="selectedFilter === filter"
-            @click="selectedFilter = filter"
+        <div class="books-toolbar">
+          <div
+            class="books-filters"
+            role="group"
+            :aria-label="t('booksShelf.filter')"
           >
-            {{ t(`booksShelf.filters.${filter}`) }}
-          </button>
+            <button
+              v-for="filter in filters"
+              :key="filter"
+              type="button"
+              :aria-pressed="selectedFilter === filter"
+              @click="selectedFilter = filter"
+            >
+              {{ t(`booksShelf.filters.${filter}`) }}
+            </button>
+          </div>
+          <p class="books-read-count">
+            <strong>{{ n(readCount) }}</strong>
+            {{ t('booksShelf.readCountLabel', readCount) }}
+          </p>
         </div>
-      </div>
-
-      <BookShelf :books="shelfBooks" />
-    </div>
+      </UContainer>
+      <BookShelf :books="shelfBooks" class="books-shelf-frame" />
+    </AppSection>
   </app-page>
 </template>
 
@@ -69,7 +74,7 @@ import type { BookStatus } from '~/interfaces/books'
 
 useHead({ title: 'pages.books.title' })
 
-const { t } = useI18n()
+const { t, n } = useI18n()
 const searchQuery = ref('')
 const searchInput = useTemplateRef('searchInput')
 
@@ -90,6 +95,9 @@ const filters = [
 const selectedFilter = ref<(typeof filters)[number]>('all')
 
 const allBooks = bookTopics.flatMap((topic) => topic.items)
+const readCount = allBooks.filter(
+  ({ status }) => (status ?? 'read') === 'read',
+).length
 const themes = [...new Set(allBooks.flatMap((book) => book.themes))].sort(
   (a, b) => a.localeCompare(b, 'pt-BR'),
 )
@@ -137,42 +145,47 @@ const shelfBooks = computed(() => {
 </script>
 
 <style scoped>
-.books-page {
-  min-height: calc(100dvh - var(--site-header-height));
-  padding-bottom: clamp(2rem, 5vw, 4rem);
-  background: var(--site-canvas);
-}
-
-.books-heading {
-  padding-block: clamp(1.75rem, 4vw, 3.5rem) 0.5rem;
-}
-
-.books-title {
-  color: var(--site-navy);
-  font-size: clamp(2rem, 4.5vw, 3.4rem);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-}
-
-.books-heading p {
-  margin-block: 0.6rem 1.55rem;
-  color: var(--site-muted);
-  line-height: 1.55;
-}
-
 .books-search {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
 
+.books-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.15rem 1rem;
+  margin-top: 0.65rem;
+}
+
 .books-filters {
   display: flex;
   flex-wrap: wrap;
   column-gap: 1.3rem;
-  margin-top: 0.65rem;
   align-items: center;
+}
+
+.books-read-count {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  color: var(--site-muted);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.books-read-count strong {
+  color: var(--site-navy);
+  font-size: 1.45rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.books-shelf-frame {
+  width: min(100% - 2 * clamp(0.5rem, 2vw, 2rem), 96rem);
+  margin: 0.75rem auto 0;
 }
 
 .books-filters button {
@@ -202,10 +215,6 @@ const shelfBooks = computed(() => {
 @media (max-width: 639px) {
   .books-search {
     flex-direction: column;
-  }
-
-  .books-heading p {
-    margin-bottom: 1.15rem;
   }
 
   .books-filters {

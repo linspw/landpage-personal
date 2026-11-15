@@ -94,6 +94,7 @@
     "theme": "Filtrar por tema",
     "allThemes": "Todos os temas",
     "filter": "Filtrar por situação de leitura",
+    "readCountLabel": "livro lido | livros lidos",
     "filters": {
       "all": "Todos",
       "read": "Lidos",

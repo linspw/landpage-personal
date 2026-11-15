@@ -93,6 +93,7 @@
     "theme": "Filter by topic",
     "allThemes": "All topics",
     "filter": "Filter by reading status",
+    "readCountLabel": "book read | books read",
     "filters": {
       "all": "All",
       "read": "Read",

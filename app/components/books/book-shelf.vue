@@ -451,16 +451,15 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .book-shelf {
-  --shelf-gutter: max(
-    var(--site-gutter),
-    calc((100% - var(--site-content-width)) / 2)
-  );
-  --book-height: clamp(14.5rem, 28vw, 24rem);
+  --shelf-gutter: max(0.85rem, calc((100% - var(--site-content-width)) / 2));
+  --book-height: clamp(14.5rem, 28vw, 25rem);
   --cover-width: calc(var(--book-height) * 0.63);
   --spine-width: calc(var(--book-height) * 0.175);
   background: var(--site-surface);
   color: var(--site-ink);
-  border-block: 1px solid var(--site-line);
+  overflow: clip;
+  border: 1px solid var(--site-line);
+  border-radius: 0.875rem;
 }
 
 .shelf-viewport {

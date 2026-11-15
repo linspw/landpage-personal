@@ -5,7 +5,7 @@
       customColor ? `app-section--custom-color-${customColor}` : undefined
     "
   >
-    <UContainer class="app-section__header" data-aos="fade" data-aos-once="true">
+    <UContainer class="app-section__header">
       <nav
         v-if="breadcrumbs.length"
         class="app-section__breadcrumbs"
@@ -31,12 +31,13 @@
         </ol>
       </nav>
 
-      <h2
+      <component
+        :is="headingTag"
         v-if="title"
         class="app-section__title mb-2 text-2xl font-bold uppercase text-secondary md:text-3xl"
       >
         {{ title }}
-      </h2>
+      </component>
 
       <p v-if="description" class="text-lg font-medium text-tertiary md:text-xl">
         {{ description }}
@@ -48,10 +49,16 @@
 </template>
 
 <script setup lang="ts">
+import type { PropType } from 'vue'
+
 defineProps({
   title: {
     type: String,
     default: undefined,
+  },
+  headingTag: {
+    type: String as PropType<'h1' | 'h2'>,
+    default: 'h2',
   },
   description: {
     type: String,

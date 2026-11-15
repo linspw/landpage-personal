@@ -1,5 +1,8 @@
 <template>
-  <header class="site-header">
+  <header
+    class="site-header"
+    :class="{ 'site-header--scrolled': scrollY > 12 }"
+  >
     <div class="site-header-inner site-container">
       <NuxtLink to="/" class="site-brand">
         <span class="site-monogram" aria-hidden="true">JC</span>
@@ -43,9 +46,12 @@
 </template>
 
 <script setup lang="ts">
+import { useWindowScroll } from '@vueuse/core'
+
 const drawer = defineModel<boolean>({ required: true })
 const pages = usePortalPagesInfo()
 const { t } = useI18n({ useScope: 'local' })
+const { y: scrollY } = useWindowScroll()
 </script>
 
 <i18n lang="json">
@@ -74,8 +80,33 @@ const { t } = useI18n({ useScope: 'local' })
   z-index: 1000;
   inset: 0 0 auto;
   background: var(--site-surface);
-  border-block-end: 1px solid var(--site-line);
   color: var(--site-ink);
+}
+
+.site-header--scrolled {
+  box-shadow:
+    0 4px 16px -10px rgb(20 43 80 / 14%),
+    0 1px 4px rgb(20 43 80 / 3%);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .site-header {
+    -webkit-backdrop-filter: blur(18px) saturate(145%);
+    backdrop-filter: blur(18px) saturate(145%);
+    background: color-mix(in srgb, var(--site-surface) 96%, transparent);
+  }
+
+  .site-header--scrolled {
+    background: color-mix(in srgb, var(--site-surface) 84%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-header {
+    transition:
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+  }
 }
 
 .site-header-inner {
@@ -83,7 +114,7 @@ const { t } = useI18n({ useScope: 'local' })
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: clamp(0.75rem, 2vw, 1.75rem);
-  height: calc(var(--site-header-height) - 1px);
+  height: var(--site-header-height);
 }
 
 .site-brand,
@@ -111,7 +142,7 @@ const { t } = useI18n({ useScope: 'local' })
   width: 2.35rem;
   height: 2.35rem;
   border-radius: 0.58rem;
-  background: var(--site-navy);
+  background: linear-gradient(145deg, #1e3c68, var(--site-navy) 72%);
   color: #fff;
   font-size: 0.78rem;
   font-weight: 800;
@@ -143,7 +174,7 @@ const { t } = useI18n({ useScope: 'local' })
 .site-nav-link.router-link-active::after {
   content: '';
   position: absolute;
-  inset: auto 0 -1px;
+  inset: auto 0 0;
   height: 2px;
   border-radius: 2px 2px 0 0;
   background: var(--site-link);
@@ -162,6 +193,7 @@ const { t } = useI18n({ useScope: 'local' })
   border: 1px solid var(--site-line);
   border-radius: 0.68rem;
   color: var(--site-navy);
+  background: color-mix(in srgb, var(--site-surface) 66%, transparent);
 }
 
 .site-contact {
