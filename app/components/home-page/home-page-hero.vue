@@ -2,18 +2,23 @@
   <div class="career-home">
     <section class="career-hero career-container" aria-labelledby="home-title">
       <div class="career-intro">
-        <NuxtImg
-          class="career-portrait"
-          src="/images/avatars/my-photo.jpg"
-          alt=""
-          width="80"
-          height="80"
-          densities="x1 x2"
-          format="webp"
-          fetchpriority="high"
-        />
-        <h1 id="home-title">Jessé Correia</h1>
-        <p class="career-profession">{{ t('profession') }}</p>
+        <div class="career-identity">
+          <div class="career-portrait">
+            <NuxtImg
+              src="/images/avatars/my-photo.jpg"
+              alt=""
+              width="112"
+              height="112"
+              densities="x1 x2"
+              format="webp"
+              fetchpriority="high"
+            />
+          </div>
+          <div>
+            <h1 id="home-title">Jessé Correia</h1>
+            <p class="career-profession">{{ t('profession') }}</p>
+          </div>
+        </div>
         <p class="career-description">{{ t('description') }}</p>
         <div class="career-actions">
           <NuxtLink class="career-primary" to="/#experiencia-profissional">
@@ -161,33 +166,49 @@ const previousRoles = computed(() => {
   padding-block: clamp(8rem, 13vw, 11.5rem) clamp(3.75rem, 8vw, 7rem);
 }
 
-.career-portrait {
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1.4rem;
-  width: 5rem;
-  height: 5rem;
+.career-identity {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.8rem, 1.6vw, 1.4rem);
 }
 
-.career-intro h1 {
-  font-size: clamp(2.8rem, 5.8vw, 5.5rem);
-  line-height: 1.04;
-  letter-spacing: -0.04em;
-  font-weight: 800;
-  text-wrap: balance;
+.career-portrait {
+  width: clamp(4.5rem, 8vw, 7rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 8px 22px -13px rgb(20 43 80 / 32%);
+}
+
+.career-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  transform-origin: 50% 35%;
+}
+
+.career-identity h1 {
+  color: var(--site-navy);
+  font-size: clamp(2.2rem, 4.6vw, 4.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-weight: 760;
 }
 
 .career-profession {
-  margin-top: 0.65rem;
-  color: var(--color-primary);
-  font-size: clamp(1.125rem, 2vw, 1.45rem);
+  margin-top: 0.35rem;
+  color: var(--site-link);
+  font-size: clamp(1rem, 1.65vw, 1.26rem);
   font-weight: 650;
 }
 
 .career-description {
-  margin-top: 1.1rem;
+  margin-top: 1.35rem;
   max-width: 45ch;
-  color: #4a5969;
+  color: var(--site-muted);
   font-size: 1.03rem;
   line-height: 1.65;
 }
@@ -371,9 +392,12 @@ const previousRoles = computed(() => {
   }
 
   .career-portrait {
-    width: 3.5rem;
-    height: 3.5rem;
-    margin-bottom: 0.85rem;
+    width: clamp(4rem, 17.5vw, 5rem);
+    border-radius: 0.85rem;
+  }
+
+  .career-identity h1 {
+    font-size: clamp(1.75rem, 8.3vw, 2.2rem);
   }
 
   .career-role {

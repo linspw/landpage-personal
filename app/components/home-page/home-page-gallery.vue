@@ -13,7 +13,7 @@
     >
       <UButton
         color="neutral"
-        variant="solid"
+        variant="ghost"
         class="gallery-expand gallery-action"
         icon="i-heroicons-arrows-pointing-out-20-solid"
         :aria-label="t('expandLabel')"
@@ -160,6 +160,19 @@ const compactBands = [4, 2, 3].map((index) => ({
   outline-offset: 2px;
 }
 
+.gallery-expand {
+  border: 0;
+  background: rgb(20 43 80 / 68%);
+  color: white;
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  backdrop-filter: blur(12px) saturate(130%);
+}
+
+.gallery-expand:hover {
+  background: rgb(20 43 80 / 80%);
+  color: white;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .gallery-expand {
     opacity: 0;
@@ -167,7 +180,7 @@ const compactBands = [4, 2, 3].map((index) => ({
   }
 
   .home-gallery:hover .gallery-expand,
-  .home-gallery:focus-within .gallery-expand {
+  .gallery-expand:focus-visible {
     opacity: 1;
     pointer-events: auto;
   }
