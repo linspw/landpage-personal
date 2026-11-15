@@ -1,38 +1,62 @@
 <template>
   <div class="career-home">
-    <section class="career-hero career-container" aria-labelledby="home-title">
-      <div class="career-intro">
-        <div class="career-identity">
-          <div class="career-portrait">
-            <NuxtImg
-              src="/images/avatars/my-photo.jpg"
-              alt=""
-              width="112"
-              height="112"
-              densities="x1 x2"
-              format="webp"
-              fetchpriority="high"
-            />
+    <div
+      ref="story"
+      class="career-story"
+      :class="{ 'career-story--animated': sceneActive }"
+      :style="sceneStyle"
+    >
+      <div ref="stage" class="career-story-stage">
+        <section class="career-hero career-container" aria-labelledby="home-title">
+          <div class="career-intro">
+            <div class="career-identity">
+              <div class="career-portrait">
+                <NuxtImg
+                  src="/images/avatars/my-photo.jpg"
+                  alt=""
+                  width="112"
+                  height="112"
+                  densities="x1 x2"
+                  format="webp"
+                  fetchpriority="high"
+                />
+              </div>
+              <div>
+                <h1 id="home-title">Jessé Correia</h1>
+                <p class="career-profession">{{ t('profession') }}</p>
+              </div>
+            </div>
+            <div class="career-narrative">
+              <p class="career-description">{{ t('description') }}</p>
+              <p class="career-bridge" aria-hidden="true">
+                <strong>{{ t('bridgeTitle') }}</strong>
+                {{ t('bridgeDescription') }}
+              </p>
+            </div>
+            <div class="career-actions">
+              <NuxtLink class="career-primary" to="/#experiencia-profissional">
+                {{ t('viewExperience') }}
+                <UIcon name="i-heroicons-arrow-right-20-solid" aria-hidden="true" />
+              </NuxtLink>
+              <NuxtLink class="career-link" to="/projects">
+                {{ t('viewProjects') }}
+              </NuxtLink>
+            </div>
           </div>
-          <div>
-            <h1 id="home-title">Jessé Correia</h1>
-            <p class="career-profession">{{ t('profession') }}</p>
-          </div>
-        </div>
-        <p class="career-description">{{ t('description') }}</p>
-        <div class="career-actions">
-          <NuxtLink class="career-primary" to="/#experiencia-profissional">
-            {{ t('viewExperience') }}
-            <UIcon name="i-heroicons-arrow-right-20-solid" aria-hidden="true" />
-          </NuxtLink>
-          <NuxtLink class="career-link" to="/projects">
-            {{ t('viewProjects') }}
-          </NuxtLink>
-        </div>
-      </div>
 
-      <HomePageGallery tilt-direction="right" />
-    </section>
+          <div class="career-visual">
+            <HomePageScrollLandscape
+              :progress="progress"
+              @ready="setSceneReady"
+            />
+            <div v-if="sceneActive" class="career-scroll-cue" aria-hidden="true">
+              <span>{{ t('scrollHint') }}</span>
+              <span class="career-scroll-track"><span /></span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
 
     <AppSection
       id="experiencia-profissional"
@@ -101,12 +125,76 @@
         </a>
       </UContainer>
     </AppSection>
+
+    <UContainer class="career-gallery">
+      <HomePageGallery tilt-direction="right" />
+    </UContainer>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useEventListener, useResizeObserver } from '@vueuse/core'
+
 const { t } = useI18n({ useScope: 'local' })
 const roles = useProfessionalExperience()
+const story = useTemplateRef('story')
+const stage = useTemplateRef('stage')
+const sceneActive = ref(false)
+const progress = ref(0)
+
+let sceneReady = false
+let frame = 0
+
+function updateScroll() {
+  frame = 0
+  if (!sceneReady || !story.value || !stage.value) return
+
+  const start = story.value.getBoundingClientRect().top
+  if (stage.value.offsetHeight > window.innerHeight + 1) {
+    sceneActive.value = false
+    progress.value = 0
+    return
+  }
+  if (!sceneActive.value) {
+    if (start >= -24) sceneActive.value = true
+    return
+  }
+
+  const distance = story.value.offsetHeight - stage.value.offsetHeight
+  if (distance <= 0) return
+  const travelled = stage.value.getBoundingClientRect().top - start
+  progress.value = Math.min(1, Math.max(0, travelled / distance))
+}
+
+function scheduleScroll() {
+  if (sceneReady && !frame) frame = requestAnimationFrame(updateScroll)
+}
+
+function setSceneReady(ready: boolean) {
+  sceneReady = ready
+  if (ready) {
+    scheduleScroll()
+  } else {
+    sceneActive.value = false
+    progress.value = 0
+  }
+}
+
+function easeBetween(start: number, end: number) {
+  const amount = Math.min(1, Math.max(0, (progress.value - start) / (end - start)))
+  return amount * amount * (3 - 2 * amount)
+}
+
+const sceneStyle = computed(() => ({
+  '--story-progress': progress.value,
+  '--intro-progress': easeBetween(0.39, 0.55),
+  '--bridge-progress': easeBetween(0.51, 0.7),
+}))
+
+useEventListener('scroll', scheduleScroll, { passive: true })
+useEventListener('resize', scheduleScroll, { passive: true })
+useResizeObserver(story, scheduleScroll)
+onBeforeUnmount(() => cancelAnimationFrame(frame))
 
 const currentRole = computed(() =>
   roles.value.find((role) => role.isCurrentJob),
@@ -127,6 +215,9 @@ const previousRoles = computed(() => {
   "pt-BR": {
     "profession": "Engenheiro de software sênior",
     "description": "Trabalho com plataformas web, marketplaces e ferramentas para desenvolvedores. Minha trajetória inclui desenvolvimento full stack e liderança técnica.",
+    "bridgeTitle": "Da arquitetura à operação.",
+    "bridgeDescription": "Na Qeevo, trabalho na arquitetura, manutenção e observabilidade do marketplace.",
+    "scrollHint": "Role para explorar",
     "viewExperience": "Ver experiência",
     "viewProjects": "Ver projetos",
     "currentRole": "Cargo atual",
@@ -137,6 +228,9 @@ const previousRoles = computed(() => {
   "en": {
     "profession": "Senior software engineer",
     "description": "I work on web platforms, marketplaces, and developer tools. My background includes full-stack development and technical leadership.",
+    "bridgeTitle": "From architecture to operations.",
+    "bridgeDescription": "At Qeevo, I work on marketplace architecture, maintenance, and observability.",
+    "scrollHint": "Scroll to explore",
     "viewExperience": "View experience",
     "viewProjects": "View projects",
     "currentRole": "Current role",
@@ -147,6 +241,9 @@ const previousRoles = computed(() => {
   "es": {
     "profession": "Ingeniero de software sénior",
     "description": "Trabajo con plataformas web, marketplaces y herramientas para desarrolladores. Mi trayectoria incluye desarrollo full stack y liderazgo técnico.",
+    "bridgeTitle": "De la arquitectura a la operación.",
+    "bridgeDescription": "En Qeevo trabajo en la arquitectura, el mantenimiento y la observabilidad del marketplace.",
+    "scrollHint": "Desplázate para explorar",
     "viewExperience": "Ver experiencia",
     "viewProjects": "Ver proyectos",
     "currentRole": "Puesto actual",
@@ -163,6 +260,31 @@ const previousRoles = computed(() => {
   color: var(--color-secondary);
 }
 
+.career-story {
+  background-color: color-mix(
+    in srgb,
+    var(--site-canvas),
+    var(--site-soft) calc(var(--bridge-progress, 0) * 100%)
+  );
+}
+
+.career-story-stage {
+  display: grid;
+  min-height: min(45rem, 100svh);
+  align-content: center;
+}
+
+.career-story--animated .career-story-stage {
+  position: sticky;
+  top: 0;
+}
+
+.career-story--animated::after {
+  display: block;
+  height: clamp(24rem, 64svh, 45rem);
+  content: '';
+}
+
 .career-container {
   width: min(100% - 2 * var(--site-gutter), var(--site-content-width));
   margin-inline: auto;
@@ -174,6 +296,47 @@ const previousRoles = computed(() => {
   gap: clamp(2rem, 6vw, 6rem);
   align-items: center;
   padding-block: clamp(8rem, 13vw, 11.5rem) clamp(3.75rem, 8vw, 7rem);
+}
+
+.career-visual {
+  position: relative;
+  min-width: 0;
+  height: clamp(15rem, 33vw, 27rem);
+}
+
+.career-gallery {
+  padding-block: clamp(2rem, 5vw, 4.5rem);
+}
+
+.career-scroll-cue {
+  position: absolute;
+  right: 5%;
+  bottom: 0;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--site-muted);
+  font-size: 0.72rem;
+  pointer-events: none;
+}
+
+.career-scroll-cue > span:first-child {
+  opacity: calc(1 - var(--bridge-progress, 0));
+}
+
+.career-scroll-track {
+  flex: 1;
+  height: 1px;
+  background: var(--site-line);
+}
+
+.career-scroll-track span {
+  display: block;
+  height: 100%;
+  background: var(--site-link);
+  transform: scaleX(var(--story-progress, 0));
+  transform-origin: left;
 }
 
 .career-identity {
@@ -215,12 +378,35 @@ const previousRoles = computed(() => {
   font-weight: 650;
 }
 
-.career-description {
+.career-narrative {
+  display: grid;
   margin-top: 1.35rem;
   max-width: 45ch;
+}
+
+.career-description,
+.career-bridge {
+  grid-area: 1 / 1;
   color: var(--site-muted);
   font-size: 1.03rem;
   line-height: 1.65;
+}
+
+.career-description {
+  opacity: calc(1 - var(--intro-progress, 0));
+  transform: translateY(calc(var(--intro-progress, 0) * -0.55rem));
+}
+
+.career-bridge {
+  align-self: center;
+  opacity: var(--bridge-progress, 0);
+  transform: translateY(calc((1 - var(--bridge-progress, 0)) * 0.55rem));
+}
+
+.career-bridge strong {
+  display: block;
+  color: var(--site-navy);
+  font-weight: 750;
 }
 
 .career-actions {
@@ -389,9 +575,17 @@ const previousRoles = computed(() => {
 }
 
 @media (max-width: 780px) {
+  .career-story--animated::after {
+    height: clamp(17rem, 48svh, 27rem);
+  }
+
   .career-hero {
     grid-template-columns: 1fr;
     padding-top: 7.5rem;
+  }
+
+  .career-visual {
+    height: clamp(15rem, 67vw, 22rem);
   }
 
   .career-feature {
