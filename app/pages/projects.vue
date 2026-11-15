@@ -36,6 +36,34 @@
               </a>
             </div>
             <div class="professional-charts">
+              <figure class="cost-chart">
+                <figcaption class="cost-chart-caption">
+                  <div>
+                    <h3>{{ t('achievements.renderingCost') }}</h3>
+                    <p class="cost-chart-unit">{{ t('achievements.costUnit') }}</p>
+                  </div>
+                  <p class="cost-chart-reduction">
+                    <strong>{{ n(estimatedCostReduction, percentFormat) }}</strong>
+                    <span>{{ t('achievements.costReduction') }}</span>
+                  </p>
+                </figcaption>
+                <dl class="cost-chart-bars">
+                  <div
+                    v-for="scenario in costScenarios"
+                    :key="scenario.platform"
+                    class="cost-chart-bar"
+                    :class="{ 'cost-chart-bar--after': scenario.phase === 'after' }"
+                    :style="{ '--cost-share': `${scenario.monthlyUsd / costBeforeMigration * 100}%` }"
+                  >
+                    <dt>
+                      {{ scenario.platform }}
+                      <span>{{ t(`achievements.costPhase.${scenario.phase}`) }}</span>
+                    </dt>
+                    <dd>≈ {{ n(scenario.monthlyUsd, usdFormat) }}</dd>
+                  </div>
+                </dl>
+              </figure>
+
               <figure class="systems-chart">
                 <figcaption>
                   <h3>{{ t('achievements.authentication') }}</h3>
@@ -47,31 +75,6 @@
                 <div class="systems-chart-points" aria-hidden="true">
                   <span v-for="system in authenticationSystemCount" :key="system" />
                 </div>
-              </figure>
-
-              <figure class="cost-chart">
-                <figcaption>
-                  <h3>{{ t('achievements.renderingCost') }}</h3>
-                  <p class="cost-chart-reduction">
-                    {{ t('achievements.costReduction', { value: n(estimatedCostReduction, percentFormat) }) }}
-                  </p>
-                </figcaption>
-                <dl class="cost-chart-bars">
-                  <div
-                    v-for="scenario in costScenarios"
-                    :key="scenario.platform"
-                    class="cost-chart-bar"
-                    :class="{ 'cost-chart-bar--after': scenario.phase === 'after' }"
-                    :style="{ '--cost-share': `${scenario.share * 100}%` }"
-                  >
-                    <dt>
-                      {{ scenario.platform }}
-                      <span>{{ t(`achievements.costPhase.${scenario.phase}`) }}</span>
-                    </dt>
-                    <dd>{{ n(scenario.share, percentFormat) }}</dd>
-                  </div>
-                </dl>
-                <p class="cost-chart-note">{{ t('achievements.costIndex') }}</p>
               </figure>
             </div>
 
@@ -212,15 +215,20 @@ const { t, n } = useI18n({ useScope: 'local' })
 const roles = useProfessionalExperience()
 const currentRole = computed(() => roles.value.find(role => role.isCurrentJob))
 const authenticationSystemCount = 30
-// November 2026 resume estimates, indexed to the pre-migration monthly cost.
-const costBeforeMigration = 1
-const costAfterMigration = 0.126
+// Approximate monthly rendering costs in USD from the November 2026 resume.
+const costBeforeMigration = 2390
+const costAfterMigration = 300
 const estimatedCostReduction = 1 - costAfterMigration / costBeforeMigration
 const costScenarios = [
-  { platform: 'AWS EKS', phase: 'before', share: costBeforeMigration },
-  { platform: 'Cloudflare', phase: 'after', share: costAfterMigration },
+  { platform: 'AWS EKS', phase: 'before', monthlyUsd: costBeforeMigration },
+  { platform: 'Cloudflare', phase: 'after', monthlyUsd: costAfterMigration },
 ]
 const percentFormat = { style: 'percent', maximumFractionDigits: 0 } as const
+const usdFormat = {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+} as const
 const deliveryKeys = ['marketplace', 'content', 'customerData', 'media', 'gateway', 'observability'] as const
 
 const personalProjects = computed(() => [
@@ -578,6 +586,10 @@ const openSourceProjects = computed(() =>
   border-block-start: 1px solid var(--site-line);
 }
 
+.professional-charts {
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+}
+
 .professional-charts h3,
 .professional-deliveries h3,
 .professional-recognitions h3 {
@@ -592,6 +604,8 @@ const openSourceProjects = computed(() =>
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 1rem;
+  padding-inline-start: var(--professional-column-gap);
+  border-inline-start: 1px solid var(--site-line);
 }
 
 .systems-chart-value {
@@ -624,48 +638,78 @@ const openSourceProjects = computed(() =>
   background: var(--site-link);
 }
 
-.cost-chart {
-  padding-inline-start: var(--professional-column-gap);
-  border-inline-start: 1px solid var(--site-line);
+.cost-chart-caption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.75rem;
+}
+
+.cost-chart-caption h3 {
+  font-size: clamp(1.035rem, 1.8vw, 1.3rem);
+}
+
+.cost-chart-unit {
+  margin-top: 0.35rem;
+  color: var(--site-muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
 }
 
 .cost-chart-reduction {
-  margin-top: 0.35rem;
+  display: grid;
+  gap: 0.23rem;
   color: var(--site-link);
-  font-size: clamp(1.15rem, 2.35vw, 1.65rem);
+  text-align: end;
+}
+
+.cost-chart-reduction strong {
+  font-size: clamp(1.85rem, 3.3vw, 3.1rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.cost-chart-reduction span {
+  max-width: 18ch;
+  font-size: 0.75rem;
+  font-weight: 650;
 }
 
 .cost-chart-bars {
   display: grid;
-  gap: 0.55rem;
-  margin-top: 0.8rem;
+  gap: 0.85rem;
+  margin-top: 1.1rem;
 }
 
 .cost-chart-bar {
-  --cost-bar-color: #7189ae;
+  --cost-bar-color: #7890b3;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.25rem 0.75rem;
+  align-items: baseline;
+  gap: 0.4rem 0.75rem;
   color: var(--site-navy);
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 750;
 }
 
 .cost-chart-bar dt span {
-  margin-inline-start: 0.35rem;
+  display: inline-block;
+  margin-inline-start: 0.3rem;
   color: var(--site-muted);
   font-weight: 500;
 }
 
 .cost-chart-bar dd {
+  font-size: clamp(0.875rem, 1.65vw, 1.1rem);
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .cost-chart-bar::after {
   grid-column: 1 / -1;
-  height: 0.52rem;
+  height: 0.7rem;
   border-radius: 0.25rem;
   background: linear-gradient(
     to right,
@@ -677,13 +721,6 @@ const openSourceProjects = computed(() =>
 
 .cost-chart-bar--after {
   --cost-bar-color: var(--site-link);
-}
-
-.cost-chart-note {
-  margin-top: 0.6rem;
-  color: var(--site-muted);
-  font-size: 0.75rem;
-  line-height: 1.45;
 }
 
 .professional-delivery-grid,
@@ -755,7 +792,7 @@ const openSourceProjects = computed(() =>
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .cost-chart {
+  .systems-chart {
     padding-block-start: 1rem;
     padding-inline-start: 0;
     border-block-start: 1px solid var(--site-line);
@@ -820,10 +857,10 @@ const openSourceProjects = computed(() =>
     "achievements": {
       "authentication": "Keycloak authentication",
       "authenticatedSystems": "systems using authentication",
-      "renderingCost": "Marketplace rendering cost",
-      "costReduction": "Estimated {value} reduction",
+      "renderingCost": "Rendering costs",
+      "costUnit": "Marketplace · estimated monthly cost in USD",
+      "costReduction": "estimated reduction",
       "costPhase": { "before": "before", "after": "after" },
-      "costIndex": "Estimated monthly cost index relative to AWS EKS.",
       "deliveries": "Platform work",
       "deliveryNames": {
         "marketplace": "Marketplace",
@@ -898,10 +935,10 @@ const openSourceProjects = computed(() =>
     "achievements": {
       "authentication": "Autenticação com Keycloak",
       "authenticatedSystems": "sistemas com autenticação",
-      "renderingCost": "Custo de renderização do marketplace",
-      "costReduction": "Redução estimada de {value}",
+      "renderingCost": "Custo de renderização",
+      "costUnit": "Marketplace · custo mensal estimado em USD",
+      "costReduction": "de redução estimada",
       "costPhase": { "before": "antes", "after": "depois" },
-      "costIndex": "Índice de custo mensal estimado com AWS EKS como base.",
       "deliveries": "Entregas de plataforma",
       "deliveryNames": {
         "marketplace": "Marketplace",
@@ -976,10 +1013,10 @@ const openSourceProjects = computed(() =>
     "achievements": {
       "authentication": "Autenticación con Keycloak",
       "authenticatedSystems": "sistemas con autenticación",
-      "renderingCost": "Coste de renderizado del marketplace",
-      "costReduction": "Reducción estimada del {value}",
+      "renderingCost": "Coste de renderizado",
+      "costUnit": "Marketplace · coste mensual estimado en USD",
+      "costReduction": "de reducción estimada",
       "costPhase": { "before": "antes", "after": "después" },
-      "costIndex": "Índice de coste mensual estimado con AWS EKS como base.",
       "deliveries": "Entregas de plataforma",
       "deliveryNames": {
         "marketplace": "Marketplace",
