@@ -62,9 +62,9 @@
           </div>
           <div>
             <p class="career-feature-description">{{ currentRole.text }}</p>
-            <p v-if="currentRole.recognition" class="career-recognition">
+            <p v-if="currentRole.recognitions?.[0]" class="career-recognition">
               <UIcon name="i-heroicons-trophy" aria-hidden="true" />
-              <span>{{ currentRole.recognition }}</span>
+              <span>{{ currentRole.recognitions[0] }}</span>
             </p>
             <ul class="career-skills" role="list">
               <li v-for="skill in currentRole.skills" :key="skill">

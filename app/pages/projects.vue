@@ -108,7 +108,7 @@
                 </span>
               </div>
 
-              <div class="mt-4">
+              <div v-if="project.linkUrl" class="mt-4">
                 <UButton
                   :href="project.linkUrl"
                   target="_blank"
@@ -216,6 +216,7 @@
                     </td>
                     <td class="px-6 py-5 align-top text-right">
                       <UButton
+                        v-if="project.linkUrl"
                         :href="project.linkUrl"
                         target="_blank"
                         rel="noopener"
@@ -263,13 +264,13 @@ interface ProjectSection {
   stats: { label: string; value: string }[]
   projects: {
     name: string
-    badge: string
+    badge?: string
     meta: string
     description: string
-    linkUrl: string
-    imageUrl: string
+    linkUrl?: string
+    imageUrl?: string
     logoVariant?: 'dark'
-    theme: 'light' | 'dark'
+    theme?: 'light' | 'dark'
     highlights?: { label: string; value: string }[]
     tags: string[]
     ctaLabel?: string
@@ -301,7 +302,7 @@ const projectSections = computed<ProjectSection[]>(() => {
       ],
       projects: [
         {
-          name: 'Snown',
+          name: 'SNOWN',
           badge: t('badges.product'),
           meta: t('personalProjects.snown.meta'),
           description: t('personalProjects.snown.description'),
@@ -313,7 +314,25 @@ const projectSections = computed<ProjectSection[]>(() => {
             { label: highlightLabels.role, value: t('personalProjects.snown.role') },
             { label: highlightLabels.focus, value: t('personalProjects.snown.focus') },
           ],
-          tags: ['Nuxt', 'TypeScript', 'Django', 'NestJS', 'PostgreSQL'],
+          tags: ['React', 'NestJS', 'Redis', 'Yjs'],
+        },
+        {
+          name: 'Ascent',
+          meta: t('personalProjects.ascent.meta'),
+          description: t('personalProjects.ascent.description'),
+          highlights: [
+            { label: highlightLabels.focus, value: t('personalProjects.ascent.focus') },
+          ],
+          tags: ['Nuxt', 'Electron', 'Kotlin Multiplatform', 'SQLite', 'WebSocket'],
+        },
+        {
+          name: 'Our Wedding',
+          meta: t('personalProjects.ourWedding.meta'),
+          description: t('personalProjects.ourWedding.description'),
+          highlights: [
+            { label: highlightLabels.focus, value: t('personalProjects.ourWedding.focus') },
+          ],
+          tags: ['Flutter', 'Dart', 'Firebase', 'BLoC'],
         },
         {
           name: 'Experiment UI',
@@ -517,10 +536,20 @@ const projectSections = computed<ProjectSection[]>(() => {
     },
     "personalProjects": {
       "snown": {
-        "description": "Collaborative platform I created for companies and individuals. It features project management and documentation tools.",
+        "description": "Project management platform with Kanban, real-time collaborative document editing, a shared calendar, and custom permissions.",
         "meta": "Founder • 2018 — today",
         "role": "Product & Engineering",
-        "focus": "Knowledge + collaboration hub"
+        "focus": "Role- and attribute-based access control"
+      },
+      "ascent": {
+        "description": "An app in development for organizing habits, goals, schedules, and notes across desktop and mobile.",
+        "meta": "Personal productivity",
+        "focus": "Offline-first use and cross-device sync"
+      },
+      "ourWedding": {
+        "description": "Wedding app with RSVPs, an event calendar, a social feed, and photo sharing.",
+        "meta": "Mobile app",
+        "focus": "Feature-based architecture and BLoC state management"
       },
       "experiment-ui": {
         "description": "Library with visual components in Vue 3 for rapid testing.",
@@ -602,10 +631,20 @@ const projectSections = computed<ProjectSection[]>(() => {
     },
     "personalProjects": {
       "snown": {
-        "description": "Plataforma colaborativa que criei para empresas e pessoas. Possui ferramentas de gerenciamento de projetos e documentações.",
+        "description": "Plataforma de gestão de projetos com Kanban, edição colaborativa de documentos em tempo real, calendário compartilhado e permissões personalizadas.",
         "meta": "Founder • 2018 — atual",
         "role": "Produto & Engenharia",
-        "focus": "Hub de conhecimento"
+        "focus": "Controle de acesso por papéis e atributos"
+      },
+      "ascent": {
+        "description": "Aplicativo em desenvolvimento para organizar hábitos, metas, agenda e notas no desktop e no celular.",
+        "meta": "Produtividade pessoal",
+        "focus": "Uso offline e sincronização entre dispositivos"
+      },
+      "ourWedding": {
+        "description": "Aplicativo de casamento com confirmação de presença, calendário do evento, feed e compartilhamento de fotos.",
+        "meta": "Aplicativo mobile",
+        "focus": "Arquitetura por funcionalidades e gestão de estado com BLoC"
       },
       "experiment-ui": {
         "description": "Biblioteca com componentes visuais em Vue 3 para testes.",
@@ -687,10 +726,20 @@ const projectSections = computed<ProjectSection[]>(() => {
     },
     "personalProjects": {
       "snown": {
-        "description": "Plataforma colaborativa que creé para empresas y personas. Cuenta con herramientas de gestión de proyectos y documentación.",
+        "description": "Plataforma de gestión de proyectos con Kanban, edición colaborativa de documentos en tiempo real, calendario compartido y permisos personalizados.",
         "meta": "Founder • 2018 — hoy",
         "role": "Producto e Ingeniería",
-        "focus": "Hub de conocimiento"
+        "focus": "Control de acceso por roles y atributos"
+      },
+      "ascent": {
+        "description": "Aplicación en desarrollo para organizar hábitos, objetivos, agenda y notas en el ordenador y el móvil.",
+        "meta": "Productividad personal",
+        "focus": "Uso sin conexión y sincronización entre dispositivos"
+      },
+      "ourWedding": {
+        "description": "Aplicación para bodas con confirmación de asistencia, calendario del evento, publicaciones y fotos compartidas.",
+        "meta": "Aplicación móvil",
+        "focus": "Arquitectura por funcionalidades y gestión de estado con BLoC"
       },
       "experiment-ui": {
         "description": "Biblioteca con componentes visuales en Vue 3 para pruebas.",

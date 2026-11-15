@@ -107,6 +107,18 @@
                 {{ item.text }}
               </p>
 
+              <div v-if="item.recognitions?.length" class="experience-recognitions">
+                <h4>
+                  <UIcon name="i-heroicons-trophy" aria-hidden="true" />
+                  {{ t('experiences.recognitions') }}
+                </h4>
+                <ul>
+                  <li v-for="recognition in item.recognitions" :key="recognition">
+                    {{ recognition }}
+                  </li>
+                </ul>
+              </div>
+
               <!-- Skills Tags -->
               <div v-if="item.skills && item.skills.length" class="skills-container">
                 <span
@@ -221,6 +233,7 @@ const items = computed(() => {
       "title": "Experiências",
       "description": "Profissionais e de Ensino.",
       "professionalTab": "Profissionais",
+      "recognitions": "Reconhecimentos",
       "educationTab": "Educacionais",
       "educationItems": {
         "item1": {
@@ -255,6 +268,7 @@ const items = computed(() => {
       "title": "Experiences",
       "description": "Professional and Educational.",
       "professionalTab": "Professional",
+      "recognitions": "Recognition",
       "educationTab": "Educational",
       "educationItems": {
         "item1": {
@@ -289,6 +303,7 @@ const items = computed(() => {
       "title": "Experiencias",
       "description": "Profesionales y Educativas.",
       "professionalTab": "Profesionales",
+      "recognitions": "Reconocimientos",
       "educationTab": "Educativas",
       "educationItems": {
         "item1": {
@@ -563,6 +578,32 @@ const items = computed(() => {
   line-height: 1.6;
   color: var(--color-secondary);
   opacity: 0.75;
+}
+
+.experience-recognitions {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.65rem;
+  background: var(--site-soft);
+  color: var(--site-ink);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.experience-recognitions h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--site-navy);
+  font-weight: 700;
+}
+
+.experience-recognitions ul {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 0.4rem;
+  padding-inline-start: 1.25rem;
+  list-style: disc;
 }
 
 /* Skills */
