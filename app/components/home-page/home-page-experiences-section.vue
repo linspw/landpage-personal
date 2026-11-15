@@ -57,7 +57,7 @@
                     :src="item.image"
                     :alt="item.company || item.title"
                     class="company-logo"
-                  />
+                  >
                   <div v-else class="logo-placeholder">
                     <i :class="item.icon" class="text-2xl text-primary/60" />
                   </div>
@@ -106,6 +106,19 @@
               <p v-if="item.text" class="description">
                 {{ item.text }}
               </p>
+
+              <div
+                v-if="item.achievements"
+                :id="item.isCurrentJob ? 'realizacoes-profissionais' : undefined"
+                class="experience-achievements"
+              >
+                <h4>{{ t('experiences.achievements') }}</h4>
+                <ul>
+                  <li v-for="achievement in item.achievements" :key="achievement">
+                    {{ achievement }}
+                  </li>
+                </ul>
+              </div>
 
               <div v-if="item.recognitions?.length" class="experience-recognitions">
                 <h4>
@@ -233,6 +246,7 @@ const items = computed(() => {
       "title": "Experiências",
       "description": "Profissionais e de Ensino.",
       "professionalTab": "Profissionais",
+      "achievements": "Realizações profissionais",
       "recognitions": "Reconhecimentos",
       "educationTab": "Educacionais",
       "educationItems": {
@@ -268,6 +282,7 @@ const items = computed(() => {
       "title": "Experiences",
       "description": "Professional and Educational.",
       "professionalTab": "Professional",
+      "achievements": "Professional achievements",
       "recognitions": "Recognition",
       "educationTab": "Educational",
       "educationItems": {
@@ -303,6 +318,7 @@ const items = computed(() => {
       "title": "Experiencias",
       "description": "Profesionales y Educativas.",
       "professionalTab": "Profesionales",
+      "achievements": "Logros profesionales",
       "recognitions": "Reconocimientos",
       "educationTab": "Educativas",
       "educationItems": {
@@ -580,16 +596,27 @@ const items = computed(() => {
   opacity: 0.75;
 }
 
+.experience-achievements,
 .experience-recognitions {
   margin-top: 1rem;
-  padding: 0.85rem 1rem;
-  border-radius: 0.65rem;
-  background: var(--site-soft);
   color: var(--site-ink);
   font-size: 0.875rem;
   line-height: 1.55;
 }
 
+.experience-achievements {
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--site-line);
+  scroll-margin-block-start: calc(var(--site-header-height) + 1.25rem);
+}
+
+.experience-recognitions {
+  padding: 0.85rem 1rem;
+  border-radius: 0.65rem;
+  background: var(--site-soft);
+}
+
+.experience-achievements h4,
 .experience-recognitions h4 {
   display: flex;
   align-items: center;
@@ -598,6 +625,7 @@ const items = computed(() => {
   font-weight: 700;
 }
 
+.experience-achievements ul,
 .experience-recognitions ul {
   display: grid;
   gap: 0.25rem;

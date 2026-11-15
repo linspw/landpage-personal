@@ -1,543 +1,811 @@
 <template>
-  <app-page with-top-margin>
-    <app-section
-      :title="$t('pages.projects.title')"
-      :description="$t('pages.projects.subtitle')"
-      class="pb-20"
-    >
-      <UContainer class="space-y-12">
+  <AppPage with-top-margin>
+    <AppSection :title="$t('pages.projects.title')" heading-tag="h1">
+      <UContainer class="projects-content">
         <section
-          v-for="section in projectSections"
-          :key="section.id"
-          class="projects-section rounded-[2.5rem] border border-slate-200/80 bg-white/92 p-8 backdrop-blur-sm"
+          v-if="currentRole?.achievements"
+          id="realizacoes"
+          aria-labelledby="professional-projects-heading"
         >
-          <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div class="max-w-2xl">
-              <p class="text-xs font-semibold uppercase tracking-[0.4em] text-primary/70">
-                {{ section.label }}
-              </p>
-              <h3 class="mt-2 text-3xl font-bold text-secondary">
-                {{ section.title }}
+          <div class="projects-section-heading">
+            <h2 id="professional-projects-heading">{{ t('sections.professional') }}</h2>
+            <div class="projects-shortcuts">
+              <a href="#projetos-autorais" class="projects-link">
+                {{ t('sections.personal') }}
+                <UIcon name="i-heroicons-arrow-down-20-solid" aria-hidden="true" />
+              </a>
+              <a href="#open-source" class="projects-link" :aria-label="t('sections.openSource')">
+                Open source
+                <UIcon name="i-heroicons-arrow-down-20-solid" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+
+          <div class="professional-projects">
+            <div class="professional-context">
+              <div>
+                <h3 class="professional-projects-company">
+                  <img v-if="currentRole.companyMark" :src="currentRole.companyMark" alt="" width="30" height="30">
+                  {{ currentRole.company }}
+                </h3>
+                <p class="professional-projects-role">{{ currentRole.title }}</p>
+              </div>
+              <a href="/about-me#realizacoes-profissionais" class="projects-link">
+                {{ t('achievements.fullExperience') }}
+                <UIcon name="i-heroicons-arrow-right-20-solid" aria-hidden="true" />
+              </a>
+            </div>
+            <div class="professional-charts">
+              <figure class="systems-chart">
+                <figcaption>
+                  <h3>{{ t('achievements.authentication') }}</h3>
+                  <p class="systems-chart-value">
+                    <strong>{{ n(authenticationSystemCount) }}+</strong>
+                    <span>{{ t('achievements.authenticatedSystems') }}</span>
+                  </p>
+                </figcaption>
+                <div class="systems-chart-points" aria-hidden="true">
+                  <span v-for="system in authenticationSystemCount" :key="system" />
+                </div>
+              </figure>
+
+              <figure class="migration-chart">
+                <figcaption>
+                  <h3>{{ t('achievements.edgeRendering') }}</h3>
+                  <p>{{ currentRole.achievements.edge }}</p>
+                </figcaption>
+                <div class="migration-chart-flow" aria-hidden="true">
+                  <div class="migration-origin">
+                    <UIcon name="i-heroicons-server-stack" />
+                    <span>AWS EKS</span>
+                  </div>
+                  <UIcon name="i-heroicons-arrow-right-20-solid" />
+                  <div class="migration-destination">
+                    <UIcon name="i-heroicons-cloud" />
+                    <span>Cloudflare</span>
+                  </div>
+                </div>
+              </figure>
+            </div>
+
+            <div class="professional-deliveries">
+              <h3>{{ t('achievements.deliveries') }}</h3>
+              <dl class="professional-delivery-grid">
+                <div v-for="key in deliveryKeys" :key="key">
+                  <dt>{{ t(`achievements.deliveryNames.${key}`) }}</dt>
+                  <dd>{{ currentRole.achievements[key] }}</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div v-if="currentRole.recognitions?.length" class="professional-recognitions">
+              <h3>
+                <UIcon name="i-heroicons-trophy" aria-hidden="true" />
+                {{ t('achievements.recognitions') }}
               </h3>
-              <p class="mt-3 text-base text-secondary/80">
-                {{ section.description }}
-              </p>
-            </div>
-
-            <div
-              v-if="section.stats?.length"
-              class="grid gap-3 sm:grid-cols-2"
-            >
-              <div
-                v-for="stat in section.stats"
-                :key="stat.label"
-                class="rounded-2xl border border-primary/10 bg-white/70 px-5 py-4 text-secondary shadow-sm"
-              >
-                <p class="text-xs font-semibold uppercase tracking-wide text-primary/70">
-                  {{ stat.label }}
-                </p>
-                <p class="text-2xl font-bold text-secondary">
-                  {{ stat.value }}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mobile: Card Layout -->
-          <div class="mt-8 space-y-4 lg:hidden">
-            <article
-              v-for="project in section.projects"
-              :key="`mobile-${project.name}`"
-              class="project-card rounded-2xl border border-slate-200/80 bg-white p-5"
-            >
-              <div class="flex items-start gap-4">
-                <div
-                  v-if="project.imageUrl"
-                  :class="[
-                    'projects-logo flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-primary/10',
-                    project.logoVariant === 'dark' ? 'bg-black' : 'bg-primary/5',
-                  ]"
-                >
-                  <app-image
-                    :src="project.imageUrl"
-                    :alt="project.name"
-                    :height="40"
-                    :width="40"
-                    :zoomable="false"
-                    class="max-h-10 max-w-full"
-                  />
-                </div>
-
-                <div class="min-w-0 flex-1">
-                  <p v-if="project.badge" class="text-[10px] font-semibold uppercase tracking-[0.3em] text-primary/70">
-                    {{ project.badge }}
-                  </p>
-                  <h4 class="text-lg font-bold text-secondary">{{ project.name }}</h4>
-                  <p v-if="project.meta" class="text-xs text-secondary/60">
-                    {{ project.meta }}
-                  </p>
-                </div>
-              </div>
-
-              <p class="mt-4 text-sm text-secondary/75">
-                {{ project.description }}
-              </p>
-
-              <div v-if="project.highlights?.length" class="mt-4 flex flex-wrap gap-2">
-                <div
-                  v-for="highlight in project.highlights"
-                  :key="`${project.name}-mobile-${highlight.label}`"
-                  class="rounded-xl border border-primary/10 bg-primary/5 px-3 py-2"
-                >
-                  <p class="text-[10px] font-semibold uppercase tracking-widest text-primary/70">
-                    {{ highlight.label }}
-                  </p>
-                  <p class="text-sm font-semibold text-secondary">
-                    {{ highlight.value }}
-                  </p>
-                </div>
-              </div>
-
-              <div v-if="project.tags?.length" class="mt-4 flex flex-wrap gap-1.5">
-                <span
-                  v-for="tag in project.tags"
-                  :key="`${project.name}-mobile-${tag}`"
-                  class="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-secondary/70"
-                >
-                  {{ tag }}
-                </span>
-              </div>
-
-              <div v-if="project.linkUrl" class="mt-4">
-                <UButton
-                  :href="project.linkUrl"
-                  target="_blank"
-                  rel="noopener"
-                  color="primary"
-                  variant="soft"
-                  size="sm"
-                  icon="i-heroicons-arrow-up-right-20-solid"
-                  trailing
-                  block
-                >
-                  {{ project.ctaLabel || tableHeaders.view }}
-                </UButton>
-              </div>
-            </article>
-          </div>
-
-          <!-- Desktop: Table Layout -->
-          <div class="mt-8 hidden overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white lg:block">
-            <div class="overflow-x-auto">
-              <table class="projects-table w-full text-left">
-                <thead>
-                  <tr>
-                    <th scope="col" class="px-6 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary/60">
-                      {{ tableHeaders.project }}
-                    </th>
-                    <th scope="col" class="px-6 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary/60">
-                      {{ tableHeaders.description }}
-                    </th>
-                    <th scope="col" class="px-6 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary/60">
-                      {{ tableHeaders.highlights }}
-                    </th>
-                    <th scope="col" class="px-6 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary/60">
-                      {{ tableHeaders.tags }}
-                    </th>
-                    <th scope="col" class="px-6 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary/60 text-right">
-                      {{ tableHeaders.action }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    v-for="project in section.projects"
-                    :key="project.name"
-                    class="project-row border-t border-slate-100 transition-all duration-300"
-                  >
-                    <td class="px-6 py-5 align-top">
-                      <div class="flex items-start gap-4">
-                        <div
-                          v-if="project.imageUrl"
-                          :class="[
-                            'projects-logo flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/10',
-                            project.logoVariant === 'dark' ? 'bg-black' : 'bg-primary/5',
-                          ]"
-                        >
-                          <app-image
-                            :src="project.imageUrl"
-                            :alt="project.name"
-                            :height="48"
-                            :width="48"
-                            :zoomable="false"
-                            class="max-h-12 max-w-full"
-                          />
-                        </div>
-                        <div>
-                          <p v-if="project.badge" class="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">
-                            {{ project.badge }}
-                          </p>
-                          <p class="text-lg font-semibold text-secondary">{{ project.name }}</p>
-                          <p v-if="project.meta" class="text-sm text-secondary/70">
-                            {{ project.meta }}
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-6 py-5 align-top text-secondary/80">
-                      {{ project.description }}
-                    </td>
-                    <td class="px-6 py-5 align-top">
-                      <div class="flex flex-col gap-2">
-                        <div
-                          v-for="highlight in project.highlights || []"
-                          :key="`${project.name}-${highlight.label}`"
-                          class="rounded-2xl border border-primary/10 bg-primary/5 px-3 py-2 text-sm"
-                        >
-                          <p class="text-[11px] font-semibold uppercase tracking-widest text-primary/70">
-                            {{ highlight.label }}
-                          </p>
-                          <p class="text-base font-semibold text-secondary">
-                            {{ highlight.value }}
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-6 py-5 align-top">
-                      <div class="flex flex-wrap gap-2">
-                        <span
-                          v-for="tag in project.tags || []"
-                          :key="`${project.name}-${tag}`"
-                          class="rounded-full border border-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-secondary/70"
-                        >
-                          {{ tag }}
-                        </span>
-                      </div>
-                    </td>
-                    <td class="px-6 py-5 align-top text-right">
-                      <UButton
-                        v-if="project.linkUrl"
-                        :href="project.linkUrl"
-                        target="_blank"
-                        rel="noopener"
-                        color="primary"
-                        variant="ghost"
-                        icon="i-heroicons-arrow-up-right-20-solid"
-                      >
-                        {{ project.ctaLabel || tableHeaders.view }}
-                      </UButton>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <ul role="list">
+                <li v-for="recognition in currentRole.recognitions" :key="recognition">
+                  {{ recognition }}
+                </li>
+              </ul>
             </div>
           </div>
         </section>
+
+        <section id="projetos-autorais" class="personal-projects-section" aria-labelledby="personal-projects-heading">
+          <h2 id="personal-projects-heading" class="projects-section-heading">{{ t('sections.personal') }}</h2>
+
+          <div class="personal-projects">
+            <article class="featured-project" aria-labelledby="snown-heading">
+              <h3 id="snown-heading" class="sr-only">SNOWN</h3>
+              <div class="featured-project-brand">
+                <img src="/images/projects/snown.svg" alt="" width="1490" height="211">
+              </div>
+              <div class="featured-project-body">
+                <p class="featured-project-meta">{{ t('personalProjects.snown.meta') }}</p>
+                <p class="featured-project-description">{{ t('personalProjects.snown.description') }}</p>
+
+                <dl class="featured-project-details">
+                  <div>
+                    <dt>{{ t('highlights.role') }}</dt>
+                    <dd>{{ t('personalProjects.snown.role') }}</dd>
+                  </div>
+                  <div>
+                    <dt>{{ t('highlights.focus') }}</dt>
+                    <dd>{{ t('personalProjects.snown.focus') }}</dd>
+                  </div>
+                </dl>
+
+                <div class="featured-project-footer">
+                  <p class="project-stack">React · NestJS · Redis · Yjs</p>
+                  <a
+                    href="https://snown.com.br/"
+                    target="_blank"
+                    rel="noopener"
+                    class="projects-link featured-project-link"
+                  >
+                    {{ t('openProject', { name: 'SNOWN' }) }}
+                    <UIcon name="i-heroicons-arrow-up-right-20-solid" aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <ul class="personal-project-list" role="list">
+              <li v-for="project in personalProjects" :key="project.name" class="personal-project">
+                <article>
+                  <header class="personal-project-heading">
+                    <div>
+                      <h3>{{ project.name }}</h3>
+                      <p>{{ project.meta }}</p>
+                    </div>
+                    <img v-if="project.imageUrl" :src="project.imageUrl" alt="" width="68" height="38">
+                  </header>
+
+                  <p class="project-description">{{ project.description }}</p>
+                  <p class="personal-project-detail">{{ project.detail }}</p>
+                  <div class="personal-project-footer">
+                    <p class="project-stack">{{ project.tags.join(' · ') }}</p>
+                    <a
+                      v-if="project.linkUrl"
+                      :href="project.linkUrl"
+                      target="_blank"
+                      rel="noopener"
+                      class="projects-link"
+                    >
+                      {{ t('openProject', { name: project.name }) }}
+                      <UIcon name="i-heroicons-arrow-up-right-20-solid" aria-hidden="true" />
+                    </a>
+                  </div>
+                </article>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="open-source" class="open-source-projects" aria-labelledby="open-source-heading">
+          <h2 id="open-source-heading">{{ t('sections.openSource') }}</h2>
+          <ul class="open-source-list" role="list">
+            <li v-for="project in openSourceProjects" :key="project.name" class="open-source-project">
+              <div class="open-source-identity">
+                <img :src="project.imageUrl" alt="" width="52" height="40" loading="lazy">
+                <div>
+                  <h3>{{ project.name }}</h3>
+                  <p>{{ project.meta }}</p>
+                </div>
+              </div>
+
+              <div class="open-source-description">
+                <p class="project-description">{{ project.description }}</p>
+                <p class="project-stack">{{ project.tags.join(' · ') }}</p>
+              </div>
+
+              <a
+                :href="project.linkUrl"
+                target="_blank"
+                rel="noopener"
+                class="projects-link open-source-link"
+                :aria-label="t('viewContribution', { name: project.name })"
+              >
+                {{ t('contributions') }}
+                <UIcon name="i-heroicons-arrow-up-right-20-solid" aria-hidden="true" />
+              </a>
+            </li>
+          </ul>
+        </section>
       </UContainer>
-    </app-section>
-  </app-page>
+    </AppSection>
+  </AppPage>
 </template>
 
 <script setup lang="ts">
-useHead({
-  title: 'pages.projects.title',
-})
+useHead({ title: 'pages.projects.title' })
 
-const { t } = useI18n({
-  useScope: 'local',
-})
+const { t, n } = useI18n({ useScope: 'local' })
+const roles = useProfessionalExperience()
+const currentRole = computed(() => roles.value.find(role => role.isCurrentJob))
+const authenticationSystemCount = 30
+const deliveryKeys = ['marketplace', 'content', 'customerData', 'media', 'gateway', 'observability'] as const
 
-const tableHeaders = computed(() => ({
-  project: t('table.headers.project'),
-  description: t('table.headers.description'),
-  highlights: t('table.headers.highlights'),
-  tags: t('table.headers.tags'),
-  action: t('table.headers.action'),
-  view: t('table.cta'),
-}))
+const personalProjects = computed(() => [
+  {
+    name: 'Ascent',
+    meta: t('personalProjects.ascent.meta'),
+    description: t('personalProjects.ascent.description'),
+    detail: t('personalProjects.ascent.focus'),
+    tags: ['Nuxt', 'Electron', 'Kotlin Multiplatform', 'SQLite', 'WebSocket'],
+  },
+  {
+    name: 'Our Wedding',
+    meta: t('personalProjects.ourWedding.meta'),
+    description: t('personalProjects.ourWedding.description'),
+    detail: t('personalProjects.ourWedding.focus'),
+    tags: ['Flutter', 'Dart', 'Firebase', 'BLoC'],
+  },
+  {
+    name: 'Experiment UI',
+    meta: t('personalProjects.experiment-ui.meta'),
+    description: t('personalProjects.experiment-ui.description'),
+    detail: t('personalProjects.experiment-ui.role'),
+    linkUrl: 'https://linspw.github.io/experiment-ui/',
+    imageUrl: '/images/projects/experiment-ui-light.svg',
+    tags: ['Vue 3', 'Vite', 'Storybook'],
+  },
+])
 
-interface ProjectSection {
-  id: string
-  label: string
-  title: string
-  description: string
-  stats: { label: string; value: string }[]
-  projects: {
-    name: string
-    badge?: string
-    meta: string
-    description: string
-    linkUrl?: string
-    imageUrl?: string
-    logoVariant?: 'dark'
-    theme?: 'light' | 'dark'
-    highlights?: { label: string; value: string }[]
-    tags: string[]
-    ctaLabel?: string
-  }[]
-}
+const repositories = [
+  {
+    name: 'VueUse',
+    key: 'vueuse',
+    repository: 'vueuse/vueuse',
+    logo: 'vueuse.svg',
+    tags: ['Vue', 'DX', 'Toolkit'],
+  },
+  {
+    name: 'Hocuspocus',
+    key: 'hocuspocus',
+    repository: 'ueberdosis/hocuspocus',
+    logo: 'hocuspocus.svg',
+    tags: ['WebSocket', 'Yjs', 'DX'],
+  },
+  {
+    name: 'Vuetify Nuxt Module',
+    key: 'vuetifyNuxt',
+    repository: 'userquin/vuetify-nuxt-module',
+    logo: 'vuetify-nuxt-module.svg',
+    tags: ['Nuxt', 'Vuetify', 'DX'],
+  },
+  {
+    name: 'Vue Resizables',
+    key: 'vueresizable',
+    repository: 'alexzhang1030/vue-resizables',
+    logo: 'vue-resizable.svg',
+    tags: ['Components', 'Vue', 'UX'],
+  },
+  {
+    name: 'Drauu',
+    key: 'drauu',
+    repository: 'antfu/drauu',
+    logo: 'drauu.svg',
+    tags: ['Canvas', 'Vue', 'Tooling'],
+  },
+]
 
-const projectSections = computed<ProjectSection[]>(() => {
-  const highlightLabels = {
-    role: t('highlights.role'),
-    stack: t('highlights.stack'),
-    focus: t('highlights.focus'),
-  }
-
-  return [
-    {
-      id: 'personal',
-      label: t('sections.personal.label'),
-      title: t('sections.personal.title'),
-      description: t('sections.personal.description'),
-      stats: [
-        {
-          label: t('sections.personal.stats.active'),
-          value: t('sections.personal.stats.activeValue'),
-        },
-        {
-          label: t('sections.personal.stats.launches'),
-          value: t('sections.personal.stats.launchesValue'),
-        },
-      ],
-      projects: [
-        {
-          name: 'SNOWN',
-          badge: t('badges.product'),
-          meta: t('personalProjects.snown.meta'),
-          description: t('personalProjects.snown.description'),
-          linkUrl: 'https://snown.com.br/',
-          imageUrl: '/images/projects/snown.svg',
-          logoVariant: 'dark',
-          theme: 'dark' as const,
-          highlights: [
-            { label: highlightLabels.role, value: t('personalProjects.snown.role') },
-            { label: highlightLabels.focus, value: t('personalProjects.snown.focus') },
-          ],
-          tags: ['React', 'NestJS', 'Redis', 'Yjs'],
-        },
-        {
-          name: 'Ascent',
-          meta: t('personalProjects.ascent.meta'),
-          description: t('personalProjects.ascent.description'),
-          highlights: [
-            { label: highlightLabels.focus, value: t('personalProjects.ascent.focus') },
-          ],
-          tags: ['Nuxt', 'Electron', 'Kotlin Multiplatform', 'SQLite', 'WebSocket'],
-        },
-        {
-          name: 'Our Wedding',
-          meta: t('personalProjects.ourWedding.meta'),
-          description: t('personalProjects.ourWedding.description'),
-          highlights: [
-            { label: highlightLabels.focus, value: t('personalProjects.ourWedding.focus') },
-          ],
-          tags: ['Flutter', 'Dart', 'Firebase', 'BLoC'],
-        },
-        {
-          name: 'Experiment UI',
-          badge: t('badges.designSystem'),
-          meta: t('personalProjects.experiment-ui.meta'),
-          description: t('personalProjects.experiment-ui.description'),
-          linkUrl: 'https://linspw.github.io/experiment-ui/',
-          imageUrl: '/images/projects/experiment-ui-light.svg',
-          theme: 'light' as const,
-          highlights: [
-            { label: highlightLabels.role, value: t('personalProjects.experiment-ui.role') },
-            { label: highlightLabels.stack, value: 'Vue 3 · Vite · Storybook' },
-          ],
-          tags: ['Design System', 'Documentation', 'Playground'],
-        },
-      ],
-    },
-    {
-      id: 'open-source',
-      label: t('sections.openSource.label'),
-      title: t('sections.openSource.title'),
-      description: t('sections.openSource.description'),
-      stats: [
-        {
-          label: t('sections.openSource.stats.repositories'),
-          value: t('sections.openSource.stats.repositoriesValue'),
-        },
-        {
-          label: t('sections.openSource.stats.community'),
-          value: t('sections.openSource.stats.communityValue'),
-        },
-      ],
-      projects: [
-        {
-          name: 'VueUse',
-          badge: t('badges.openSource'),
-          meta: t('openSourceProjects.vueuse.meta'),
-          description: t('openSourceProjects.vueuse.description'),
-          linkUrl: 'https://github.com/vueuse/vueuse/commits/main/?author=linspw',
-          imageUrl: '/images/projects/vueuse.svg',
-          theme: 'light' as const,
-          tags: ['Vue', 'DX', 'Toolkit'],
-          ctaLabel: t('cta.viewContributions'),
-        },
-        {
-          name: 'Hocuspocus',
-          badge: t('badges.openSource'),
-          meta: t('openSourceProjects.hocuspocus.meta'),
-          description: t('openSourceProjects.hocuspocus.description'),
-          linkUrl: 'https://github.com/ueberdosis/hocuspocus/commits/main/?author=linspw',
-          imageUrl: '/images/projects/hocuspocus.svg',
-          theme: 'light' as const,
-          tags: ['WebSocket', 'Yjs', 'DX'],
-          ctaLabel: t('cta.viewContributions'),
-        },
-        {
-          name: 'Vuetify Nuxt Module',
-          badge: t('badges.openSource'),
-          meta: t('openSourceProjects.vuetifyNuxt.meta'),
-          description: t('openSourceProjects.vuetifyNuxt.description'),
-          linkUrl: 'https://github.com/userquin/vuetify-nuxt-module/commits/main/?author=linspw',
-          imageUrl: '/images/projects/vuetify-nuxt-module.svg',
-          theme: 'light' as const,
-          tags: ['Nuxt', 'Vuetify', 'DX'],
-          ctaLabel: t('cta.viewContributions'),
-        },
-        {
-          name: 'Vue Resizables',
-          badge: t('badges.openSource'),
-          meta: t('openSourceProjects.vueresizable.meta'),
-          description: t('openSourceProjects.vueresizable.description'),
-          linkUrl: 'https://github.com/alexzhang1030/vue-resizables/commits/main/?author=linspw',
-          imageUrl: '/images/projects/vue-resizable.svg',
-          theme: 'light' as const,
-          tags: ['Components', 'Vue', 'UX'],
-          ctaLabel: t('cta.viewContributions'),
-        },
-        {
-          name: 'Drauu',
-          badge: t('badges.openSource'),
-          meta: t('openSourceProjects.drauu.meta'),
-          description: t('openSourceProjects.drauu.description'),
-          linkUrl: 'https://github.com/antfu/drauu/commits/main/?author=linspw',
-          imageUrl: '/images/projects/drauu.svg',
-          theme: 'light' as const,
-          tags: ['Canvas', 'Vue', 'Tooling'],
-          ctaLabel: t('cta.viewContributions'),
-        },
-      ],
-    },
-  ]
-})
+const openSourceProjects = computed(() =>
+  repositories.map(({ name, key, repository, logo, tags }) => ({
+    name,
+    meta: t(`openSourceProjects.${key}.meta`),
+    description: t(`openSourceProjects.${key}.description`),
+    linkUrl: `https://github.com/${repository}/commits/main/?author=linspw`,
+    imageUrl: `/images/projects/${logo}`,
+    tags,
+  })),
+)
 </script>
 
 <style scoped>
-.projects-section {
-  box-shadow: 
-    0 8px 32px -8px rgba(0, 0, 0, 0.08),
-    0 4px 12px -2px rgba(0, 0, 0, 0.04);
+.projects-content {
+  padding-block: 0.75rem clamp(1.5rem, 4vw, 3rem);
 }
 
-.projects-table th:first-child {
-  min-width: 220px;
+.projects-content > section {
+  scroll-margin-block-start: calc(var(--site-header-height) + 1.25rem);
 }
 
-.projects-logo {
-  min-width: 3.5rem;
-  min-height: 3.5rem;
+.projects-section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 0.75rem;
+  margin-bottom: 1.15rem;
 }
 
-.projects-table td,
-.projects-table th {
-  border-color: rgba(15, 23, 42, 0.04);
+.projects-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
 }
 
-.project-row:hover {
-  background-color: rgba(1, 83, 255, 0.03);
+.projects-content h2 {
+  color: var(--site-navy);
+  font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
 }
 
-.project-row:hover td:first-child {
-  position: relative;
+.projects-link {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 44px;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 0.35rem;
+  color: var(--site-link);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-underline-offset: 0.25em;
 }
 
-.project-row:hover td:first-child::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background-color: var(--color-primary);
-  border-radius: 0 2px 2px 0;
+.projects-link:hover {
+  text-decoration: underline;
 }
 
-/* Mobile card styles */
-.project-card {
-  box-shadow: 
-    0 2px 8px -2px rgba(0, 0, 0, 0.05),
-    0 1px 3px -1px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+.projects-link:focus-visible {
+  outline: 2px solid var(--site-link);
+  outline-offset: 3px;
 }
 
-.project-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 8px 20px -6px rgba(0, 0, 0, 0.1),
-    0 4px 8px -2px rgba(0, 0, 0, 0.04);
-  border-color: rgba(1, 83, 255, 0.15);
+.projects-link .iconify {
+  flex: none;
+}
+
+.personal-projects {
+  display: grid;
+  grid-template-columns: minmax(0, 1.17fr) minmax(0, 0.83fr);
+  gap: clamp(1.75rem, 4.25vw, 4.25rem);
+}
+
+.featured-project {
+  display: flex;
+  flex-direction: column;
+  overflow: clip;
+  border-radius: 1rem;
+  background: var(--site-navy);
+  color: #f5f8ff;
+}
+
+.featured-project-brand {
+  display: grid;
+  min-height: clamp(10rem, 17vw, 15.5rem);
+  place-items: center;
+  padding: 1.75rem;
+  background: radial-gradient(ellipse at center, #234979, var(--site-navy) 75%);
+}
+
+.featured-project-brand img {
+  width: min(84%, 23.5rem);
+  height: auto;
+}
+
+.featured-project-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: start;
+  padding: 0 clamp(1.25rem, 3.5vw, 2.25rem) clamp(1.25rem, 3.5vw, 2.25rem);
+}
+
+.featured-project-meta {
+  color: #bed1f3;
+  font-size: 0.81rem;
+  font-weight: 700;
+}
+
+.featured-project-description {
+  max-width: 52ch;
+  margin-top: 0.6rem;
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  line-height: 1.58;
+}
+
+.featured-project-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem clamp(1.5rem, 4vw, 3.75rem);
+  margin-top: 1.25rem;
+}
+
+.featured-project-details dt {
+  color: #bed1f3;
+  font-size: 0.76rem;
+}
+
+.featured-project-details dd {
+  margin-top: 0.15rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.featured-project-footer {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+.featured-project-footer .project-stack {
+  color: #d4e3fc;
+}
+
+.featured-project-link {
+  padding-inline: 0.875rem;
+  background: #f0f5ff;
+  color: var(--site-navy);
+}
+
+.featured-project-link:hover {
+  background: #e1ebff;
+}
+
+.featured-project-link:focus-visible {
+  outline-color: #d4e3fc;
+}
+
+.personal-project-list,
+.open-source-list {
+  border-block-start: 1px solid var(--site-line);
+}
+
+.personal-project,
+.open-source-project {
+  border-block-end: 1px solid var(--site-line);
+}
+
+.personal-project {
+  padding-block: 1.1rem;
+}
+
+.personal-project-heading,
+.personal-project-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 0.85rem;
+}
+
+.personal-project-heading h3,
+.open-source-identity h3 {
+  color: var(--site-navy);
+  font-size: 1.32rem;
+  font-weight: 750;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+
+.personal-project-heading p,
+.open-source-identity p {
+  margin-top: 0.23rem;
+  color: var(--site-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.personal-project-heading img {
+  object-fit: contain;
+}
+
+.project-description {
+  max-width: 64ch;
+  color: var(--site-ink);
+  font-size: 0.925rem;
+  line-height: 1.55;
+}
+
+.personal-project .project-description {
+  margin-top: 0.55rem;
+}
+
+.personal-project-detail {
+  margin-top: 0.4rem;
+  color: var(--site-muted);
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
+.personal-project-footer {
+  margin-top: 0.35rem;
+}
+
+.project-stack {
+  color: var(--site-muted);
+  font-size: 0.77rem;
+  line-height: 1.55;
+}
+
+.personal-projects-section,
+.open-source-projects {
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.professional-projects {
+  padding: clamp(1.25rem, 3.5vw, 2.5rem);
+  border-radius: 1rem;
+  background: var(--site-soft);
+}
+
+.professional-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+}
+
+.professional-projects-company {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--site-navy);
+  font-size: 1.15rem;
+  font-weight: 750;
+}
+
+.professional-projects-role {
+  margin-top: 0.4rem;
+  color: var(--site-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.professional-charts,
+.professional-delivery-grid,
+.professional-recognitions ul {
+  --professional-column-gap: clamp(1.25rem, 4vw, 3.25rem);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem var(--professional-column-gap);
+}
+
+.professional-charts,
+.professional-deliveries,
+.professional-recognitions {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-block-start: 1px solid var(--site-line);
+}
+
+.professional-charts h3,
+.professional-deliveries h3,
+.professional-recognitions h3 {
+  color: var(--site-navy);
+  font-size: 1.035rem;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.systems-chart {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+}
+
+.systems-chart-value {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  color: var(--site-muted);
+  font-size: 0.85rem;
+}
+
+.systems-chart-value strong {
+  color: var(--site-link);
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.systems-chart-points {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(0.25rem, 0.75vw, 0.57rem);
+}
+
+.systems-chart-points span {
+  width: clamp(0.42rem, 1vw, 0.77rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--site-link);
+}
+
+.migration-chart {
+  padding-inline-start: var(--professional-column-gap);
+  border-inline-start: 1px solid var(--site-line);
+}
+
+.migration-chart figcaption p {
+  margin-top: 0.35rem;
+  color: var(--site-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.migration-chart-flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.4rem, 1vw, 0.85rem);
+  margin-top: 0.85rem;
+  color: var(--site-link);
+}
+
+.migration-origin,
+.migration-destination {
+  display: flex;
+  min-height: 3.1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem 0.55rem;
+  padding: 0.45rem;
+  border: 1px solid var(--site-control-border);
+  border-radius: 0.55rem;
+  color: var(--site-navy);
+  font-size: 0.825rem;
+  font-weight: 750;
+}
+
+.migration-destination {
+  border-color: #b7cdf3;
+  background: #dfeaff;
+  color: #123f91;
+}
+
+.professional-delivery-grid,
+.professional-recognitions ul {
+  margin-top: 0.75rem;
+  color: var(--site-ink);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.professional-delivery-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.professional-delivery-grid dt {
+  color: var(--site-navy);
+  font-weight: 700;
+}
+
+.professional-delivery-grid dd {
+  margin-top: 0.2rem;
+}
+
+.professional-recognitions h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.open-source-list {
+  margin-top: 1.2rem;
+}
+
+.open-source-project {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.86fr) minmax(0, 1.65fr) auto;
+  align-items: center;
+  gap: 0.4rem clamp(1rem, 3vw, 3rem);
+  padding-block: 1rem;
+}
+
+.open-source-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.open-source-identity img {
+  flex: none;
+  object-fit: contain;
+}
+
+.open-source-identity h3 {
+  font-size: 1.02rem;
+}
+
+.open-source-description .project-stack {
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 760px) {
+  .personal-projects,
+  .professional-charts,
+  .professional-recognitions ul {
+    grid-template-columns: 1fr;
+  }
+
+  .professional-delivery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .migration-chart {
+    padding-block-start: 1rem;
+    padding-inline-start: 0;
+    border-block-start: 1px solid var(--site-line);
+    border-inline-start: 0;
+  }
+
+  .systems-chart-points {
+    gap: 0.45rem;
+  }
+
+  .systems-chart-points span {
+    width: 0.55rem;
+  }
+
+  .featured-project-brand img {
+    width: min(84%, 21rem);
+  }
+
+  .open-source-project {
+    grid-template-columns: minmax(11rem, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .open-source-link {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .projects-section-heading {
+    margin-bottom: 0.8rem;
+  }
+
+  .featured-project-brand {
+    min-height: 8.25rem;
+  }
+
+  .professional-delivery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .open-source-project {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 0.55rem;
+    padding-bottom: 0.55rem;
+  }
+
+  .open-source-link {
+    grid-column: 1;
+  }
 }
 </style>
 
 <i18n lang="json">
 {
   "en": {
-    "table": {
-      "headers": {
-        "project": "Project",
-        "description": "Description",
-        "highlights": "Highlights",
-        "tags": "Tags",
-        "action": "Action"
-      },
-      "cta": "Open project"
-    },
     "sections": {
-      "personal": {
-        "label": "Author projects",
-        "title": "Personal builds that power my day-to-day",
-        "description": "Concepts that started as experiments and evolved into products used for collaboration, experimentation, and testing new stacks.",
-        "stats": {
-          "active": "Active initiatives",
-          "activeValue": "2",
-          "launches": "Product launches",
-          "launchesValue": "4+"
-        }
+      "personal": "Personal projects",
+      "professional": "Professional achievements",
+      "openSource": "Open-source contributions"
+    },
+    "achievements": {
+      "authentication": "Keycloak authentication",
+      "authenticatedSystems": "systems using authentication",
+      "edgeRendering": "Marketplace rendering",
+      "deliveries": "Platform work",
+      "deliveryNames": {
+        "marketplace": "Marketplace",
+        "content": "Montilla and SDKs",
+        "customerData": "Customer data",
+        "media": "Media Hub",
+        "gateway": "MCP gateway",
+        "observability": "Observability"
       },
-      "openSource": {
-        "label": "Community",
-        "title": "Open-source contributions & maintainer work",
-        "description": "I dedicate time to help libraries ship better DX, docs, and accessibility. Here are a few highlights.",
-        "stats": {
-          "repositories": "Repositories",
-          "repositoriesValue": "5",
-          "community": "Years contributing",
-          "communityValue": "8"
-        }
-      }
-    },
-    "badges": {
-      "product": "Product",
-      "designSystem": "Design System",
-      "openSource": "Open Source"
-    },
-    "cta": {
-      "viewContributions": "See contributions"
+      "recognitions": "Recognition",
+      "fullExperience": "View full experience"
     },
     "highlights": {
       "role": "Role",
-      "stack": "Stack",
       "focus": "Focus"
     },
     "personalProjects": {
       "snown": {
         "description": "Project management platform with Kanban, real-time collaborative document editing, a shared calendar, and custom permissions.",
-        "meta": "Founder • 2018 — today",
+        "meta": "Founder · Since 2018",
         "role": "Product & Engineering",
         "focus": "Role- and attribute-based access control"
       },
@@ -554,8 +822,7 @@ const projectSections = computed<ProjectSection[]>(() => {
       "experiment-ui": {
         "description": "Library with visual components in Vue 3 for rapid testing.",
         "meta": "Experimental Design System • since 2021",
-        "role": "Design System Engineer",
-        "focus": "Sandbox for Vue UI ideas"
+        "role": "Design System Engineer"
       }
     },
     "openSourceProjects": {
@@ -579,60 +846,41 @@ const projectSections = computed<ProjectSection[]>(() => {
         "meta": "Creative toolkit",
         "description": "Creative whiteboard toolkit for Vue and Vite starters."
       }
-    }
+    },
+    "openProject": "Open {name}",
+    "contributions": "Contributions",
+    "viewContribution": "View contributions to {name}"
   },
   "pt-BR": {
-    "table": {
-      "headers": {
-        "project": "Projeto",
-        "description": "Descrição",
-        "highlights": "Destaques",
-        "tags": "Tags",
-        "action": "Ação"
-      },
-      "cta": "Abrir projeto"
-    },
     "sections": {
-      "personal": {
-        "label": "Projetos autorais",
-        "title": "Construções pessoais que me acompanham",
-        "description": "Iniciativas que nasceram como experimentos e viraram produtos para colaboração, validação de ideias e testes de novas stacks.",
-        "stats": {
-          "active": "Iniciativas ativas",
-          "activeValue": "2",
-          "launches": "Lançamentos",
-          "launchesValue": "4+"
-        }
+      "personal": "Projetos autorais",
+      "professional": "Realizações profissionais",
+      "openSource": "Contribuições open source"
+    },
+    "achievements": {
+      "authentication": "Autenticação com Keycloak",
+      "authenticatedSystems": "sistemas com autenticação",
+      "edgeRendering": "Renderização do marketplace",
+      "deliveries": "Entregas de plataforma",
+      "deliveryNames": {
+        "marketplace": "Marketplace",
+        "content": "Montilla e SDKs",
+        "customerData": "Dados de clientes",
+        "media": "Media Hub",
+        "gateway": "Gateway MCP",
+        "observability": "Observabilidade"
       },
-      "openSource": {
-        "label": "Comunidade",
-        "title": "Contribuições em open source",
-        "description": "Dedico tempo para melhorar bibliotecas com foco em DX, documentação e acessibilidade. Estes são alguns destaques.",
-        "stats": {
-          "repositories": "Repositórios",
-          "repositoriesValue": "5",
-          "community": "Anos contribuindo",
-          "communityValue": "8"
-        }
-      }
-    },
-    "badges": {
-      "product": "Produto",
-      "designSystem": "Design System",
-      "openSource": "Open Source"
-    },
-    "cta": {
-      "viewContributions": "Ver contribuições"
+      "recognitions": "Reconhecimentos",
+      "fullExperience": "Ver experiência completa"
     },
     "highlights": {
       "role": "Atuação",
-      "stack": "Stack",
       "focus": "Foco"
     },
     "personalProjects": {
       "snown": {
         "description": "Plataforma de gestão de projetos com Kanban, edição colaborativa de documentos em tempo real, calendário compartilhado e permissões personalizadas.",
-        "meta": "Founder • 2018 — atual",
+        "meta": "Fundador · desde 2018",
         "role": "Produto & Engenharia",
         "focus": "Controle de acesso por papéis e atributos"
       },
@@ -649,8 +897,7 @@ const projectSections = computed<ProjectSection[]>(() => {
       "experiment-ui": {
         "description": "Biblioteca com componentes visuais em Vue 3 para testes.",
         "meta": "Design System experimental • desde 2021",
-        "role": "Design System Engineer",
-        "focus": "Playground para ideias de UI"
+        "role": "Design System Engineer"
       }
     },
     "openSourceProjects": {
@@ -674,60 +921,41 @@ const projectSections = computed<ProjectSection[]>(() => {
         "meta": "Toolkit criativo",
         "description": "Toolkit criativo para quadros brancos em projetos Vue e Vite."
       }
-    }
+    },
+    "openProject": "Abrir {name}",
+    "contributions": "Contribuições",
+    "viewContribution": "Ver contribuições em {name}"
   },
   "es": {
-    "table": {
-      "headers": {
-        "project": "Proyecto",
-        "description": "Descripción",
-        "highlights": "Destacados",
-        "tags": "Tags",
-        "action": "Acción"
-      },
-      "cta": "Abrir proyecto"
-    },
     "sections": {
-      "personal": {
-        "label": "Proyectos propios",
-        "title": "Construcciones personales que uso a diario",
-        "description": "Iniciativas que comenzaron como experimentos y hoy apoyan colaboración, validación e investigación de nuevas stacks.",
-        "stats": {
-          "active": "Iniciativas activas",
-          "activeValue": "2",
-          "launches": "Lanzamientos",
-          "launchesValue": "4+"
-        }
+      "personal": "Proyectos propios",
+      "professional": "Logros profesionales",
+      "openSource": "Contribuciones open source"
+    },
+    "achievements": {
+      "authentication": "Autenticación con Keycloak",
+      "authenticatedSystems": "sistemas con autenticación",
+      "edgeRendering": "Renderizado del marketplace",
+      "deliveries": "Entregas de plataforma",
+      "deliveryNames": {
+        "marketplace": "Marketplace",
+        "content": "Montilla y SDK",
+        "customerData": "Datos de clientes",
+        "media": "Media Hub",
+        "gateway": "Gateway MCP",
+        "observability": "Observabilidad"
       },
-      "openSource": {
-        "label": "Comunidad",
-        "title": "Aportes a proyectos open source",
-        "description": "Dedico tiempo a mejorar bibliotecas con foco en DX, documentación y accesibilidad. Estos son algunos destacados.",
-        "stats": {
-          "repositories": "Repositorios",
-          "repositoriesValue": "5",
-          "community": "Años contribuyendo",
-          "communityValue": "8"
-        }
-      }
-    },
-    "badges": {
-      "product": "Producto",
-      "designSystem": "Design System",
-      "openSource": "Open Source"
-    },
-    "cta": {
-      "viewContributions": "Ver contribuciones"
+      "recognitions": "Reconocimientos",
+      "fullExperience": "Ver experiencia completa"
     },
     "highlights": {
       "role": "Rol",
-      "stack": "Stack",
       "focus": "Enfoque"
     },
     "personalProjects": {
       "snown": {
         "description": "Plataforma de gestión de proyectos con Kanban, edición colaborativa de documentos en tiempo real, calendario compartido y permisos personalizados.",
-        "meta": "Founder • 2018 — hoy",
+        "meta": "Fundador · desde 2018",
         "role": "Producto e Ingeniería",
         "focus": "Control de acceso por roles y atributos"
       },
@@ -744,8 +972,7 @@ const projectSections = computed<ProjectSection[]>(() => {
       "experiment-ui": {
         "description": "Biblioteca con componentes visuales en Vue 3 para pruebas.",
         "meta": "Design System experimental • desde 2021",
-        "role": "Design System Engineer",
-        "focus": "Laboratorio de ideas UI"
+        "role": "Design System Engineer"
       }
     },
     "openSourceProjects": {
@@ -769,7 +996,10 @@ const projectSections = computed<ProjectSection[]>(() => {
         "meta": "Toolkit creativo",
         "description": "Toolkit creativo para pizarras en ecosistemas Vue y Vite."
       }
-    }
+    },
+    "openProject": "Abrir {name}",
+    "contributions": "Contribuciones",
+    "viewContribution": "Ver contribuciones en {name}"
   }
 }
 </i18n>

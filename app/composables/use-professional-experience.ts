@@ -7,6 +7,16 @@ export interface ExperienceItem {
   companyMark?: string
   location: string
   text: string
+  achievements?: {
+    edge: string
+    auth: string
+    marketplace: string
+    content: string
+    customerData: string
+    media: string
+    gateway: string
+    observability: string
+  }
   recognitions?: string[]
   skills: string[]
   isCurrentJob?: boolean
@@ -26,6 +36,16 @@ export const useProfessionalExperience = () => {
       companyMark: '/images/companies/qeevo-mark.svg',
       location: t('professionalExperience.item6.location'),
       text: t('professionalExperience.item6.text'),
+      achievements: {
+        edge: t('professionalExperience.item6.achievements.edge'),
+        auth: t('professionalExperience.item6.achievements.auth'),
+        marketplace: t('professionalExperience.item6.achievements.marketplace'),
+        content: t('professionalExperience.item6.achievements.content'),
+        customerData: t('professionalExperience.item6.achievements.customerData'),
+        media: t('professionalExperience.item6.achievements.media'),
+        gateway: t('professionalExperience.item6.achievements.gateway'),
+        observability: t('professionalExperience.item6.achievements.observability'),
+      },
       recognitions: [
         t('professionalExperience.item6.recognition'),
         t('professionalExperience.item6.executiveRecognition'),

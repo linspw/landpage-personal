@@ -12,7 +12,7 @@
       "title": "About me"
     },
     "projects": {
-      "title": "Projects",
+      "title": "Achievements and Projects",
       "subtitle": "Learn more about my Public Personal Works"
     },
     "books": {
@@ -48,6 +48,16 @@
       "title": "Senior Software Engineer",
       "location": "São José dos Campos, SP",
       "text": "On Qeevo’s Platform team, I work on the marketplace, its migration to edge rendering on Cloudflare, and shared SDKs. I helped implement authentication for more than 30 systems.",
+      "achievements": {
+        "edge": "Led the architecture for migrating marketplace rendering from AWS EKS to Cloudflare.",
+        "auth": "Built a Keycloak-based authentication solution for more than 30 systems.",
+        "marketplace": "Evolved marketplace search, offers, checkout, and integrations on the Platform team.",
+        "content": "Designed a platform for content, advertising, and events with SDKs for Nuxt, Next.js, and CDN delivery.",
+        "customerData": "Designed and implemented a customer data platform running in production.",
+        "media": "Co-developed the core of an in-house image transformation and delivery service.",
+        "gateway": "Built an enterprise MCP gateway with single sign-on, group permissions, temporary access, and auditing.",
+        "observability": "Developed an OpenTelemetry SDK for distributed tracing and correlated logs."
+      },
       "recognition": "Best Senior Developer at the Qeevo Tech Awards 2026.1, a shared award with Rodolfo Santos.",
       "executiveRecognition": "Recognized by executive leadership for results alongside two colleagues on October 2, 2026."
     },
