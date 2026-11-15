@@ -1,7 +1,7 @@
 <template>
   <header
     class="site-header"
-    :class="{ 'site-header--scrolled': scrollY > 12 }"
+    :class="{ 'site-header--scrolled': scrollY > 0 }"
   >
     <div class="site-header-inner site-container">
       <NuxtLink to="/" class="site-brand">
@@ -79,24 +79,21 @@ const { y: scrollY } = useWindowScroll()
   position: fixed;
   z-index: 1000;
   inset: 0 0 auto;
-  background: var(--site-surface);
+  background: transparent;
   color: var(--site-ink);
 }
 
 .site-header--scrolled {
+  background: var(--site-surface);
   box-shadow:
     0 4px 16px -10px rgb(20 43 80 / 14%),
     0 1px 4px rgb(20 43 80 / 3%);
 }
 
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
-  .site-header {
+  .site-header--scrolled {
     -webkit-backdrop-filter: blur(18px) saturate(145%);
     backdrop-filter: blur(18px) saturate(145%);
-    background: color-mix(in srgb, var(--site-surface) 96%, transparent);
-  }
-
-  .site-header--scrolled {
     background: color-mix(in srgb, var(--site-surface) 84%, transparent);
   }
 }
@@ -105,6 +102,7 @@ const { y: scrollY } = useWindowScroll()
   .site-header {
     transition:
       background-color 180ms ease,
+      backdrop-filter 180ms ease,
       box-shadow 180ms ease;
   }
 }

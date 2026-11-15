@@ -260,14 +260,6 @@ const previousRoles = computed(() => {
   color: var(--color-secondary);
 }
 
-.career-story {
-  background-color: color-mix(
-    in srgb,
-    var(--site-canvas),
-    var(--site-soft) calc(var(--bridge-progress, 0) * 100%)
-  );
-}
-
 .career-story-stage {
   display: grid;
   min-height: min(45rem, 100svh);
@@ -527,7 +519,7 @@ const previousRoles = computed(() => {
 }
 
 .career-history.app-section {
-  background: var(--site-soft);
+  background: transparent;
   scroll-margin-block-start: var(--site-header-height);
 }
 
