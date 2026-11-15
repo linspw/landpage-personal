@@ -49,22 +49,29 @@
                 </div>
               </figure>
 
-              <figure class="migration-chart">
+              <figure class="cost-chart">
                 <figcaption>
-                  <h3>{{ t('achievements.edgeRendering') }}</h3>
-                  <p>{{ currentRole.achievements.edge }}</p>
+                  <h3>{{ t('achievements.renderingCost') }}</h3>
+                  <p class="cost-chart-reduction">
+                    {{ t('achievements.costReduction', { value: n(estimatedCostReduction, percentFormat) }) }}
+                  </p>
                 </figcaption>
-                <div class="migration-chart-flow" aria-hidden="true">
-                  <div class="migration-origin">
-                    <UIcon name="i-heroicons-server-stack" />
-                    <span>AWS EKS</span>
+                <dl class="cost-chart-bars">
+                  <div
+                    v-for="scenario in costScenarios"
+                    :key="scenario.platform"
+                    class="cost-chart-bar"
+                    :class="{ 'cost-chart-bar--after': scenario.phase === 'after' }"
+                    :style="{ '--cost-share': `${scenario.share * 100}%` }"
+                  >
+                    <dt>
+                      {{ scenario.platform }}
+                      <span>{{ t(`achievements.costPhase.${scenario.phase}`) }}</span>
+                    </dt>
+                    <dd>{{ n(scenario.share, percentFormat) }}</dd>
                   </div>
-                  <UIcon name="i-heroicons-arrow-right-20-solid" />
-                  <div class="migration-destination">
-                    <UIcon name="i-heroicons-cloud" />
-                    <span>Cloudflare</span>
-                  </div>
-                </div>
+                </dl>
+                <p class="cost-chart-note">{{ t('achievements.costIndex') }}</p>
               </figure>
             </div>
 
@@ -205,6 +212,15 @@ const { t, n } = useI18n({ useScope: 'local' })
 const roles = useProfessionalExperience()
 const currentRole = computed(() => roles.value.find(role => role.isCurrentJob))
 const authenticationSystemCount = 30
+// November 2026 resume estimates, indexed to the pre-migration monthly cost.
+const costBeforeMigration = 1
+const costAfterMigration = 0.126
+const estimatedCostReduction = 1 - costAfterMigration / costBeforeMigration
+const costScenarios = [
+  { platform: 'AWS EKS', phase: 'before', share: costBeforeMigration },
+  { platform: 'Cloudflare', phase: 'after', share: costAfterMigration },
+]
+const percentFormat = { style: 'percent', maximumFractionDigits: 0 } as const
 const deliveryKeys = ['marketplace', 'content', 'customerData', 'media', 'gateway', 'observability'] as const
 
 const personalProjects = computed(() => [
@@ -608,47 +624,66 @@ const openSourceProjects = computed(() =>
   background: var(--site-link);
 }
 
-.migration-chart {
+.cost-chart {
   padding-inline-start: var(--professional-column-gap);
   border-inline-start: 1px solid var(--site-line);
 }
 
-.migration-chart figcaption p {
+.cost-chart-reduction {
   margin-top: 0.35rem;
-  color: var(--site-muted);
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-.migration-chart-flow {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(0.4rem, 1vw, 0.85rem);
-  margin-top: 0.85rem;
   color: var(--site-link);
+  font-size: clamp(1.15rem, 2.35vw, 1.65rem);
+  font-weight: 800;
+  line-height: 1.2;
 }
 
-.migration-origin,
-.migration-destination {
-  display: flex;
-  min-height: 3.1rem;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem 0.55rem;
-  padding: 0.45rem;
-  border: 1px solid var(--site-control-border);
-  border-radius: 0.55rem;
+.cost-chart-bars {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+
+.cost-chart-bar {
+  --cost-bar-color: #7189ae;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.25rem 0.75rem;
   color: var(--site-navy);
-  font-size: 0.825rem;
-  font-weight: 750;
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
-.migration-destination {
-  border-color: #b7cdf3;
-  background: #dfeaff;
-  color: #123f91;
+.cost-chart-bar dt span {
+  margin-inline-start: 0.35rem;
+  color: var(--site-muted);
+  font-weight: 500;
+}
+
+.cost-chart-bar dd {
+  font-variant-numeric: tabular-nums;
+}
+
+.cost-chart-bar::after {
+  grid-column: 1 / -1;
+  height: 0.52rem;
+  border-radius: 0.25rem;
+  background: linear-gradient(
+    to right,
+    var(--cost-bar-color) var(--cost-share),
+    #d8e3f1 var(--cost-share)
+  );
+  content: '';
+}
+
+.cost-chart-bar--after {
+  --cost-bar-color: var(--site-link);
+}
+
+.cost-chart-note {
+  margin-top: 0.6rem;
+  color: var(--site-muted);
+  font-size: 0.75rem;
+  line-height: 1.45;
 }
 
 .professional-delivery-grid,
@@ -720,7 +755,7 @@ const openSourceProjects = computed(() =>
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .migration-chart {
+  .cost-chart {
     padding-block-start: 1rem;
     padding-inline-start: 0;
     border-block-start: 1px solid var(--site-line);
@@ -785,7 +820,10 @@ const openSourceProjects = computed(() =>
     "achievements": {
       "authentication": "Keycloak authentication",
       "authenticatedSystems": "systems using authentication",
-      "edgeRendering": "Marketplace rendering",
+      "renderingCost": "Marketplace rendering cost",
+      "costReduction": "Estimated {value} reduction",
+      "costPhase": { "before": "before", "after": "after" },
+      "costIndex": "Estimated monthly cost index relative to AWS EKS.",
       "deliveries": "Platform work",
       "deliveryNames": {
         "marketplace": "Marketplace",
@@ -860,7 +898,10 @@ const openSourceProjects = computed(() =>
     "achievements": {
       "authentication": "Autenticação com Keycloak",
       "authenticatedSystems": "sistemas com autenticação",
-      "edgeRendering": "Renderização do marketplace",
+      "renderingCost": "Custo de renderização do marketplace",
+      "costReduction": "Redução estimada de {value}",
+      "costPhase": { "before": "antes", "after": "depois" },
+      "costIndex": "Índice de custo mensal estimado com AWS EKS como base.",
       "deliveries": "Entregas de plataforma",
       "deliveryNames": {
         "marketplace": "Marketplace",
@@ -935,7 +976,10 @@ const openSourceProjects = computed(() =>
     "achievements": {
       "authentication": "Autenticación con Keycloak",
       "authenticatedSystems": "sistemas con autenticación",
-      "edgeRendering": "Renderizado del marketplace",
+      "renderingCost": "Coste de renderizado del marketplace",
+      "costReduction": "Reducción estimada del {value}",
+      "costPhase": { "before": "antes", "after": "después" },
+      "costIndex": "Índice de coste mensual estimado con AWS EKS como base.",
       "deliveries": "Entregas de plataforma",
       "deliveryNames": {
         "marketplace": "Marketplace",
