@@ -81,7 +81,11 @@
             <div class="professional-deliveries">
               <h3>{{ t('achievements.deliveries') }}</h3>
               <dl class="professional-delivery-grid">
-                <div v-for="key in deliveryKeys" :key="key">
+                <div
+                  v-for="key in deliveryKeys"
+                  :key="key"
+                  :class="{ 'professional-delivery--tracking': key === 'tracking' }"
+                >
                   <dt>{{ t(`achievements.deliveryNames.${key}`) }}</dt>
                   <dd>{{ currentRole.achievements[key] }}</dd>
                 </div>
@@ -229,7 +233,7 @@ const usdFormat = {
   currency: 'USD',
   maximumFractionDigits: 0,
 } as const
-const deliveryKeys = ['marketplace', 'content', 'customerData', 'media', 'gateway', 'observability'] as const
+const deliveryKeys = ['marketplace', 'tracking', 'media', 'gateway', 'observability'] as const
 
 const personalProjects = computed(() => [
   {
@@ -735,12 +739,17 @@ const openSourceProjects = computed(() =>
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.professional-delivery--tracking {
+  grid-column: span 2;
+}
+
 .professional-delivery-grid dt {
   color: var(--site-navy);
   font-weight: 700;
 }
 
 .professional-delivery-grid dd {
+  max-width: 65ch;
   margin-top: 0.2rem;
 }
 
@@ -790,6 +799,10 @@ const openSourceProjects = computed(() =>
 
   .professional-delivery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .professional-delivery--tracking {
+    grid-column: auto;
   }
 
   .systems-chart {
@@ -864,8 +877,7 @@ const openSourceProjects = computed(() =>
       "deliveries": "Platform work",
       "deliveryNames": {
         "marketplace": "Marketplace",
-        "content": "Montilla and SDKs",
-        "customerData": "Customer data",
+        "tracking": "Tracking",
         "media": "Media Hub",
         "gateway": "MCP gateway",
         "observability": "Observability"
@@ -942,8 +954,7 @@ const openSourceProjects = computed(() =>
       "deliveries": "Entregas de plataforma",
       "deliveryNames": {
         "marketplace": "Marketplace",
-        "content": "Montilla e SDKs",
-        "customerData": "Dados de clientes",
+        "tracking": "Tracking",
         "media": "Media Hub",
         "gateway": "Gateway MCP",
         "observability": "Observabilidade"
@@ -1020,8 +1031,7 @@ const openSourceProjects = computed(() =>
       "deliveries": "Entregas de plataforma",
       "deliveryNames": {
         "marketplace": "Marketplace",
-        "content": "Montilla y SDK",
-        "customerData": "Datos de clientes",
+        "tracking": "Tracking",
         "media": "Media Hub",
         "gateway": "Gateway MCP",
         "observability": "Observabilidad"

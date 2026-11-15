@@ -53,9 +53,8 @@
         "edge": "Arquitetura da migração da renderização do marketplace de AWS EKS para a Cloudflare.",
         "auth": "Criação de uma solução de autenticação com Keycloak para mais de 30 sistemas.",
         "marketplace": "Arquitetura, manutenção e observabilidade de todo o marketplace, com desenvolvimento de funcionalidades na plataforma.",
-        "content": "Arquitetura de uma plataforma de conteúdo, publicidade e eventos com SDKs para Nuxt, Next.js e distribuição via CDN.",
-        "customerData": "Arquitetura e implementação da plataforma de dados de clientes em produção.",
-        "media": "Criação do núcleo de um serviço próprio de transformação e entrega de imagens em colaboração com a equipe.",
+        "tracking": "Evoluí a plataforma de tracking e o CMS. Criei a plataforma de dados de clientes (CDP), hoje em produção.",
+        "media": "Desenvolvi com o time uma solução de transformação e entrega de imagens que passou a atender toda a operação em escala e gerou uma economia de US$ 125 por mês.",
         "gateway": "Criação de um gateway corporativo MCP com login único, permissões por grupo, acesso temporário e auditoria.",
         "observability": "Desenvolvimento de um SDK de observabilidade com OpenTelemetry para rastreamento distribuído e correlação de logs."
       },

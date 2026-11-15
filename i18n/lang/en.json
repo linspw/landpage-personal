@@ -52,9 +52,8 @@
         "edge": "Led the architecture for migrating marketplace rendering from AWS EKS to Cloudflare.",
         "auth": "Built a Keycloak-based authentication solution for more than 30 systems.",
         "marketplace": "Worked on architecture, maintenance, and observability across the marketplace and built features for the platform.",
-        "content": "Designed a platform for content, advertising, and events with SDKs for Nuxt, Next.js, and CDN delivery.",
-        "customerData": "Designed and implemented a customer data platform running in production.",
-        "media": "Co-developed the core of an in-house image transformation and delivery service.",
+        "tracking": "Improved the tracking platform and CMS. Built a customer data platform (CDP) that is now running in production.",
+        "media": "Built an image transformation and delivery service with the team. It scaled to support the entire operation and saved US$125 per month.",
         "gateway": "Built an enterprise MCP gateway with single sign-on, group permissions, temporary access, and auditing.",
         "observability": "Developed an OpenTelemetry SDK for distributed tracing and correlated logs."
       },

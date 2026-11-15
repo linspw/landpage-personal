@@ -11,8 +11,7 @@ export interface ExperienceItem {
     edge: string
     auth: string
     marketplace: string
-    content: string
-    customerData: string
+    tracking: string
     media: string
     gateway: string
     observability: string
@@ -40,8 +39,7 @@ export const useProfessionalExperience = () => {
         edge: t('professionalExperience.item6.achievements.edge'),
         auth: t('professionalExperience.item6.achievements.auth'),
         marketplace: t('professionalExperience.item6.achievements.marketplace'),
-        content: t('professionalExperience.item6.achievements.content'),
-        customerData: t('professionalExperience.item6.achievements.customerData'),
+        tracking: t('professionalExperience.item6.achievements.tracking'),
         media: t('professionalExperience.item6.achievements.media'),
         gateway: t('professionalExperience.item6.achievements.gateway'),
         observability: t('professionalExperience.item6.achievements.observability'),
