@@ -62,21 +62,43 @@ const { t } = useI18n({ useScope: 'local' })
 const expanded = ref(false)
 const motion = usePreferredReducedMotion()
 
-// These are the original SonoJS demo photos. Its last three files repeat 01–03.
 const rows = [
-  { files: [1, 2, 3, 4], offsetY: -320, speed: 1, curveAmount: 40 },
-  { files: [5, 6, 7, 8], offsetY: -160, speed: 1.3, curveAmount: 35 },
-  { files: [9, 10, 11, 12], offsetY: 0, speed: 0.7, curveAmount: 40 },
-  { files: [13, 14, 15, 16], offsetY: 160, speed: 1.2, curveAmount: 40 },
-  { files: [17, 1, 2, 3], offsetY: 320, speed: 0.9, curveAmount: 35 },
+  {
+    files: ['mountain-night', 'himalayas', 'ascent-ridge', 'trekking-mist'],
+    offsetY: -320,
+    speed: 1,
+    curveAmount: 40,
+  },
+  {
+    files: ['alpine-hikers', 'summit', 'snow-leopard-portrait', 'mountain-day'],
+    offsetY: -160,
+    speed: 1.3,
+    curveAmount: 35,
+  },
+  {
+    files: ['mountain-day', 'snow-leopard-himalayas', 'himalayas', 'snow-leopard-portrait'],
+    offsetY: 0,
+    speed: 0.7,
+    curveAmount: 40,
+  },
+  {
+    files: ['summit', 'ascent-ridge', 'rock-climbing', 'alpine-hikers'],
+    offsetY: 160,
+    speed: 1.2,
+    curveAmount: 40,
+  },
+  {
+    files: ['himalayas', 'trekking-mist', 'mountain-night', 'mountain-day'],
+    offsetY: 320,
+    speed: 0.9,
+    curveAmount: 35,
+  },
 ]
 
 const bands: InfiniteDriftBand[] = rows.map(({ files, ...band }) => ({
   ...band,
   rotation: 7,
-  images: files.map(
-    (file) => `/images/infinite-drift/${String(file).padStart(2, '0')}.jpg`,
-  ),
+  images: files.map((file) => `/images/infinite-drift/snowl/${file}.webp`),
 }))
 
 const compactBands = [4, 2, 3].map((index) => ({
@@ -88,25 +110,25 @@ const compactBands = [4, 2, 3].map((index) => ({
 <i18n lang="json">
 {
   "pt-BR": {
-    "title": "Galeria",
-    "preview": "Prévia da galeria",
-    "expandedPreview": "Faixas da galeria",
+    "title": "Galeria SNOWL",
+    "preview": "Prévia da galeria SNOWL com montanhas e leopardos-da-neve",
+    "expandedPreview": "Faixas da galeria SNOWL",
     "expandLabel": "Expandir galeria",
     "close": "Fechar galeria",
     "hint": "Arraste as faixas ou use as setas do teclado para explorar as imagens."
   },
   "en": {
-    "title": "Gallery",
-    "preview": "Gallery preview",
-    "expandedPreview": "Gallery bands",
+    "title": "SNOWL gallery",
+    "preview": "SNOWL gallery preview with mountains and snow leopards",
+    "expandedPreview": "SNOWL gallery bands",
     "expandLabel": "Expand gallery",
     "close": "Close gallery",
     "hint": "Drag the bands or use the arrow keys to explore the images."
   },
   "es": {
-    "title": "Galería",
-    "preview": "Vista previa de la galería",
-    "expandedPreview": "Franjas de la galería",
+    "title": "Galería SNOWL",
+    "preview": "Vista previa de la galería SNOWL con montañas y leopardos de las nieves",
+    "expandedPreview": "Franjas de la galería SNOWL",
     "expandLabel": "Ampliar galería",
     "close": "Cerrar galería",
     "hint": "Arrastra las franjas o usa las flechas del teclado para explorar las imágenes."
